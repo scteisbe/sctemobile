@@ -1,0 +1,22 @@
+<ion-view hide-nav-bar="true" class="padding" ng-class="{'bg-gradient': activeIndex != 0}">
+  <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="activeIndex" ng-init="activeIndex = 0" class="slide-intro">
+    <ion-slide class="text-center flex-vertical-center">
+      <h1 class="calm">Cortex Mobile</h1>
+      <h2 class="font-thin">Essential knowledge for SCTE members on the move</h2>
+    </ion-slide>
+    <ion-slide class="text-center flex-vertical-center">
+      <h2 class="font-thin light">Library of essential mobile apps</h2>
+    </ion-slide>
+    <ion-slide class="text-center flex-vertical-center">
+      <h2 class="font-thin light">Exclusive access to essential knowledge</h2>
+    </ion-slide>
+    <ion-slide class="text-center flex-vertical-center">
+      <h2 class="font-thin light">Essential information from around the industry</h2>
+    </ion-slide>
+  </ion-slide-box>
+
+  <div class="text-center padding intro-buttons">
+    <button class="button button-block" ng-class="{'button-light button-outline': activeIndex != 0, 'button-calm': activeIndex == 0}" ng-click="openLogin()"><b>Sign in</b></button>
+    <button class="button button-clear button-light" ng-class="{'button-calm': activeIndex == 0}" ng-click="openJoinPage()"><b>Become an SCTE member</b></button>
+  </div>
+</ion-view>

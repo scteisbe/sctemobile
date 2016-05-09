@@ -1,0 +1,11 @@
+{
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.0"
+  },
+  "dependencies": {
+    "ionic-ion-tinder-cards": "*",
+    "angular-tabletop": "^0.2.2"
+  }
+}

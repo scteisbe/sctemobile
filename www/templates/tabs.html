@@ -1,0 +1,28 @@
+<!--
+Create tabs with an icon and label, using the tabs-positive style.
+Each tab's child <ion-nav-view> directive will have its own
+navigation history that also transitions its views in and out.
+-->
+<ion-tabs class="tabs-icon-top tabs-color-active-calm tabs-light">
+
+  <ion-tab title="Home" icon-off="ion-ios-home-outline" icon-on="ion-ios-home" href="#/tab/home" badge="5" badge-style="badge-assertive">
+    <ion-nav-view name="home"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="My Learning" icon-off="ion-ios-book-outline" icon-on="ion-ios-book" href="#/tab/me">
+    <ion-nav-view name="me"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="App Library" icon-off="ion-android-apps" icon-on="ion-android-apps" href="#/tab/messaging" badge="2" badge-style="badge-assertive">
+    <ion-nav-view name="messaging"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Expert Community" icon-off="ion-ios-people-outline" icon-on="ion-ios-people" href="#/tab/network">
+    <ion-nav-view name="network"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Tech Tips & More" icon-off="ion-ios-lightbulb-outline" icon-on="ion-ios-lightbulb" href="#/tab/search">
+    <ion-nav-view name="search"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>
