@@ -12,7 +12,7 @@ Windows: `npm install -g bower  cordova  ionic  gulp  ios-sim`
 Mac: `sudo npm install -g bower  cordova  ionic  gulp  ios-sim`
 
 ####Get the code
-`git clone https://github.com/kevinjscott/listarter.git <YOUR_TARGET_DIRECTORY_HERE>`
+`git clone https://github.com/scteisbe/sctemobile.git <YOUR_TARGET_DIRECTORY_HERE>`
 
 `cd <YOUR_TARGET_DIRECTORY_HERE>`
 
