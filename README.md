@@ -1,4 +1,4 @@
-# Ionic baseline for SCTE Cortex mobile app
+# Ionic baseline for SCTE mobile app
 
 ## Installation
 
