@@ -1,0 +1,21 @@
+<ion-view view-title="App Library">
+  <ion-content class="stable-bg">
+    <div class="list list-messages" ng-controller="ConfigController">
+      <div class="item item-avatar" ng-repeat="item in apps" ng-click="openPage(item.url)">
+        <img ng-src="{{item.coverimageurl}}" alt="">
+        <div class="row">
+          <div class="col-75">
+            <h2>{{item.title}}</h2>
+            <p>
+              {{item.description}}
+            </p>
+          </div>
+          <div class="col-25 text-right text-muted">
+            Nov 3
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

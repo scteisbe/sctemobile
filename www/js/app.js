@@ -1,14 +1,12 @@
-// Ionic Starter App
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'cortex' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 
-                          'starter.controllers', 
-                          'starter.services', 
-                          'starter.directives', 
+// 'cortex.services' is found in services.js
+// 'cortex.controllers' is found in controllers.js
+angular.module('cortex', ['ionic', 
+                          'cortex.controllers', 
+                          'cortex.services', 
+                          'cortex.directives', 
                           'ionic.contrib.ui.tinderCards', 
                           'ionic.utils',
                           'times.tabletop'])
@@ -28,6 +26,11 @@ angular.module('starter', ['ionic',
     }
   });
 })
+
+.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+   // force Android tabs to bottom
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
+}])
 
 .config(function($stateProvider, $urlRouterProvider, TabletopProvider) {
   TabletopProvider.setTabletopOptions({
@@ -107,24 +110,14 @@ angular.module('starter', ['ionic',
     }
   })
 
-  .state('tab.messaging', {
-    url: '/messaging',
+  .state('tab.apps', {
+    url: '/apps',
     views: {
-      'messaging': {
-        templateUrl: 'templates/messaging/messaging.html',
+      'apps': {
+        templateUrl: 'templates/apps/apps.html',
         controller: 'DemoCtrl'
       }
     }
-  })
-
-  .state('chat', {
-    url: '/chat',
-    // views: {
-    //   'messaging': {
-        templateUrl: 'templates/messaging/chat.html',
-        controller: 'DemoCtrl'
-    //   }
-    // }
   })
 
   .state('tab.network', {

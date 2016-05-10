@@ -1,4 +1,4 @@
-angular.module('starter.directives', [])
+angular.module('cortex.directives', [])
 .directive('focusMe', function ($timeout) {
     return {
       link: function(scope, element, attrs) {

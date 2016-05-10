@@ -1,5 +1,5 @@
 (function() {
-angular.module('starter')
+angular.module('cortex')
 .controller('ConfigController', ['$scope', '$localstorage', 'ConfigService', ConfigController])
 
 

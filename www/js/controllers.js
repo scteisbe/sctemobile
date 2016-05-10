@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('cortex.controllers', [])
 
 .controller('DemoCtrl', function($scope, $http, $ionicSideMenuDelegate, $ionicModal, Users, $ionicLoading, $state, $timeout) {
 
@@ -101,6 +101,27 @@ angular.module('starter.controllers', [])
   };
   $scope.closeRegister = function() {
     $scope.modalRegister.hide();
+  };
+
+  // Recent search modal
+  $ionicModal.fromTemplateUrl('templates/modal/recentsearches.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modalRecentSearches = modal;
+  });
+  $scope.showRecentSearches = function() {
+    $scope.modalRecentSearches.show();
+  };
+  $scope.hideRecentSearches = function() {
+    $scope.modalRecentSearches.hide();
+  };
+  $scope.searchChange = function() {
+    if($scope.query && $scope.query.length) {
+      $scope.modalRecentSearches.hide();
+    } else {
+      $scope.modalRecentSearches.show();
+    }
   };
 
   // Tinder cards

@@ -1,7 +1,7 @@
  'user strict';
 
 (function() {
-	angular.module('starter')
+	angular.module('cortex')
 	.factory('ConfigService', ['$q', 'Tabletop', ConfigService])
 
 

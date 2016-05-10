@@ -1,7 +1,7 @@
 {
-  "name": "linkedin-ui",
+  "name": "cortex",
   "version": "1.1.1",
-  "description": "linkedin-ui: An Ionic project",
+  "description": "Cortex by SCTE / ISBE",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
