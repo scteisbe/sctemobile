@@ -5,7 +5,17 @@ angular.module('cortex')
 
 function ConfigController($scope, $localstorage, ConfigService) {
   $scope.platform = ionic.Platform.platform();
-  console.log($scope.platform);
+  switch($scope.platform) {
+    case 'ios':
+      $scope.prettyPlatform = "iOS";
+      break;
+    case 'android':
+      $scope.prettyPlatform = "Android";
+      break;
+    default:
+      $scope.prettyPlatform = $scope.platform;
+  }
+  console.log($scope.prettyPlatform + " aka " + $scope.platform);
   $scope.staticcontent = [];
 
   // data is stored at https://docs.google.com/spreadsheets/d/1KTe0AcWPrApY8qOzTV_lJrftDxo0ZDRB7DYtzZfvFLY/edit#gid=2075321114
