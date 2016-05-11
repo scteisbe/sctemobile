@@ -13,8 +13,13 @@ function ConfigController($scope, $localstorage, ConfigService) {
 //     'a-sheet-with-errors',   // used for testing
 //     'a-sheet-that-does-not-exist',   // used for testing
 //     'an-empty-sheet',    // used for testing
-    'featuredResources',
-    'apps'
+    'featuredresources',
+    'apps',
+    'featuredcourses',
+    'techtips',
+    'standards',
+    'whitepapers',
+    'operationalpractices'
   ];
 
   // immediately populate from localstorage
@@ -32,6 +37,7 @@ function ConfigController($scope, $localstorage, ConfigService) {
           }
           // store result in localstorage for fast access next time
           $localstorage.setObject('staticcontent.' + sheet, $scope.staticcontent[sheet]);
+          console.log("Read: " + sheet);
       } catch (error) {
         console.log("Can't read sheet '" + sheet + "'. Using local client cache. " + error);
       }			
