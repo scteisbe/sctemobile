@@ -4,6 +4,8 @@ angular.module('cortex')
 
 
 function ConfigController($scope, $localstorage, ConfigService) {
+  $scope.platform = ionic.Platform.platform();
+  console.log($scope.platform);
   $scope.apps = $localstorage.getObject('apps') || [];
   ConfigService.then(function(x) {
     if (x.featuredResources().length) {
@@ -15,7 +17,7 @@ function ConfigController($scope, $localstorage, ConfigService) {
   });
 
   $scope.openPage = function(url) {
-    console.log("url");
+    window.open(url, '_system');
   };
 }
 })();

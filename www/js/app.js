@@ -9,6 +9,7 @@ angular.module('cortex', ['ionic',
                           'cortex.directives', 
                           'ionic.contrib.ui.tinderCards', 
                           'ionic.utils',
+                          'ngHolder',
                           'times.tabletop'])
 
 .run(function($ionicPlatform) {

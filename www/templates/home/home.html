@@ -6,105 +6,71 @@
   <ion-header-bar class="bar-subheader box-shadow has-input item-input-inset">
     <label class="item-input-wrapper">
       <i class="icon ion-search placeholder-icon"></i>
-      <input type="search" placeholder="Search guides, course materials, acronyms, etc." ng-model="query" ng-init="query=''" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()">
+      <input type="search" placeholder="Search courses, guides, terms, etc." ng-model="query" ng-init="query=''" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()">
     </label>
-    <button class="button button-clear" ng-show="query.length > 0" ng-click="query = ''">
-      Cancel
-    </button>
+
+    <a class="button button-icon stable icon ion-android-microphone"></a>
+<!--     <a class="button button-icon stable icon ion-android-microphone" ng-if="query.length == 0"></a> -->
+<!--     <button class="button button-icon stable icon ion-android-cancel" ng-show="query.length > 0" ng-click="query = ''"></button> -->
   </ion-header-bar>
 
 
   <ion-content class="has-subheader stable-bg">
     <ion-refresher on-refresh="refresh()" pulling-icon="ion-chevron-up"></ion-refresher>
 
-    <div class="list" ng-show="filtedUsers.length && query.length">
-      <div class="item item-avatar" ng-repeat="user in filtedUsers = (users | filter: query)">
-        <img ng-src="{{user.face}}">
-        <h2><b>{{user.name}}</b></h2>
-        <p>{{user.lastText}}</p>  
-      </div>
-    </div>
-
-    <div class="list card new-feeds" ng-repeat="item in [0,1,2,3,4,5,6,7,8]">
-      <div class="item" ng-if="$index%5 == 1">
-        <h2><b>Elvis Presley</b> likes this</h2>
+      <div class="list card">
+        <div class="item item-image">
+          <img holder data-src="holder.js/100px100?outline=yes&text=">
+        </div>
       </div>
 
-      <div class="item item-avatar">
-        <img src="img/adam.jpg">
-        <h2><b>Marty McFly</b></h2>
-        <p>Consultant - Hi-Tech - Executive Sales</p>
-        <p>2 min</p>
-      </div>
-
-      <div class="item item-body post-body" ui-sref="tab.post({id: $index})">
-        <p class="post-text">
-          It's here! Our latest Global Video Index is now available. This quarter we show <a href="">new trends</a> in mobile video consumption, engagement patterns by length of video, how sports publishers can grow viewers around gameday & how programmatic is
-          <span class="seemore">...see more</span>
-        </p>
-      </div>
-
-      <div class="item item-image" ng-if="$index%2 == 0">
-        <img src="img/photo.jpg">
-      </div>
-        
-      <div class="item item-body post-body">
-        <div class="list card post-inline" ng-if="$index%5 == 1">
-          <div class="item item-body post-body">
-            <p>What is the secret to rapid grow your app?</p>
-            <p class="post-text"><a href="">https://li.ti/u7d87f</a></p>
+      <div class="card" ng-controller="ConfigController">
+        <div class="item">
+          <h2><b>Featured resources</b></h2>
+          <div class="row">
+            <div class="col" ng-repeat="item in apps" ng-click="openPage(item.url)" ng-if="item.os==platform || item.type=='pdf'">
+              <img class="app-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type=='app'" alt="{{item.title}}" >
+              <img class="pdf-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type!='app'" alt="{{item.title}}" >
+    <!--           <p>{{item.title}}</p> -->
+            </div>
           </div>
-
-          <div class="item item-image">
-            <img src="img/photo.jpg">
-          </div>
-
-          <div class="item item-body post-body">
-            <p><b>Download the app</b></p>
-          </div>
-        </div>  
-
-        <p>
-          <a href="" class="subdued">1 Like</a>·
-          <a href="" class="subdued">5 Comments</a>
-        </p>
+        </div>
       </div>
 
-      <div class="item tabs tabs-secondary tabs-icon-left">
-        <a class="tab-item" href="">
-          <i class="icon ion-thumbsup"></i>
-          Like
-        </a>
-        <a class="tab-item" href="">
-          <i class="icon ion-chatbox"></i>
-          Comment
-        </a>
-        <a class="tab-item" href="">
-          <i class="icon ion-share"></i>
-          Share
+      <div class="list card">
+        <div class="item item-image">
+          <img holder data-src="holder.js/100px100?outline=yes&text=">
+        </div>
+      </div>
+
+      <div class="list card">
+        <div class="item">
+          <span class="item-note">
+            <a class="" href="#">more >></a>
+          </span>
+          <h2><b>My events</b></h2>
+        </div>
+<!--         <a class="item item-icon-left" href="#" ng-repeat="i in [0,1,2,3,4,5]"> -->
+        <a class="item item-text-wrap" href="#" ng-repeat="i in [0,1,2,3,4,5]">
+          <div class="row">
+            <div class="col-25 text-center">
+              <i class="icon bigicon ion-calendar"></i>
+              <h2><b>Aug. 21<b></h2>
+            </div>
+            <div class="col-75">
+              <h2><b>Local chapter meeting</b></h2>
+              <p>Anthony Center</p>
+              <p>7:00pm</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+          </div>
         </a>
       </div>
-      
-      <!-- Latest comment -->
-      <div class="item item-avatar" ng-if="$index%5 == 1">
-        <img src="img/ben.png">
-        <h2><b>Ben</b></h2>
-        <p>That's cool my friends. Hope you're doing good</p>
-      </div>
-    </div>   
 
-    <!-- Recommended jobs -->
-    <div class="list card">
-      <div class="item">
-        <h2>Jobs recommended for you</h2>
-      </div>
 
-      <div class="item item-avatar item-text-wrap" ng-repeat="item in [0,1,2]">
-        <img src="img/adam.jpg" class="avatar-organization">
-        <h2><b>Product Management Manager, Finance</b></h2>
-        <p>ABB bank, Ho Chi Minh</p>
-      </div>
-    </div>    
+ 
 
   </ion-content>
 </ion-view>

@@ -6,6 +6,8 @@
   },
   "dependencies": {
     "ionic-ion-tinder-cards": "*",
-    "angular-tabletop": "^0.2.2"
+    "angular-tabletop": "^0.2.2",
+    "holderjs": "^2.9.3",
+    "angular-holderjs": "^1.1.0"
   }
 }
