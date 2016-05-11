@@ -6,14 +6,36 @@ angular.module('cortex')
 function ConfigController($scope, $localstorage, ConfigService) {
   $scope.platform = ionic.Platform.platform();
   console.log($scope.platform);
-  $scope.apps = $localstorage.getObject('apps') || [];
+  $scope.staticcontent = [];
+
+  // data is stored at https://docs.google.com/spreadsheets/d/1KTe0AcWPrApY8qOzTV_lJrftDxo0ZDRB7DYtzZfvFLY/edit#gid=2075321114
+  var sheetnames = [  // every sheet you want access to needs to be listed here
+//     'a-sheet-with-errors',   // used for testing
+//     'a-sheet-that-does-not-exist',   // used for testing
+//     'an-empty-sheet',    // used for testing
+    'featuredResources',
+    'apps'
+  ];
+
+  // immediately populate from localstorage
+  sheetnames.forEach(function(sheet, i){
+    $scope.staticcontent[sheet] = $localstorage.getObject('staticcontent.' + sheet) || sheet;
+  });
+
   ConfigService.then(function(x) {
-    if (x.featuredResources().length) {
-      $localstorage.setObject('apps', x.featuredResources());
-      $scope.apps = x.featuredResources();
-    } else {
-      console.log("No entries in featuredResources. Using local cache.");
-    }
+    sheetnames.forEach(function(sheet, i){
+      try {
+          // try to update from feed
+          $scope.staticcontent[sheet] = x.allSheets()[sheet].elements;
+          if (!$scope.staticcontent[sheet].length) {
+            throw "No entries found. Are there empty rows in the sheet?";
+          }
+          // store result in localstorage for fast access next time
+          $localstorage.setObject('staticcontent.' + sheet, $scope.staticcontent[sheet]);
+      } catch (error) {
+        console.log("Can't read sheet '" + sheet + "'. Using local client cache. " + error);
+      }			
+    });
   });
 
   $scope.openPage = function(url) {
@@ -21,5 +43,3 @@ function ConfigController($scope, $localstorage, ConfigService) {
   };
 }
 })();
-
-

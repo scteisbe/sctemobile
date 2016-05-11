@@ -35,6 +35,7 @@ angular.module('cortex', ['ionic',
 
 .config(function($stateProvider, $urlRouterProvider, TabletopProvider) {
   TabletopProvider.setTabletopOptions({
+    // get data from https://docs.google.com/spreadsheets/d/1KTe0AcWPrApY8qOzTV_lJrftDxo0ZDRB7DYtzZfvFLY/edit#gid=1763228241
     key: '1KTe0AcWPrApY8qOzTV_lJrftDxo0ZDRB7DYtzZfvFLY',
     simpleSheet: false
     });

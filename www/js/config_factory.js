@@ -7,7 +7,6 @@
 
 	function ConfigService($q, Tabletop) {
 		var svc = init(),
-			featuredResources = null,
 			allSheets = null;
 
 		return svc;
@@ -19,22 +18,15 @@
 		function init() {
 			// An object that holds all the methods the caller can access
 			var service = {
-				allSheets: allSheets,
-				featuredResources: featuredResources
+				allSheets: allSheets
 			}
 			
 			var deferred = $q.defer();			
 
 			// Load the spreadsheet
 			Tabletop.then(function(TabletopSheets) {
-				// Once the spreadsheet is loaded
+				// or access a sheet directly e.g. TabletopSheets[0].featuredResources.elements
 				allSheets = TabletopSheets[0];
-				try {
-					featuredResources = TabletopSheets[0].featuredResources.elements;
-				} catch (error) {
-				  console.log("featuredResources sheet not found");
-				  featuredResources = {};
-				}			
 				deferred.resolve(service);
 			});
 
@@ -43,9 +35,6 @@
 		
 		function allSheets() {
 			return allSheets;
-		}
-		function featuredResources() {
-			return featuredResources;
 		}
 	}
 })();

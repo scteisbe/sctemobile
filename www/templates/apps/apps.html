@@ -1,20 +1,30 @@
 <ion-view view-title="App Library">
-  <ion-content class="stable-bg">
-    <div class="list list-messages" ng-controller="ConfigController">
-      <div class="item item-avatar" ng-repeat="item in apps" ng-click="openPage(item.url)">
-        <img ng-src="{{item.coverimageurl}}" alt="">
-        <div class="row">
-          <div class="col-75">
-            <h2>{{item.title}}</h2>
-            <p>
-              {{item.description}}
-            </p>
-          </div>
-          <div class="col-25 text-right text-muted">
-            Nov 3
+  <ion-content class="stable-bg" ng-controller="ConfigController">
+    <div class="list">
+      <div ng-repeat="item in staticcontent.apps">
+
+        <div class="item item-divider" ng-click="openPage(item.url)" ng-show="item.type == 'separator' && item.os==platform">
+          <h2><b>{{item.title}}</b></h2>
+        </div>
+
+
+        <div class="item item-avatar" ng-click="openPage(item.url)" ng-show="item.type != 'separator' && item.os==platform">
+          <img ng-src="{{item.coverimageurl}}" alt="">
+          <div class="row">
+            <div class="col-75">
+              <h2>{{item.title}}</h2>
+              <p>
+                {{item.description}}
+              </p>
+            </div>
+            <div class="col-25 text-right text-muted">
+              Nov 3
+            </div>
           </div>
         </div>
-      </div>
+
+
+      </div>  <!-- ng-repeat -->
     </div>
   </ion-content>
 </ion-view>
