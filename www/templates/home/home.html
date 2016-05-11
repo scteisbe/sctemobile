@@ -28,7 +28,7 @@
         <div class="item">
           <h2><b>Featured resources</b></h2>
           <div class="row">
-            <div class="col" ng-repeat="item in staticcontent.featuredResources" ng-click="openPage(item.url)" ng-if="item.os==platform">
+            <div class="col" ng-repeat="item in staticcontent.featuredresources" ng-click="openPage(item.url)" ng-if="item.os==platform">
               <img class="app-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type=='app'" alt="{{item.title}}" >
               <img class="pdf-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type!='app'" alt="{{item.title}}" >
             </div>
