@@ -9,7 +9,7 @@ angular.module('cortex', ['ionic',
                           'cortex.directives', 
                           'ionic.contrib.ui.tinderCards', 
                           'ionic.utils',
-                          'courses_controller',
+                          // 'courses_controller',
                           'ngHolder',
                           'times.tabletop',
                           'lodash'
