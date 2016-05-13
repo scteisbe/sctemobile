@@ -9,8 +9,12 @@ angular.module('cortex', ['ionic',
                           'cortex.directives', 
                           'ionic.contrib.ui.tinderCards', 
                           'ionic.utils',
+                          'courses_controller',
                           'ngHolder',
-                          'times.tabletop'])
+                          'times.tabletop',
+                          'lodash'
+//                           'angularMoment'
+                          ])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -72,6 +76,17 @@ angular.module('cortex', ['ionic',
     }
   })
 
+  .state('tab.event', {
+    url: '/event',
+    // url: '/event/:id',
+    views: {
+      'home': {
+        templateUrl: 'templates/home/event.html',
+        controller: 'DemoCtrl'
+      }
+    }
+  })
+
   .state('tab.post', {
     url: '/post/:id',
     views: {
@@ -86,7 +101,7 @@ angular.module('cortex', ['ionic',
     url: '/me',
     views: {
       'me': {
-        templateUrl: 'templates/me/me.html',
+        templateUrl: 'templates/mylearning/mylearning.html',
         controller: 'DemoCtrl'
       }
     }
@@ -96,7 +111,7 @@ angular.module('cortex', ['ionic',
     url: '/myprofile',
     views: {
       'me': {
-        templateUrl: 'templates/me/profile.html',
+        templateUrl: 'templates/mylearning/profile.html',
         controller: 'DemoCtrl'
       }
     }
@@ -106,7 +121,7 @@ angular.module('cortex', ['ionic',
     url: '/settings',
     views: {
       'me': {
-        templateUrl: 'templates/me/settings.html',
+        templateUrl: 'templates/mylearning/settings.html',
         controller: 'DemoCtrl'
       }
     }
@@ -122,11 +137,11 @@ angular.module('cortex', ['ionic',
     }
   })
 
-  .state('tab.network', {
-    url: '/network',
+  .state('tab.community', {
+    url: '/community',
     views: {
-      'network': {
-        templateUrl: 'templates/network/network.html',
+      'community': {
+        templateUrl: 'templates/community/community.html',
         controller: 'DemoCtrl'
       }
     }

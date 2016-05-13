@@ -19,4 +19,20 @@
     <button class="button button-block" ng-class="{'button-light button-outline': activeIndex != 0, 'button-calm': activeIndex == 0}" ng-click="openLogin()"><b>Sign in</b></button>
     <button class="button button-clear button-light" ng-class="{'button-calm': activeIndex == 0}" ng-click="openJoinPage()"><b>Become an SCTE member</b></button>
   </div>
+
+  <!-- preload the content behind the scenes -->
+  <div class="card ng-hide" ng-controller="StaticContentController">
+    <!-- preload images for dynamic content -->
+    <div ng-repeat="item in staticcontent.featuredresources">
+      <img ng-src="{{item.coverimageurl}}">
+    </div>
+  </div>
+
+  <div ng-controller="DynamicContentController">
+    <!-- preload some/all the dynamic images in the app, too -->
+  </div>
+
+
+
+
 </ion-view>

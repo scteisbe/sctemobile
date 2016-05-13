@@ -15,61 +15,55 @@
   </ion-header-bar>
 
 
-  <ion-content class="has-subheader stable-bg">
+  <ion-content class="has-subheader has-bg">
     <ion-refresher on-refresh="refresh()" pulling-icon="ion-chevron-up"></ion-refresher>
 
-      <div class="list card">
-        <div class="item item-image">
-          <img holder data-src="holder.js/100px100?outline=yes&text=">
-        </div>
+    <div class="list card">
+      <div class="item item-image">
+        <img holder data-src="holder.js/100px100?outline=yes&text=This is an annoucement!">
       </div>
+    </div>
 
-      <div class="card" ng-controller="ConfigController">
-        <div class="item">
-          <h2><b>Featured resources</b></h2>
-          <div class="row">
-            <div class="col" ng-repeat="item in staticcontent.featuredresources" ng-click="openPage(item.url)" ng-if="item.os==platform">
-              <img class="app-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type=='app'" alt="{{item.title}}" >
-              <img class="pdf-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type!='app'" alt="{{item.title}}" >
-            </div>
+    <div class="card" ng-controller="StaticContentController">
+      <div class="item">
+        <h2><b>Featured resources</b></h2>
+        <div class="row">
+          <div class="col" ng-repeat="item in staticcontent.featuredresources" ng-click="openPage(item.url)" ng-if="item.os==platform">
+            <img class="app-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type=='app'" alt="{{item.title}}" >
+            <img class="pdf-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type!='app'" alt="{{item.title}}" >
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="list card">
-        <div class="item item-image">
-          <img holder data-src="holder.js/100px100?outline=yes&text=">
-        </div>
+    <div class="list card">
+      <div class="item item-image">
+        <img holder data-src="holder.js/100px40?outline=yes&text=">
       </div>
+    </div>
 
-      <div class="list card">
-        <div class="item">
-          <span class="item-note">
-            <a class="" href="#">more >></a>
-          </span>
-          <h2><b>My events</b></h2>
-        </div>
-<!--         <a class="item item-icon-left" href="#" ng-repeat="i in [0,1,2,3,4,5]"> -->
-        <a class="item item-text-wrap" href="#" ng-repeat="i in [0,1,2,3,4,5]">
-          <div class="row">
-            <div class="col-25 text-center">
-              <i class="icon bigicon ion-calendar"></i>
-              <h2><b>Aug. 21<b></h2>
-            </div>
-            <div class="col-75">
-              <h2><b>Local chapter meeting</b></h2>
-              <p>Anthony Center</p>
-              <p>7:00pm</p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </div>
+    <div class="list card" ng-controller="DynamicContentController">
+      <div class="item">
+        <span class="item-note">
+          <a class="" href="#">more >></a>
+        </span>
+        <h2><b>My events</b></h2>
+      </div>
+      <a class="item item-text-wrap" href="#" ng-repeat="item in dynamiccontent.meetings" ui-sref="tab.event">
+        <div class="row">
+          <div class="col-25 text-center">
+            <i class="icon bigicon ion-calendar"></i>
+            <h2><b>{{item.datestart}}</b></h2>
           </div>
-        </a>
-      </div>
-
-
- 
-
+          <div class="col-75">
+            <h2><b>{{item.title}}</b></h2>
+            <p>{{item.timestart}} - {{item.timeend}}</p>
+            <p>{{item.locationname}}</p>
+            <p>{{item.description}}</p>
+            <p><button class="button button-balanced button-small" ng-show="item.registered">Registered!</button></p>
+          </div>
+        </div>
+      </a>
+    </div>
   </ion-content>
 </ion-view>

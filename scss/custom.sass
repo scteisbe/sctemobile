@@ -33,6 +33,24 @@ $borderColor: #eee
 
 
 
+.list .item.item-accordion
+  line-height: 38px
+  padding-top: 0
+  padding-bottom: 0
+  transition: 0.15s all linear
+
+.list .item.item-accordion.ng-hide
+  line-height: 0px
+
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove
+  display: block !important
+
+
+
+
+
+
 
 
 
@@ -224,7 +242,7 @@ td-card
   transition: 0.2s opacity linear
   opacity: 0
 
-/* Network */
+/* Community */
 .has-bg
   background: url('../img/bg.png') center center transparent
   background-size: cover

@@ -1,3 +1,9 @@
+angular.module('lodash', [])  
+.factory('_', ['$window', function($window) {
+    return $window._; // assumes underscore has already been loaded on the page
+}]);
+
+
 angular.module('cortex.services', [])
 
 .factory('Users', function() {

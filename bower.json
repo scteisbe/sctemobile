@@ -8,6 +8,8 @@
     "ionic-ion-tinder-cards": "*",
     "angular-tabletop": "^0.2.2",
     "holderjs": "^2.9.3",
-    "angular-holderjs": "^1.1.0"
+    "angular-holderjs": "^1.1.0",
+    "angular-moment": "^0.10.3",
+    "lodash": "^4.12.0"
   }
 }
