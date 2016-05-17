@@ -147,11 +147,11 @@ angular.module('cortex', ['ionic',
     }
   })
 
-  .state('tab.search', {
-    url: '/search',
+  .state('tab.more', {
+    url: '/more',
     views: {
-      'search': {
-        templateUrl: 'templates/search/search.html',
+      'more': {
+        templateUrl: 'templates/more/more.html',
         controller: 'DemoCtrl'
       }
     }
