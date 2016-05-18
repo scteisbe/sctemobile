@@ -8,20 +8,18 @@ angular.module('cortex')
 
     $scope.dynamiccontent = [];
     var dcobjects = [
-      { "name": "meetings", "url": "/stubs/meetings.json" }
+      { "name": "meetings", "url": "https://raw.githubusercontent.com/scteisbe/sctemobile/master/www/stubs/meetings.json" }
     ];
-
+    
     // immediately populate from localstorage
-//     dcobjects.forEach(function(item, i){
     _.forEach(dcobjects, function(item, i) {
       console.log("Loading dynamic content from local cache: " + item.name);
       $scope.dynamiccontent[item.name] = $localstorage.getObject('dynamiccontent.' + item.name) || [];
 
-      console.log("Loading dynamic content from server");
+      console.log("Loading dynamic content from " + item.url);
       $http({
         method: 'GET',
         url: item.url
-        // url: '/stubs/meetings.json'
       })
       .then(
         function successCallback(response) {
@@ -39,11 +37,9 @@ angular.module('cortex')
           }			
         },
         function errorCallback(response) {
+alert("e1: " + JSON.stringify(response));
         }
       );
-
-var temp = moment().format("MMM Do YY");
-console.log(temp);
 
     });
 
