@@ -3,7 +3,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'cortex.services' is found in services.js
 // 'cortex.controllers' is found in controllers.js
-angular.module('cortex', ['ionic', 
+angular.module('cortex', ['ionic','ionic.service.core', 
                           'cortex.controllers', 
                           'cortex.services', 
                           'cortex.directives', 
