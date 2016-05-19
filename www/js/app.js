@@ -120,7 +120,7 @@ angular.module('cortex', ['ionic','ionic.service.core',
   .state('tab.settings', {
     url: '/settings',
     views: {
-      'me': {
+      'more': {
         templateUrl: 'templates/mylearning/settings.html',
         controller: 'DemoCtrl'
       }

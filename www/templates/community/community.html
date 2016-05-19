@@ -1,10 +1,8 @@
 <ion-view view-title="Community">
-  <ion-nav-buttons side="">
-    <button class="button button-icon ion-person-stalker"></button>
-  </ion-nav-buttons>
   <ion-nav-buttons side="secondary">
-    <button class="button button-icon ion-ios-personadd" ng-click="openAdd()"></button>
+    <button class="button button-icon ion-person-stalker" ng-click="openAdd()"></button>
   </ion-nav-buttons>
+  
   <ion-content class="has-bg">
     <div class="head-text text-center">
       <h2>This tab is a placeholder</h2>
@@ -41,14 +39,5 @@
       </td-card>
     </td-cards>
 
-    <div class="list">
-      <div class="item item-divider">People you may know</div>
-      <div class="item item-avatar item-icon-right" ng-repeat="i in [0,1,2,3,4,5,6,7,8]">
-        <img src="img/adam.jpg" alt="">
-        <h2><b>Adam Lambert</b></h2>
-        <p>Sales Executive</p>
-        <i class="icon ion-plus-circled calm"></i>
-      </div>
-    </div>
   </ion-content>
 </ion-view>

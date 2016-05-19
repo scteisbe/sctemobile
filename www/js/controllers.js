@@ -31,58 +31,27 @@ angular.module('cortex.controllers', [])
 
 
 
-  var deploy = new Ionic.Deploy();
+//   $scope.groups = [];
+//   for (var i=0; i<10; i++) {
+//     $scope.groups[i] = {
+//       name: i + 1,
+//       items: []
+//     };
+//     for (var j=0; j<3; j++) {
+//       $scope.groups[i].items.push(" Course " + (i+1) + ', Module ' + (j+1));
+//     }
+//   }
   
-  // Update app code with new release from Ionic Deploy
-  $scope.doUpdate = function() {
-    deploy.update().then(function(res) {
-      console.log('Ionic Deploy: Update Success! ', res);
-    }, function(err) {
-      console.log('Ionic Deploy: Update error! ', err);
-    }, function(prog) {
-      console.log('Ionic Deploy: Progress... ', prog);
-    });
-  };
-
-  // Check Ionic Deploy for new code
-  $scope.checkForUpdates = function() {
-    console.log('Ionic Deploy: Checking for updates');
-    deploy.check().then(function(hasUpdate) {
-      console.log('Ionic Deploy: Update available: ' + hasUpdate);
-      $scope.hasUpdate = hasUpdate;
-    }, function(err) {
-      console.error('Ionic Deploy: Unable to check for updates', err);
-    });
-  }
-
-
-
-
-
-
-
-
-  $scope.groups = [];
-  for (var i=0; i<10; i++) {
-    $scope.groups[i] = {
-      name: i + 1,
-      items: []
-    };
-    for (var j=0; j<3; j++) {
-      $scope.groups[i].items.push(" Course " + (i+1) + ', Module ' + (j+1));
-    }
-  }
-  
-  $scope.toggleGroup = function(group) {
-    if ($scope.isGroupShown(group)) {
-      $scope.shownGroup = null;
-    } else {
-      $scope.shownGroup = group;
-    }
-  };
-  $scope.isGroupShown = function(group) {
-    return $scope.shownGroup === group;
-  };
+//   $scope.toggleGroup = function(group) {
+//     if ($scope.isGroupShown(group)) {
+//       $scope.shownGroup = null;
+//     } else {
+//       $scope.shownGroup = group;
+//     }
+//   };
+//   $scope.isGroupShown = function(group) {
+//     return $scope.shownGroup === group;
+//   };
 
 
 
