@@ -127,6 +127,16 @@ angular.module('cortex', ['ionic','ionic.service.core',
     }
   })
 
+  .state('tab.techtip', {
+    url: '/techtip',
+    views: {
+      'more': {
+        templateUrl: 'templates/more/techtip.html',
+        controller: 'DemoCtrl'
+      }
+    }
+  })
+
   .state('tab.apps', {
     url: '/apps',
     views: {
