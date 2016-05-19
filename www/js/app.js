@@ -160,4 +160,36 @@ angular.module('cortex', ['ionic','ionic.service.core',
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/welcome');
 
+})
+
+
+
+
+
+.run(function($ionicPopup) {
+  var deploy = new Ionic.Deploy();
+  deploy.watch().then(function() {}, function() {}, function(updateAvailable) {
+    if (updateAvailable) {
+      deploy.download().then(function() {
+        deploy.extract().then(function() {
+          deploy.unwatch();
+          $ionicPopup.show({
+            title: 'New version available!',
+            subTitle: 'Ready to use the latest features?',
+            buttons: [
+              { text: 'Not now' },
+              {
+                text: 'Yes',
+                type: 'button-positive',
+                onTap: function(e) {
+                  deploy.load();
+                }
+              }
+            ]
+          });
+        });
+      });
+    }
+  });
 });
+
