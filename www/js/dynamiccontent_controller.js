@@ -37,7 +37,7 @@ angular.module('cortex')
           }			
         },
         function errorCallback(response) {
-alert("e1: " + JSON.stringify(response));
+// alert("e1: " + JSON.stringify(response));
         }
       );
 
