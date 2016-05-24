@@ -45,7 +45,7 @@ angular.module('cortex', ['ionic','ionic.service.core',
     });
 
   // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
+  // Learn library here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
@@ -120,7 +120,7 @@ angular.module('cortex', ['ionic','ionic.service.core',
   .state('tab.settings', {
     url: '/settings',
     views: {
-      'more': {
+      'library': {
         templateUrl: 'templates/mylearning/settings.html',
         controller: 'DemoCtrl'
       }
@@ -130,8 +130,8 @@ angular.module('cortex', ['ionic','ionic.service.core',
   .state('tab.techtip', {
     url: '/techtip',
     views: {
-      'more': {
-        templateUrl: 'templates/more/techtip.html',
+      'tips': {
+        templateUrl: 'templates/tips/techtip.html',
         controller: 'DemoCtrl'
       }
     }
@@ -147,21 +147,21 @@ angular.module('cortex', ['ionic','ionic.service.core',
     }
   })
 
-  .state('tab.community', {
-    url: '/community',
+  .state('tab.tips', {
+    url: '/tips',
     views: {
-      'community': {
-        templateUrl: 'templates/community/community.html',
+      'tips': {
+        templateUrl: 'templates/tips/tips.html',
         controller: 'DemoCtrl'
       }
     }
   })
 
-  .state('tab.more', {
-    url: '/more',
+  .state('tab.library', {
+    url: '/library',
     views: {
-      'more': {
-        templateUrl: 'templates/more/more.html',
+      'library': {
+        templateUrl: 'templates/library/library.html',
         controller: 'DemoCtrl'
       }
     }
