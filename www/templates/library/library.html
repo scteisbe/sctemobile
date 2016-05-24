@@ -1,0 +1,101 @@
+<ion-view view-title="Library">
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon ion-person-stalker" ng-click="openAdd()"></button>
+  </ion-nav-buttons>
+  
+  <ion-header-bar class="bar-subheader">
+    <div class="tabs tabs-secondary" ng-init="activeTab = 1">
+      <div class="tab-item" ng-class="{active: activeTab == 0}" ng-click="activeTab = 0">
+        App intro screens?
+      </div>
+      <div class="tab-item" ng-class="{active: activeTab == 1}" ng-click="activeTab = 1">
+        Standards
+      </div>
+      <div class="tab-item" ng-class="{active: activeTab == 2}" ng-click="activeTab = 2">
+        Best Practices
+      </div>
+    </div>  
+  </ion-header-bar>
+
+  <ion-content class="has-bg has-subheader">
+    <div ng-show="activeTab==0">
+      <div class="head-text text-center">
+        <h2>Consider something like this for the app's intro screens</h2>
+        <h2 class="font-thin" ng-if="cards.length">Swipe some of the {{cards.length}} cards below</h2>
+        <h2 class="font-thin" ng-if="!cards.length">No more cards :(</h2>
+      </div>
+
+      <td-cards ng-if="cards.length">
+        <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($event, $index)" on-swipe-right="cardSwipedRight($event, $index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
+          <div class="list card card-tinder">
+            <div class="item b-none">
+              Birthday  
+            </div>
+            <div class="item item-avatar b-none">
+              <img ng-src="{{card.image}}">
+              <h2>Optimus prime</h2>
+              <p>Country Sales</p>
+            </div>
+            <div class="item item-text-wrap b-none">
+              Celebrate a birthday today
+            </div>
+            <div class="item item-body text-center">
+              <button class="button button-clear button-calm"><b>Say happy birthday</b></button>
+            </div>
+            <div class="no-text">
+              <i class="icon ion-trash-b assertive"></i>
+              <p class="assertive">remove card</p>
+            </div>
+            <div class="yes-text">
+              <i class="icon ion-arrow-right-c calm"></i>
+              <p class="calm">next card</p>
+            </div>
+          </div>
+        </td-card>
+      </td-cards>
+    </div>
+
+    <div class="card" ng-show="activeTab == 1" ng-controller="StaticContentController">
+      <div class="list">
+        <div class="item item-divider">
+          Standards
+        </div>
+          <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Search" ng-model="searchBox">
+          </label>
+
+          <div class="item item-icon-left" ng-repeat="item in staticcontent.standards | filter:searchBox track by $index" ng-click="openPage(item.url)">
+          <i class="icon ion-document"></i>
+          <h2>{{item.identifier}}</h2>
+          <p>{{item.title}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" ng-show="activeTab == 2">
+      <div class="list">
+        <div class="item item-divider">
+          Best Practices
+        </div>
+        <div class="item item-icon-left" ng-repeat="i in [1,2,3,4,5,6,7]">
+          <i class="icon ion-document"></i>
+          Item #{{i}}
+        </div>
+      </div>
+    </div>
+
+    <div class="card" ng-show="activeTab == 2">
+      <div class="list">
+        <div class="item item-divider">
+          Conference Papers
+        </div>
+        <div class="item item-icon-left" ng-repeat="i in [1,2,3,4,5,6,7]">
+          <i class="icon ion-document"></i>
+          Item #{{i}}
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

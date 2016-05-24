@@ -1,0 +1,48 @@
+<ion-view view-title="Expert Tips">
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon ion-ios-gear-outline" ui-sref="tab.settings"></button>
+  </ion-nav-buttons>
+  
+  <ion-content class="has-header bg-grey-200">
+
+    <div class="list card" ui-sref="tab.techtip">
+      <div class="item item-body">
+        <div class="list">
+          <a class="item item-thumbnail-left" href="#">
+            <img holder data-src="holder.js/100px100p?outline=yes&text=image goes here">
+            <i><i class="icon ion-social-youtube"></i></i>
+            Wi-Fi Dead Spots
+            <p>
+              Client's wifi router is in the basement? No problem!
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-80 col-offset-10 text-center">
+        <button class="button button-calm">
+          Submit your Tech Tip!
+        </button>
+      </div>
+    </div>
+
+    <div class="list card" ui-sref="tab.techtip" ng-repeat="i in [1,2,3]">
+      <div class="item item-body">
+        <div class="list">
+          <a class="item item-thumbnail-left" href="#">
+            <img holder data-src="holder.js/100px100p?outline=yes&text=image goes here">
+            <i><i class="icon ion-social-youtube"></i></i>
+            Wi-Fi Dead Spots
+            <p>
+              Client's wifi router is in the basement? No problem!
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+  </ion-content>
+</ion-view>

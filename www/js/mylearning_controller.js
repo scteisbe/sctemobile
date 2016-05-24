@@ -7,7 +7,7 @@ angular.module('cortex')
     };
 
     $scope.groups = [];
-    for (var i=0; i<10; i++) {
+    for (var i=0; i<7; i++) {
       $scope.groups[i] = {
         name: i + 1,
         items: []
