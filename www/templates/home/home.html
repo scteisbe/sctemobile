@@ -18,8 +18,9 @@
   <ion-content class="has-subheader">
     <ion-refresher on-refresh="refresh()" pulling-icon="ion-chevron-up"></ion-refresher>
 
-    <div class="list card">
+    <div class="list card" ng-controller="DynamicContentController">
       <div class="item item-image">
+        Hello {{profileData['FirstName']}}
         <img holder data-src="holder.js/100px100?outline=yes&text=This is an annoucement!">
       </div>
     </div>

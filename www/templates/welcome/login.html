@@ -10,15 +10,18 @@
     <div class="list card"> 
       <label class="item item-input">
         <span class="input-label">Email</span>
-        <input type="email" focus-me>
+        <input ng-model="email" type="text" focus-me>
       </label>
       <label class="item item-input">
       <span class="input-label">Password</span>
-        <input type="password">
+        <input ng-model="password" type="password">
       </label>
     </div>
 
-    <button class="button button-block button-outline button-light" ng-click="goToHome()"><b>Sign in</b></button>
+    <div ng-controller="DynamicContentController">
+      <button class="button button-block button-outline button-light" ng-click="doLogin()"><b>Sign in</b></button>
+      
+    </div>
 
     <div class="light row">
       <div class="col hide">
