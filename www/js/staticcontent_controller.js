@@ -53,6 +53,8 @@ function StaticContentController($scope, $localstorage, ConfigService) {
           }
           // store result in localstorage for fast access next time
           $localstorage.setObject('staticcontent.' + sheet, $scope.staticcontent[sheet]);
+          
+          //console.log(sheet + "..." + JSON.stringify($scope.staticcontent[sheet]));
       } catch (error) {
         console.log("Can't read sheet '" + sheet + "'. Using local client cache. " + error);
       }     
