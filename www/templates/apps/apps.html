@@ -4,7 +4,7 @@
       <div ng-repeat="item in staticcontent.apps">
 
         <div class="item item-divider" ng-click="openPage(item.url)" ng-show="item.type == 'separator' && item.os==platform">
-          <h2><b>{{item.title}}</b></h2>
+          {{item.title}}
         </div>
 
 
