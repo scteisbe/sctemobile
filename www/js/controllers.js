@@ -1,6 +1,6 @@
 angular.module('cortex.controllers', [])
 
-.controller('DemoCtrl', function($scope, $http, $ionicSideMenuDelegate, $ionicModal, $ionicHistory, Users, $ionicLoading, $state, $timeout) {
+.controller('DemoCtrl', function($scope, $http, $ionicSideMenuDelegate, $ionicModal, $ionicHistory, Users, $ionicLoading, $state, $timeout, $ionicPopup) {
 
   $scope.users = Users.all();
 
@@ -25,6 +25,17 @@ angular.module('cortex.controllers', [])
       $scope.closeRegister();
     }, 1000);
   }
+  
+   $scope.displayAlert = function($message) {
+      $ionicLoading.hide();
+      $ionicPopup.alert({
+        title: 'Alert',
+        content: $message,
+        buttonName: 'OK'
+      }).then(function(){});
+    }
+  
+  
 
 
   $scope.actionSheet = function() {
