@@ -1,7 +1,7 @@
 (function() {
 angular.module('cortex')
-.controller('DynamicContentController', ['$scope','$http', '$localstorage', '$ionicLoading','$ionicLoading', '_', DynamicContentController])
-  function DynamicContentController($scope, $http, $localstorage,$root,$ionicLoading) {
+.controller('DynamicContentController', ['$scope','$http', '$localstorage', '$ionicLoading','$ionicLoading','$ionicPopup', '_', DynamicContentController])
+  function DynamicContentController($scope, $http, $localstorage,$root,$ionicLoading,$ionicPopup) {
     
     $scope.openPage = function(url) {
       window.open(url, '_system');
@@ -62,7 +62,7 @@ angular.module('cortex')
         method:'POST',
         url:'http://vmdimisapp01:1322/api/Token/PostToken',
         //data: {Email:'MAGGIE', password: 'testrecord', grant_type:'password'},
-        data: 'Email=' + $scope.email + '&password=' + $scope.password + '&grant_type=password',
+        data: 'UID=' + $scope.email + '&password=' + $scope.password + '&GrantType=password',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
@@ -74,19 +74,27 @@ angular.module('cortex')
             console.log("statusCode.." + $message['statusCode']);
             
             if($message['statusCode'] == 200) {
-              $root.authToken = $data['authToken'];
+              $root.authToken = $data['access_token'];
               console.log("authToken.." +  $root.authToken);
               //$scope.goToHome();
               $scope.fetchProfile();
             } else {
-              alert("Wrong username or password !");
+              $scope.displayAlert("Wrong username or password !");
             }
         },
         
         function errorCallback(response) {
-           console.log("failed response.." + response.data['message']);
+           
            $ionicLoading.hide();
-           alert("Wrong username or password !");
+           if(response.data == null) {
+             console.log("failed response.." + response.data);
+            $scope.displayAlert("Network Error !")
+           } else {
+             console.log("failed response.." + response.data["message"]);
+             $scope.displayAlert("Wrong username or password !");
+           }
+           
+           
         }  
           
       );
@@ -152,6 +160,5 @@ angular.module('cortex')
         }  
       );
     }
-    
   }
 })();
