@@ -146,19 +146,27 @@ angular.module('cortex')
         },
       }).then( 
         function successCallback(response){
+            $ionicLoading.hide();
             $message = response.data['message'];
             $scope.glossaryContent = response.data['data'];
             
-            console.log("Glossary .. statusCode.." + $message['statusCode']);  
-            console.log("Glossary .. Count ==>" + $scope.glossaryContent.length);
-            $ionicLoading.hide();
+            console.log("Glossary .. statusCode.." + $message['statusCode']); 
+            $scope.glossaryItems = []; 
+            if( $scope.glossaryContent != null) {
+              //console.log("Glossary .. Count ==>" + JSON.stringify($scope.glossaryContent));
+              for (var i = 0; i < $scope.glossaryContent.length; i++) {
+                 //console.log("Abbreviation.." + JSON.stringify(item));
+                 $scope.glossaryItems[i] = $scope.glossaryContent[i];
+                 
+               };
+            }
         },
         
         function errorCallback(response) {
-           console.log("failed response.." + response.data['message']);
            $ionicLoading.hide();
+           console.log("failed response.." + response.data['message']);
         }  
       );
-    }
+    } 
   }
 })();

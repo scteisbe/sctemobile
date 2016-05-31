@@ -19,7 +19,7 @@
 
   <ion-content class="has-subheader">
     <div ng-show="activeTab==0">
-      <div class="head-text text-center">
+      <!--<div class="head-text text-center">
         <h2>Consider something like this for the app's intro screens</h2>
         <h2 class="font-thin" ng-if="cards.length">Swipe some of the {{cards.length}} cards below</h2>
         <h2 class="font-thin" ng-if="!cards.length">No more cards :(</h2>
@@ -52,7 +52,14 @@
             </div>
           </div>
         </td-card>
-      </td-cards>
+      </td-cards>-->
+      
+      <div ng-controller="DynamicContentController" data-ng-init="fetchGlossary()">
+        <ion-alpha-scroll ng-model="glossaryItems" key="Abbreviation" subheader="true">
+              <div>{{item.Abbreviation}}</div>
+              <!--<div>{{item.Description}}</div>-->
+          </ion-alpha-scroll>
+      </div>
     </div>
 
     <div class="card" ng-show="activeTab == 1" ng-controller="StaticContentController">
@@ -84,9 +91,7 @@
         </div>
       </div>
       
-      <div ng-controller="DynamicContentController" data-ng-init="fetchGlossary()">
-        
-      </div>
+      
     </div>
 
     <div class="card" ng-show="activeTab == 2">

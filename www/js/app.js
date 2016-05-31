@@ -12,7 +12,8 @@ angular.module('cortex', ['ionic','ionic.service.core',
                           // 'courses_controller',
                           'ngHolder',
                           'times.tabletop',
-                          'lodash'
+                          'lodash',
+                          'ion-alpha-scroll'
 //                           'angularMoment'
                           ])
 
