@@ -1,1 +1,1787 @@
-/* Empty. Add your own CSS if you like */
+ Empty. Add your own CSS if you like */
+
+@font-face {
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    src: url('../font/HelveticaNeue.ttf');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Light';
+    font-style: normal;
+    src: url('../font/HelveticaNeue_Light.ttf');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Bold';
+    font-style: bold;
+    src: url('../font/Helvetica_neu_Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Helvetica Neue Light Condensed';
+    font-style: normal;
+    src: url('../font/HelveticaNeue-LightCond.otf');
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#full-size {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    /* or overflow:auto; if you want scrollbars */
+}
+
+input {
+    font-family: 'Helvetica Neue Light';
+    font-size: 15pt;
+    color: black;
+}
+
+.backgroundprimarycolor {
+    background-color: #00548e;
+    font-family: 'Helvetica Neue Light Condensed';
+}
+
+.backgroundsecondarycolor {
+    background-color: #0089cf;
+}
+
+
+/********* common css starts **********/
+
+/* .platform-android .bar-subheader {
+    top: 60px; !important
+}
+
+.platform-ios .bar-subheader {
+    top: 60px; !important
+} */
+
+/* body .scroll-content {
+    top: 60px;
+}
+
+body .login-wrapper .scroll-content {
+    top: 0;
+} */
+
+
+/* content background color changed */
+
+body .view-container .pane {
+    background-color: #eee;
+}
+
+.img-responsive {
+    width: 100%;
+}
+
+
+/*header*/
+
+.header-corter-logo {
+    width: 35px;
+    margin-top: 5px;
+}
+
+
+.app-common .bar.bar-stable {
+    background-color: #00548e;
+    /* height: 61px;
+    line-height: 60px; */
+    /* padding-top: 100px; */
+}
+
+.app-common .bar.bar-stable .title {
+    font-family: 'Helvetica Neue Light Condensed';
+    font-size: 18px;
+    color: #6dcff6;
+    text-transform: uppercase;
+    /* height: 60px; */
+    /* line-height: 44px; */
+}
+
+.app-common .bar-stable .button.button-clear {
+    color: #ffffff;
+}
+
+
+/* .app-common .has-header {
+top:61px;
+}
+*/
+
+
+/* changing sub header styling for discover page */
+
+.bar.search-wrapper {
+    background-color: #00548e;
+    height: 60px;
+    padding: 10px;
+}
+
+.bar.search-wrapper .item-input-wrapper input {
+    width: 100%;
+    padding: 0 10px;
+    /* font-size: 13pt; */
+    height: 40px;
+}
+
+.bar.search-wrapper .item-input-wrapper {
+    background-color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 3px;
+}
+
+.bar.search-wrapper .mic-icn {
+    width: 15px;
+}
+
+.bar.search-wrapper .search-icn {
+    width: 18px;
+}
+
+
+/* bottom tab */
+
+.bottom-tab .tab-nav.tabs {
+    background-color: #00548e;
+}
+
+.bottom-tab .tab-nav.tabs i {
+    color: #ffffff;
+}
+
+.bottom-tab .tab-nav.tabs .tab-title {
+    color: #ffffff;
+}
+
+
+/*overlay background*/
+
+.overlay-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 98;
+}
+
+
+/*sort & filter slider*/
+
+sort,
+filter {
+    display: block;
+    position: fixed;
+    width: 78%;
+    height: 100%;
+    z-index: 99;
+    background: white;
+    overflow-y: scroll;
+    visibility: hidden;
+    opacity: 0;
+}
+
+sort.animate,
+filter.animate {
+    -webkit-transition: 300ms all ease;
+    transition: 300ms all ease;
+    visibility: visible;
+    opacity: 1;
+}
+
+sort.left,
+filter.left {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+}
+
+sort.right,
+filter.right {
+    right: 0;
+    top: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+}
+
+filter .filter-slider-button{
+  border: 1px solid #387ef5;
+    background-color: #387ef5;
+    border-radius: 2px;
+    text-align: center;
+    padding: 4px;
+    color: white;
+    font-size: 10px;
+}
+filter .filter-header{
+  
+    height: 50px;
+    padding: 15px 20px 10px 40px;
+}
+
+filter .filter-footer{
+  background-color: #eee;
+  padding: 30px 0px 10px 60px;
+}
+.filter-content-type{
+  background-color: white;
+  margin-bottom: 5px;
+  padding:10px 0px 10px 10px;
+}
+.filter-published-type{
+  background-color: #eee;
+   margin-bottom: 5px;
+    padding:10px 0px 10px 10px;
+}
+
+
+filter .item-checkbox-right {
+    border: none;
+    font-size: 14px;
+    padding-bottom: 5px;
+  }
+filter  .item-checkbox-left{
+  border: none;
+   background: #eee;
+}
+
+filter .from-date-picker { 
+  position: relative; 
+  width:240px; 
+  padding-left: 15px;
+}
+filter .from-date-picker input { 
+  border:none: background:#fff; 
+  display:block; width: 100%;
+   box-sizing: border-box 
+}
+filter .from-date-picker img { 
+  position: absolute; 
+  top: 2px; 
+  right: 5px 
+}
+filter .filter-type-title{
+  padding-left: 15px;
+}
+filter .select-option {
+    width: 200px;
+    margin-left: 20px;
+}
+
+filter .from-date-select {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.popup-container.popup-showing {
+    z-index: 9999;
+    visibility: visible;
+}
+
+filter .date-picker-filter-from {
+ width: 30px;
+    height: 25px;
+    margin-left: 5px;
+}
+
+filter .date-picker-filter-to {
+ width: 30px;
+    height: 25px;
+    margin-left: 5px;
+    margin-top:5px;
+}
+
+filter .filter-heading{
+  padding-right: 60px;
+}
+
+filter .filter-format-type{
+padding: 10px 0px 10px 10px;
+}
+/********** common css ends **********/
+
+
+/*Style for login screen */
+
+.imageLogo {
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 18%;
+   margin-bottom: 2%;
+}
+
+.imageproperties
+{
+   width: 125px; /*150px;*/
+   height: 53px; /*64px;*/
+}
+
+#logintop,
+#loginbottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+#logintop {
+    background-color: #00548e;
+    height: 70%;
+}
+
+#loginbottom {
+    bottom: 0;
+    height: 30%;
+    background-color: #1070B4;
+}
+
+#usernamediv.list-inset {
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 8%;
+    margin-bottom: 2%;
+}
+
+#passworddiv.list-inset {
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#logindiv {
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 8%;
+}
+
+#forgot-password.list-inset {
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.haveacctext {
+    font-family: 'Helvetica Neue Light';
+    font-size: 15px;
+    color: #6dcff6;
+    background: transparent;
+}
+
+#forgot-password .button.button-clear {
+    color: #ffffff;
+    font-family: 'Helvetica Neue Light';
+    font-size: 12pt;
+    vertical-align: text-top;
+}
+
+#logindiv .button.button-energized {
+    border-color: transparent;
+    background-color: #ffc900;
+    color: #111;
+    font-family: 'Helvetica Neue Bold';
+    font-size: 14pt;
+}
+
+#signuptext.col.text-center.col-center {
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 2px;
+}
+
+#joinSCTEdiv.col.text-center.col-center {
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 2px;
+    margin-bottom: 8%;
+    width: 75%;
+}
+
+#joinscte.button.button-energized.button-outline {
+    font-family: 'Helvetica Neue Bold';
+    font-size: 14px;
+    width: 75%
+}
+
+.weblink
+{
+    color: #ffffff;
+    font-family: 'Helvetica Neue';
+    font-size: 12pt;
+    padding: 2%;
+}
+
+/**************** Login style ends **************/
+
+
+/**************** Dictionary View **************/
+
+#dictionart-view ion-item.item {
+    background-color: transparent;
+    padding: 1px;
+    border-width: 0px
+}
+
+.searchinput {
+    background-color: lightgray;
+}
+
+.searchbox
+{
+    height: 35px;
+}
+
+#searchbar.row
+{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.dic-title
+{
+    font-family: 'Helvetica Neue Light';
+    font-size: 16px;
+    font-weight: bold;
+    padding: 2px;
+    color: darkgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.dic-container {
+    background-color: rgb(242, 243, 244);
+}
+
+.list-leftword {
+    font-family: 'Helvetica Neue Bold';
+    color: black;
+    font-size: 14px;
+}
+
+.list-rightword {
+    font-family: 'Helvetica Neue Light';
+    color: #1070B4;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+ion-popover-view.fit {
+    width: auto;
+    height: auto;
+    ion-content {
+        position: relative;
+    }
+}
+
+.platform-android ion-popover-view.fit {
+    margin-top: 10px;
+}
+
+.platform-ios ion-popover-view.fit {
+    .item:first-child {
+        @include border-top-radius($popover-border-radius-ios);
+    }
+    .item:last-child {
+        @include border-bottom-radius($popover-border-radius-ios);
+    }
+}
+
+#popoverviewdiv element.style {
+    left: 30%;
+}
+
+#popuplable .item {
+    background-color: #fff;
+    border-width: 0px;
+}
+
+.subheadingtext {
+    font-family: 'Helvetica Neue Bold';
+    color: black;
+    font-size: 15px;
+}
+
+.descriptivetext {
+    font-family: 'Helvetica Neue Light';
+    color: black;
+    font-size: 15px;
+}
+
+.popover .scroll-content {
+    top: 1px;
+}
+
+div#listview.row {
+    padding: 1px;
+}
+
+.ion_alpha_list_outer .list {
+    padding-right: 30px;
+    padding-left: 10px;
+    max-height: 100%;
+}
+
+.ion_alpha_list_outer .item {
+    border-right: none;
+    font-family: 'Helvetica Neue Light';
+    font-weight: bold;
+    color: #0089cf;
+    font-size: 12px;
+}
+
+.ion_alpha_sidebar {
+    position: fixed;
+    right: 10px;
+    height: auto;
+    overflow: auto;
+    margin: 1px;
+    padding: 3px;
+}
+
+ul.ion_alpha_sidebar {
+    background-color: #E6E7E8;
+    align-items: center;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.ion_alpha_sidebar li {
+    line-height: 1.3;
+    font-family: 'Helvetica Neue Light';
+    font-weight: bold;
+    color: #1070B4;
+    font-size: 12px;
+    width: 15px
+}
+
+
+/********************* Dictionary View End ****************/
+
+
+/********** discover tab starts **********/
+
+.scroll-content.discover-wrapper {
+    top: 123px;
+}
+
+
+/* top header */
+
+.discover-wrapper .top-header {
+    margin-top: 5px;
+}
+
+.discover-wrapper .top-header .left {
+    float: left;
+    padding-top: 5px;
+}
+
+.discover-wrapper .top-header .right {
+    float: right;
+    /* padding-top: 10px; */
+}
+
+.discover-wrapper .top-header .right div {
+    float: right;
+}
+
+/* .discover-wrapper .top-header .scte-isbe-logo img {
+    width: 65px;
+    border-right: 1px solid #ddd;
+    padding-right: 7px;
+}
+
+.discover-wrapper .top-header .cortex-logo img {
+    width: 100px;
+    margin-left: 10px;
+} */
+
+.discover-wrapper .top-header img.scte-isbe-cortex-logo {
+    width: 175px;
+}
+
+.discover-wrapper .top-header .profile-pic-icn {
+    width: 38px;
+    float: right;
+    margin-left: 10px;
+}
+
+.discover-wrapper .top-header .user-name {
+    vertical-align: text-top;
+    text-align: right;
+    text-transform: capitalize;
+    font-size: 13px;
+    color: #ffffff;
+    font-family: 'Helvetica Neue Light';
+    line-height: 17px;
+}
+
+
+/*slider*/
+
+.discover-wrapper .slide-wrapper .slide-image img {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.discover-wrapper .slide-wrapper .slider-pager {
+    position: relative;
+    top: 0;
+    clear: both;
+}
+
+.discover-wrapper .slide-wrapper.slider-pager .slider-pager-page {
+    opacity: 1;
+    color: #ffffff;
+    margin: 0px 2px;
+}
+
+.discover-wrapper .slide-wrapper .slider-pager .slider-pager-page.active {
+    color: #00548e;
+}
+
+
+/*resources*/
+
+.discover-wrapper .resources-wrapper {
+    background: #ddd;
+    margin: 15px 0;
+    padding: 10px 0 10px 15px;
+}
+
+.discover-wrapper .resources-wrapper .header {
+    padding-right: 15px;
+}
+
+.discover-wrapper .resources-wrapper .header h2 {
+    text-transform: uppercase;
+    font-size: 15pt;
+    color: #9fa4a6;
+    padding: 0;
+    margin: 0;
+    font-family: 'Helvetica Neue Light';
+}
+
+.discover-wrapper .resources-wrapper .header .hyperlink {
+    float: right;
+    color: #aaa;
+    font-size: 10pt;
+    font-family: 'Helvetica Neue Light';
+}
+
+.discover-wrapper .resources-wrapper .app-box {
+    width: 100%;
+    overflow-x: scroll;
+    margin-top: 10px;
+}
+
+.discover-wrapper .resources-wrapper .app-box td {
+    width: 80px;
+    padding: 0 20px 0 0;
+}
+
+.discover-wrapper .resources-wrapper .app-box img {
+    width: 80px;
+}
+
+.discover-wrapper .resources-wrapper .app-box p {
+    width: 80px;
+    word-wrap: break-word;
+    font-family: inherit;
+    font-size: 10pt;
+    color: #333333;
+    text-align: center;
+    font-family: 'Helvetica Neue Light';
+}
+
+.discover-wrapper .ad-wrapper img {
+    width: 100%;
+}
+
+.discover-wrapper .discover-events {
+    margin-top: 10px;
+}
+
+.discover-wrapper .discover-events .card {
+    margin: 5px 10px;
+}
+
+
+
+/********** discover tab ends *********/
+
+
+/*****************my learning styling starts*****************/
+
+.my-learning .bar-subheader {
+    height: 55px;
+    /* top: 61px; */
+}
+
+.my-learning .bar-subheader .tabs {
+    width: 100%;
+    padding: 0px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    padding: 0px;
+    border-top-width: 0px;
+    margin: 0px;
+    /*background-size: 100% 0px;*/
+    /*border-width: 0 0 2px 0;*/
+}
+
+.my-learning .subheader-tabs {
+    line-height: 20px;
+    text-align: center;
+}
+
+.my-learning .tabs-secondary {
+    background-size: 0px;
+}
+
+.my-learning .subheader-tabs .tab-item {
+    border-width: 0 0 2px 0;
+    border-bottom-color: royalblue;
+    font-family: 'Helvetica Neue';
+    text-align: center;
+}
+
+.my-learning .subheader-tabs a {
+    color: black;
+    font-weight: bold;
+}
+
+/*.my-learning .tab-title {
+    color: black;
+}*/
+
+.my-learning .has-subheader {
+    background-color: #E8E8E8;
+}
+
+.my-learning .main-title {
+    text-transform: uppercase;
+    margin: 10px;
+    color: grey;
+}
+
+.my-learning .course-catalog {
+    background-color: #D8D8D8;
+    position: relative;
+    top: 0px;
+    width: 100%;
+    padding: 20px 20px;
+    font-family: 'Helvetica Neue Bold';
+    color: royalblue;
+}
+
+.my-learning .course-catalog a {
+    color: royalblue;
+}
+
+.my-learning .course-catalog a  img {
+    float: right;
+    font-size: 10px;
+    width: 10px;
+    padding: 10px 0 0 0;
+}
+
+/*.my-learning .course-catalog .ion-chevron-right {
+    width: 20px;
+    height: 20px;
+}
+*/
+.my-learning .course-catalog .button {
+    padding: 0px 15px;
+    font-size: 15px;
+    min-height: 40px;
+    line-height: 40px;
+    height: 40px;
+}
+
+.inprogress-course {
+    background-color: #E8E8E8;
+    font-family: 'Helvetica Neue Light';
+}
+
+.inprogress-course .course-list i {
+    color: royalblue;
+}
+
+.my-learning .scroll-content {
+    width: 100%;
+}
+
+.course-catalog .course-button .course-arrow-button {
+    right: 0px;
+    position: absolute;
+}
+
+.my-learning .course-catalog .button {
+    width: 100%;
+    border: 1px solid royalblue;
+    background: transparent;
+    align-self: center;
+}
+
+.my-learning .course-list {
+    position: relative;
+    /*font-family: 'Helvetica Neue';*/
+}
+
+.my-learning .course-list .accordian-icon {
+    position: absolute;
+    right: 10px;
+}
+
+.my-learning .course-module-content ion-item {
+    color: royalblue;
+    font-family: 'Helvetica Neue Light';
+}
+
+.my-learning .course-module-content a {
+    color: grey;
+    font-family: 'Helvetica Neue Light';
+}
+
+.my-learning .course-module-content a  i {
+    float: right;
+}
+
+/*.my-learning .course-list a {
+    color: #000000;
+}
+*/
+.my-learning .mylearning-webinars {
+  margin: 10px;
+ /* width: 100%;*/
+}
+
+.my-learning .mylearning-webinars img {
+  width: 100%;
+  text-align: center;
+}
+
+.my-learning .mylearning-games {
+    text-transform: uppercase;
+    margin: 10px;
+    color: black;
+}
+
+.my-learning .games {
+  width: 100%;
+  background-color: #D0D0D0;
+  margin: 5px;
+  font-family: 'Helvetica Neue';
+}
+
+.my-learning .games .mylearning-games-title-description {
+    font-family: 'Helvetica Neue Bold';
+    color: blue;
+}
+
+/*.my-learning .games {
+    position: relative;
+}
+
+.my-learning .games .heading {
+    color: #B8B8B8;
+}
+
+.my-learning .games .see-all {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+
+.my-learning .games .game-list {
+    border: 5px solid #E8E8E8;
+    padding: 5px 5px 5px 5px;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.my-learning .games .game-list a {
+    text-decoration: none;
+}
+
+.my-learning .games .game-list .mylearning-game-image {
+    width: 100%;
+}
+
+.my-learning .games .game-list .text {
+    word-wrap: break-word;
+    color: #080808;
+    text-decoration-color: #F80000;
+}
+*/
+
+/*****************my learning styling ends*****************/
+
+
+/***************Game page starts*************/
+
+.game-title {
+    text-align: center;
+    padding: 15px 10px 15px 10px;
+}
+
+.game_description {
+    text-align: center;
+    padding: 15px 10px 15px 10px;
+}
+
+.game-image {
+    margin-left: 100px;
+    width: 150px;
+    height: 80px;
+}
+
+.game-play-button {
+    width: 180px;
+    height: 30px;
+    border: 1px solid #387ef5;
+    background-color: #387ef5;
+    margin-left: 90px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+
+/***************Game page ends**************/
+
+
+/********** techtip video container starts*********/
+
+.slide-in-up.ng-enter-active {
+    margin-top: 100px;
+}
+
+.video-container {
+    border: 1px solid black;
+    background-color: beige;
+    width: 320px;
+    height: 300px;
+    margin-left: 10px;
+}
+
+.video-modal-close {
+    margin-left: 320px;
+    margin-top: 10px;
+}
+
+.video-load-container {
+    width: 320px;
+    margin-left: 20px;
+    height: 500px;
+}
+
+.video-container-camera-img {
+    width: 100px;
+    margin-left: 125px;
+}
+
+
+/********** techtip video container ends*********/
+
+
+/********** search-results page starts **********/
+
+.scroll-content.search-results-wrapper {
+    padding: 25px 10px 100px 10px;
+}
+
+.search-results-wrapper .header-bar-icns td {
+    padding: 5px 10px;
+}
+
+.search-results-wrapper .main-title {
+    text-transform: uppercase;
+    margin: 10px;
+    color: grey;
+}
+
+.search-results-wrapper .view-more {
+    margin: 30px 0;
+    text-transform: uppercase;
+    text-align: center;
+    color: blue;
+}
+
+.search-results-wrapper .brand {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.search-results-wrapper .brand img {
+    width: 250px;
+}
+
+
+.search-results-wrapper .search-results-box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.search-results-box .topic-box {
+    margin: 0;
+    padding: 0;
+}
+
+.search-results-box .topic-box .icn {
+    width: 50px;
+    height: 50px;
+    background: #00a3e3;
+    border-radius: 100%;
+    position: relative;
+    /* text-align: center; */
+    /* line-height: 65px; */
+}
+
+.search-results-box .topic-box .icn img {
+    /* width: 50px; */
+    position: absolute;
+}
+
+.search-results-box .topic-box .topic {
+    text-transform: uppercase;
+    color: grey;
+    margin-left: 10px;
+    line-height: 50px;
+    font-family: 'Helvetica Neue Light';
+}
+
+.search-results-box .content-box {
+    margin-top: 5px;
+}
+
+.search-results-box.media-pdf .content-box .placeholder {
+    width: 110px;
+    height: 100px;
+    background: #00a3e3;
+    position: relative;
+}
+
+.search-results-box.media-video .content-box .placeholder img {
+    width: 100%;
+}
+
+.search-results-box .content-box .cards {
+    font-family: 'Helvetica Neue';
+    width: 100%;
+    background: #ffffff;
+    border-left: 3px solid #00a3e3;
+    padding: 10px;
+    margin-top: -5px;
+}
+
+.search-results-box.media-video .content-box .cards .title {
+    color: black;
+}
+
+
+.search-results-box .content-box .cards .title {
+    font-family: "Helvetica Neue Bold";
+    color: #00a3e3;
+}
+
+.search-results-box .content-box .cards .published b {
+    font-family: "Helvetica Neue Bold";
+}
+
+.search-results-box .content-box .cards .description {
+    color: grey;
+}
+
+.search-results-box .content-box .cards hr {
+    border-color: #eee;
+    opacity: 0.4
+}
+
+.search-results-box .content-box .cards .pdf-text-box {
+    padding-left: 10px;
+}
+
+.search-results-box .content-box .cards .media-web-search {
+    padding: 10px;
+}
+
+
+/********** search-results page ends **********/
+
+
+/******* my learning accordian module styling starts ********/
+
+.mylearning-wrapper .main-title {
+    text-transform: uppercase;
+    margin: 10px;
+    color: grey;
+}
+
+.mylearning-wrapper .sub-title {
+    margin: 10px;
+    color: #00548e;
+    font-size: 18px;
+}
+
+.mylearning-wrapper .progress-bar {
+    height: 20px;
+    width: 100%;
+    background: #ddd;
+    position: relative;
+}
+
+.mylearning-wrapper .progress-bar .completed {
+    height: 20px;
+    background: #0080ff;
+}
+
+.mylearning-wrapper .progress-bar span {
+    text-transform: uppercase;
+    color: black;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    text-align: center
+}
+
+
+/* common card stylings - pages used in: mylearning */
+
+.cards {
+    padding: 0;
+}
+
+.card .media-video img {
+    width: 100%;
+}
+
+.card .media-video .title {
+    padding: 5px;
+    text-align: center;
+    font-family: 'Helvetica Neue Bold';
+}
+
+.mylearning-wrapper .card .media-pdf .placeholder {
+    width: 100%;
+    height: 100px;
+    background: #00a3e3;
+    position: relative;
+}
+
+.mylearning-wrapper .card .media-pdf .placeholder img {
+    width: 50px;
+    position: absolute;
+    top: 26px;
+    left: 20px;
+}
+
+.card .media-pdf .text-box {
+    padding: 10px;
+}
+
+.card .media-pdf .title {
+    color: #00548e;
+    font-family: 'Helvetica Neue Light';
+}
+
+.card .media-pdf .description {
+    font-family: 'Helvetica Neue Light';
+}
+
+
+/******* my learning accordian module styling ends ********/
+
+
+/*****************app library styling starts*****************/
+
+.app-library .scroll-category {
+    overflow: scroll;
+}
+
+.app-library .category {
+    position: relative;
+    top: 0px;
+}
+
+.app-library .category table td {
+    padding: 0 7px;
+    text-align: center;
+}
+
+.app-library .category a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.app-library .category .category-see-all {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+
+/***************** app library styling ends *****************/
+
+
+/*************** Resource Style starts **************/
+
+
+.resource .bar-subheader {
+    height: 55px;
+}
+
+.resource .bar-subheader .tabs {
+    width: 100%;
+    padding: 0px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    padding: 0px;
+    border-top-width: 0px;
+    margin: 0px;
+}
+
+.resource .events {
+    position: relative;
+    background-color: #DCDDDF;
+}
+
+.resource .events .heading {
+    color: #BEBEBE;
+    padding-left: 25px;
+    padding-top: 5px;
+    font-size: 15px;
+    font-weight: bold
+}
+
+.resource .events .see-all {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    padding-right: 15px;
+    padding-top: 7px;
+}
+
+.resource .events .events-list {
+    border: 3px solid #E8E8E8;
+    padding: 15px;
+    background-color: #FFFFFF;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+
+.resource .events .events-list .events-image {
+    width: 100%;
+}
+
+.resource .events .text {
+    word-wrap: break-word;
+    padding: 5px 5px 5px 5px;
+    text-decoration: none;
+    color: #080808;
+    text-decoration-color: #F80000;
+    text-align: left;
+    font-size: 13px;
+}
+
+.resource .events .image {
+    position: absolute;
+    left: 12px;
+    top: 17px;
+
+}
+
+
+.resource .topic{
+  background-color: #F3F3F3;
+    color: #BEBEBE;
+    padding-left: 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    top: 13px;
+    font-size: 15px;
+    font-weight: bold
+}
+.resource .events .my-events .event-details{
+  padding: 1px;
+}
+
+.resource .events .event-date {
+    text-align: center;
+    background-color: #71D0F3;
+    height: 80px;
+    width: 80px;
+    /*line-height: 80px;*/
+    padding: 18px;
+}
+.resource .events .event-date .month{
+font-size: small;
+}
+
+.resource .events .event-date span {
+    display: inline-block;
+}
+
+
+.resource .events .event-date .circle {
+    border-radius: 100%;
+    background-color: #FFFFFF;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    /*padding: 10px 10px;*/
+}
+
+ 
+.resource .events .my-events .event-details .event-date h5 {
+  color: #0099FF;
+}
+ 
+.resource .events .my-events .event-details .circle {
+    border-radius: 100%;
+    background-color: #FFFFFF;
+    height: 30px;
+    width: 30px;
+    line-height: 52px;
+    padding: 10px 10px;
+}
+
+.resource .events .eventindiv{
+  background-color: white;
+  border: 1px solid white;
+  margin: 7px 20px;
+  padding:  0px;
+}
+
+.resource .events .eventindiv .date-box {
+  position: relative;
+  width: 50px;
+}
+
+.resource .events .eventindiv div {
+  display: inline-block;
+}
+
+
+.resource .events .eventindiv .date-box .date {
+    position: absolute;
+    top: 17px;
+    left: 21px;
+    font-weight: bold
+}
+
+.resource .events .eventindiv .date-box .month {
+  text-transform: uppercase;
+    position: absolute;
+    top: 39px;
+    left: 10px;
+    font-size: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.resource .events .eventindiv .date-box img {
+  width: 50px;
+}
+
+
+
+
+.resource .events .eventindiv .bg{
+background-image: url(./svg/img_calendar.svg);
+}
+
+
+.resource .dictionary .dummy{
+   
+    width:30px;
+    height:30px;
+    line-height: 30px;
+    border: 1px solid #008cc9;
+    margin:0px 2px 5px 2px;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    color: #008cc9; 
+}
+
+
+.resource .dictionary .alphapad{
+  padding: 5px 25px 0px 25px;
+}
+
+.resource .events .event-date .alpha {
+    word-wrap: break-word;
+    padding: 5px 5px 5px 80px;
+    text-decoration: none;
+    text-decoration-color: #F80000;
+    text-align: center;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 15px;
+    color: #008cc9;
+}
+
+.resource .dictionary {
+    position: relative;
+    background-color: #F3F3F3;
+    padding-bottom: 10px;
+    padding-top: 0px;
+}
+
+.resource .dictionary .heading {
+    color: #BEBEBE;
+    padding: 5px 0px 0px 25px;
+}
+
+.resource .dictionary .see-all {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+
+.resource .dictionary .text {
+    word-wrap: break-word;
+    text-decoration: none;
+    color: #000000;
+    text-decoration-color: #F80000;
+    padding: 5px 0px 0px 25px;
+}
+
+.resource .scte {
+    position: relative;
+    background-color: #DCDDDF;
+}
+
+.resource .scte .heading {
+    color: #BEBEBE;
+    padding-left: 25px;
+    padding-top: 5px;
+}
+
+.resource .scte .see-all {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    padding-right: 15px;
+    padding-top: 7px;
+}
+
+.resource .scte .scte-list {
+    border: #E8E8E8;
+    padding: 0px;
+    background-color: #DCDDDF;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 1px;
+    border-bottom: 1px solid #8c8b8b;
+    
+}
+
+.resource .scte .scte-list .arrow {
+      position: fixed;
+    width: 8%;
+    padding: 20px 13px 13px 0px;
+    right: 7px;
+}
+
+.resource .scte .scte-list .break{
+  white-space: initial;
+  font-size: small;
+
+}
+
+
+.resource .scte .scte-list .publish{
+  white-space: initial;
+  font-size: small;
+  color: #000000;
+  font-weight: bold;
+
+}
+
+
+.resource .scte .scte-list .scte-image {
+    width: 100%;
+}
+
+
+
+
+.resource .alpha .link {
+    font-size: 15px;
+}
+
+
+/***************Resource style ends**************/
+
+
+
+/***************SCTE std document page**************/
+
+.scteStd-doc-img-container {
+    float: left;
+}
+
+
+/***************SCTE std document page**************/
+
+
+/*****************techtips styling starts*****************/
+
+.techtips .techtips-video-pdf-types h4 {
+    color: royalblue;
+}
+
+/*.techtips .main-title {
+    text-transform: uppercase;
+    margin: 10px;
+    color: grey;
+}
+
+.techtips .list a {
+    position: relative;
+}
+
+.techtips ionic-ratings .text-center {
+    right: 10px;
+    text-align: right;
+
+}*/
+
+/* .digitalleakage .scroll-content {
+>>>>>>> .r108
+    top: 61px;
+} */
+
+/* .digitalleakage .button-icon {
+    left: 10px;
+}
+ */
+
+/*****************techtips styling ends*****************/
+
+
+/*****************my events styling starts*****************/
+
+.my-events .subheader-tabs {
+    line-height: 15px;
+    text-align: center;
+    color: #000000;
+}
+
+.my-events .subheader-tabs .tab-item {
+    border-width: 0 0 2px 0;
+    border-color: royalblue;
+    font-family: 'Helvetica Neue';
+    text-align: center;
+}
+
+.my-events .scroll-content {
+    top: 120px;
+}
+
+/*.my-events .padding {
+  padding: 5px;
+}*/
+
+.my-events .event-details {
+  padding: 2px;
+  margin: 10px;
+  background-color: white;
+}
+
+.resource .event-details .eventindiv{
+  background-color: white;
+  border: 1px solid white;
+  margin: 7px 20px;
+  padding:  0px;
+}
+
+.my-events .event-details .date-box {
+  position: relative;
+  width: 50px;
+}
+
+.my-events .event-details div {
+  display: inline-block;
+}
+
+
+.my-events .event-details .date-box .date {
+    position: absolute;
+    top: 31px;
+    left: 23px;
+    font-weight: bold
+}
+
+.my-events .event-details .date-box .month {
+  text-transform: uppercase;
+    position: absolute;
+    top: 56px;
+    left: 15px;
+    font-size: 9px;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.my-events .event-details .eventindiv .date-box img {
+  width: 55px;
+    height: 84px;
+}
+
+.my-events .event-details .event-date {
+    text-align: center;
+    background-color: #0099FF;
+    height: 75px;
+    width: 80px;
+    /*line-height: 20px;
+    padding: 25px 0px 0px 0px;*/
+}
+
+.my-events .event-details .event-date h5 {
+  color: #0099FF;
+}
+
+.my-events .event-details .circle {
+    border-radius: 100%;
+    background-color: #FFFFFF;
+    /*height: 30px;
+    width: 30px;
+    line-height: 52px;
+    padding: 10px 10px;*/
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    padding: 10px 5px;
+}
+
+/*.my-events .event-details .circle .text {
+  padding-top: 10px;
+}
+*/
+.my-events .myevents-calendar {
+    width: 100%;
+    background-color: #0099FF;
+    height: 50px;
+}
+
+/*****************my events styling ends****************/
+
+/*****************svg icons size set starts****************/
+
+.icon-sort {
+    width: 20px;
+    color: red;
+}
+
+.icon-filter {
+    width: 25px;
+}
+
+.icon-search-my-learning {
+    width: 22px;
+    top: 13px;
+    left: 14px
+}
+
+.icon-search-manuals {
+    width: 22px;
+    top: 13px;
+    left: 14px
+}
+
+.my-learning-main-header div {
+    display: inline;
+}
+
+.icon-search-web {
+    width: 22px;
+    top: 16px;
+    left: 14px
+}
+
+.icon-search-pocket-guide {
+    width: 22px;
+    top: 14px;
+    left: 16px
+}
+
+.icon-placeholder-pdf {
+    /* position: absolute; */
+    width: 45px;
+    position: absolute;
+    top: 25px;
+    left: 19px
+}
+
+.icon-my-learning-search {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.icon-tab-discover {
+    padding-top: 7px;
+}
+
+.icon-tab-discover:before {
+    content: url("../img/svg/bottom-menu_discover.svg");
+}
+
+.icon-tab-my-learning {
+    padding-top: 5px;
+}
+
+.icon-tab-my-learning:before {
+    content: url("../img/svg/bottom-menu_my-learning.svg");
+}
+
+.icon-tab-tech-tips {
+    padding-top: 2px;
+}
+
+.icon-tab-tech-tips:before {
+    content: url("../img/svg/bottom-menu_techtips.svg");
+}
+
+.icon-tab-apps {
+    padding-top: 3px;
+}
+
+.icon-tab-apps:before {
+    content: url("../img/svg/bottom-menu_apps.svg");
+}
+
+.icon-tab-resources {
+    padding-top: 5px;
+}
+
+.icon-tab-resources:before {
+    content: url("../img/svg/bottom-menu_resources.svg");
+}
+
+/*****************svg icons size set ends****************/

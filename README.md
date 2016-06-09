@@ -19,11 +19,11 @@ Mac: `sudo npm install -g bower  cordova  ionic  gulp  ios-sim`
 ####Install everything
 `npm install`
 
+`bower install ionic-ion-tinder-cards --save`
+
 `bower install`
 
 `ionic setup sass`
 
-`ionic config build`
-
 ####Run it
-`ionic serve --lab` 
+`ionic serve --lab`

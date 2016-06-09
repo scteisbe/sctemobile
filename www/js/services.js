@@ -1,77 +1,78 @@
-angular.module('lodash', [])  
-.factory('_', ['$window', function($window) {
-    return $window._; // assumes underscore has already been loaded on the page
-}]);
+angular.module('scteApp.services', [])
 
-
-angular.module('cortex.services', [])
-
-.factory('Users', function() {
+.factory('Utils', function($ionicLoading,$ionicPopup,$http) {
   // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }, {
-    id: 5,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }, {
-    id: 6,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }, {
-    id: 7,
-    name: 'Anna Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }, {
-    id: 8,
-    name: 'Adele Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }
-  ];
-
-  return {
-    all: function() {
-      return chats;
+  var Utils = {
+    
+    
+    doHttpRequest : function ($method,$url,$header,requestParamArr) {
+       
+       return  $http({
+			method:$method,
+			url:$url,
+			//data: {Email:'MAGGIE', password: 'testrecord', grant_type:'password'},
+			data: Utils.getStringFromArray(requestParamArr),
+			headers: Utils.getJsonFromArray($header) ,
+		}).then( 
+			function successCallback(response){
+				$content = response.data;
+                return $content
+			},
+			
+			function errorCallback(response) {
+			
+				$ionicLoading.hide();
+				if(response.data == null) {
+					console.log("failed response.." + response.data);
+					Utils.displayAlert("Network Error !");
+				} else {
+					console.log("failed response.." + response.data["message"]);
+					Utils.displayAlert("Wrong username or password !");
+				}
+			} 
+		);
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    
+    getStringFromArray : function (array) {
+        var output = '';
+        angular.forEach(array, function (object) {
+            angular.forEach(object, function (value, key) {
+               output += key + "=" + value +"&";
+            });
+            
+        });
+        return output;
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
-      }
-      return null;
-    }
+    
+     getJsonFromArray : function (array) {
+         //console.log(JSON.stringify(object));
+         $headerMap = {"Content-Type":"application/x-www-form-urlencoded"};
+         angular.forEach(array, function (object) {
+            angular.forEach(object, function (value, key) {
+                $headerMap[key] = value;
+            });
+         });
+         console.log($headerMap);
+         return $headerMap;
+     },
+     
+     displayAlert : function($message) {
+        console.log("into displayAlert.." + $message);
+        $ionicLoading.hide();
+        $ionicPopup.alert({
+            title: 'Alert',
+            content: $message,
+            buttonName: 'OK'
+        }).then(function(){});
+    },
+    
+     getBuildType : function() {
+         //$buildType = "stub";
+         $buildType = "live";
+         
+         return $buildType;
+     }
   };
+  return Utils;
 });

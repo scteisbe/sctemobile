@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; data: http: spreadsheets.google.com *">
@@ -10,89 +11,134 @@
 
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
-    <link href="lib/ion-alpha-scroll/src/ion-alpha-scroll.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style1.css" rel="stylesheet">
+    <link href="css/style2.css" rel="stylesheet">
+    <link href="css/style3.css" rel="stylesheet">
+    <link href="css/style4.css" rel="stylesheet">
+    <link href="css/style5.css" rel="stylesheet">
+
+
     <!-- <link rel="stylesheet" href="lib/ionic-ion-tinder-cards/ionic.tdcards.css"> -->
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <!--<script src="lib/ionic/js/ionic.angular.min.js"></script>-->
+  
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
-    <script src="lib/collide/collide.js"></script>
+    <script src="lib/ionic-ratings/dist/ionic-ratings.min.js"></script>
+    <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
+    <script src="lib/collide/collide.js">
     <script src="lib/tabletop/src/tabletop.js"></script>
     <script src="lib/angular-tabletop/TabletopProvider.js"></script>
     <script src="lib/angular-holderjs/src/holder.js"></script>
     <script src="lib/holderjs/holder.min.js"></script>
     <script src="lib/moment/moment.js"></script>
     <script src="lib/angular-moment/angular-moment.js"></script>
-    <script src="lib/lodash/dist/lodash.min.js"></script>
-    <script src="lib/ion-alpha-scroll/src/ion-alpha-scroll.js"></script> 
-
+    <script src="lib/lodash/dist/lodash.js"></script>
+    <script src="lib/ngstorage/ngStorage.min.js"></script>
+   
 
     <!-- cordova script (this will be a 404 during development) -->
-    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
-<!-- <script src="cordova.js"></script> -->
+    <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
+
+    <script src="./js/appctrl.js"></script>
+    <script src="./js/controllers/loginctrl.js"></script>
+    <script src="./js/controllers/dictionaryctrl.js"></script>
+
+    <script src="js/controllers/discoverCtrl.js"></script>
+    <script src="js/controllers/myLearningCtrl.js"></script>
+    <script src="js/controllers/appLibraryCtrl.js"></script>
+    <script src="js/controllers/techtipsCtrl.js"></script>
+    <script src="js/controllers/resourceCtrl.js"></script>
+    <script src="js/controllers/drawer.js"></script>
+    <!--<script src="js/controllers/staticcontent_controller.js"></script>-->
+
+    
+
+    <script src="js/directive/ion-alpha-scroll.js"></script>
+
+    <script type="text/javascript" src="./js/config/route.js"></script>
+    <script type="text/javascript" src="./js/config/registry.js"></script>
+    
+    <!-- all services js -->
     <script src="js/services.js"></script>
-    <script src="js/directives.js"></script>
-    <script src="js/staticcontent_factory.js"></script>
-    <script src="js/staticcontent_controller.js"></script>
-    <script src="js/dynamiccontent_controller.js"></script>
-    <script src="js/mylearning_controller.js"></script>
-    <script src="js/utils_controller.js"></script>
-    <script src="js/ionic.tdcards.custom.js"></script>
+    <script src="js/staticContentServices.js"></script>
 
-  </head>
-  <body ng-app="cortex">
-    <ion-side-menus>
-      <!-- Right menu -->
-      <ion-side-menu side="right">
-        <h3>In Apps</h3>
-        <p>Expand your collections</p>
-        <div class="list">
-          <a class="item item-icon-left" href="#">
-            <i class="icon ion-search"></i>
-            <h2>Job search</h2>
-            <p>Find a job you love</p>
-          </a>
-          
-          <a class="item item-icon-left" href="#">
-            <i class="icon ion-chatbox-working"></i>
-            <h2>Groups</h2>
-            <p>Join the conversation</p>
-          </a>
 
-          <a class="item item-icon-left" href="#">
-            <i class="icon ion-ios-pulse-strong"></i>
-            <h2>Pulse</h2>
-            <p>Get daily business news</p>
-          </a>
-          
-          <a class="item item-icon-left" href="#">
-            <i class="icon ion-ios-albums"></i>
-            <h2>Slideshare</h2>
-            <p>Master new topics</p>
-          </a>          
-        </div>
-      </ion-side-menu>
+</head>
 
-      <ion-side-menu-content drag-content="false">
-        <!--
-          The nav bar that will be updated as we navigate between views.
-        -->
-        <ion-nav-bar class="bar-calm">
-          <ion-nav-back-button>
-          </ion-nav-back-button>
-        </ion-nav-bar>
+<body ng-app="cortexConfig" ng-controller="appCtrl">
+    <ion-nav-bar class="bar-stable app-common">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view></ion-nav-view>
 
-        <!--
-          The views will be rendered in the <ion-nav-view> directive below
-          Templates are in the /templates folder (but you could also
-          have templates inline in this html file if you'd like).
-        -->
-        <ion-nav-view></ion-nav-view>
-      </ion-side-menu-content>
+    <sort side="right">
+        <h1 class="title">SORT</h1>
+        <ion-content>
+            <ion-list>
+                <ion-item>Relevance</ion-item>
+                <ion-item>Most Recent</ion-item>
+                <ion-item>Content Type</ion-item>
+                <ion-item>Format</ion-item>
+            </ion-list>
 
-  </ion-side-menus></body>
+            <button class="button" ng-click="closeSort()">Close</button>
+        </ion-content>
+    </sort>
+
+   <filter side="right">
+            <div class="filter-header">
+                <span class="filter-heading">FILTER</span>
+                <button class="filter-slider-button" ng-click="closeFilter()">APPLY  FILTERS</button>
+            </div>
+            <div class="filter-content-type">
+                <h6 class="filter-type-title">Content Type</h6>
+                <div>
+                    <ion-checkbox class="item-checkbox-right" ng-repeat="item in contentType" ng-model="item.checked" ng-checked="item.checked">
+                        {{ item.text }}
+                    </ion-checkbox>
+                </div>
+            </div>
+            <div class="filter-published-type">
+                <h6 class="filter-type-title">Published</h6>
+                <ion-checkbox class="item-checkbox-left" ng-repeat="period in publishedPeriod" ng-model="period.checked" ng-checked="period.checked">
+                        {{ period.text }}
+                    </ion-checkbox>
+                    <h6 class="filter-type-title">From Date</h6>
+                    <div class="from-date-picker">
+                    <input type="text" value="{{selectedDate}}">
+                    <img src="/img/u183.png" width="25" ng-click="openDatePickerTo()">
+                    </div>
+                    <h6 class="filter-type-title">To Date</h6>
+                    <div class="from-date-picker">
+                    <input type="text" value="{{selectedDate}}">
+                    <img src="/img/u183.png" width="25" ng-click="openDatePickerTo()">
+                    </div>
+            </div>
+            <div class="filter-format-type">
+                <h6 class="filter-type-title">Format</h6>
+                <div>
+                    <ion-checkbox class="item-checkbox-right" ng-repeat="item in formatType" ng-model="item.checked" ng-checked="item.checked">
+                        {{ item.text }}
+                    </ion-checkbox>
+                </div>
+            </div>
+            <div class="filter-footer">
+                <button class="filter-slider-button" ng-click="closeFilter()">CANCEL</button>
+                <button class="filter-slider-button" ng-click="closeFilter()">APPLY FILTER</button>
+            </div>
+        
+    </filter>
+
+    <div class="overlay-bg" ng-show="drawerClicked"></div>
+
+</body>
+
 </html>
