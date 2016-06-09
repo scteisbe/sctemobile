@@ -26,4 +26,4 @@ Mac: `sudo npm install -g bower  cordova  ionic  gulp  ios-sim`
 `ionic config build`
 
 ####Run it
-`ionic serve --lab`
+`ionic serve --lab` 
