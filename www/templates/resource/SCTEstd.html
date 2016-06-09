@@ -1,0 +1,20 @@
+<ion-view view-title="{{cortexLogo}}">
+    <ion-content class="mylearning-wrapper">
+        <div class="events">
+            <h4 class="heading">SCTE standards</h4>
+            <ion-list>
+                <div class="inprogress-course">
+                    <ion-list>
+                        <div ng-repeat="inprogressCourse in scteStandards">
+                            <ion-item class="item-stable course-list">
+                                <div class="scteStd-doc-img-container"><img class="scteStd-doc-img" ng-src="{{inprogressCourse.image}}"></div>
+                                <div class="scteStd-doc-desc-container"><a href="" class="scte-std-title"> {{inprogressCourse.scteDocName}} </a>
+                                    <div class="scte-std-description"> {{inprogressCourse.scteDocInfo}} </div>
+                                </div>
+                            </ion-item>
+                        </div>
+                    </ion-list>
+                </div>
+            </ion-list>
+    </ion-content>
+</ion-view>

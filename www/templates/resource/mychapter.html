@@ -1,0 +1,40 @@
+<div ng-hide="!activeTab = 2" class="my-events">
+    <div class="event-details" ng-repeat="myChapter in myChapters">
+        <div class="row">
+            <div class="col">
+                <div class="event-date">
+                    <span class="circle">{{myChapter.eventDate}}</span><br>
+                    <span>{{myChapter.eventMonth}}</span>
+                </div>
+            </div>
+            <div class="col col-75">
+                <h5>{{myChapter.eventTitle}}</h5>
+                <b>Location : </b> {{myChapter.eventLocation}}<br>
+                <b>When : </b> {{myChapter.eventTime}}
+            </div>
+        </div>
+        <i class="icon ion-link">  www.scte.org/events</i>
+        <p>Lorem ipsum dolo sitamt, consectetur adipiscing elit. Lorem ipsum dolo sitamt, consectetur adipiscing elit.</p><br>
+        <button class="myevents-calendar">Add to Calendar</button>
+    </div>
+    <!-- <div class="event-details">
+        <div class="row">
+            <div class="col">
+                <div class="event-date">
+                    <span class="circle">28th</span>
+                    <br>
+                    <span>May</span>
+                </div>
+            </div>
+            <div class="col col-75">
+                <h4>East Pennsylvania Chapter Training</h4>
+                <b>Location:</b> SCTE Exton, PA
+                <br>
+                <b>When:</b> All Day
+            </div>
+        </div>
+        <p>Lorem ipsum dolo sitamt, consectetur adipiscing elit. Lorem ipsum dolo sitamt, consectetur adipiscing elit.</p>
+        <i class="icon ion-link">  www.scte.org/events</i>
+        <button class="myevents-calendar">Add to Calendar</button>
+    </div> -->
+</div>

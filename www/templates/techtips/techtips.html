@@ -1,0 +1,72 @@
+<ion-view view-title='{{cortexLogo}}' class="techtips">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-ios-gear-outline" ui-sref="tab.settings"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <h3>Tech Tips</h3>
+        <div>
+            <div class="list card">
+                <div class="item item-body">
+                    <div class="list">
+                        <a class="item item-thumbnail-left" href="#">
+                            <img ng-src="{{image}}" class="img-responsive" />
+                            <i class="icon ion-social-youtube"></i> Wi-Fi Dead Spots
+                            <p>Client's wifi router is the basement? No problem!</p>
+                        </a>
+                        <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-80 col-offset-10 text-center">
+                    <button ng-click="modal.show()" class="button button-calm">
+                        Submit your Tech Tip!
+                    </button>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div>
+            <h4>Understanding Cable Technology: Digital Video</h4>
+            <img src="img/video-placeholder.jpg" class="img-responsive" />
+            <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+        </div>
+        <hr />
+        <div>
+            <div class="row">
+                <div class="col col-25"><img src="img/pdf-placeholder.png" class="img-responsive" /></div>
+                <div class="col">
+                    <h4>Remote Power Outage</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+        </div>
+        <hr />
+        <div>
+            <h4>Digital Leakage</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+            <div>
+                <a ng-click="techtipRouter()">Read more</a>
+            </div>
+        </div>
+        <script id="templates/modal.html" type="text/ng-template">
+            <ion-modal-view class="video-modal-maincontainer">
+                <ion-header-bar class="bar bar-header bar-positive">
+                    <h1 class="title">Submit Your Tech Tip</h1>
+                    <img class="video-modal-close" src="img/u56.png" ng-click="modal.hide()"></img>
+                </ion-header-bar>
+                <ion-content class="padding">
+                    <div class="list">
+                        <div class="video-container">
+                        </div>
+                        <div class="video-container-camera-img">
+                            <img src="img/u292.png"></img>
+                        </div>
+                        <button class="button button-full button-positive" ng-click="createContact(newUser)">submit</button>
+                    </div>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>

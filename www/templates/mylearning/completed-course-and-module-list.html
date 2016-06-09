@@ -1,0 +1,15 @@
+<div class="inprogress-course" ng-hide="!activeTab == 1">
+    <ion-list>
+        <div ng-repeat="completedCourse in completedCourses" class="course-module-content">
+            <ion-item class="item-stable course-list" ng-click="toggleCompletedCourse(completedCourse)" ng-class="{active: isCompletedCourseShown(completedCourse)}">
+                <b>{{completedCourse.courseName}}</b>
+                <i class="icon accordian-icon" ng-class="isCompletedCourseShown(completedCourse) ? 'ion-minus' : 'ion-plus'"></i>
+            </ion-item>
+            <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isCompletedCourseShown(completedCourse)">
+                <a ng-click="viewModal()">{{inprogressModule.moduleName}}
+                    <i class="icon ion-chevron-right"></i>
+                </a>
+            </ion-item>
+        </div>
+    </ion-list>
+</div>

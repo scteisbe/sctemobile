@@ -1,0 +1,48 @@
+<ion-view view-title="My Events" class="my-events">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-search"></button>
+    </ion-nav-buttons>
+    <ion-header-bar class="bar-subheader">
+        <div class="tabs tabs-secondary" ng-init="activeTab = 0">
+            <a class="tab-item" ng-class="{active: activeTab == 0}" ng-click="activeTab = 0" ui-sref="tab.resourcesmyevents">
+                My Events
+            </a>
+            <a class="tab-item" ng-class="{active: activeTab == 1}" ng-click="activeTab = 1" ui-sref="tab.resourcesmyevents.livelearning">
+                Live Learning
+            </a>
+            <a class="tab-item" ng-class="{active: activeTab == 2}" ng-click="activeTab = 2" ui-sref="tab.resourcesmyevents.mylearningevents">
+                My Learning
+            </a>
+            <a class="tab-item" ng-class="{active: activeTab == 3}" ng-click="activeTab = 3" ui-sref="tab.resourcesmyevents.nationwideevents">
+                Nationwide
+            </a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="has-subheader scroll-content background padding">
+        <div ng-hide="!activeTab == 0">
+            <div class="event-details">
+                <div class="card eventindiv" ng-repeat="event in myEvents">
+                    <div class="row">
+                       <div class="col col-20 date-box">
+                       
+                        <img src="../svg/img_calendar.svg" />
+                        <div class="date">{{event.eventDate}}</div>
+                        <div class="month">{{event.eventMonth}}</div>
+                </div>
+                 <div class="col col-80">
+                    <div class="row row-top"><a href="">{{event.eventTitle}}</a></div>
+                    <div class="row row-bottom"><b>Location:</b> {{event.eventLocation}}
+                        <br>
+                        <b>When:</b>{{event.eventTime}}</div>
+                </div>
+                    </div>
+                   <p>Lorem ipsum dolo sitamt, consectetur adipiscing elit. Lorem ipsum dolo sitamt, consectetur adipiscing elit.</p>
+                <i class="icon ion-link">  www.scte.org/events</i>
+                <button class="myevents-calendar">Add to Calendar</button>
+                </div>
+                
+            </div>
+        </div>
+        <ui-view name="tab-resource"></ui-view>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,37 @@
+<div class="overlay-bg" ng-if="showSliderBg" ng-class="sliderAddClass"></div>
+<div class="sort-slider-wrapper" ng-if="showSortSlider" ng-class="sliderAddClass">
+    <button ng-click="sliderSortVisibility()">CLOSE</button>
+    <ion-list>
+        <ion-item>Relevance</ion-item>
+        <ion-item>Most Recent</ion-item>
+        <ion-item>Content Type</ion-item>
+        <ion-item>Format</ion-item>
+    </ion-list>
+</div>
+<div class="filter-slider-wrapper" ng-if="showFilterSlider" ng-class="sliderAddClass">
+    <button ng-click="sliderFilterVisibility()">CLOSE</button>
+    FILTER
+    <h6 class="title">Content Type</h6>
+    <div>
+        <ion-checkbox class="content-type-list" ng-repeat="item in contentType" ng-model="item.checked" ng-checked="item.checked">
+            {{ item.text }}
+        </ion-checkbox>
+    </div>
+    <h6 class="title">Published</h1>
+	<select class="select-option">
+		<option value="1Week">Last 1 Week</option>
+		<option value="2Week">Last 2 Weeks</option>  
+	</select>
+
+	<div class="from-date-select">FROM <input type="textbox" value={{selectedDate}}><span><img src="/img/calendar.png" ng-click="openDatePicker()"></img></span></div>
+	<div class="from-date-select">TO <input type="textbox" value={{selectedDate}}><span><img src="/img/calendar.png" ng-click="openDatePickerTo()"></img></span></div>
+
+	<h6 class="title">Format</h6>
+    <div>
+        <ion-checkbox class="content-type-list" ng-repeat="item in formatType" ng-model="item.checked" ng-checked="item.checked">
+            {{ item.text }}
+        </ion-checkbox>
+    </div>
+    <button>CANCEL</button>
+    <button>APPLY FILTER</button>
+</div>

@@ -1,0 +1,108 @@
+/* shesh */
+
+/*****************my events styling starts*****************/
+
+.my-events .subheader-tabs {
+    line-height: 15px;
+    text-align: center;
+    color: #000000;
+}
+
+.my-events .subheader-tabs .tab-item {
+    border-width: 0 0 2px 0;
+    border-color: royalblue;
+    font-family: 'Helvetica Neue';
+    text-align: center;
+}
+
+.my-events .scroll-content {
+    top: 120px;
+}
+
+/*.my-events .padding {
+  padding: 5px;
+}*/
+
+.my-events .event-details {
+  padding: 2px;
+  margin: 10px;
+  background-color: white;
+}
+
+.resource .event-details .eventindiv{
+  background-color: white;
+  border: 1px solid white;
+  margin: 7px 20px;
+  padding:  0px;
+}
+
+.my-events .event-details .date-box {
+  position: relative;
+  width: 50px;
+}
+
+.my-events .event-details div {
+  display: inline-block;
+}
+
+
+.my-events .event-details .date-box .date {
+    position: absolute;
+    top: 31px;
+    left: 23px;
+    font-weight: bold
+}
+
+.my-events .event-details .date-box .month {
+  text-transform: uppercase;
+    position: absolute;
+    top: 56px;
+    left: 15px;
+    font-size: 9px;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.my-events .event-details .eventindiv .date-box img {
+  width: 55px;
+    height: 84px;
+}
+
+.my-events .event-details .event-date {
+    text-align: center;
+    background-color: #0099FF;
+    height: 75px;
+    width: 80px;
+    /*line-height: 20px;
+    padding: 25px 0px 0px 0px;*/
+}
+
+.my-events .event-details .event-date h5 {
+  color: #0099FF;
+}
+
+.my-events .event-details .circle {
+    border-radius: 100%;
+    background-color: #FFFFFF;
+    /*height: 30px;
+    width: 30px;
+    line-height: 52px;
+    padding: 10px 10px;*/
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    padding: 10px 5px;
+}
+
+/*.my-events .event-details .circle .text {
+  padding-top: 10px;
+}
+*/
+.my-events .myevents-calendar {
+    width: 100%;
+    background-color: #0099FF;
+    height: 50px;
+}
+
+/*****************my events styling ends****************/

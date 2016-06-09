@@ -1,0 +1,127 @@
+<ion-view view-title="{{cortexLogo}}" ng-controller="SearchResultsCtrl">
+    <ion-nav-buttons side="secondary">
+        <table class="search-results-wrapper">
+            <tr class="header-bar-icns">
+                <td ng-click="openSort()"><img src="img/svg/icon_sort.svg" alt="sort" class="icon-sort"></td>
+                <td ng-click="openFilter()"><img src="img/svg/icon_filter.svg" alt="filter" class="icon-filter"></td>
+            </tr>
+        </table>
+    </ion-nav-buttons>
+    <ion-header-bar class="bar-subheader search-wrapper">
+        <label class="item-input-wrapper">
+            <img src="img/icon_textbox-search.png" class="search-icn">
+            <input type="search" placeholder="Enter keyword here" ng-model="query" ng-init="query=''" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()">
+            <img src="img/icon_textbox-mic.png" class="mic-icn">
+        </label>
+    </ion-header-bar>
+    <ion-content class="search-results-wrapper">
+        <div class="main-title">Search Results</div>
+        <div ng-repeat="item in items | limitTo: limit as results">
+            <div class="search-results-box media-video" ng-if="item.topic == 'learning' && item.type == 'video'">
+                <div class="topic-box">
+                    <div class="row">
+                        <div class="col-30 icn"><img src="img/svg/icon_search-results_my-learning.svg" class="icon-search-my-learning"></div>
+                        <div class="col-70 topic">{{item.topic}}</div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="placeholder"><img src="img/video-placeholder.jpg"></div>
+                    <div class="cards">
+                        <div class="title"><b>{{item.title}}</b></div>
+                        <div class="duration">{{item.duration}}</div>
+                        <div class="published"><b>Published: </b>{{item.published}}</div>
+                        <div class="description">{{item.description}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-results-box media-pdf" ng-if="item.topic == 'learning' && item.type == 'pdf'">
+                <div class="topic-box">
+                    <div class="row">
+                        <div class="col-30 icn"><img src="img/svg/icon_search-results_my-learning.svg" class="icon-search-my-learning"></div>
+                        <div class="col-70 topic">{{item.topic}}</div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="cards">
+                        <div class="row">
+                            <div class="col-35 placeholder"><img src="img/svg/icon_pdf.svg" class="icon-placeholder-pdf"></div>
+                            <div class="col-65 pdf-text-box">
+                                <div class="title"><b>{{item.title}}</b></div>
+                                <div class="description">{{item.description}}</div>
+                                <hr/>
+                                <div class="published"><b>Published: </b>{{item.published}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-results-box media-pdf" ng-if="item.topic == 'pocket guide' && item.type == 'pdf'">
+                <div class="topic-box">
+                    <div class="row">
+                        <div class="col-30 icn"><img src="img/svg/icon_search-results_pocket-guides.svg" class="icon-search-pocket-guide"></div>
+                        <div class="col-70 topic">{{item.topic}}</div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="cards">
+                        <div class="row">
+                            <div class="col-35 placeholder"><img src="img/svg/icon_pdf.svg" class="icon-placeholder-pdf"></div>
+                            <div class="col-65 pdf-text-box">
+                                <div class="title"><b>{{item.title}}</b></div>
+                                <div class="description">{{item.description}}</div>
+                                <hr/>
+                                <div class="published"><b>Published: </b>{{item.published}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-results-box media-pdf" ng-if="item.topic == 'manuals' && item.type == 'pdf'">
+                <div class="topic-box">
+                    <div class="row">
+                        <div class="col-30 icn"><img src="img/svg/icon_search-results_manuals.svg" class="icon-search-manuals"></div>
+                        <div class="col-70 topic">{{item.topic}}</div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="cards">
+                        <div class="row">
+                            <div class="col-35 placeholder"><img src="img/svg/icon_pdf.svg" class="icon-placeholder-pdf"></div>
+                            <div class="col-65 pdf-text-box">
+                                <div class="title"><b>{{item.title}}</b></div>
+                                <div class="description">{{item.description}}</div>
+                                <hr/>
+                                <div class="published"><b>Published: </b>{{item.published}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-results-box media-web" ng-if="item.topic == 'web search'">
+                <div class="topic-box">
+                    <div class="row">
+                        <div class="col-30 icn"><img src="img/svg/icon_search-results_web-search.svg" class="icon-search-web"></div>
+                        <div class="col-70 topic">{{item.topic}}</div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="cards">
+                        <div class="media-web-search">
+                            <div class="title"><b>{{item.title}}</b></div>
+                            <div class="description">{{item.description}}</div>
+                            <hr/>
+                            <div class="hyperlink"><i class="icon ion-at"></i> {{item.url}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view-more" ng-hide="results.length === items.length" ng-click="limit = limit +2">
+            View More
+        </div>
+
+        <div class="brand">
+            <img src="img/SCTE-ISBE_Logos_Full_Gray.png" alt="brand" />
+        </div>
+    </ion-content>
+</ion-view>

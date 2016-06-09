@@ -1,0 +1,15 @@
+<div class="inprogress-course" ng-hide="!activeTab == 2">
+    <ion-list>
+        <div ng-repeat="allCourse in allCourses" class="course-module-content">
+            <ion-item class="item-stable course-list" ng-click="toggleAllCourse(allCourse)" ng-class="{active: isAllCourseShown(allCourse)}">
+                <b>{{allCourse.courseName}}</b>
+                <i class="icon accordian-icon" ng-class="isAllCourseShown(allCourse) ? 'ion-minus' : 'ion-plus'"></i>
+            </ion-item>
+            <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isAllCourseShown(allCourse)">
+                <a ng-click="viewModal()">{{inprogressModule.moduleName}}
+                    <i class="icon ion-chevron-right"></i>
+                </a>
+            </ion-item>
+        </div>
+    </ion-list>
+</div>

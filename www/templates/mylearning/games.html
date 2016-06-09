@@ -1,0 +1,10 @@
+<ion-view view-title="{{cortexLogo}}">
+    <ion-content class="mylearning-wrapper">
+        <div class="card cards" ng-repeat="gameItem in gameItems">
+            <div class="game-title">{{gameItem.title}}</div>
+            <div><img class="game-image" src="img/u48.png"></div>
+            <div class="game_description">{{gameItem.description}}</div>
+            <div class="game-play-button">Play Now</div>
+        </div>
+    </ion-content>
+</ion-view>

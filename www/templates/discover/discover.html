@@ -1,0 +1,107 @@
+<ion-view>
+    <ion-nav-title class="discover-wrapper">
+        <div class="top-header">
+            <div class="left">
+                <table>
+                    <tr>
+                        <td><img src="img/SCTE-ISBE_Cortex_logos.png" class="scte-isbe-cortex-logo"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="right">
+                <div ng-click="viewProfile()"><img src="img/prof-pic_default.png" class="profile-pic-icn"></div>
+                <div class="user-name">
+                    <div>Hello</div><br>
+                    <div>{{username}}!</div>
+                </div>                
+            </div>
+        </div>
+    </ion-nav-title>
+    <ion-header-bar class="bar-subheader search-wrapper">
+        <label class="item-input-wrapper">
+            <img src="img/icon_textbox-search.png" class="search-icn">
+            <input type="search" placeholder="Enter keyword here" ng-model="query" ng-init="query=''" ng-focus="modal.show()" ng-blur="modal.hide()" ng-change="searchChange()">
+            <img src="img/icon_textbox-mic.png" class="mic-icn">
+        </label>
+    </ion-header-bar>
+    <ion-content class="discover-wrapper">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="activeIndex" ng-init="activeIndex = 0" class="slide-wrapper">
+            <ion-slide>
+                <div class="slide-image"><img src="img/landing_carousel-banner.png"></div>
+            </ion-slide>
+            <ion-slide>
+                <div class="slide-image"><img src="img/landing_carousel-banner.png"></div>
+            </ion-slide>
+            <ion-slide>
+                <div class="slide-image"><img src="img/landing_carousel-banner.png"></div>
+            </ion-slide>
+        </ion-slide-box>
+        <div class="resources-wrapper">
+            <div class="header">
+                <span class="hyperlink">
+                    <a>See All &gt;</a>
+                </span>
+                <h2>Resources</h2>
+            </div>
+            <div class="app-box">
+                <table>
+                    <tr>
+                        <td ng-repeat="item in items" ng-if="item.os==platform">
+                            <img ng-src="{{item.img}}">
+                            <p>{{item.title}}</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="ad-wrapper">
+            <img src="img/u44.png">
+        </div>
+
+        <div class="discover-events" ng-controller="DiscoverEventsCtrl">
+            <div class="item">
+                <span class="item-note">
+                    <a class="hyperlink" href="#">See All &gt;</a>
+                </span>
+                <h2>Your Events</h2>
+            </div>
+            <div class="list card" ng-repeat="item in items | limitTo: 3">
+                <a class="item item-text-wrap" href="#" ui-sref="tab.event">
+                    <div class="row">
+                        <div class="col-25 text-center">
+                            <i class="icon bigicon ion-calendar"></i>
+                        </div>
+                        <div class="col-75">
+                            <b>{{item.date}}</b>
+                            <p><b>{{item.title}}</b></p>
+                            <p><b>{{item.description}}</b></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        <script id="templates/modal.html" type="text/ng-template">
+            <ion-modal-view class="video-modal-maincontainer">
+               <ion-header-bar class="bar bar-header bar-positive">
+                    <h1 class="title">Previous Searches</h1>
+                    
+                </ion-header-bar>
+                <ion-content class="padding">
+                <button ng-click="goButton()">GO</button>
+                <ion-list>
+                    <div ng-repeat="previous in previousSearches">
+                    <ion-item class="item-stable events-list">
+                       <div class="text">{{previous.date}}</div><br>
+                        <div class="text">{{previous.keyword}} <br>
+                        </div>
+                        <div class="text">{{previous.noOfResults}}</div>
+                </ion-item>
+                </div>
+            </ion-list>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>
