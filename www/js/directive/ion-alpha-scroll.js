@@ -34,8 +34,34 @@ var ionAlphaScroll = ['$ionicScrollDelegate', '$location', '$timeout', '$documen
       			tElement.find('ion-scroll').css({"height": contentHeight + 'px'});
       			var sliderHeight = angular.element(document.querySelector('div.list'))[0].offsetHeight;
       			var windowCenter = (windowHeight/2);
-      			var startPoint = (windowCenter/2) - 15;
-      			tElement.find('ul').css({"top": startPoint + 'px'});
+      			var startPoint = 88;
+      			var isIOS = ionic.Platform.isIOS();
+      			if(isIOS)
+      			{
+      				if (windowHeight < 500)
+      				{
+      					tElement.find('ul').css({"top":"1px"});
+      					tElement.find('li').css({"line-height":"1.0"});
+      					tElement.find('li').css({"font-size": "11px"});
+      				}
+      				if (windowHeight > 501 && windowHeight < 600)
+      				{
+      					tElement.find('ul').css({"top":'5px'});
+      					tElement.find('li').css({"font-size": "10px"});
+      					//tElement.find('li').css({"line-height": "1.3"});
+      				} 
+      				else (windowHeight > 600)
+      				{
+      					tElement.find('ul').css({"top":"20px"});
+      				}
+
+      			}
+      			else
+      			{
+      				startPoint = (windowCenter/2) - 15;
+      				tElement.find('ul').css({"top": startPoint + 'px'});
+      			} 
+      			
 
 				return function (scope, element, attrs, ngModel) {
 					var count = 0;

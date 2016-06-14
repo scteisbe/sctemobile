@@ -1,1 +1,56 @@
 /* vivin */
+@font-face {
+    font-family: 'Glyphter';
+    src: url('../font/svg-font/Glyphter.eot');
+    src: url('../font/svg-font/Glyphter.eot?#iefix') format('embedded-opentype'),
+         url('../font/svg-font/Glyphter.woff') format('woff'),
+         url('../font/svg-font/Glyphter.ttf') format('truetype'),
+         url('../font/svg-font/Glyphter.svg#Glyphter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+[class*='tab-icon-']:before{
+	display: inline-block;
+   font-family: 'Glyphter';
+   font-style: normal;
+   font-weight: normal;
+   line-height: 1;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   font-size: 30px;
+}
+.tab-icon-bottom-menu_my-learning:before{content:'\0041';}
+.tab-icon-bottom-menu_discover:before{content:'\0042';}
+.tab-icon-bottom-menu_techtips:before{content:'\0043';}
+.tab-icon-bottom-menu_resources:before{content:'\0044';}
+.tab-icon-bottom-menu_apps:before{content:'\0045';}
+
+.recent-search-wrapper {
+	top: 100px;
+}
+
+.recent-search-wrapper i.arrow-icon {
+	color: blue;
+}
+
+.recent-search-wrapper .title {
+	color: grey;
+	font-size: 14px;
+}
+
+.recent-search-wrapper .list label.date {
+	color: black;
+	font-size: 10px;
+}
+
+.recent-search-wrapper .list label.query {
+	color: blue;
+	font-size: 18px;
+}
+
+.recent-search-wrapper .list label.count {
+	color: black;
+	font-size: 10px;
+	background: #ddd;
+	padding: 3px 10px;
+}

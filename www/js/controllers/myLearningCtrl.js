@@ -1,12 +1,4 @@
-var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', function($scope, $state, $rootScope, $http) {
-
-    $scope.viewModal = function() {
-        $state.go('tab.mylearningmodal');
-    };
-
-    $http.get('json/mylearning-resources.json').success(function(data) {
-        $scope.items = data;
-    });
+var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils', function($scope, $state, $rootScope, $http,Utils) {
 
     $scope.inprogressCourses = [{
         "courseName": "Network Overview"
@@ -24,6 +16,10 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', function($scope
         "courseName": "Installing Structured Cabling"
     }];
 
+    $scope.redirectDisover = function() {
+       Utils.redirectDiscover();
+    };
+
     $scope.allCourses = [{
         "courseName": "Introduction to Structured Cabling"
     }, {
@@ -39,10 +35,25 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', function($scope
     }];
 
     $scope.inprogressModules = [{
+        "id": 1,
         "moduleName": "Characteristics of a Network"
     }, {
+        "id": 2,
         "moduleName": "Resource sharing"
     }];
+
+    $scope.viewModal = function(id, name) {
+        console.log(name);
+        // $scope.modulename = name;
+        $state.go('tab.mylearningmodal', {id: id});
+        // $scope.inprogressModules = data;
+        $rootScope.modulename = name;
+
+    };
+
+    $http.get('json/mylearning-resources.json').success(function(data) {
+        $scope.items = data;
+    });
 
     /*$scope.completedModules = [{
         "moduleName": "Cable media types"

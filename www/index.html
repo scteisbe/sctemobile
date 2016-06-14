@@ -28,9 +28,15 @@
 
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
-    <script src="lib/ionic-ratings/dist/ionic-ratings.min.js"></script>
+    <!--<script src="lib/ionic-ratings/dist/ionic-ratings.min.js"></script>-->
+        <script src="js/ionic-ratings.js"></script>
+
     <script src="lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js"></script>
-    <script src="lib/collide/collide.js">
+
+    <!-- This is for google spreadsheet. -->
+
+    
+    <script src="lib/collide/collide.js"></script>
     <script src="lib/tabletop/src/tabletop.js"></script>
     <script src="lib/angular-tabletop/TabletopProvider.js"></script>
     <script src="lib/angular-holderjs/src/holder.js"></script>
@@ -42,20 +48,25 @@
    
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+<!-- <script src="cordova.js"></script> -->
 
     <!-- your app's js -->
 
     <script src="./js/appctrl.js"></script>
     <script src="./js/controllers/loginctrl.js"></script>
     <script src="./js/controllers/dictionaryctrl.js"></script>
+    <script src="js/Calendar.js"></script>
+    <script src="js/EmailComposer.js"></script>
 
     <script src="js/controllers/discoverCtrl.js"></script>
     <script src="js/controllers/myLearningCtrl.js"></script>
     <script src="js/controllers/appLibraryCtrl.js"></script>
     <script src="js/controllers/techtipsCtrl.js"></script>
+    <script src="js/controllers/techtipsCtrlTitle.js"></script>
     <script src="js/controllers/resourceCtrl.js"></script>
-    <script src="js/controllers/drawer.js"></script>
+    <script src="js/staticContentServices.js"></script>
+    <!-- <script src="js/controllers/StaticContentController.js"></script> -->
     <!--<script src="js/controllers/staticcontent_controller.js"></script>-->
 
     
@@ -67,7 +78,7 @@
     
     <!-- all services js -->
     <script src="js/services.js"></script>
-    <script src="js/staticContentServices.js"></script>
+    
 
 
 </head>
@@ -78,67 +89,6 @@
         </ion-nav-back-button>
     </ion-nav-bar>
     <ion-nav-view></ion-nav-view>
-
-    <sort side="right">
-        <h1 class="title">SORT</h1>
-        <ion-content>
-            <ion-list>
-                <ion-item>Relevance</ion-item>
-                <ion-item>Most Recent</ion-item>
-                <ion-item>Content Type</ion-item>
-                <ion-item>Format</ion-item>
-            </ion-list>
-
-            <button class="button" ng-click="closeSort()">Close</button>
-        </ion-content>
-    </sort>
-
-   <filter side="right">
-            <div class="filter-header">
-                <span class="filter-heading">FILTER</span>
-                <button class="filter-slider-button" ng-click="closeFilter()">APPLY  FILTERS</button>
-            </div>
-            <div class="filter-content-type">
-                <h6 class="filter-type-title">Content Type</h6>
-                <div>
-                    <ion-checkbox class="item-checkbox-right" ng-repeat="item in contentType" ng-model="item.checked" ng-checked="item.checked">
-                        {{ item.text }}
-                    </ion-checkbox>
-                </div>
-            </div>
-            <div class="filter-published-type">
-                <h6 class="filter-type-title">Published</h6>
-                <ion-checkbox class="item-checkbox-left" ng-repeat="period in publishedPeriod" ng-model="period.checked" ng-checked="period.checked">
-                        {{ period.text }}
-                    </ion-checkbox>
-                    <h6 class="filter-type-title">From Date</h6>
-                    <div class="from-date-picker">
-                    <input type="text" value="{{selectedDate}}">
-                    <img src="/img/u183.png" width="25" ng-click="openDatePickerTo()">
-                    </div>
-                    <h6 class="filter-type-title">To Date</h6>
-                    <div class="from-date-picker">
-                    <input type="text" value="{{selectedDate}}">
-                    <img src="/img/u183.png" width="25" ng-click="openDatePickerTo()">
-                    </div>
-            </div>
-            <div class="filter-format-type">
-                <h6 class="filter-type-title">Format</h6>
-                <div>
-                    <ion-checkbox class="item-checkbox-right" ng-repeat="item in formatType" ng-model="item.checked" ng-checked="item.checked">
-                        {{ item.text }}
-                    </ion-checkbox>
-                </div>
-            </div>
-            <div class="filter-footer">
-                <button class="filter-slider-button" ng-click="closeFilter()">CANCEL</button>
-                <button class="filter-slider-button" ng-click="closeFilter()">APPLY FILTER</button>
-            </div>
-        
-    </filter>
-
-    <div class="overlay-bg" ng-show="drawerClicked"></div>
-
 </body>
 
 </html>

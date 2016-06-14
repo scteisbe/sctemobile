@@ -1,15 +1,65 @@
-var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal','$ionicLoading','Utils', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils) {
-    
+var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal','$ionicLoading','Utils','$localstorage', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils, $localstorage) {
+    $scope.staticContent = [];
+	$scope.platform = ionic.Platform.platform();
+
+  	var sheetnames = [  // every sheet you want access to needs to be listed here
+//     'a-sheet-with-errors',   // used for testing
+//     'a-sheet-that-does-not-exist',   // used for testing
+//     'an-empty-sheet',    // used for testing
+    'announcements',
+	'featuredresources',
+    'apps',
+    'featuredcourses',
+    'techtips',
+    'standards',
+    'whitepapers',
+    'operationalpractices'
+  ];
+
+  $scope.openURL= function(url) {
+		window.open(url, '_system');
+	};
+	
+  $scope.withinDates = function(startDate,endDate)
+  {
+	  var currentDate = new Date();
+	  //check if current date is within given dates
+	  if (currentDate >= new Date(startDate) && currentDate<= new Date(endDate))
+	  {
+		  return true;
+	  }
+	  else
+	  {
+		  return false;
+	  }
+	  
+  };
+  // immediately populate from localstorage
+  sheetnames.forEach(function(sheet, i){
+	//to be changed - copy only relevant data
+    $scope.staticContent[sheet] = $localstorage.getObject('staticcontent.' + sheet);
+	console.log(sheet + "..." + JSON.stringify($scope.staticContent[sheet]));
+  });
+  
+  console.log("Loaded static content from local cache.");
     if(Utils.getBuildType() == "stub") {
-         $scope.username = "VivinAnto";
-    } else {
+         $scope.username = "Bradley";
+	} else {
+        $profileData = $localstorage.getObject('profiledata');
+        if($profileData != null) {
+            $scope.username = $profileData['FirstName'];
+        }
+        else {
+            $scope.showLoader();
+        }
+        
         $requestParamArr = [];
         
         $headerParamArr = [];
         $headerParamArr.push({"authToken":$rootScope.authToken});
         $headerParamArr.push({"authType":"Bearer"});
         
-        $scope.showLoader();
+        //
         Utils.doHttpRequest('GET','http://vmdimisapp01:1322/api/Individual/GetIndividual',$headerParamArr,$requestParamArr).then(function(response) {
             console.log(response);
             if(response != null) {
@@ -19,9 +69,11 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal','$ionicLoadi
                 $scope.hideLoader();
                 
                 if($message['statusCode'] == 200) {
-                    $rootScope.profileData = $data[0];
-                    console.log("FirstName.." +  $rootScope.profileData['FirstName']);
-                    $scope.username = $rootScope.profileData['FirstName'];    
+                    //$rootScope.profileData = $data[0];
+                    $profileData = $data[0];
+                    $localstorage.setObject('profiledata',  $profileData);
+                    console.log("FirstName.." +  $profileData['FirstName']);
+                    $scope.username = $profileData['FirstName'];    
                 } else {
                 // $scope.displayAlert("Wrong username or password !");
                 console.log($message['statusMessage'])
@@ -29,11 +81,40 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal','$ionicLoadi
             }
         });
     }
-    
+
+    $scope.searchResults = function() {
+        if(event.keyCode == 13) {
+            $state.go("tab.searchresults");
+        }
+    };
+
+    // Recent search modal
+    $ionicModal.fromTemplateUrl('templates/discover/recentsearches.html', {
+        scope: $scope,
+        animation: 'slide-in-up '
+    }).then(function(modal) {
+        $scope.modalRecentSearches = modal;
+    });
+    $scope.showRecentSearches = function() {
+        $scope.modalRecentSearches.show();
+    };
+    $scope.hideRecentSearches = function() {
+        $scope.modalRecentSearches.hide();
+    };
+    $scope.searchChange = function() {
+        if ($scope.query && $scope.query.length) {
+            $scope.modalRecentSearches.hide();
+        } else {
+            $scope.modalRecentSearches.show();
+        }
+    };
+    $scope.myEventsList = function() {
+        $state.go('tab.discoversmyevents');
+    };
    
     $scope.viewProfile = function() {
         $state.go('tab.myprofile');
-        console.log('HI');
+        
     };
 
     $scope.goButton = function() {
@@ -72,31 +153,74 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal','$ionicLoadi
         "title": "Lorem Ipsum Dolor Sit"
     }];
 
-    $scope.previousSearches = [{
-        "date": "<Date Searched>",
-        "keyword": "Keywords Searched",
-        "noOfResults": "12 Results Returned"
-    }, {
-        "date": "<Date Searched>",
-        "keyword": "Keywords Searched",
-        "noOfResults": "12 Results Returned"
-    }, {
-        "date": "<Date Searched>",
-        "keyword": "Keywords Searched",
-        "noOfResults": "12 Results Returned"
-    }];
 
-    $ionicModal.fromTemplateUrl('templates/modal.html', {
-        scope: $scope
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
+    $scope.events = [{
+        "image": "img/u183.png",
+        "date":"18",
+        "month":"May '16",
+        "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
+        "eventInfo": "Where:TBD,Sioux Falls, SD"
+    }, {
+        "image": "img/u183.png",
+        "date":"18",
+        "month":"May '16",
+        "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
+        "eventInfo": "Where:TBD,Sioux Falls, SD"
+    }, {
+        "image": "img/u183.png",
+        "date":"18",
+        "month":"May '16",
+        "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
+        "eventInfo": "Where:TBD,Sioux Falls, SD"
+    }];
 
 }];
 
-var SearchResultsCtrl = ['$scope', '$state', '$rootScope', '$http', 'ionicDatePicker', function($scope, $state, $rootScope, $http, ionicDatePicker) {
+var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionicModal' , function($scope, $state, $http, ionicDatePicker, $ionicModal) {
 
-    $rootScope.contentType = [
+    // sort slider
+    $ionicModal.fromTemplateUrl('templates/discover/sort-slider.html', {
+        scope: $scope,
+        animation: 'slide-in-right'
+    }).then(function(modal) {
+        $scope.sortSlider = modal;
+    });
+    $scope.showSortSlider = function() {
+        $scope.sortSlider.show();
+    };
+    $scope.hideSortSlider = function() {
+        $scope.sortSlider.hide();
+    };
+
+    // filter slider
+    $ionicModal.fromTemplateUrl('templates/discover/filter-slider.html', {
+        scope: $scope,
+        animation: 'slide-in-right '
+    }).then(function(modal) {
+        $scope.filterSlider = modal;
+    });
+    $scope.showFilterSlider = function() {
+        $scope.filterSlider.show();
+    };
+    $scope.hideFilterSlider = function() {
+        $scope.fromDate = $scope.initialDate;
+        $scope.toDate = $scope.initialDate;  
+        $scope.filterSlider.hide();
+    };
+
+    $scope.sortOptions = [
+        { text: "Relevance"},
+        { text: "Most Recent"},
+        { text: "Content Type"},
+        { text: "Format"}
+    ];
+
+    $scope.sortOptionChecked = function(option) {
+        console.log(option);
+        $scope.sortSlider.hide();
+    };
+
+    $scope.contentType = [
         { text: "Learning", checked: false },
         { text: "Pocket Guide", checked: false },
         { text: "Tech Tips", checked: false },
@@ -104,13 +228,13 @@ var SearchResultsCtrl = ['$scope', '$state', '$rootScope', '$http', 'ionicDatePi
         { text: "Standards", checked: false }
     ];
 
-    $rootScope.formatType = [
+    $scope.formatType = [
         { text: "Video", checked: false },
         { text: "PDF", checked: false },
         { text: "Online Content", checked: false }
     ];
 
-    $rootScope.publishedPeriod = [
+    $scope.publishedPeriod = [
         { text: "Last 1 week", checked: false },
         { text: "Last 2 weeks", checked: false },
         { text: "Last 3 weeks", checked: false }
@@ -123,38 +247,37 @@ var SearchResultsCtrl = ['$scope', '$state', '$rootScope', '$http', 'ionicDatePi
             var date = selectedDate.getDate();
             var month = selectedDate.getMonth() + 1;
             var year = selectedDate.getFullYear();
-            $rootScope.selectedDate = date + "-" + month + "-" + year;
-        },
-        disabledDates: [ //Optional
-            new Date(2016, 2, 16),
-            new Date(2015, 3, 16),
-            new Date(2015, 4, 16),
-            new Date(2015, 5, 16),
-            new Date('Wednesday, August 12, 2015'),
-            new Date("08-16-2016"),
-            new Date(1439676000000)
-        ],
-        from: new Date(2012, 1, 1), //Optional
-        to: new Date(2016, 10, 30), //Optional
-        inputDate: new Date(), //Optional
-        mondayFirst: true, //Optional
-        disableWeekdays: [0], //Optional
-        closeOnSelect: false, //Optional
-        templateType: 'popup' //Optional
+            $scope.initialDate="";
+            $scope.fromDate = date + "-" + month + "-" + year;
+        }
     };
 
-    $rootScope.openDatePicker = function() {
+    var ipObj2 = {
+        callback: function(val) { //Mandatory
+            console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+            var selectedDate = new Date(val);
+            var date = selectedDate.getDate();
+            var month = selectedDate.getMonth() + 1;
+            var year = selectedDate.getFullYear();
+            $scope.initialDate="";
+            $scope.toDate = date + "-" + month + "-" + year;
+        }
+    };
+
+    $scope.openDatePickerFrom = function() {
         ionicDatePicker.openDatePicker(ipObj1);
     };
 
-    $rootScope.openDatePickerTo = function() {
-        ionicDatePicker.openDatePicker(ipObj1);
+    $scope.openDatePickerTo = function() {
+        ionicDatePicker.openDatePicker(ipObj2);
     };
 
     $http.get('json/search-results.json').success(function(data) {
         $scope.items = data;
     });
 
+	
+	
     $scope.limit = 2;
 
 }];

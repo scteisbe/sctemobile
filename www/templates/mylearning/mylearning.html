@@ -1,30 +1,32 @@
 <ion-view view-title="{{cortexLogo}}" class="my-learning">
     <ion-nav-buttons side="secondary">
-        <img src="img/svg/icon_search_grey.svg" class="icon-my-learning-search" />
+        <img ng-click="redirectDisover()" src="img/svg/icon_search_grey.svg" class="icon-my-learning-search" />
     </ion-nav-buttons>
-
     <ion-header-bar class="bar-subheader">
         <div class="tabs tabs-secondary subheader-tabs" ng-init="activeTab = 0">
-            <a class="tab-item" ng-class="{active: activeTab == 0}" ng-click="activeTab = 0" ui-sref="tab.mylearning">
-                <img src="img/svg/tab_my-learning_in-progress.svg" width="37%" /><br> In Progress
+            <a class="tab-item tab-inprogress" ng-class="{active: activeTab == 0}" ng-click="activeTab = 0" ui-sref="tab.mylearning">
+                <img src="img/svg/tab_my-learning_in-progress.svg" width="24%" />
+                <br> In Progress
             </a>
-            <a class="tab-item" ng-class="{active: activeTab == 1}" ng-click="activeTab = 1" ui-sref="tab.mylearning.completed">
-                <img src="img/svg/tab_my-learning_completed.svg" width="25%" /><br> Completed
+            <a class="tab-item tab-completed" ng-class="{active: activeTab == 1}" ng-click="activeTab = 1">
+                <img src="img/svg/tab_my-learning_completed.svg" width="20%" />
+                <br> Completed
             </a>
-            <a class="tab-item" ng-class="{active: activeTab == 2}" ng-click="activeTab = 2" ui-sref="tab.mylearning.allcourses">
-                <img src="img/svg/tab_my-learning_all-courses.svg" width="25%" /><br> All Courses
+            <a class="tab-item tab-allcourses" ng-class="{active: activeTab == 2}" ng-click="activeTab = 2">
+                <img src="img/svg/tab_my-learning_all-courses.svg" width="20%" />
+                <br> All Courses
             </a>
         </div>
     </ion-header-bar>
     <ion-content class="has-subheader scroll-content background padding">
         <div class="main-title">My Learning</div>
         <div class="course-catalog">
-            <a class="button" href="">GO TO COURSE CATALOG
-            <img src="img/svg/icon_arrow.svg" />
+            <a class="button" ng-click="openURL()"> GO TO COURSE CATALOG
+            <img src="img/svg/icon_arrow.svg"/>
             <!-- <i class="icon ion-chevron-right"></i> -->
             </a>
         </div>
-        <div class="inprogress-course" ng-hide="!activeTab == 0">
+        <div class="inprogress-course" ng-show="activeTab == 0">
             <ion-list>
                 <div ng-repeat="inprogressCourse in inprogressCourses" class="course-module-content">
                     <ion-item class="item-stable course-list" ng-click="toggleInprogressCourse(inprogressCourse)" ng-class="{active: isInprogressCourseShown(inprogressCourse)}">
@@ -32,44 +34,67 @@
                         <i class="icon accordian-icon" ng-class="isInprogressCourseShown(inprogressCourse) ? 'ion-minus' : 'ion-plus'"></i>
                     </ion-item>
                     <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isInprogressCourseShown(inprogressCourse)">
-                        <a ng-click="viewModal()">
-                            {{inprogressModule.moduleName}}
-                            <i class="icon ion-chevron-right"></i>
+                        <a ng-click="viewModal(inprogressModule.id, inprogressModule.moduleName)">
+                            <div>{{inprogressModule.moduleName}}
+                                <i class="icon ion-chevron-right"></i>
+                            </div>
                         </a>
                     </ion-item>
                 </div>
             </ion-list>
         </div>
+        <div class="inprogress-course" ng-show="activeTab == 2">
+            <ion-list>
+                <div ng-repeat="allCourse in allCourses" class="course-module-content">
+                    <ion-item class="item-stable course-list" ng-click="toggleAllCourse(allCourse)" ng-class="{active: isAllCourseShown(allCourse)}">
+                        <b>{{allCourse.courseName}}</b>
+                        <i class="icon accordian-icon" ng-class="isAllCourseShown(allCourse) ? 'ion-minus' : 'ion-plus'"></i>
+                    </ion-item>
+                    <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isAllCourseShown(allCourse)" ng-click="viewModal()">
+                        <a>{{inprogressModule.moduleName}}
+                    <i class="icon ion-chevron-right"></i>
+                </a>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
+        <div class="inprogress-course" ng-show="activeTab == 1">
+            <ion-list>
+                <div ng-repeat="completedCourse in completedCourses" class="course-module-content">
+                    <ion-item class="item-stable course-list" ng-click="toggleCompletedCourse(completedCourse)" ng-class="{active: isCompletedCourseShown(completedCourse)}">
+                        <b>{{completedCourse.courseName}}</b>
+                        <i class="icon accordian-icon" ng-class="isCompletedCourseShown(completedCourse) ? 'ion-minus' : 'ion-plus'"></i>
+                    </ion-item>
+                    <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isCompletedCourseShown(completedCourse)" ng-click="viewModal()">
+                        <a>{{inprogressModule.moduleName}}
+                    <i class="icon ion-chevron-right"></i>
+                </a>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
         <ui-view name="tab-mylearning"></ui-view>
-
         <div class="mylearning-webinars">
             <img src="img/u67.png" />
         </div>
-        <div class="mylearning-games">Games</div>
-        <div class="games" ng-repeat="mylearningGame in mylearningGames">
-            <div class="row">
-                <div class="col col-25">
+        <div class="mylearning-game-header">
+            <div class="mylearning-games">Games</div>
+            <a class="see-all" ng-click="gamesView()">See All &gt;</a>
+        </div>
+        <div class="list">
+            <div ng-repeat="mylearningGame in mylearningGames">
+                <div class="item item-thumbnail-left">
                     <img ng-src="{{mylearningGame.image}}" />
-                </div>
-                <div class="col">
-                    <div class="mylearning-games-title-description">{{mylearningGame.image_title}}</div>{{mylearningGame.image_description}}
+                    <div class="row">
+                        <!-- <div class="col-75"> -->
+                        <div class="mylearning-games-title-description">{{mylearningGame.image_title}}
+                            <br>
+                            <p>{{mylearningGame.image_description}}</p>
+                        </div>
+                        <!-- </div> -->
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="games">
-            <h4 class="heading">GAMES</h4>
-            <a class="see-all" ng-click="gamesView()">See All &gt;</a>
-            <div>
-                <table>
-                    <tr>
-                        <td class="game-list" ng-repeat="image in images">
-                            <a href="" class="mylearning-game-image"><img ng-src="{{image.image}}">
-                                <p class="text">{{image.image_title}}</p>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div> -->
     </ion-content>
 </ion-view>

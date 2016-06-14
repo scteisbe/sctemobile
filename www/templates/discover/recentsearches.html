@@ -1,0 +1,19 @@
+<ion-modal-view class="recent-search-wrapper">
+    <!-- <ion-header-bar class="bar-calm">
+        <button class="button button-clear" ng-click="closeAdd()">
+            <i class="icon ion-android-close"></i>
+        </button>
+        <div class="h1 title">Recent searches</div>
+    </ion-header-bar> -->
+    <ion-content>
+        <div class="item title">PREVIOUS SEARCHES</div>
+        <div class="list">
+            <a class="item item-icon-right" ui-sref="tab.searchresults" ng-repeat="i in [0,1,2,3,4,5]">
+                <label class="date">01 May 2016</label><br/>
+    			<label class="query">Arris modem fast reboot</label>
+    			<i class="icon ion-ios-arrow-right arrow-icon"></i><br/>
+    			<label class="count">23 Results</label>
+			</a>
+        </div>
+    </ion-content>
+</ion-modal-view>

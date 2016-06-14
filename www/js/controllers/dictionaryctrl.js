@@ -1,27 +1,27 @@
-var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionicPopover', '$stateParams', function($scope,$state, $rootScope, $ionicLoading, $ionicPopover, $stateParams){
+var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionicPopover', '$stateParams','Utils', '$localstorage', function($scope,$state, $rootScope, $ionicLoading, $ionicPopover, $stateParams,Utils,$localstorage){
 
 
 	var template = '<style>.popover { height:180px; width: 180px; }</style>' + 
 	'<ion-popover-view>' + 
-  '<ion-content>' +
+  '<ion-content">' +
   '<div class="row">' +
   '<div class="col col-center">' +
   '<lable>' +
-  '<spam class="descriptivetext"><b>Term:</b> Some Text</spam>' +
+  '<spam class="descriptivetext"><b>Term:</b> {{popupitem.term}}</spam>' +
   '</lable>' +
   '</div>' +
   '</div>' +
   '<div class="row">' +
   '<div class="col col-center">' +
   '<lable>' +
-  '<spam class="descriptivetext"><b>Definition:</b> Some long text comes here. test string ignore it.</spam>' +
+  '<spam class="descriptivetext"><b>Definition:</b> {{popupitem.definition}}</spam>' +
   '</lable>' +
   '</div>' +
   '</div>' +
   '<div class="row">' +
   '<div class="col col-center">' +
   '<lable>' +
-  '<spam class="descriptivetext"><b>Category:</b> Some Text</spam>' +
+  '<spam class="descriptivetext"><b>Category:</b> {{popupitem.category}}</spam>' +
   '</lable>' +
   '</div>' +
   '</div>' + 
@@ -32,8 +32,11 @@ var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ion
     scope: $scope
   });
 
-  $scope.openPopover = function($event) {
-    $scope.popover.show($event);
+  $scope.openPopover = function($event,index) {
+    
+    // Not needed for demo, need to finalize the content with Kevin : Surojit
+    // $scope.popupitem = $scope.filteredItems[index];
+    // $scope.popover.show($event);
   };
 
   $scope.closePopover = function() {
@@ -55,11 +58,17 @@ var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ion
       // Execute action
     });
 
+   $scope.redirectDisover = function() {
+       Utils.redirectDiscover();
+    };
+
 // Check if a state change happened
 
 $scope.searchString = "";
 
-$scope.filteredItems = $rootScope.dictionarywords;
+$scope.filteredItems = $localstorage.getObject("dictionarywords");
+$scope.dictionarywords = $scope.filteredItems;
+
 
 $scope.$on('$stateChangeSuccess',
   function onStateSuccess(event, toState, toParams, fromState) {

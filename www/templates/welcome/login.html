@@ -6,19 +6,19 @@
          <img src="img/login_logos.png" class = "imageLogo"/>
        </div>-->  
        <div class="row">
-       <div id="logoview" class="imageLogo">
-         <img src="img/SCTE-ISBE-logo.png" class="imageproperties" />
-       </div>
+         <div id="logoview" class="imageLogo">
+           <img src="img/SCTE-ISBE-logo.png" class="imageproperties" />
+         </div>
        </div>
 
        <div id="usernamediv" class="list list-inset">
         <label class="item item-input">
-          <input ng-model="username" type="text" placeholder="Username" />
+          <input ng-model="username" type="text" placeholder="Enter Username" />
         </label>
       </div>
       <div id="passworddiv" class="list list-inset">
         <label class="item item-input">
-          <input ng-model="password" type="password" placeholder="Password" />
+          <input ng-model="password" type="password" placeholder="Enter Password" />
         </label>
       </div>
       <div id="forgot-password" class="list backgroundprimarycolor list-inset">
@@ -28,27 +28,29 @@
      </div>
      <div id="logindiv">
       <button ng-click="login()" class="button button-block button-energized">
-        Login
+        LOGIN
       </button>
     </div>
-    <div id='loginbottom'>
-      <div class="row">
-        <div id="signuptext" class="col text-center col-center">
-          <span class="haveacctext">Don't have an account to login?</span>
-        </div>
-      </div>
-      <div class="row">
-        <div id="joinSCTEdiv" class="col text-center col-center">
-          <button id="joinscte" ng-click="joinSCTE()" class="button button-outline button-energized">
-            JOIN SCTE NOW
-          </button>
-        </div>
-      </div>
-      <div class="row">
-      <div id="weblink" class="col text-center col-center">
-          <a class='weblink' href="http://www.scte.org">www.scte.org</a><span class="weblink">|</span><a class='weblink' href="http://www.isbe.org">www.isbe.org</a>
-        </div>
+  </div>
+  <div id='loginbottom'>
+    <div class="row">
+      <div id="signuptext" class="col text-center col-center">
+        <span class="haveacctext">Don't have an account to login?</span>
       </div>
     </div>
-  </ion-content>
+    <div class="row">
+      <div id="joinSCTEdiv" class="col text-center col-center">
+        <button id="joinscte" ng-click="joinSCTE()" class="button button-outline button-energized">
+          JOIN SCTE NOW
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="weblink" class="col text-center col-center">
+        <a class='weblink' href="http://www.scte.org">www.scte.org</a><span class="weblink">|</span><a class='weblink' href="http://www.isbe.org">www.isbe.org</a>
+      </div>
+    </div>
+  </div>
+</ion-content>
 </ion-view>

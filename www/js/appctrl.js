@@ -20,6 +20,9 @@ $scope.hideLoader = function(){
         buttonName: 'OK'
     }).then(function(){});
 };
+
+   
+    
 	
 $scope.cortexLogo = '<img src="img/cortex_logo.png" class="header-corter-logo">';
 	

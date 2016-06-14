@@ -1,6 +1,6 @@
-angular.module('scteApp.services', [])
+angular.module('scteApp.services', ['times.tabletop'])
+.factory('Utils', function($ionicLoading,$ionicPopup,$http,$state,$q,Tabletop) {
 
-.factory('Utils', function($ionicLoading,$ionicPopup,$http) {
   // Might use a resource here that returns a JSON array
 
   var Utils = {
@@ -25,7 +25,7 @@ angular.module('scteApp.services', [])
 				$ionicLoading.hide();
 				if(response.data == null) {
 					console.log("failed response.." + response.data);
-					Utils.displayAlert("Network Error !");
+					//Utils.displayAlert("Network Error !");
 				} else {
 					console.log("failed response.." + response.data["message"]);
 					Utils.displayAlert("Wrong username or password !");
@@ -66,13 +66,25 @@ angular.module('scteApp.services', [])
             buttonName: 'OK'
         }).then(function(){});
     },
-    
-     getBuildType : function() {
+    redirectDiscover : function() {
+        $state.go('tab.discover');
+    },
+
+    getBuildType : function() {
          //$buildType = "stub";
-         $buildType = "live";
+          $buildType = "live"; 
          
          return $buildType;
-     }
+     },
+    
+    addEvent : function (startDate, endDate, eventName) {
+        var output = '';
+// Event logic has to be written.
+        return output;
+    }
   };
+
+
+
   return Utils;
 });

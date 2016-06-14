@@ -1,18 +1,18 @@
 <ion-view view-title="{{cortexLogo}}" class="resource">
     <ion-nav-buttons side="secondary">
-        <button class="button button-icon ion-search"></button>
+        <img ng-click="redirectDisover()" src="img/svg/icon_search_grey.svg" class="icon-my-learning-search" />
     </ion-nav-buttons>
     <ion-content>
         <ui-view name="mylearning-tab"></ui-view>
-        <div class="topic">Resource</div>
+        <div class="topic">RESOURCE</div>
         <div class="events">
-            <h4 class="heading">Your Events</h4>
+            <h4 class="heading">YOUR EVENTS</h4>
             <a class="see-all" ng-click="myEventsList()">See All &gt;</a>
             <div class="card eventindiv" ng-repeat="event in events">
                 <div class="row">
                     <div class="col col-20 date-box">
-                     
-                        <img src="../svg/img_calendar.svg" />
+
+                        <img src="svg/img_calendar.svg" />
                         <div class="date">{{event.date}}</div>
                         <div class="month">{{event.month}}</div>
                     </div>
@@ -23,55 +23,63 @@
                 </div>
 
 
-                            <!-- <div class="event-date">
+                <!-- <div class="event-date">
                                 <span class="circle">{{event.date}}</span>
                                 <span class="month">{{event.month}}</span>
                                  <div><a href="">{{event.eventDate}}  </a>
                         </div>
                     </div> -->
-                        <!-- <div class="alpha"><a href="">{{event.eventDate}}  </a>
+                <!-- <div class="alpha"><a href="">{{event.eventDate}}  </a>
                     </div> -->
 
-                </div>
+            </div>
+        </div>
 
-                <div class="dictionary">
-                    <h4 class="heading">Dictionary</h4>
-                    <a class="see-all" ng-click="dictionaryview('all')">See All &gt;</a>
-                    <div>
-                        <p class="text">{{dictInfo}}</p>
-                    </div>
+        <div class="dictionary">
+            <h4 class="heading">DICTIONARY</h4>
+            <a class="see-all" ng-click="dictionaryview('all')">See All &gt;</a>
+            <div>
+                <p class="text">{{dictInfo}}</p>
+            </div>
 
-                    <div class="alphapad">
-                        <div class="dummy" ng-repeat="alpha in alphabets" ng-click="dictionaryview(alpha.letter)">{{alpha.letter}}</div>
-                    </div>
-                </div>
-
-
+            <div class="alphapad">
+                <div class="dummy" ng-repeat="alpha in alphabets" ng-click="dictionaryview(alpha.letter)">{{alpha.letter}}</div>
+            </div>
+        </div>
 
 
-                <div class="scte">
-                    <h4 class="heading">SCTE standards</h4>
-                    <a class="see-all" ng-click="SCTEstd()">See All &gt;</a>
-                    <ion-list>
-                        <!--  <div class="inprogress-course"> -->
-                        <ion-list>
-                            <div ng-repeat="scte in scteStandardsSample">
-                                <ion-item class="item-stable scte-list">
-                                   <div class="row">
-                                    <div class="col col-20">
-                                        <img class="image" ng-src="{{scte.image}}">
-                                    </div>
-                                    <div class="col col-60">
-                                        <div class="row">
-                                         <a href=""> {{scte.scteDocName}}  </a> </div>
-                                         <div class="row break">{{scte.scteDocInfo}}</div>
-                                         <div class="row publish">{{scte.publishedOn}}</div>
-                                     </div>
-                                     <div class="col col-90 arrow"><img src="../svg/icon_arrow.svg" /></div>
-                                 </ion-item>
-                                 
-                             </ion-list>
-                         </ion-list>
-                     </div>
-                 </ion-content>
-             </ion-view>
+
+
+        <div class="scte">
+            <h4 class="heading">SCTE STANDARDS</h4>
+            <a class="see-all" ng-click="SCTEstd()">See All &gt;</a>
+            <ion-list>
+                <!--  <div class="inprogress-course"> -->
+                <ion-list>
+                    <div ng-repeat="index in [0,1,2]" ng-click="openURL(standards[index].url)">
+                        <ion-item class="item-stable scte-list">
+                            <div class="row">
+                                <div class="col col-20">
+                                    <img class="image" ng-src="img/u214.png">
+                                </div>
+                                <div class="col col-60">
+                                    <div class="row">
+                                        <a ng-click="openURL(standards[index].url)"> {{standards[index].identifier}}  </a>                                        </div>
+                                    <div class="row break">{{standards[index].title}}</div>
+                                   
+                                </div>
+                                <div class="col col-90 arrow"><img src="svg/icon_arrow.svg" /></div>
+                            </div>
+                        </ion-item>
+
+                </ion-list>
+
+                <!--<div class="item item-icon-left" ng-repeat="index in [0,1,2]" ng-click="openPage(standards[index].url)">
+                    <i class="icon ion-document"></i>
+                    <h2>{{standards[index].identifier}}</h2>
+                    <p>{{standards[index].title}}</p>
+                </div>-->
+            </ion-list>
+            </div>
+    </ion-content>
+</ion-view>

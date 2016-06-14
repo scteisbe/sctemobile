@@ -1,11 +1,8 @@
 	<ion-view view-title="{{cortexLogo}}">
-		<!--<ion-nav-bar id="dictionary-bar" class="bar-positive" ng-controller="dictionaryCtrl" align-title="center">
-			<ion-nav-back-button class="button-clear"
-			ng-click="bthBack()">
-			<i class="ion-ios-arrow-back"></i> Back
-		</ion-nav-back-button>
-	</ion-nav-bar>-->
-	<ion-content scroll='false' id="dictionart-view" class="has-header dic-container" ng-controller="dictionaryCtrl">
+	<ion-nav-buttons side="secondary">
+        <img ng-click="redirectDisover()" src="img/svg/icon_search_grey.svg" class="icon-my-learning-search" />
+    </ion-nav-buttons>
+	<ion-content scroll='false' id="dictionart-view" ng-controller="dictionaryCtrl" class="has-header dic-container">
 		<div id='searchbar' class="row searchinput">
 			<div class="col col-center">
 				<label class="item item-input searchbox">
@@ -15,9 +12,10 @@
 			</div>
 		</div>
 		<ion-alpha-scroll ng-model="filteredItems" key="word" id="popoverviewdiv">
-			<div id="listview" class="row" ng-click = "openPopover($event)">
+			<div id="listview" class="row" ng-click = "openPopover($event,$index)">
 				<div class="col col-25 list-leftword">{{item.word}}</div>
 				<div class="col col-75 list-rightword">{{item.description}}</div>
 			</div>
 		</ion-alpha-scroll>
+		</ion-content>
 	</ion-view>

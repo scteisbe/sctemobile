@@ -1,54 +1,32 @@
-<ion-view view-title='{{cortexLogo}}' class="techtips">
+<ion-view view-title='{{cortexLogo}}' class="techtips" ng-init="initialize()">
     <ion-nav-buttons side="secondary">
-        <button class="button button-icon ion-ios-gear-outline" ui-sref="tab.settings"></button>
+        <label class="submit-btn" ng-click="showPopup()">Submit</label>
     </ion-nav-buttons>
     <ion-content class="padding">
-        <h3>Tech Tips</h3>
-        <div>
-            <div class="list card">
-                <div class="item item-body">
-                    <div class="list">
-                        <a class="item item-thumbnail-left" href="#">
-                            <img ng-src="{{image}}" class="img-responsive" />
-                            <i class="icon ion-social-youtube"></i> Wi-Fi Dead Spots
-                            <p>Client's wifi router is the basement? No problem!</p>
-                        </a>
+        
+        <div ng-repeat="techTipsContent in techTipsContents" class="techtips-video-pdf-types">
+            <div ng-if="techTipsContent.template == 'video'">
+                <h4><b>{{techTipsContent.title}}</b></h4>
+                <video poster="{{techTipsContent.coverimageurl}}" class="img-responsive" ng-src="{{techTipsContent.videourl}}" ng-click="openPage(techTipsContent.videourl)"></video>
+            </div>
+            <div ng-if="techTipsContent.template == 'html'" ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)">
+                <div class="row">
+                    <div class="col-25">
+                        <img ng-src="{{techTipsContent.coverimageurl}}" class="img-responsive" />
+                    </div>
+                    <div class="col-75">
+                        <h4><b>{{techTipsContent.title}}</b></h4>
+                    </div>
+                </div>
+                <p><b>{{techTipsContent.subtitle  | limitTo: 200}}{{techTipsContent.subtitle > 200 ? '...' : ''}}</b></p>
+                <div class="techtips-digital">
+                    <a ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)">Read more</a>
+                    <div class="techtips-ratings">
                         <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col col-80 col-offset-10 text-center">
-                    <button ng-click="modal.show()" class="button button-calm">
-                        Submit your Tech Tip!
-                    </button>
-                </div>
-            </div>
-        </div>
-        <hr />
-        <div>
-            <h4>Understanding Cable Technology: Digital Video</h4>
-            <img src="img/video-placeholder.jpg" class="img-responsive" />
-            <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
-        </div>
-        <hr />
-        <div>
-            <div class="row">
-                <div class="col col-25"><img src="img/pdf-placeholder.png" class="img-responsive" /></div>
-                <div class="col">
-                    <h4>Remote Power Outage</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
-        </div>
-        <hr />
-        <div>
-            <h4>Digital Leakage</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
-            <div>
-                <a ng-click="techtipRouter()">Read more</a>
-            </div>
+            <hr />
         </div>
         <script id="templates/modal.html" type="text/ng-template">
             <ion-modal-view class="video-modal-maincontainer">
