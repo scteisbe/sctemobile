@@ -82,7 +82,7 @@ function showInfo(data) {
 						theDataService.setObject('staticcontent.' + sheet, staticContent[sheet]);
 						
 						
-						console.log(sheet + "..." + JSON.stringify(staticContent[sheet]));
+						//console.log(sheet + "..." + JSON.stringify(staticContent[sheet]));
 					} catch (error) {
 						console.log("Can't read sheet '" + sheet + "'. Using local client cache. " + error);
 					}     

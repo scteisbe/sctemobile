@@ -1,6 +1,7 @@
 var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal','$ionicLoading','Utils','$localstorage', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils, $localstorage) {
     $scope.staticContent = [];
 	$scope.platform = ionic.Platform.platform();
+    $scope.username = $localstorage.getObject('username');
 
   	var sheetnames = [  // every sheet you want access to needs to be listed here
 //     'a-sheet-with-errors',   // used for testing
@@ -40,14 +41,16 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal','$ionicLoadi
     $scope.staticContent[sheet] = $localstorage.getObject('staticcontent.' + sheet);
 	console.log(sheet + "..." + JSON.stringify($scope.staticContent[sheet]));
   });
+
+  console.log("user name stored is :--"+$localstorage.getObject('username'));
   
-  console.log("Loaded static content from local cache.");
+  console.log("Loaded static content from local cache. "+$scope.username);
     if(Utils.getBuildType() == "stub") {
          $scope.username = "Bradley";
 	} else {
         $profileData = $localstorage.getObject('profiledata');
         if($profileData != null) {
-            $scope.username = $profileData['FirstName'];
+           // $scope.username = $profileData['FirstName'];
         }
         else {
             $scope.showLoader();

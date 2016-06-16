@@ -3,8 +3,8 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
 	$scope.standards = $localstorage.getObject('staticcontent.standards');
 	
     dictionarywords= [];
-    if(Utils.getBuildType() == "stub"){
-        dictionarywords=[{word : "A", description : "Ampere", definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
+    //if(Utils.getBuildType() == "stub"){
+        $scope.dictionarywordsStub=[{word : "A", description : "Ampere", definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         {word : "A/D", description : "Analog to Digital (convertion)" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         {word : "A/D/A", description : "Analog to Digital to Analog" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         {word : "AAC", description : "Advanced Audio Coding" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
@@ -22,7 +22,7 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
         {word : "ETA", description : "Element" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         {word : "ENR", description : "Element" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         ];
-    } else {
+   // } else {
         
      
        $requestParamArr = [];
@@ -38,6 +38,7 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
             console.log(response);
             //console.log(response['data']);
             if(response != null) {
+				//data available from live API
                 $message = response['message'];
                 data = response['data'];
                 console.log("statusCode.." + $message['statusCode']);
@@ -66,8 +67,14 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
                     console.log($message['statusMessage'])
                 }
             }
+			else{
+				//No API access
+				$scope.hideLoader();
+				//display data from stub
+				$localstorage.setObject("dictionarywords",$scope.dictionarywordsStub);
+			}
         });
-    }
+    //}
     
     $scope.events = [{
         "image": "img/u183.png",

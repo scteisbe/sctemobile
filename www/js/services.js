@@ -24,7 +24,7 @@ angular.module('scteApp.services', ['times.tabletop'])
 			
 				$ionicLoading.hide();
 				if(response.data == null) {
-					console.log("failed response.." + response.data);
+					console.log("failed response null received .." + JSON.stringify(response));
 					//Utils.displayAlert("Network Error !");
 				} else {
 					console.log("failed response.." + response.data["message"]);
@@ -79,12 +79,21 @@ angular.module('scteApp.services', ['times.tabletop'])
     
     addEvent : function (startDate, endDate, eventName) {
         var output = '';
-// Event logic has to be written.
+    // Event logic has to be written.
         return output;
+    },
+
+    verifyUser : function (username, password, userCred) {
+        var applicationGo = "no";
+        angular.forEach(userCred, function(storedUser){
+            if(storedUser.username == username && storedUser.password == password){
+                console.log("username and password matched");
+                applicationGo = "yes";
+            }
+            console.log(JSON.stringify(storedUser));
+        });
+        return applicationGo;
     }
   };
-
-
-
   return Utils;
 });

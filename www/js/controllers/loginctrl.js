@@ -1,9 +1,21 @@
-var  loginCtrl =  ['$scope', '$state', '$rootScope','$http','$ionicLoading','$ionicPopup','$localStorage','Utils', '$q','StaticService','$timeout', '$window',
-			function($scope,$state,$rootScope,$http,$ionicLoading,$ionicPopup,$localStorage, Utils, $q, StaticService, $timeout, $window) {
+var  loginCtrl =  ['$scope', '$state', '$rootScope','$http','$ionicLoading','$ionicPopup','$localStorage','Utils', '$q','StaticService','$timeout', '$window','$localstorage',
+			function($scope,$state,$rootScope,$http,$ionicLoading,$ionicPopup,$localStorage, Utils, $q, StaticService, $timeout, $window, $localstorage) {
 
 	// Just for developmet, need to remove before production release
-	$scope.username = 'maggie';
-	$scope.password = 'testrecord';
+	$scope.userCred = [{
+		"username" : "maggie",
+		"password" : "testrecord"
+	},
+	{
+		"username" : "testUser1",
+		"password" : "testrecord"
+	},
+	{
+		"username" : "testUser2",
+		"password" : "testrecord"
+	}];
+	// $scope.username = 'maggie';
+	// $scope.password = 'testrecord';
 	$scope.goLogin = 'no';
 	//Fetch the static data from google spreasheet
 	// StaticService.fetchStaticData(); //todo - check for error
@@ -16,15 +28,15 @@ var  loginCtrl =  ['$scope', '$state', '$rootScope','$http','$ionicLoading','$io
 
 	$scope.login = function(userName, password, rememberMe) {
 		//$state.go('tab.discover');
-		console.log("username.." + $localStorage['username']);
-		console.log("password.." + $scope.password);
+		console.log("username in localStorage.." + $localStorage['username']);
+		console.log("password in localstorage.." + $scope.password);
 		
-		$localStorage['username'] = $scope.username;
-		console.log("username.." + $localStorage['username']);
+		$localstorage.setObject('username', $scope.username);
+		// console.log("username.." + $localStorage['username']);
 		
 				
 		if(Utils.getBuildType() == "stub") {
-			$scope.stubLogin();
+			$state.go('tab.discover');
 		}
 		else {
 			if( $scope.username == null || $scope.password == null){
@@ -39,7 +51,7 @@ var  loginCtrl =  ['$scope', '$state', '$rootScope','$http','$ionicLoading','$io
 				$headerParamArr = [];
 				$scope.showLoader();
 				Utils.doHttpRequest('POST','http://vmdimisapp01:1322/api/Token/PostToken',$headerParamArr,$requestParamArr).then(function(response) {
-					console.log(response);
+					console.log("response from the API ..."+response);
 					// to be deleted.
 					//$state.go('tab.discover');
 					if(response != null) {
@@ -58,23 +70,20 @@ var  loginCtrl =  ['$scope', '$state', '$rootScope','$http','$ionicLoading','$io
 					}
 					else {
 						//$scope.displayAlert("Can't reach server. You need to be connected to SCTE-DATA WiFi netwrok !");
-						$scope.stubLogin();
+						$scope.applicationGo = Utils.verifyUser($scope.username, $scope.password, $scope.userCred);
+						console.log("user credentials verified");
+						if($scope.applicationGo == "yes"){
+							//$localstorage.setObject('username', $scope.username);
+							//console.log("Username in the $scope :" +$localStorage['username']);
+							$state.go('tab.discover');
+						} else{
+							$scope.displayAlert("Incorrect Username and Password");
+						}						
 					}
 				});
 			}
 		}
 	};
-	
-	$scope.stubLogin = function()
-	{
-		 $http.get('stubs/token_response.json').success(function(data) {
-			//$scope.login = data;
-			console.log(data);
-			$rootScope.authToken = (data['data'])['access_token'];
-			console.log("authToken.." +  $rootScope.authToken);
-			$state.go('tab.discover');
-		});
-	}
 
 	$scope.joinSCTE = function()
 	{
