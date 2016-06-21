@@ -1,9 +1,9 @@
-var AppLibraryCtrl = ['$scope', '$state', '$rootScope','Utils','$localstorage', function($scope, $state, $rootScope,Utils,$localstorage) {
+var AppLibraryCtrl = ['$scope', '$state', '$rootScope','Utils','$localStorage', function($scope, $state, $rootScope,Utils,$localStorage) {
     $scope.staticContent = [];
     $scope.androidPlatform = [];
     $scope.iosPlatform = [];
     $scope.platform = ionic.Platform.platform();
-    $scope.staticContent['apps'] = $localstorage.getObject('staticcontent.apps');
+    $scope.staticContent['apps'] = $localStorage['staticcontent.apps'];
     $scope.appList = $scope.staticContent['apps'];
 
 //     $scope.category1 = [{

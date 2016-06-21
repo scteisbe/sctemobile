@@ -1,5 +1,18 @@
  /*divya */
 
+/*************discover styling starts*************/
+
+/*.discover-wrapper .events .row .col-70 .text-box .row-top a {
+  color: #00548e;
+  font-family: 'Helvetica-Neue';
+}
+
+.discover-wrapper .events .row .col-70 .text-box .row-bottom {
+  font-family: 'Helvetica Neue Light';
+}*/
+
+/*************discover styling ends************/
+
 /*****************my learning styling starts*****************/
 
 my-learning .bar-subheader {
@@ -295,7 +308,7 @@ my-learning .bar-subheader {
 }
 
 .my-events .eventindiv .text-box {
-    padding: 0 15px;
+    padding: 0 12px;
 }
 
 .my-events .eventindiv .text-box .row-top a {
@@ -450,4 +463,16 @@ background-image: url(./svg/img_calendar.svg);
 	width: 15px;
 }
 
-/*****************my events styling ends***************
+.my-events .eventindiv .event-description .description-button {
+  text-align: center;
+  padding-bottom: 12px;
+}
+
+.my-events .eventindiv .event-description .description-button a {
+  border-radius: 5px;
+  border-color: #00548e;
+  background-color: #00548e;
+  padding: 5px;
+}
+
+/*****************my events styling ends***************/

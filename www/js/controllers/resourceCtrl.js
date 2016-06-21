@@ -1,10 +1,10 @@
-var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localstorage', function($scope, $state, $rootScope, $http, Utils, $localstorage) {
+var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localStorage', function($scope, $state, $rootScope, $http, Utils, $localStorage) {
 
-	$scope.standards = $localstorage.getObject('staticcontent.standards');
+	$scope.standards = $localStorage['staticcontent.standards'];
 	
     dictionarywords= [];
     //if(Utils.getBuildType() == "stub"){
-        $scope.dictionarywordsStub=[{word : "A", description : "Ampere", definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
+    $scope.dictionarywordsStub=[{word : "A", description : "Ampere", definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         {word : "A/D", description : "Analog to Digital (convertion)" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         {word : "A/D/A", description : "Analog to Digital to Analog" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         {word : "AAC", description : "Advanced Audio Coding" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
@@ -22,19 +22,19 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
         {word : "ETA", description : "Element" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         {word : "ENR", description : "Element" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         ];
-   // } else {
+    //} else {
         
      
        $requestParamArr = [];
        $headerParamArr = [];
         
-       if($localstorage.getObject("dictionarywords") == null) {
+       if($localStorage["dictionarywords"] == null) {
            $scope.showLoader();
        }
         
         $headerParamArr.push({"authToken":$rootScope.authToken});
         $headerParamArr.push({"authType":"Bearer"});
-        Utils.doHttpRequest('GET','http://vmdimisapp01:1322/api/Glossary/GetGlossary',$headerParamArr,$requestParamArr).then(function(response) {
+        Utils.doHttpRequest('GET','https://devapi.scte.org/mobileappui/api/Glossary/GetGlossary',$headerParamArr,$requestParamArr).then(function(response) {
             console.log(response);
             //console.log(response['data']);
             if(response != null) {
@@ -59,7 +59,7 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
                             dictionarywords.push(dictObject);
                         });
                         
-                        $localstorage.setObject("dictionarywords",dictionarywords);
+                        $localStorage["dictionarywords"]=dictionarywords;
                         //console.log("dictionarywords..." + $scope.dictionarywords.length);
                     }   
                 } else {
@@ -71,12 +71,12 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
 				//No API access
 				$scope.hideLoader();
 				//display data from stub
-				$localstorage.setObject("dictionarywords",$scope.dictionarywordsStub);
+				$localStorage["dictionarywords"]=$scope.dictionarywordsStub;
 			}
         });
     //}
     
-    $scope.events = [{
+    /*$scope.events = [{
         "image": "img/u183.png",
         "date":"18",
         "month":"May '16",
@@ -94,7 +94,7 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
         "month":"May '16",
         "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
         "eventInfo": "Where:TBD,Sioux Falls, SD"
-    }];
+    }];*/
 
     $scope.dictInfo = "You can search for acronym definitions from the main search. Use the letters below to browse.";
    $scope.scteStandardsSample = [{
@@ -125,6 +125,10 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
         $state.go('tab.resource.scteSTD');
     };
 
+     $scope.whitepaperOpen = function() {
+        $state.go('tab.whitepaper');
+    };
+
      $http.get('json/alphabets.json').success(function(data) {
         $scope.alphabets = data;
     });
@@ -149,16 +153,16 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
         $scope.scteStandards = data;
     });
 
-    $scope.myEventsList = function() {
+    /*$scope.myEventsList = function() {
         $state.go('tab.resourcesmyevents');
-    };
+    };*/
 
-    $scope.redirectDisover = function() {
+    /*$scope.redirectDisover = function() {
        Utils.redirectDiscover();
        console.log($rootScope.data);
-    };
+    };*/
 
-    $scope.myEvents = [{
+    /*$scope.myEvents = [{
         "eventDate" : "19",
         "eventMonth" : "Aug '16",
         "WPeventYear" : "2016",
@@ -296,6 +300,6 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$locals
         "eventLocation" : "SCTE Exton, PA",
         "eventTime" : "All Day",
         "WPeventDate" : "30-Aug-2016"
-    }];
+    }];*/
 
 }];

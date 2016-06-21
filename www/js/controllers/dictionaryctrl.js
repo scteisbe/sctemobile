@@ -1,9 +1,9 @@
-var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionicPopover', '$stateParams','Utils', '$localstorage', function($scope,$state, $rootScope, $ionicLoading, $ionicPopover, $stateParams,Utils,$localstorage){
+var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionicPopover', '$stateParams','Utils', '$localStorage', function($scope,$state, $rootScope, $ionicLoading, $ionicPopover, $stateParams,Utils,$localStorage){
 
 
 	var template = '<style>.popover { height:180px; width: 180px; }</style>' + 
 	'<ion-popover-view>' + 
-  '<ion-content">' +
+  '<ion-content>' +
   '<div class="row">' +
   '<div class="col col-center">' +
   '<lable>' +
@@ -66,7 +66,7 @@ var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ion
 
 $scope.searchString = "";
 
-$scope.filteredItems = $localstorage.getObject("dictionarywords");
+$scope.filteredItems = $localStorage["dictionarywords"];
 $scope.dictionarywords = $scope.filteredItems;
 
 

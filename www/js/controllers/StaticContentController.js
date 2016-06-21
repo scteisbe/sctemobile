@@ -1,9 +1,9 @@
 (function() {
 angular.module('cortexConfig')
-.controller('StaticContentController', ['$scope', '$localstorage', 'ConfigService', StaticContentController])
+.controller('StaticContentController', ['$scope', '$localStorage', 'ConfigService', StaticContentController])
 
 
-function StaticContentController($scope, $localstorage, ConfigService) {
+function StaticContentController($scope, $localStorage, ConfigService) {
   $scope.platform = ionic.Platform.platform();
 
   switch($scope.platform) {
@@ -39,7 +39,7 @@ function StaticContentController($scope, $localstorage, ConfigService) {
 
   // immediately populate from localstorage
   sheetnames.forEach(function(sheet, i){
-    $scope.staticcontent[sheet] = $localstorage.getObject('staticcontent.' + sheet) || sheet;
+    $scope.staticcontent[sheet] = $localStorage['staticcontent.' + sheet] || sheet;
   });
   console.log("Loaded static content from local cache.");
 
@@ -52,7 +52,7 @@ function StaticContentController($scope, $localstorage, ConfigService) {
             throw "No entries found. Are there empty rows in the sheet?";
           }
           // store result in localstorage for fast access next time
-          $localstorage.setObject('staticcontent.' + sheet, $scope.staticcontent[sheet]);
+          $localStorage['staticcontent.' + sheet] = $scope.staticcontent[sheet];
           
           //console.log(sheet + "..." + JSON.stringify($scope.staticcontent[sheet]));
       } catch (error) {

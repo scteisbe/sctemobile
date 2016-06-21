@@ -11,7 +11,8 @@
             <div class="right">
                 <div><img src="img/prof-pic_default.png" class="profile-pic-icn"></div>
                 <div class="user-name">
-                    <div>Hello</div><br>
+                    <div>Hello</div>
+                    <br>
                     <div>{{username}}!</div>
                 </div>
             </div>
@@ -41,7 +42,6 @@
                             <img class="app-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type=='app'" alt="{{item.title}}">
                             <img class="pdf-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type!='app'" alt="{{item.title}}">
                         </td>-->
-
                         <td ng-repeat="item in staticContent.featuredresources" ng-if="item.os==platform">
                             <img ng-src="{{item.coverimageurl}}" ng-click="openURL(item.url)">
                             <p>{{item.title}}</p>
@@ -50,32 +50,34 @@
                 </table>
             </div>
         </div>
-
         <!--  <div class="ad-wrapper">
             <img src="img/u44.png">
         </div> -->
-
-        <div class="events">
-            <h4 class="heading">Your Events</h4>
-            <a class="see-all" ng-click="myEventsList()">See All &gt;</a>
-            <div class="card eventindiv" ng-repeat="event in events">
-                <div class="row">
-                    <div class="col-30 date-box">
-                        <!--  <div class="date-box"> -->
-                        <img src="svg/img_calendar.svg" />
-                        <div class="date">{{event.date}}</div>
-                        <div class="month">{{event.month}}</div>
-                        <!-- </div> -->
-                    </div>
-                    <div class="col-70">
-                        <div class="text-box">
-                            <div><a href="">{{event.eventDate}}</a></div>
-                            <div>{{event.eventInfo}}</div>
+        <div class="events" ng-controller="DiscoverEventCtrl">
+            <div ng-init="discoverEvents()">
+                <h4 class="heading">Events</h4>
+                <a class="see-all" ng-click="myEventsList()">See All &gt;</a>
+                <div class="card eventindiv" ng-repeat="event in eventType |limitTo:3">
+                    <div class="row" ng-click="eventDetail(event.eventId,eventTabName)">
+                        <div class="col-30">
+                            <div class="date-box">
+                                <img src="svg/img_calendar.svg" />
+                                <div class="date">{{event.formattedBeginDate | date: 'dd'}}</div>
+                                <div class="month">{{event.formattedBeginDate | date: 'MMM'}} '{{event.formattedBeginDate | date: 'yy'}}</div>
+                            </div>
+                        </div>
+                        <div class="col-70">
+                            <div class="text-box">
+                                <div class="row-top"><a href="">{{event.title}}</a></div>
+                                <div class="row-bottom"><b>Location: </b> {{event.address1}}, {{event.address2}}, {{event.address3}}, {{event.city}}, {{event.stateProvince}} - {{event.postal}}
+                                    <br>
+                                    <b>When: </b>{{event.formattedBeginDate | date: 'shortTime'}}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </ion-content>
 </ion-view>

@@ -1,92 +1,150 @@
-var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal','$ionicLoading','Utils','$localstorage', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils, $localstorage) {
+var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils, $localStorage) {
     $scope.staticContent = [];
-	$scope.platform = ionic.Platform.platform();
-    $scope.username = $localstorage.getObject('username');
+    $scope.platform = ionic.Platform.platform();
+    $scope.username = $localStorage['username'];
 
-  	var sheetnames = [  // every sheet you want access to needs to be listed here
-//     'a-sheet-with-errors',   // used for testing
-//     'a-sheet-that-does-not-exist',   // used for testing
-//     'an-empty-sheet',    // used for testing
-    'announcements',
-	'featuredresources',
-    'apps',
-    'featuredcourses',
-    'techtips',
-    'standards',
-    'whitepapers',
-    'operationalpractices'
-  ];
+    var sheetnames = [
+        'announcements',
+        'featuredresources',
+    ];
 
-  $scope.openURL= function(url) {
-		window.open(url, '_system');
-	};
-	
-  $scope.withinDates = function(startDate,endDate)
-  {
-	  var currentDate = new Date();
-	  //check if current date is within given dates
-	  if (currentDate >= new Date(startDate) && currentDate<= new Date(endDate))
-	  {
-		  return true;
-	  }
-	  else
-	  {
-		  return false;
-	  }
-	  
-  };
-  // immediately populate from localstorage
-  sheetnames.forEach(function(sheet, i){
-	//to be changed - copy only relevant data
-    $scope.staticContent[sheet] = $localstorage.getObject('staticcontent.' + sheet);
-	console.log(sheet + "..." + JSON.stringify($scope.staticContent[sheet]));
-  });
+    $requestParamArr = [];
 
-  console.log("user name stored is :--"+$localstorage.getObject('username'));
-  
-  console.log("Loaded static content from local cache. "+$scope.username);
-    if(Utils.getBuildType() == "stub") {
-         $scope.username = "Bradley";
-	} else {
-        $profileData = $localstorage.getObject('profiledata');
-        if($profileData != null) {
-           // $scope.username = $profileData['FirstName'];
-        }
-        else {
-            $scope.showLoader();
-        }
-        
-        $requestParamArr = [];
-        
+    $scope.getRequestHeader = function() {
         $headerParamArr = [];
-        $headerParamArr.push({"authToken":$rootScope.authToken});
-        $headerParamArr.push({"authType":"Bearer"});
-        
-        //
-        Utils.doHttpRequest('GET','http://vmdimisapp01:1322/api/Individual/GetIndividual',$headerParamArr,$requestParamArr).then(function(response) {
-            console.log(response);
-            if(response != null) {
+        $headerParamArr.push({ "authToken": $rootScope.authToken });
+        $headerParamArr.push({ "authType": "Bearer" });
+        return $headerParamArr;
+    }
+
+    $scope.openURL = function(url) {
+        window.open(url, '_system');
+    };
+
+    $scope.withinDates = function(startDate, endDate) {
+        var currentDate = new Date();
+        //check if current date is within given dates
+        if (currentDate >= new Date(startDate) && currentDate <= new Date(endDate)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    };
+    // immediately populate from localStorage
+    sheetnames.forEach(function(sheet, i) {
+        $scope.staticContent[sheet] = $localStorage['staticcontent.' + sheet];
+    });
+
+    $scope.fetchEvents = function() {
+
+        Utils.doHttpRequest('GET', 'https://devapi.scte.org/mobileappui/api/Events/GetEvents', $scope.getRequestHeader(), $requestParamArr).then(function(response) {
+
+            //console.log(response);
+            if (response != null) {
                 $message = response['message'];
-                $data = response['data'];
-                console.log("statusCode.." + $message['statusCode']);
+                $eventsData = response['data'];
+                console.log("in fetchEvents()..GetEvents statusCode.." + $message['statusCode']);
                 $scope.hideLoader();
-                
-                if($message['statusCode'] == 200) {
-                    //$rootScope.profileData = $data[0];
-                    $profileData = $data[0];
-                    $localstorage.setObject('profiledata',  $profileData);
-                    console.log("FirstName.." +  $profileData['FirstName']);
-                    $scope.username = $profileData['FirstName'];    
+
+                if ($message['statusCode'] == 200) {
+                    console.log("Printing events data..");
+                    console.log($eventsData);
+                    $localStorage['eventsdata'] = $eventsData;
+
+                    $scope.myEvents = $eventsData['relevantEvents'];
+                    $scope.liveLearning = $eventsData['liveLearnings'];
+                    $scope.nationwideEvents = $eventsData['nationalEvents'];
+
                 } else {
-                // $scope.displayAlert("Wrong username or password !");
-                console.log($message['statusMessage'])
+                    // $scope.displayAlert("Wrong username or password !");
+                    console.log($message['statusMessage'])
                 }
             }
         });
+    };
+
+    $scope.fetchProfile = function() {
+        Utils.doHttpRequest('GET', 'https://devapi.scte.org/mobileappui/api/Individual/GetIndividual', $scope.getRequestHeader(), $requestParamArr).then(function(response) {
+            console.log("in fetchProfile()..Got response in GetIndividual..");
+            //console.log(response);
+            if (response != null) {
+                $message = response['message'];
+                $data = response['data'];
+                console.log("in fetchProfile() statusCode.." + $message['statusCode']);
+                $scope.hideLoader();
+
+                if ($message['statusCode'] == 401) {
+                    Utils.autoLogin().then(function(response) {
+
+                        if (response != null) {
+                            $message = response['message'];
+                            if ($message['statusCode'] == 200) {
+                                $rootScope.authToken = $localStorage['authToken'];
+                                $scope.fetchProfile();
+                            }
+                        }
+                    });
+                } else if ($message['statusCode'] == 200) {
+                    //$rootScope.profileData = $data[0];
+                    $profileData = $data[0];
+                    $localStorage['profiledata'] = $profileData;
+                    console.log("in fetchProfile()..FirstName.." + $profileData['FirstName']);
+                    $scope.username = $profileData['FirstName'];
+                    $scope.fetchEvents();
+                }
+            }
+        });
+    };
+
+
+
+    console.log("user name stored is :--" + $localStorage['username']);
+
+    console.log("Loaded static content from local cache.");
+    if (Utils.getBuildType() == "stub") {
+        $scope.username = "Bradley";
+
+        $scope.events = [{
+            "image": "img/u183.png",
+            "date": "18",
+            "month": "May '16",
+            "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
+            "eventInfo": "Where:TBD,Sioux Falls, SD"
+        }, {
+            "image": "img/u183.png",
+            "date": "18",
+            "month": "May '16",
+            "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
+            "eventInfo": "Where:TBD,Sioux Falls, SD"
+        }, {
+            "image": "img/u183.png",
+            "date": "18",
+            "month": "May '16",
+            "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
+            "eventInfo": "Where:TBD,Sioux Falls, SD"
+        }];
+    } else {
+        $profileData = $localStorage['profiledata'];
+        $eventsData = $localStorage['eventsdata'];
+
+        if ($profileData == null || $eventsData == null) {
+            $scope.showLoader();
+        } else {
+            if ($profileData != null) {
+                $scope.username = $profileData['FirstName'];
+            }
+            if ($eventsData != null) {
+                $scope.events = $eventsData['liveLearnings'];
+            }
+        }
+        $scope.fetchProfile();
     }
 
+
+
     $scope.searchResults = function() {
-        if(event.keyCode == 13) {
+        if (event.keyCode == 13) {
             $state.go("tab.searchresults");
         }
     };
@@ -111,13 +169,10 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal','$ionicLoadi
             $scope.modalRecentSearches.show();
         }
     };
-    $scope.myEventsList = function() {
-        $state.go('tab.discoversmyevents');
-    };
-   
+
     $scope.viewProfile = function() {
         $state.go('tab.myprofile');
-        
+
     };
 
     $scope.goButton = function() {
@@ -156,30 +211,214 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal','$ionicLoadi
         "title": "Lorem Ipsum Dolor Sit"
     }];
 
-
-    $scope.events = [{
-        "image": "img/u183.png",
-        "date":"18",
-        "month":"May '16",
-        "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
-        "eventInfo": "Where:TBD,Sioux Falls, SD"
+    /*$scope.myEvents = [{
+        "eventDate": "19",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "East Pennsylvania Chapter Training",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "19-Aug-2016"
     }, {
-        "image": "img/u183.png",
-        "date":"18",
-        "month":"May '16",
-        "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
-        "eventInfo": "Where:TBD,Sioux Falls, SD"
+        "eventDate": "20",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "Northeast Commtech Show & Seminars",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "20-Aug-2016"
     }, {
-        "image": "img/u183.png",
-        "date":"18",
-        "month":"May '16",
-        "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
-        "eventInfo": "Where:TBD,Sioux Falls, SD"
+        "eventDate": "21",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "East Pennsylvania Chapter Training",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "21-Aug-2016"
     }];
+
+    $scope.liveLearning = [{
+        "eventDate": "22",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "Northeast Commtech Show & Seminars",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "22-Aug-2016"
+    }, {
+        "eventDate": "23",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "East Pennsylvania Chapter Training",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "23-Aug-2016"
+    }, {
+        "eventDate": "24",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "Northeast Commtech Show & Seminars",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "24-Aug-2016"
+    }];
+
+    $scope.myChapters = [{
+        "eventDate": "25",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "East Pennsylvania Chapter Training",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "25-Aug-2016"
+    }, {
+        "eventDate": "26",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "Northeast Commtech Show & Seminars",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "26-Aug-2016"
+    }, {
+        "eventDate": "27",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "East Pennsylvania Chapter Training",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "27-Aug-2016"
+    }];
+
+    $scope.nationwideEvents = [{
+        "eventDate": "28",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "Northeast Commtech Show & Seminars",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "28-Aug-2016"
+    }, {
+        "eventDate": "29",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "East Pennsylvania Chapter Training",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "29-Aug-2016"
+    }, {
+        "eventDate": "30",
+        "eventMonth": "Aug '16",
+        "WPeventYear": "2016",
+        "WPeventMonth": "7",
+        "WPstartTime": "00",
+        "WPendTime": "24",
+        "eventTitle": "Northeast Commtech Show & Seminars",
+        "eventLocation": "SCTE Exton, PA",
+        "eventTime": "All Day",
+        "WPeventDate": "30-Aug-2016"
+    }];*/
+
+
 
 }];
 
-var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionicModal' , function($scope, $state, $http, ionicDatePicker, $ionicModal) {
+var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', function($scope, $rootScope, $http, $state, $filter) {
+
+    $scope.discoverEvents = function() {
+        $http.get('json/data.json').success(function(res) {
+            $scope.eventTabName = 'relevantEvents';
+            $rootScope.eventTyperelevantEvents = res.data.relevantEvents;
+            $scope.eventType = $rootScope.eventTyperelevantEvents;
+            $scope.dateFormatType();
+        });
+    };
+
+    $scope.liveLearningEvents = function() {
+        $http.get('json/data.json').success(function(res) {
+            $scope.eventTabName = 'liveLearnings';
+            $rootScope.eventTypeliveLearnings = res.data.liveLearnings;
+            $scope.eventType = $rootScope.eventTypeliveLearnings;
+            $scope.dateFormatType();
+        });
+    };
+
+    $scope.myChapter = function() {
+        $http.get('json/data.json').success(function(res) {
+            $scope.eventTabName = 'myChapter';
+            $rootScope.eventTypemyChapter = res.data.myChapter;
+            $scope.eventType = $rootScope.eventTypemyChapter;
+            $scope.dateFormatType();
+        });
+    };
+
+    $scope.nationwideEvents = function() {
+        $http.get('json/data.json').success(function(res) {
+            $scope.eventTabName = 'nationalEvents';
+            $rootScope.eventTypenationalEvents = res.data.nationalEvents;
+            $scope.eventType = $rootScope.eventTypenationalEvents;
+            $scope.dateFormatType();
+        });
+    };
+
+    $scope.dateFormatType = function() {
+        for (i = 0; i < $scope.eventType.length; i++) {
+            var dateFormat = $scope.eventType[i].formattedBeginDate;
+            var dateEvent = new Date(dateFormat);
+            $scope.eventType[i].formattedBeginDate = dateEvent;
+        }
+    };
+
+    $scope.myEventsList = function() {
+        $state.go('tab.discoversmyevents');
+    };
+
+    /*$scope.eventInDetail = function() {
+        $state.go('tab.eventsdetails');
+    };*/
+
+    $scope.eventDetail = function(id, eventTabName) {
+        $rootScope.eventDetailId = id;
+        $rootScope.eventTabName = eventTabName;
+        $state.go('tab.eventsdetails');
+
+    };
+
+}];
+
+var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionicModal', function($scope, $state, $http, ionicDatePicker, $ionicModal) {
 
     // sort slider
     $ionicModal.fromTemplateUrl('templates/discover/sort-slider.html', {
@@ -207,15 +446,15 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
     };
     $scope.hideFilterSlider = function() {
         $scope.fromDate = $scope.initialDate;
-        $scope.toDate = $scope.initialDate;  
+        $scope.toDate = $scope.initialDate;
         $scope.filterSlider.hide();
     };
 
     $scope.sortOptions = [
-        { text: "Relevance"},
-        { text: "Most Recent"},
-        { text: "Content Type"},
-        { text: "Format"}
+        { text: "Relevance" },
+        { text: "Most Recent" },
+        { text: "Content Type" },
+        { text: "Format" }
     ];
 
     $scope.sortOptionChecked = function(option) {
@@ -250,7 +489,7 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
             var date = selectedDate.getDate();
             var month = selectedDate.getMonth() + 1;
             var year = selectedDate.getFullYear();
-            $scope.initialDate="";
+            $scope.initialDate = "";
             $scope.fromDate = date + "-" + month + "-" + year;
         }
     };
@@ -262,7 +501,7 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
             var date = selectedDate.getDate();
             var month = selectedDate.getMonth() + 1;
             var year = selectedDate.getFullYear();
-            $scope.initialDate="";
+            $scope.initialDate = "";
             $scope.toDate = date + "-" + month + "-" + year;
         }
     };
@@ -279,48 +518,36 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
         $scope.items = data;
     });
 
-	
-	
+
+
     $scope.limit = 2;
 
 }];
 
-var DiscoverEventsCtrl = function($scope) {
+var DiscoverEventsCtrl = ['$scope', '$rootScope', '$state', '$http', '$stateParams', function($scope, $rootScope, $state, $http, $stateParams) {
+    $scope.overallevents = '';
+    $scope.events = '';
 
-  $scope.items = [
-    {
-      "date": "Monday May 2 2016",
-      "title": "A National Event",
-      "description": "This is the description",
-    },{
-      "date": "Monday May 2 2016",
-      "title": "A National Event",
-      "description": "This is the description",
-    },{
-      "date": "Monday May 2 2016",
-      "title": "A National Event",
-      "description": "This is the description",
-    },{
-      "date": "Monday May 2 2016",
-      "title": "A National Event",
-      "description": "This is the description",
-    },{
-      "date": "Monday May 2 2016",
-      "title": "A National Event",
-      "description": "This is the description",
-    },{
-      "date": "Monday May 2 2016",
-      "title": "A National Event",
-      "description": "This is the description",
-    },{
-      "date": "Monday May 2 2016",
-      "title": "A National Event",
-      "description": "This is the description",
-    },{
-      "date": "Monday May 2 2016",
-      "title": "A National Event",
-      "description": "This is the description",
+    $scope.eventFullDescription = function() {
+        if ($rootScope.eventTabName == 'liveLearnings') {
+            $scope.overallevents = $rootScope.eventTypeliveLearnings;
+        }
+        if ($rootScope.eventTabName == 'myChapter') {
+            $scope.overallevents = $rootScope.eventTypemyChapter;
+        }
+
+        if ($rootScope.eventTabName == 'relevantEvents') {
+            $scope.overallevents = $rootScope.eventTyperelevantEvents;
+        }
+        if ($rootScope.eventTabName == 'nationalEvents') {
+            $scope.overallevents = $rootScope.eventTypenationalEvents;
+        }
+
+        for (var event = 0; event < $scope.overallevents.length; event++) {
+            if ($rootScope.eventDetailId == $scope.overallevents[event].eventId) {
+                $scope.events = $scope.overallevents[event];
+            }
+        }
     }
-  ];
 
-};
+}];

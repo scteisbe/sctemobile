@@ -7,7 +7,9 @@
         <div ng-repeat="techTipsContent in techTipsContents" class="techtips-video-pdf-types">
             <div ng-if="techTipsContent.template == 'video'">
                 <h4><b>{{techTipsContent.title}}</b></h4>
-                <video poster="{{techTipsContent.coverimageurl}}" class="img-responsive" ng-src="{{techTipsContent.videourl}}" ng-click="openPage(techTipsContent.videourl)"></video>
+               <div class="video-containerYoutube">
+                <video src="{{techTipsContent.videourl}}" " controls></video> 
+                </div>
             </div>
             <div ng-if="techTipsContent.template == 'html'" ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)">
                 <div class="row">

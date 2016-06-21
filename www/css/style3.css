@@ -1,6 +1,8 @@
 /* shesh */
 
+
 /*****************Discover Evetns styling****************/
+
 .discover-wrapper .events {
     position: relative;
     background-color: #DCDDDF;
@@ -31,20 +33,20 @@
     margin-right: 20px;
 }
 
-.discover-wrapper .events .eventindiv{
-  background-color: white;
-  border: 1px solid white;
-  margin: 7px 20px;
-  padding:  0px;
+.discover-wrapper .events .eventindiv {
+    background-color: white;
+    border: 1px solid white;
+    margin: 7px 20px;
+    padding: 0px;
 }
 
 .discover-wrapper .events .eventindiv .date-box {
-  position: relative;
-  width: 50px;
+    position: relative;
+    width: 50px;
 }
 
 .discover-wrapper .events .eventindiv div {
-  /* display: inline-block; */
+    /* display: inline-block; */
 }
 
 .discover-wrapper .events .eventindiv .text-box {
@@ -52,34 +54,51 @@
     padding-left: 35px;
 }
 
-
 .discover-wrapper .events .eventindiv .date-box .date {
     position: absolute;
     top: 13px;
     left: 17px;
-    font-weight: bold
+    font-weight: bold;
+    font-family: 'Helvetica Neue Light';
 }
 
 .discover-wrapper .events .eventindiv .date-box .month {
-  text-transform: uppercase;
+    text-transform: uppercase;
     position: absolute;
     top: 35px;
-    left: 14px;
+    left: 0px;
     font-size: 10px;
     color: #fff;
     font-weight: bold;
+    text-align: center;
+    font-family: 'Helvetica Neue Light';
+    width: 100%;
+}
+
+.discover-wrapper .events .eventindiv .date-box .month div {
+    position: absolute;
+    left: 0px;
 }
 
 .discover-wrapper .events .eventindiv .date-box img {
-  width: 50px;
+    width: 50px;
 }
 
 .discover-wrapper .events .eventindiv .bg {
-background-image: url(./svg/img_calendar.svg);
+    background-image: url(./svg/img_calendar.svg);
 }
 
-.discover-wrapper .topic{
-  background-color: #F3F3F3;
+.discover-wrapper .events .eventindiv .text-box .row-top a {
+    color: #00548e;
+    font-family: 'Helvetica-Neue';
+}
+
+.discover-wrapper .events .eventindiv .text-box .row-bottom {
+    font-family: 'Helvetica Neue Light';
+}
+
+.discover-wrapper .topic {
+    background-color: #F3F3F3;
     color: #BEBEBE;
     padding-left: 24px;
     padding-top: 10px;
@@ -92,11 +111,13 @@ background-image: url(./svg/img_calendar.svg);
 .video-containerYoutube {
     position: relative;
     padding-bottom: 56.25%;
-     height: 0; overflow: hidden;
-
+    height: 0;
+    overflow: hidden;
 }
- 
-.video-containerYoutube iframe, .video-container object, .video-container embed {
+
+.video-containerYoutube iframe,
+.video-container object,
+.video-container embed {
     position: absolute;
     top: 0;
     left: 0;

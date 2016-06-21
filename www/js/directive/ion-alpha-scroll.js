@@ -50,9 +50,15 @@ var ionAlphaScroll = ['$ionicScrollDelegate', '$location', '$timeout', '$documen
       					tElement.find('li').css({"font-size": "10px"});
       					//tElement.find('li').css({"line-height": "1.3"});
       				} 
-      				else (windowHeight > 600)
+      				else if (windowHeight > 600 && windowHeight < 740)
       				{
-      					tElement.find('ul').css({"top":"20px"});
+      					tElement.find('ul').css({"top":"50px"});
+      				}
+      				else if (windowHeight > 741)
+      				{
+      					tElement.find('ul').css({"top":"100px"});
+      					tElement.find('li').css({"line-height":"1.4"});
+      					tElement.find('li').css({"font-size": "13px"});
       				}
 
       			}

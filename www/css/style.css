@@ -55,7 +55,6 @@ input {
     background-color: #0089cf;
 }
 
-
 /********* common css starts **********/
 
 /* .platform-android .bar-subheader {
@@ -1100,9 +1099,12 @@ ul.ion_alpha_sidebar {
 }
 
 .game-image {
-    margin-left: 100px;
+    text-align: center;
+}
+
+.game-image img {
     width: 150px;
-    height: 80px;
+    /*height: 80px;*/
 }
 
 .game-play-button {
@@ -1110,11 +1112,11 @@ ul.ion_alpha_sidebar {
     height: 30px;
     border: 1px solid #387ef5;
     background-color: #387ef5;
-    margin-left: 90px;
     border-radius: 5px;
     text-align: center;
     padding: 3px;
     margin-bottom: 10px;
+    color: white;
 }
 
 
@@ -1690,17 +1692,21 @@ background-image: url(./svg/img_calendar.svg);
 }
 
 .resource .scte .scte-list .arrow {
-      position: fixed;
+      position: absolute;
     width: 8%;
     padding: 20px 13px 13px 0px;
     right: 7px;
+    max-width: 25px;
+    max-height: 25px;
 }
 
 .resource .scte1 .scte-list1 .arrow1 {
-      position: fixed;
+      position: absolute;
     width: 8%;
     padding: 20px 13px 13px 0px;
     right: 7px;
+    max-width: 25px;
+    max-height: 25px;
 }
 
 .resource .scte .scte-list .break{
@@ -1740,7 +1746,11 @@ background-image: url(./svg/img_calendar.svg);
     width: 100%;
 }
 
-
+.resource .whitepaper {
+    background-color: #DCDDDF;
+    padding: 5px;
+    position: relative;
+}
 
 
 .resource .alpha .link {
@@ -2073,8 +2083,7 @@ padding:0px;
 }
 .techtip-popup-main button{
         padding: 10px 10px 10px 10px;
-    margin: 33px 0px 0px 28px;
-    width: 250px;
+       width: 250px;
     background-color: #0089cf;
     border-radius: 5px;
     color: white;

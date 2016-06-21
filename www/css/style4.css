@@ -5,15 +5,21 @@
 	border:1px solid grey;
 	font-size: 17px;
 	font-family: 'Helvetica Neue Light';
+  line-height: 1.6em;
 }
 
 .techtip-submit-URL{
 	padding: 9px 0px 0px 20px;
-	margin-top: 10px;
+	margin-top: 20px;
 	border: 1px solid #bbb;
 	font-size: 17px;
 	font-family: 'Helvetica Neue Light';
 }
+
+.submit-tech-button-div{
+    text-align: center;
+    padding-top: 12%;
+  }
 
 
 
@@ -106,4 +112,8 @@
   margin-top: 0.2em;
   /* bg color = bg color under block */
   /* background: white; */
+}
+
+.scte-std-arrow{
+  width: 14px;
 }
