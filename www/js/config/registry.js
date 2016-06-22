@@ -2,7 +2,8 @@ var cortexConfig = angular.module('cortexConfig', ['ionic', 'ionic-ratings', 'io
                                                     'ngHolder', 'scteApp.services',
                                                     'scteApp.staticservices',
                                                      'ngStorage',
-                                                     'times.tabletop'
+                                                     'times.tabletop',
+                                                     'ionic.service.analytics'
                                                     ]);
 
 cortexConfig.config(appRoute)
@@ -147,3 +148,10 @@ cortexConfig.run(function ($ionicPopup) {
         }
     });
 });
+
+cortexConfig.run(['$ionicPlatform', '$ionicAnalytics', function($ionicPlatform, $ionicAnalytics) {
+  // initialize Ionic analytics
+  $ionicPlatform.ready(function() {
+    $ionicAnalytics.register();
+  });
+}]);
