@@ -1,0 +1,39 @@
+[
+  {
+    "topic": "learning",
+  	"type": "video",
+  	"title": "D31 generic overview",
+    "url": "www.scte.org",
+    "duration": "21:06",
+    "published": "31st June 2016",
+    "description": "Lorem ipsum dummy text, Lorem ipsum dummy text"
+  },{
+    "topic": "manuals",
+    "type": "pdf",
+    "title": "Network & Facilities",
+    "url": "www.scte.org",
+    "published": "31st June 2016",
+    "description": "Lorem ipsum dummy text, Lorem ipsum dummy text"
+  },{
+    "topic": "web search",
+    "type": "pdf",
+    "title": "Network & Facilities",
+    "url": "www.scte.org",
+    "published": "31st June 2016",
+    "description": "Lorem ipsum dummy text, Lorem ipsum dummy text"
+  },{
+    "topic": "learning",
+    "type": "pdf",
+    "title": "D31 generic overview",
+    "url": "www.scte.org",
+    "published": "31st June 2016",
+    "description": "Lorem ipsum dummy text, Lorem ipsum dummy text"
+  },{
+    "topic": "pocket guide",
+    "type": "pdf",
+    "title": "D31 generic overview",
+    "url": "www.scte.org",
+    "published": "31st June 2016",
+    "description": "Lorem ipsum dummy text, Lorem ipsum dummy text"
+  }
+]

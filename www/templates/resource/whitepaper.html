@@ -1,0 +1,34 @@
+<ion-view view-title="{{cortexLogo}}">
+    <ion-content class="mylearning-wrapper">
+        <div class="resource">
+            <div class="scte1">
+                <h4 class="heading1">WHITE PAPER</h4>
+                <div id='searchbar' class="row searchinput">
+                    <div class="col col-center">
+                        <label class="item item-input searchbox">
+                            <i class="icon ion-ios-search placeholder-icon"></i>
+                            <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
+                        </label>
+                    </div>
+                </div>
+                <ion-list>
+                    <div class="list">
+                        <div ng-repeat="item in standards | filter:searchString track by $index" ng-click="openURL(item.url)">
+                            <ion-item class="item-stable scte-list1">
+                                <div class="row">
+                                    <div>
+                                        <div class="row">
+                                            <a ng-click="openURL(standard.url)"> {{item.identifier}}  </a>
+                                        </div>
+                                        <div class="row break">{{item.title}}</div>
+                                    </div>
+                                    <div class="arrow1"><img src="svg/icon_arrow.svg" /></div>
+                                </div>
+                            </ion-item>
+                        </div>
+                    </div>
+                </ion-list>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

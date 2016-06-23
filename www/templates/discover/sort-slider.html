@@ -1,0 +1,9 @@
+<ion-modal-view class="sort-slider">
+	<ion-content>
+    <h5 class="sort-title">SORT</h5>
+		<ion-list class="sort-list-radioBtn">
+		    <ion-radio ng-model="choice" icon="icon ion-checkmark-round" ng-value="option.text" ng-repeat="option in sortOptions" ng-click="sortOptionChecked(option.text)">{{option.text}}</ion-radio>
+		</ion-list>
+	</ion-content>
+</ion-modal-view>
+<div class="overlay-bg" ng-click="hideSortSlider()"></div>

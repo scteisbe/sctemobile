@@ -1,0 +1,63 @@
+<ion-modal-view class="filter-slider">
+    <ion-content>
+        <div class="row filter-header">
+	        <div class="col-50">
+	        	<span class="filter-title">FILTER</span>
+	        </div>
+	        <div class="col-50">
+	        	<button class="button button-positive button-small" ng-click="filterApply()">APPLY FILTERS</button>
+        	</div>
+        </div>
+        <div class="content-type-box">
+        	<h5 class="title">Content Type</h5>
+        	<ion-list>
+                <ion-checkbox class="item-checkbox-right" ng-repeat="item in contentType" ng-model="item.checked" ng-checked="item.checked">
+                    {{ item.text }}
+                </ion-checkbox>
+            </ion-list>
+        </div>
+        <div class="published-box">
+        	<h5 class="title">Published</h5>
+        	<div class="radio-box">
+	        	<div class="radio-select">
+	        		<input type="radio" id="radio01" name="published" class="regular-radio" />
+	                <label for="radio01">Last 1 week</label>
+	            </div>
+	            <div class="radio-select">
+	            	<input type="radio" id="radio02" name="published" class="regular-radio" />
+	                <label for="radio02">Last 2 weeks</label>
+	            </div>
+	            <div class="radio-select" style="padding-bottom:10px;">
+	                <input type="radio" id="radio03" name="published" class="regular-radio" />
+	                <label for="radio03">Last 3 weeks</label>
+	            </div>
+            </div>
+            <div class="date-box">
+	            <h5 class="title">From Date</h5>
+	            <label class="item-input-wrapper" ng-click="openDatePickerFrom()">
+	                <input type="text" ng-model="fromDate" readonly="false">
+	                <img src="img/u183.png" width="25">
+	            </label>
+
+	            <h5 class="title">To Date</h5>
+	            <label class="item-input-wrapper" ng-click="openDatePickerTo()">
+	                <input type="text" ng-model="toDate" readonly="false">
+	                <img src="img/u183.png" width="25">
+	            </label>
+            </div>
+        </div>
+        <div class="format-box">
+            <h5 class="title">Format</h5>
+            <div class="filter-content-type-main1">
+                <ion-checkbox class="item-checkbox-right" ng-repeat="item in formatType" ng-model="item.checked" ng-checked="item.checked">
+                    {{ item.text }}
+                </ion-checkbox>
+            </div>
+        </div>
+        <div class="filter-footer">
+            <button class="button button-positive button-small" ng-click="hideFilterSlider()">CANCEL</button>
+            <button class="button button-positive button-small" ng-click="applyFilter()">APPLY FILTER</button>
+        </div>
+    </ion-content>
+</ion-modal-view>
+<div class="overlay-bg" ng-click="hideFilterSlider()"></div>

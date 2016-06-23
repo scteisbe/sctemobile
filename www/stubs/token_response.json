@@ -1,0 +1,15 @@
+{
+  "message": {
+    "statusCode": "200",
+    "statusMessage": "OK",
+    "statusDescription": null
+  },
+  "data": {
+    "access_token": "mrjt5PZdfcJ162bN7kHF3FO4A2QpJoAo4ich7s8hvsDekrsre0RSkzzSqkJ1dvwaFQ42X7OQRGjoc3Spx3zHPdoMXIkSnR585F57Q0qY6Ymwmp_j166RyPKITEwrafyDxF1rnCGe5Ln0As9A15kw8P8vD7W6-w_mCvzD_rCcMwjc359wsvlE5EPgdjyzLm4aZsqmZJW94-m-6mhm3iPyFPQiYDBqMsmUo06VVHxvCI_TR8U8hjyEMXV3H3yqqNhdTmWKLwvqln8pugUk89VtlsE4Z1j-ovnbvuchanZCpvkHclO2lStIXEiMcxelRfEhDN7VFftI2WevTrhGGKii__KWGwM_g8h8GH4gjKswg4d_lg5bqZY6ytWpddJ_tJnAqkkGC5N4I34VgCHZnsiWK04hLPbYzalBpn-0DdkRgvXd0FiNOG3jodwiVflT82sh5m-VIRh-HJknFtyF5lPF9hvoattW0j1kFvIDJzpDBk0",
+    "token_type": "bearer",
+    "expires_in": 1209599,
+    "userName": "MAGGIE",
+    ".issued": "Tue, 14 Jun 2016 17:32:39 GMT",
+    ".expires": "Tue, 28 Jun 2016 17:32:39 GMT"
+  }
+}

@@ -1,0 +1,119 @@
+/* anitha */
+
+.techtip-submit-text{
+	padding: 9px 0px 0px 20px;
+	border:1px solid grey;
+	font-size: 17px;
+	font-family: 'Helvetica Neue Light';
+  line-height: 1.6em;
+}
+
+.techtip-submit-URL{
+	padding: 9px 0px 0px 20px;
+	margin-top: 20px;
+	border: 1px solid #bbb;
+	font-size: 17px;
+	font-family: 'Helvetica Neue Light';
+}
+
+.submit-tech-button-div{
+    text-align: center;
+    padding-top: 12%;
+  }
+
+
+
+/* styles for '...' */ 
+.appLib-title {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative; 
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 2.4em; 
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: left;  
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 1em;
+ 
+}
+.app-library .list .item .row .col .appLib-title{
+ white-space: normal;
+}
+/* create the ... */
+.appLib-title:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+}
+/* hide ... if we have text, which is less than or equal to max lines */
+.appLib-title:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  /* background: white; */
+}
+
+.appLib-desc {
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative; 
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 3.6em; 
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: left; 
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 1em;
+ 
+}
+.app-library .list .item .row .col .appLib-desc{
+ white-space: normal;
+}
+/* create the ... */
+.appLib-desc:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+}
+/* hide ... if we have text, which is less than or equal to max lines */
+.appLib-desc:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  /* background: white; */
+}
+
+.scte-std-arrow{
+  width: 14px;
+}

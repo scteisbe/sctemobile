@@ -1,77 +1,171 @@
-angular.module('lodash', [])  
-.factory('_', ['$window', function($window) {
-    return $window._; // assumes underscore has already been loaded on the page
-}]);
+angular.module('scteApp.services', ['times.tabletop'])
+.factory('Utils', function($ionicLoading,$ionicPopup,$http,$state,$q,Tabletop,$localStorage) {
 
-
-angular.module('cortex.services', [])
-
-.factory('Users', function() {
   // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
-  var chats = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }, {
-    id: 5,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }, {
-    id: 6,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }, {
-    id: 7,
-    name: 'Anna Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }, {
-    id: 8,
-    name: 'Adele Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }
-  ];
+  var Utils = {
+    
+    
+    doHttpRequest : function ($method,$url,$header,requestParamArr) {
+       
+       console.log("$url................" + $url);
+       return  $http({
+			method:$method,
+			url:$url,
+			//data: {Email:'MAGGIE', password: 'testrecord', grant_type:'password'},
+			data: Utils.getStringFromArray(requestParamArr),
+			headers: Utils.getJsonFromArray($header) ,
+		}).then( 
+			function successCallback(response){
+				$content = response.data;
+                
+                $message = $content['message'];
+                console.log("Printing message..");
+                console.log($message);
+                return $content
+			},
+			
+			function errorCallback(response) {
+			
+				$ionicLoading.hide();
+				if(response.data == null) {
+					console.log("failed response.." + response.data);
+					//Utils.displayAlert("Network Error !");
+                    return null;
+				} else {
+                    console.log(JSON.stringify(response));
+					console.log("failed response.." + response.data["message"]);
+					//Utils.displayAlert("Wrong username or password !");
+                    return null;
+				}
+			} 
+		);
+    },
+    
+    autoLogin : function () {
+        
+        if($localStorage['username'] == null || $localStorage['password'] == null) return;
+        
+        $requestParamArr = [];
+        $requestParamArr.push({ "UID": $localStorage['username'] });
+        $requestParamArr.push({ "password": $localStorage['password'] });
+        $requestParamArr.push({ "GrantType": "password" });
 
-  return {
-    all: function() {
-      return chats;
+	    $headerParamArr = [];
+        console.log("in autoLogin ................");           
+        return  $http({
+			method: 'POST',
+			url: 'https://devapi.scte.org/mobileappui/api/Token/PostToken',
+			//data: {Email:'MAGGIE', password: 'testrecord', grant_type:'password'},
+			data: Utils.getStringFromArray($requestParamArr),
+			headers: Utils.getJsonFromArray($headerParamArr) ,
+		}).then( 
+			function successCallback(response) {
+				$content = response.data;
+                $data = $content['data'];
+                $localStorage['authToken'] = $data['access_token'];
+                console.log("in autoLogin completed................");
+                return $content
+			},
+			
+			function errorCallback(response) {
+			
+				$ionicLoading.hide();
+				if(response.data == null) {
+					console.log("failed response.." + response.data);
+					//Utils.displayAlert("Network Error !");
+				} else {
+					console.log("failed response.." + response.data["message"]);
+					//Utils.displayAlert("Wrong username or password !");
+				}
+			} 
+		);
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    
+    getStringFromArray : function (array) {
+        var output = '';
+        angular.forEach(array, function (object) {
+            angular.forEach(object, function (value, key) {
+               output += key + "=" + value +"&";
+            });
+            
+        });
+        console.log("body..");
+        console.log(output);
+        return output;
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    
+     getJsonFromArray : function (array) {
+         //console.log(JSON.stringify(object));
+         $headerMap = {"Content-Type":"application/x-www-form-urlencoded"};
+         angular.forEach(array, function (object) {
+            angular.forEach(object, function (value, key) {
+                $headerMap[key] = value;
+            });
+         });
+         //
+        console.log("header..");
+        console.log(JSON.stringify($headerMap));
+        return $headerMap;
+     },
+     
+     displayAlert : function($message) {
+        console.log("into Service.. displayAlert.." + $message);
+        $ionicLoading.hide();
+        
+        if(navigator != null && navigator.notification != null ) {
+        navigator.notification.alert (
+            $message,  // message
+            Utils.alertDismissed,         // callback
+            'Alert',            // title
+            'OK'                  // buttonName
+        );
+        } else {
+            $ionicPopup.alert({
+                title: 'Alert',
+                content: $message,
+                buttonName: 'OK'
+            }).then(function(){});
         }
-      }
-      return null;
+    },
+    
+    alertDismissed : function() {
+    // do something
+        console.log(" alert dismissed..");
+    },
+    
+    redirectDiscover : function() {
+        $state.go('tab.discover');
+    },
+
+    getBuildType : function() {
+         //$buildType = "stub";
+          $buildType = "live"; 
+         
+         return $buildType;
+     },
+    
+    addEvent : function (startDate, endDate, eventName) {
+        var output = '';
+// Event logic has to be written.
+        return output;
+    },
+
+    verifyUser : function (username, password, userCred) {
+        var applicationGo = "no";
+        
+        angular.forEach(userCred, function(storedUser){
+            console.log("storedUser..");
+            console.log(storedUser);
+            if(storedUser.username.toUpperCase() == username.toUpperCase() && storedUser.password == password){
+                console.log("username and password matched");
+                applicationGo = "yes";
+            }
+            console.log(JSON.stringify(storedUser));
+        });
+        return applicationGo;
     }
   };
+
+  return Utils;
 });

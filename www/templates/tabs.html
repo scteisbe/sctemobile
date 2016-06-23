@@ -1,28 +1,22 @@
-<!--
-Create tabs with an icon and label, using the tabs-positive style.
-Each tab's child <ion-nav-view> directive will have its own
-navigation history that also transitions its views in and out.
--->
-<ion-tabs class="tabs-icon-top tabs-color-active-calm tabs-light">
-
-  <ion-tab title="Discover" icon-off="ion-ios-search" icon-on="ion-ios-search" href="#/tab/home">
-    <ion-nav-view name="home"></ion-nav-view>
-  </ion-tab>
-
-  <ion-tab title="My Learning" icon-off="ion-ios-lightbulb-outline" icon-on="ion-ios-lightbulb" href="#/tab/me">
-    <ion-nav-view name="me"></ion-nav-view>
-  </ion-tab>
-
-  <ion-tab title="Expert Tips" icon-off="ion-ios-people-outline" icon-on="ion-ios-people" href="#/tab/tips">
-    <ion-nav-view name="tips"></ion-nav-view>
-  </ion-tab>
-
-  <ion-tab title="Apps" icon-off="ion-android-apps" icon-on="ion-android-apps" href="#/tab/apps">
-    <ion-nav-view name="apps"></ion-nav-view>
-  </ion-tab>
-
-  <ion-tab title="Library" icon-off="ion-ios-book-outline" icon-on="ion-ios-book" href="#/tab/library">
-    <ion-nav-view name="library"></ion-nav-view>
-  </ion-tab>
-
+<ion-tabs class="tabs-icon-top tabs-color-active-positive bottom-tab">
+    <!-- Discover Tab -->
+    <ion-tab title="Discover" icon-off="all-icon-bottom-menu_discover" icon-on="all-icon-bottom-menu_discover" href="#/tab/discover">
+        <ion-nav-view name="tab-discover@tab"></ion-nav-view>
+    </ion-tab>
+    <!-- My Learning Tab -->
+    <ion-tab title="My Learning" icon-off="all-icon-bottom-menu_my-learning" icon-on="all-icon-bottom-menu_my-learning" href="#/tab/mylearning">
+        <ion-nav-view name="tab-mylearning@tab"></ion-nav-view>
+    </ion-tab>
+    <!-- Tech tips Tab -->
+    <ion-tab title="Tech Tips" icon-off="all-icon-bottom-menu_techtips" icon-on="all-icon-bottom-menu_techtips" href="#/tab/techtips">
+        <ion-nav-view name="tab-techtips@tab"></ion-nav-view>
+    </ion-tab>
+    <!-- App Library Tab -->
+    <ion-tab title="Apps" icon-off="all-icon-bottom-menu_apps" icon-on="all-icon-bottom-menu_apps" href="#/tab/applibrary">
+        <ion-nav-view name="tab-applibrary@tab"></ion-nav-view>
+    </ion-tab>
+    <!-- Resources Tab -->
+    <ion-tab title="Resources" icon-off="all-icon-bottom-menu_resources" icon-on="all-icon-bottom-menu_resources" href="#/tab/resource">
+        <ion-nav-view name="tab-resource@tab"></ion-nav-view>
+    </ion-tab>
 </ion-tabs>

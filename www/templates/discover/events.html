@@ -1,0 +1,244 @@
+<ion-view view-title="{{cortexLogo}}" class="my-events">
+    <ion-header-bar class="bar-subheader">
+        <div class="tabs tabs-secondary subheader-tabs" ng-init="discoverEvents()">
+            <a class="tab-item my-events-myevents" ng-click="discoverEvents()" ui-sref="tab.discoversmyevents">
+                <!-- <img src="img/svg/tab_events_my-events.svg" width="25%" /> -->
+                <div><i class="all-icon-tab_events_my-events"></i></div>
+                <div class="tab-title">My Events</div>
+            </a>
+            <a class="tab-item my-events-livelearning" ng-click="liveLearningEvents()">
+                <!-- <img src="img/svg/tab_events_livelearning.svg" width="27%" /> -->
+                <div><i class="all-icon-tab_events_livelearning"></i></div>
+                <div class="tab-title">Live Learning</div>
+            </a>
+            <!-- <a class="tab-item my-events-mychapter" ng-click="myChapter()"> -->
+            <!-- <img src="img/svg/tab_my-learning_all-courses.svg" width="25%" /> -->
+            <!-- <div><i class="all-icon-tab_my-learning_all-courses"></i></div>
+                <div class="tab-title">My Chapter</div>
+            </a> -->
+            <a class="tab-item my-events-nationwide" ng-click="nationwideEvents()">
+                <!-- <img src="img/svg/tab_events_nationwide.svg" width="25%" /> -->
+                <div><i class="all-icon-tab_events_nationwide"></i></div>
+                <div class="tab-title">Nationwide</div>
+            </a>
+        </div>
+    </ion-header-bar>
+    <!-- <ion-content class="has-subheader scroll-content background padding">
+        <div ng-show="activeTab == 0">
+            <div class="card eventindiv" ng-repeat="event in myEvents">
+                <div class="row">
+                    <div class="col-30">
+                        <div class="date-box">
+                            <img src="svg/img_calendar.svg" />
+                            <div class="date"><b>{{event.eventDate}}</b></div>
+                            <div class="month"><b>{{event.eventMonth}}</b></div>
+                        </div>
+                    </div>
+                    <div class="col-70">
+                        <div class="text-box">
+                            <div class="row-top"><a href="">{{event.eventTitle}}</a></div>
+                            <div class="row-bottom"><b>Location: </b>{{event.eventLocation}} <b>When: </b>{{event.eventTime}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="activeTab == 1" class="my-events">
+            <div class="card eventindiv" ng-repeat="liveLearningEvent in liveLearning">
+                <div class="row">
+                    <div class="col-30">
+                        <div class="date-box">
+                            <img src="img/svg/img_calendar.svg" />
+                            <div class="date"><b>{{liveLearningEvent.eventDate}}</b></div>
+                            <div class="month"><b>{{liveLearningEvent.eventMonth}}</b></div>
+                        </div>
+                    </div>
+                    <div class="col-70">
+                        <div class="text-box">
+                            <div class="row-top"><a href="">{{liveLearningEvent.eventTitle}}</a></div>
+                            <div class="row-bottom"><b>Location: </b> {{liveLearningEvent.eventLocation}}
+                                <br>
+                                <b>When: </b>{{liveLearningEvent.eventTime}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="activeTab == 2" class="my-events">
+            <div class="card eventindiv" ng-repeat="myChapter in myChapters">
+                <div class="row">
+                    <div class="col-30">
+                        <div class="date-box">
+                            <img src="img/svg/img_calendar.svg" />
+                            <div class="date"><b>{{myChapter.eventDate}}</b></div>
+                            <div class="month"><b>{{myChapter.eventMonth}}</b></div>
+                        </div>
+                    </div>
+                    <div class="col-70">
+                        <div class="text-box">
+                            <div class="row-top"><a href="">{{myChapter.eventTitle}}</a></div>
+                            <div class="row-bottom"><b>Location: </b> {{myChapter.eventLocation}}
+                                <br>
+                                <b>When: </b>{{myChapter.eventTime}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="activeTab == 3" class="my-events">
+            <div class="card eventindiv event-details" ng-repeat="nationwideEvent in nationwideEvents">
+                <div class="row">
+                    <div class="col-30">
+                        <div class="date-box">
+                            <img src="img/svg/img_calendar.svg" />
+                            <div class="date"><b>{{nationwideEvent.eventDate}}</b></div>
+                            <div class="month"><b>{{nationwideEvent.eventMonth}}</b></div>
+                        </div>
+                    </div>
+                    <div class="col-70">
+                        <div class="text-box">
+                            <div class="row-top"><a href="">{{nationwideEvent.eventTitle}}</a></div>
+                            <div class="row-bottom"><b>Location: </b> {{nationwideEvent.eventLocation}}
+                                <br>
+                                <b>When: </b>{{nationwideEvent.eventTime}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content> -->
+    <ion-content class="has-subheader scroll-content background padding">
+        <!-- <div ng-show="activeTab == 0"> -->
+        <div class="card eventindiv" ng-repeat="event in eventType">
+            <div class="row">
+                <div class="col-30">
+                    <div class="date-box">
+                        <img src="img/svg/img_calendar.svg" />
+                        <div class="date"><b>{{event.formattedBeginDate | date: 'dd'}}</b></div>
+                        <div class="month"><b>{{event.formattedBeginDate | date: 'MMM'}} '{{event.formattedBeginDate | date: 'yy'}}</b></div>
+                    </div>
+                </div>
+                <div class="col-70">
+                    <div class="text-box">
+                        <div class="row-top"><a href="">{{event.title}}</a></div>
+                        <div class="row-bottom"><b>Location: </b>{{event.address1}} {{event.address2}} {{event.address3}} {{event.city}} {{event.stateProvince}} {{event.postal}}
+                            <br>
+                            <b>When: </b>{{event.formattedBeginDate | date: 'shortTime'}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="event-description">
+                <p ng-bind-html="event.webDescription | limitHtml: 10"></p>
+                <div class="description-button" ng-show="event.webDescription">
+                    <a ng-click="eventDetail(event.eventId,eventTabName)">Read more</a>
+                </div>
+                <div ng-show="event.meetingUrl">
+                    <a href="{{event.meetingUrl}}"><img src="img/svg/icon_web-link.svg" /> <b>{{event.meetingUrl}}</b></a>
+                </div>
+                <br>
+                <!-- <div ng-show="event.webDescription">
+                    <br>
+                </div> -->
+                <button class="myevents-calendar" ng-click="addEvent(event.title,event.city,event.description,event.formattedBeginDate, event.formattedEndDate)"><b>Add to Calendar</b></button>
+            </div>
+        </div>
+        <!-- </div> -->
+        <!-- <div ng-show="activeTab == 1" class="my-events">
+            <div class="card eventindiv" ng-repeat="liveLearningEvent in liveLearning">
+                <div class="row">
+                    <div class="col-30">
+                        <div class="date-box">
+                            <img src="img/svg/img_calendar.svg" />
+                            <div class="date"><b>{{liveLearningEvent.eventDate}}</b></div>
+                            <div class="month"><b>{{liveLearningEvent.eventMonth}}</b></div>
+                        </div>
+                    </div>
+                    <div class="col-70">
+                        <div class="text-box">
+                            <div class="row-top"><a href="">{{liveLearningEvent.eventTitle}}</a></div>
+                            <div class="row-bottom"><b>Location: </b> {{liveLearningEvent.eventLocation}}
+                                <br>
+                                <b>When: </b>{{liveLearningEvent.eventTime}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-description">
+                    <p>Lorem ipsum dolo sitamt, consectetur adipiscing elit. Lorem ipsum dolo sitamt, consectetur adipiscing elit.</p>
+                    <div class="description-button">
+                        <a ng-click="eventInDetail()">Read more</a>
+                    </div>
+                    <a href="http://www.scte.org/events"><img src="img/svg/icon_web-link.svg" /> <b>www.scte.org/events</a></b>
+                        <br>
+                        <br>
+                        <button class="myevents-calendar" ng-click="addEvent(liveLearningEvent.eventDate,liveLearningEvent.WPeventYear,liveLearningEvent.WPeventMonth,liveLearningEvent.WPstartTime, liveLearningEvent.WPendTime,liveLearningEvent.eventTitle,liveLearningEvent.eventLocation)"><b>Add to Calendar</b></button>
+                </div>
+            </div>
+        </div>
+        <div ng-show="activeTab == 2" class="my-events">
+            <div class="card eventindiv" ng-repeat="myChapter in myChapters">
+                <div class="row">
+                    <div class="col-30">
+                        <div class="date-box">
+                            <img src="img/svg/img_calendar.svg" />
+                            <div class="date"><b>{{myChapter.eventDate}}</b></div>
+                            <div class="month"><b>{{myChapter.eventMonth}}</b></div>
+                        </div>
+                    </div>
+                    <div class="col-70">
+                        <div class="text-box">
+                            <div class="row-top"><a href="">{{myChapter.eventTitle}}</a></div>
+                            <div class="row-bottom"><b>Location: </b> {{myChapter.eventLocation}}
+                                <br>
+                                <b>When: </b>{{myChapter.eventTime}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-description">
+                    <p>Lorem ipsum dolo sitamt, consectetur adipiscing elit. Lorem ipsum dolo sitamt, consectetur adipiscing elit.</p>
+                    <div class="description-button">
+                        <a ng-click="eventInDetail()">Read more</a>
+                    </div>
+                    <a href="http://www.scte.org/events"><img src="img/svg/icon_web-link.svg" /> <b>www.scte.org/events</b></a>
+                    <br>
+                    <br>
+                    <button class="myevents-calendar" ng-click="addEvent(myChapter.eventDate,myChapter.WPeventYear,myChapter.WPeventMonth,myChapter.WPstartTime, myChapter.WPendTime,myChapter.eventTitle,myChapter.eventLocation)"><b>Add to Calendar</b></button>
+                </div>
+            </div>
+        </div>
+        <div ng-show="activeTab == 3" class="my-events">
+            <div class="card eventindiv event-details" ng-repeat="nationwideEvent in nationwideEvents">
+                <div class="row">
+                    <div class="col-30">
+                        <div class="date-box">
+                            <img src="img/svg/img_calendar.svg" />
+                            <div class="date"><b>{{nationwideEvent.eventDate}}</b></div>
+                            <div class="month"><b>{{nationwideEvent.eventMonth}}</b></div>
+                        </div>
+                    </div>
+                    <div class="col-70">
+                        <div class="text-box">
+                            <div class="row-top"><a href="">{{nationwideEvent.eventTitle}}</a></div>
+                            <div class="row-bottom"><b>Location: </b> {{nationwideEvent.eventLocation}}
+                                <br>
+                                <b>When: </b>{{nationwideEvent.eventTime}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="event-description">
+                    <p>Lorem ipsum dolo sitamt, consectetur adipiscing elit. Lorem ipsum dolo sitamt, consectetur adipiscing elit.</p>
+                    <div class="description-button">
+                        <a ng-click="eventInDetail()">Read more</a>
+                    </div>
+                    <a href="http://www.scte.org/events"><img src="img/svg/icon_web-link.svg" /> <b>www.scte.org/events</b></a>
+                    <br>
+                    <br>
+                    <button class="myevents-calendar" ng-click="addEvent(nationwideEvent.eventDate,nationwideEvent.WPeventYear,nationwideEvent.WPeventMonth,nationwideEvent.WPstartTime, nationwideEvent.WPendTime,nationwideEvent.eventTitle,nationwideEvent.eventLocation)"><b>Add to Calendar</b></button>
+                </div>
+            </div>
+        </div> -->
+        <div>
+            <ui-view name="tab-discover"></ui-view>
+        </div>
+    </ion-content>
+</ion-view>

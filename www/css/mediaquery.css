@@ -1,0 +1,63 @@
+/* query for recent search result, sort and filter slider (ionic modal) */
+@media (min-width: 680px) {
+  .sort-slider.modal, .filter-slider.modal {
+    width: 50% !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 50% !important;
+  }
+
+  .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {
+    margin-top: 20px;
+  }
+  .modal-wrapper .modal .bar-header:not(.bar-subheader) {
+    height: 64px;
+  }
+  .modal-wrapper .modal .has-header,
+  .modal-wrapper .modal .bar-subheader {
+    top: 64px;
+  }
+
+  .recent-search-wrapper.modal {
+    width: 100% !important;
+    top: 100px !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+  }
+
+  .course-catalog{
+    text-align: center;
+  }
+
+
+  /*****************my learning styling ****************/
+
+  .my-learning .course-catalog .button {
+    width: 45%;
+    border: 1px solid royalblue;
+    background: transparent;
+    align-self: center;
+}
+
+.my-learning .subheader-tabs .tab-inprogress {
+    padding-right: 65px;
+}
+
+
+.my-learning .subheader-tabs .tab-completed {
+    padding-right: 65px;
+}
+
+.my-learning .tabs-secondary {
+  justify-content: center; 
+}
+
+
+.game_description {
+    padding: 15px 100px 15px 100px;
+}
+
+/*****************my learning styling ends*****************/
+}

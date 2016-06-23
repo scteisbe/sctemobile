@@ -1,0 +1,39 @@
+[
+  {
+  	"type": "video",
+  	"title": "TV Games",
+    "url": "www.scte.org",
+    "completed": 30,
+    "duration": "21:06"
+  },{
+  	"type": "pdf",
+  	"title": "HTML5 Tuts",
+    "url": "www.scte.org",
+    "completed": 0,
+    "description": "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+  },{
+  	"type": "video",
+  	"title": "Ionic Overview",
+    "url": "www.scte.org",
+    "completed": 50,
+    "duration": "10"
+  },{
+    "type": "pdf",
+    "title": "Angular Tuts",
+    "url": "www.scte.org",
+    "completed": 80,
+    "description": "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+  },{
+  	"type": "video",
+  	"title": "Introduction to Cordova",
+    "url": "www.scte.org",
+    "completed": 10,
+    "duration": "33:06"
+  },{
+  	"type": "video",
+  	"title": "Telecommunication",
+    "url": "www.scte.org",
+    "completed": 0,
+    "duration": "54:40"
+  }
+]
