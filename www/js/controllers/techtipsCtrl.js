@@ -1,5 +1,5 @@
 var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$localStorage', '$sce', 
-                            '$ionicPopup', '$q', '$window', 
+                            '$ionicPopup', '$q', '$window' ,
                             function ($scope, $state, $rootScope, $ionicModal, Utils, $localStorage, $sce, 
                             $ionicPopup, $q , $window) {
 
@@ -8,30 +8,42 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
     $rootScope.globalTitle = "";
     $rootScope.globalContent = "";
     $scope.staticContent['techtips'] = $localStorage['staticcontent.techtips'];
-
-    $scope.ratingsObject = {
-        iconOn: 'ion-ios-star', //Optional
-        iconOff: 'ion-ios-star-outline',  //Optional
-        iconOnColor: 'rgb(200, 200, 100)',  //Optional
-        iconOffColor: 'rgb(200, 100, 100)', //Optional
-        rating: 0,
-        callback: function (rating) {  //Mandatory    
-            $scope.ratingsCallback(rating);
-        }
+    if(!$scope.staticContent['techtips']){
+      Utils.displayAlert('Network error');  
+    }
+   
+     $scope.stopPropagation = function ($event) {
+        console.log('event bubbling');
+         $event.stopPropagation();
     };
 
     $scope.ratingsCallback = function (rating) {
+        Utils.displayAlert("Rating given : "+rating);
         console.log('Selected rating is : ', rating);
+         
     };
 
     $scope.techTipsContents = $scope.staticContent['techtips'];
 
     $scope.techTipsContents.forEach(function (techTip) {
+        techTip.rating=Math.round(techTip.rating);
+        console.log(techTip.rating);
+        techTip.ratingsObject = {
+        iconOn: 'ion-ios-star', //Optional
+        iconOff: 'ion-ios-star-outline',  //Optional
+        iconOnColor: 'rgb(65, 105, 225)',  //Optional
+        iconOffColor: 'rgb(65, 105, 225)', //Optional
+        rating: techTip.rating,
+        callback: function (rating) {  //Mandatory    
+            $scope.ratingsCallback(rating);
+        }
+};
+
 
         if (techTip['videourl']) {
             console.log("url.." + techTip['videourl']);
             var re = /^(https:\/\/www.youtube.com\/)(watch\?.*v=)(.*)$/;
-            var subst = '$1embed/$3';
+            var subst = '$1embed/$3?enablejsapi=1';
             techTip['videourl'] = techTip['videourl'].replace(re, subst);
             console.log("url1111.." + techTip['videourl']);
             techTip['videourl'] = techTip['videourl'].replace("watch?time_continue=3&v=", "v/");
@@ -39,6 +51,8 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
 
         }
     }, this);
+
+    
 
     // $scope.techTipsContents = [{
     //     "type" : "video",
@@ -55,6 +69,13 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
             if()
         };*/
 
+    $scope.flag=[];
+      $scope.toggleImageAndVideo = function (index) {
+      if($scope.flag[index]!='true'){
+      $scope.flag[index]='true';
+        }
+
+    };
 
 
     $scope.techtipRouter = function (title, content) {
@@ -101,29 +122,43 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
         $scope.techtipURL = "";
 
         $scope.techtipSubmit = function (tip, url) {
-            console.log("inside submit techtip", tip);
+            $scope.mandatoryMsg="";
+            console.log("inside submit techtip.." + tip);
             
-            //var link = "mailto:?subject=Contact Detail&body="+"Name: " + $scope.contact.name + "Number: " + $scope.contact.phone;     
-            // $window.location.href = "mailto:?subject=Contact Detail";
+            var subject = "SCTE Techtip";
+            var to = "techtips@scte.org";
+            var body = tip + "%0D%0A %0D%0A" + url;
             
-            var q = $q.defer();
-            cordova.plugins.email.isAvailable(function (isAvailable) {
-                console.log('the email is isAvailable');
-            }, function (error) {
-                console.log('No email client available');
-            });
+            var link = "mailto:" + to + "?subject=" + subject + 
+                            "&body="+ body;     
+            $window.location.href = link;
+            
+            // var q = $q.defer();
+            // cordova.plugins.email.isAvailable(function (isAvailable) {
+            //     console.log('the email is isAvailable');
+            // }, function (error) {
+            //     console.log('No email client available');
+            // });
 
-            cordova.plugins.email.open({
-                to: 'techtips@scte.org', // email addresses for TO field
-                cc: "", // email addresses for CC field
-                bcc: "", // email addresses for BCC field
-                attachments: "", // file paths or base64 data streams
-                subject: "SCTE Techtip", // subject of the email
-                body: tip + "<br/><br/>" + url, // email body (for HTML, set isHtml to true)
-                isHtml: true, // indicats if the body is HTML or plain text
-            }).then(null, function () {
-                console.log('User cancels the email.');
-            });
-        }
+            // cordova.plugins.email.open({
+            //     to: 'techtips@scte.org', // email addresses for TO field
+            //     cc: "", // email addresses for CC field
+            //     bcc: "", // email addresses for BCC field
+            //     attachments: "", // file paths or base64 data streams
+            //     subject: "SCTE Techtip", // subject of the email
+            //     body: tip + "<br/><br/>" + url, // email body (for HTML, set isHtml to true)
+            //     isHtml: true, // indicats if the body is HTML or plain text
+            // }).then(null, function () {
+            //     console.log('User cancels the email.');
+            // });
+        };
+        $scope.enterMandatoryMsg=false;
+
+         $scope.techtipMandatory = function () {
+            $scope.enterMandatoryMsg=true;
+            $scope.mandatoryMsg="Please enter all mandatory fields";
+         }
+
+
     };
 }];

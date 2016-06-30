@@ -1,8 +1,10 @@
 var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localStorage', function($scope, $state, $rootScope, $http, Utils, $localStorage) {
 
 	$scope.standards = $localStorage['staticcontent.standards'];
+    //$scope.whitePapers = $localStorage['staticcontent.whitepapers'];
 	
     dictionarywords= [];
+    whitePapers = [];
     //if(Utils.getBuildType() == "stub"){
     $scope.dictionarywordsStub=[{word : "A", description : "Ampere", definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
         {word : "A/D", description : "Analog to Digital (convertion)" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
@@ -25,16 +27,18 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
     //} else {
         
      
-       $requestParamArr = [];
-       $headerParamArr = [];
+        $requestParamArr = [];
+        $headerParamArr = [];
         
-       if($localStorage["dictionarywords"] == null) {
+        if($localStorage["dictionarywords"] == null) {
            $scope.showLoader();
-       }
-        
+        }
+
+// This is for getGlossary.
         $headerParamArr.push({"authToken":$rootScope.authToken});
         $headerParamArr.push({"authType":"Bearer"});
-        Utils.doHttpRequest('GET','https://devapi.scte.org/mobileappui/api/Glossary/GetGlossary',$headerParamArr,$requestParamArr).then(function(response) {
+        $headerParamArr.push({"Content-Type": "application/json"});
+        Utils.doHttpRequest(Utils.getApiDetails().getGlossaryAPI.httpMethod,Utils.getApiDetails().getGlossaryAPI.URL,$headerParamArr,$requestParamArr).then(function(response) {
             console.log(response);
             //console.log(response['data']);
             if(response != null) {
@@ -74,6 +78,44 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
 				$localStorage["dictionarywords"]=$scope.dictionarywordsStub;
 			}
         });
+
+// This call is for whitepapers. If else is placed here to stop it from calling the API again and again.
+        if($localStorage["whitePapers"] == '' ){
+            Utils.doHttpRequest(Utils.getApiDetails().whitepaperAPI.httpMethod,Utils.getApiDetails().whitepaperAPI.URL,$headerParamArr,$requestParamArr).then(function(response) {
+                console.log(response);
+                //console.log(response['data']);
+                if(response != null) {
+                    //data available from live API
+                    $message = response['message'];
+                    data = response['data'];
+                    console.log("statusCode.." + $message['statusCode']);
+                    $scope.hideLoader();
+                
+                    if($message['statusCode'] == 200) {
+                        console.log("authToken.." +  $rootScope.dictionaryData);
+                    
+                        if( data != null) {
+                            $localStorage["whitePapers"]=data;
+                            $scope.whitePapers = data;
+                        }   
+                    } else {
+                        // $scope.displayAlert("Wrong username or password !");
+                        console.log($message['statusMessage'])
+                    }
+                }
+                else{
+                    //No API access
+                    $scope.hideLoader();
+                    //display data from stub
+                    $localStorage["whitePapers"]=$scope.whitePapersStub;
+                }
+            }); 
+        } else {
+                    $scope.whitePapers = $localStorage["whitePapers"];
+        }   
+
+
+
     //}
     
     /*$scope.events = [{
@@ -137,17 +179,24 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
         $state.go('tab.dictionaryview',{"focusAlpha":alphabetSelected});
     };
 
+    $scope.openStdURL= function(url) {     
+        window.open(url, '_system');
+    };
+
 	$scope.openURL= function(url) {
+        url = "http://"+url;     
 		window.open(url, '_system');
 	};
 
-    $scope.addEvent= function(startDate,eventYear,eventMonth,startTime,endTime,eventTitle,eventLocation) {
-        var WPstartDate = new Date(eventYear,eventMonth,startDate,startTime,0,0,0,0); // beware: month 0 = january, 11 = december
-        var WPendDate = new Date(eventYear,eventMonth,startDate,endTime,0,0,0,0);
-        var success = function(message) { alert("Success: " + JSON.stringify(message)); };
-        var error = function(message) { alert("Error: " + message); };
-        window.plugins.calendar.createEvent(eventTitle,eventLocation,"Event Notes",WPstartDate,WPendDate,success,error);
-    };
+    //Below commented piece of code is not requied anymore as 
+
+    // $scope.addEvent= function(startDate,eventYear,eventMonth,startTime,endTime,eventTitle,eventLocation) {
+    //     var WPstartDate = new Date(eventYear,eventMonth,startDate,startTime,0,0,0,0); // beware: month 0 = january, 11 = december
+    //     var WPendDate = new Date(eventYear,eventMonth,startDate,endTime,0,0,0,0);
+    //     var success = function(message) { alert("Success: " + JSON.stringify(message)); };
+    //     var error = function(message) { alert("Error: " + message); };
+    //     window.plugins.calendar.createEvent(eventTitle,eventLocation,"Event Notes",WPstartDate,WPendDate,success,error);
+    // };
     
     $http.get('json/scte-std-docx.json').success(function(data) {
         $scope.scteStandards = data;

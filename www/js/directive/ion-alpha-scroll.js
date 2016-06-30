@@ -15,7 +15,8 @@ var ionAlphaScroll = ['$ionicScrollDelegate', '$location', '$timeout', '$documen
 							'</div>',
 						'</ion-scroll>',
 						'<ul class="ion_alpha_sidebar">',
-							'<li ng-click="alphaScrollGoToList(\'index_{{letter}}\')" ng-repeat="letter in alphabet">{{letter}}</li>',
+							//'<li ng-click="alphaScrollGoToList(\'index_{{letter}}\')" ng-repeat="letter in alphabet" ng-style="{ \'color\': (Object.keys(sorted_items).length > 1 ? \'#1070B4\' : \'red\')}">{{letter}}</li>',
+						 '<li ng-click="alphaScrollGoToList(\'index_{{letter}}\')" ng-repeat="letter in alphabet" ng-style="set_color(letter)">{{letter}}</li>',
 						'</ul>',
 					'</ion-list>'
 					].join(''));
@@ -56,6 +57,7 @@ var ionAlphaScroll = ['$ionicScrollDelegate', '$location', '$timeout', '$documen
       				}
       				else if (windowHeight > 741)
       				{
+
       					tElement.find('ul').css({"top":"100px"});
       					tElement.find('li').css({"line-height":"1.4"});
       					tElement.find('li').css({"font-size": "13px"});
@@ -72,13 +74,13 @@ var ionAlphaScroll = ['$ionicScrollDelegate', '$location', '$timeout', '$documen
 				return function (scope, element, attrs, ngModel) {
 					var count = 0;
 					var scrollContainer = element.find('ion-scroll');
-
 					var ionicScroll = scrollContainer.controller('$ionicScroll');
 
 	                // do nothing if the model is not set
 	                if (!ngModel) return;
 
 	                ngModel.$render = function(){
+	                	
 						scope.items = [];                	
 	                	scope.items = ngModel.$viewValue;
 	                	scope.alphabet = iterateAlphabet();
@@ -88,9 +90,14 @@ var ionAlphaScroll = ['$ionicScrollDelegate', '$location', '$timeout', '$documen
 			              if( tmp[ letter] ==undefined){
 			              tmp[ letter]=[]
 			            }
-			              tmp[ letter].push( scope.items[i] );
+			              tmp[ letter].push(scope.items[i] );
 			            }
 			            scope.sorted_items = tmp;
+			            debugger
+			            var keys = Object.keys($scope.sorted_items);
+			            scope.alphaCount = keys.length;
+			            //scope.sort_items= scope.sorted_items;
+			           
 
 			            scope.alphaScrollGoToList = function(id){
 				          $location.hash(id);
@@ -121,8 +128,8 @@ var ionAlphaScroll = ['$ionicScrollDelegate', '$location', '$timeout', '$documen
 				        }
 
 	                };
-
 	            }
+	            
 	        }
         };
     }];

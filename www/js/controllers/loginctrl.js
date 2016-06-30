@@ -1,6 +1,6 @@
-var loginCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicLoading', '$ionicPopup', '$localStorage', 'Utils', '$q', 'StaticService', '$timeout', '$window',
-	function ($scope, $state, $rootScope, $http, $ionicLoading, $ionicPopup, $localStorage, Utils, $q, StaticService, $timeout, $window) {
+var loginCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicLoading', '$ionicPopup', '$localStorage', 'Utils', '$q', 'StaticService', '$timeout', '$window', '$location',	function ($scope, $state, $rootScope, $http, $ionicLoading, $ionicPopup, $localStorage, Utils, $q, StaticService, $timeout, $window, $location) {
 
+		//Utils.scteSSOAuthenticate();
 		//Auto login code
 		if($localStorage['authToken'] != null) {
 			//$state.go('tab.discover');
@@ -92,6 +92,28 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicLoading', '$i
 				}
 			}
 		};
+
+		$scope.redirect = function (pageName) {
+			
+			switch(pageName){
+				case 'discover':
+					$location.path('tab/discover');
+					break;
+				case 'mylearning':
+					$location.path('tab/mylearning');
+					break;	
+				case 'techtips':
+					$location.path('tab/techtips');
+					break;
+				case 'applibrary':
+					$location.path('tab/applibrary');
+					break;
+				case 'resource':
+					$location.path('tab/resource');
+					break;			
+			}
+		};
+
 
 		$scope.joinSCTE = function () {
 			var myURL = encodeURI('http://www.scte.org/SCTE/Join/FastForms/CreateAccount.aspx');

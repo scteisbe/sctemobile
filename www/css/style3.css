@@ -6,6 +6,7 @@
 .discover-wrapper .events {
     position: relative;
     background-color: #DCDDDF;
+    padding-bottom: 20px;
 }
 
 .discover-wrapper .events .heading {
@@ -15,6 +16,8 @@
     font-size: 12pt;
     color: #9fa4a6;
     font-family: 'Helvetica Neue Light';
+    font-size: medium;
+    font-weight: bold;
 }
 
 .discover-wrapper .events .see-all {
@@ -23,6 +26,7 @@
     right: 5px;
     padding-right: 15px;
     padding-top: 7px;
+    font-family: sans-serif;
 }
 
 .discover-wrapper .events .events-list {
@@ -115,6 +119,27 @@
     overflow: hidden;
 }
 
+.video-containerYoutube a{
+    position: absolute;
+    display: block;
+    height: 48px;
+    width: 50px;
+    top: 40px;
+    left: 123px;
+}
+
+@media (min-width: 768px) {
+.video-containerYoutube a{
+    position: absolute;
+    display: block;
+    height: 48px;
+    width: 50px;
+    top: 140px;
+    left: 320px;
+}
+
+}
+
 .video-containerYoutube iframe,
 .video-container object,
 .video-container embed {
@@ -127,3 +152,7 @@
 
 
 /*****************Discover Evetns styling ends****************/
+
+.alpha{
+display:none;
+}

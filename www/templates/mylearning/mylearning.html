@@ -1,6 +1,8 @@
-<ion-view view-title="{{cortexLogo}}" class="my-learning">
+<ion-view view-title="{{cortexLogo}}" class="my-learning
+">
     <ion-nav-buttons side="secondary">
-        <img ng-click="redirectDisover()" src="img/svg/icon_search_grey.svg" class="icon-my-learning-search" />
+        <!-- <img ng-click="redirectDisover()" src="img/svg/icon_search_grey.svg" class="icon-my-learning-search" /> -->
+        <i ng-click="redirectDisover()" class="all-icon-icon_search_white header-search-icon"></i>
     </ion-nav-buttons>
     <ion-header-bar class="bar-subheader">
         <div class="tabs tabs-secondary subheader-tabs" ng-init="activeTab = 0">
@@ -9,11 +11,13 @@
                 <div><i class="all-icon-tab_my-learning_in-progress"></i></div>
                 <div class="tab-title">In Progress</div>
             </a>
+            <div class="border"></div>
             <a class="tab-item tab-completed" ng-class="{active: activeTab == 1}" ng-click="activeTab = 1">
                 <!-- <img src="img/svg/tab_my-learning_completed.svg" width="20%" /> -->
                 <div><i class="all-icon-tab_my-learning_completed"></i></div>
                 <div class="tab-title">Completed</div>
             </a>
+            <div class="border"></div>
             <a class="tab-item tab-allcourses" ng-class="{active: activeTab == 2}" ng-click="activeTab = 2">
                 <!-- <img src="img/svg/tab_my-learning_all-courses.svg" width="20%" /> -->
                 <div><i class="all-icon-tab_my-learning_all-courses"></i></div>
@@ -53,7 +57,7 @@
                         <b>{{allCourse.courseName}}</b>
                         <i class="icon accordian-icon" ng-class="isAllCourseShown(allCourse) ? 'ion-minus' : 'ion-plus'"></i>
                     </ion-item>
-                    <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isAllCourseShown(allCourse)" ng-click="viewModal()">
+                    <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isAllCourseShown(allCourse)" ng-click="viewModal(inprogressModule.id, inprogressModule.moduleName)">
                         <a>{{inprogressModule.moduleName}}
                     <i class="icon ion-chevron-right"></i>
                 </a>
@@ -68,7 +72,7 @@
                         <b>{{completedCourse.courseName}}</b>
                         <i class="icon accordian-icon" ng-class="isCompletedCourseShown(completedCourse) ? 'ion-minus' : 'ion-plus'"></i>
                     </ion-item>
-                    <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isCompletedCourseShown(completedCourse)" ng-click="viewModal()">
+                    <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isCompletedCourseShown(completedCourse)" ng-click="viewModal(inprogressModule.id, inprogressModule.moduleName)">
                         <a>{{inprogressModule.moduleName}}
                     <i class="icon ion-chevron-right"></i>
                 </a>

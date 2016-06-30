@@ -1,4 +1,4 @@
-var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage','$sce', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils, $localStorage,$sce) {
+var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage', '$sce', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils, $localStorage, $sce) {
     $scope.staticContent = [];
     $scope.platform = ionic.Platform.platform();
     $scope.username = $localStorage['username'];
@@ -9,6 +9,22 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
     ];
 
     $requestParamArr = [];
+    $scope.voiceRecog = function() {
+        //alert("audio input");
+        var recognition = new SpeechRecognition();
+        recognition.onresult = function(event) {
+            if (event.results.length > 0) {
+                $scope.recognizedText = event.results[0][0].transcript;
+                alert($scope.recognizedText);
+                $scope.query = $scope.recognizedText;
+                $scope.$apply();
+            }
+        };
+        recognition.start();
+        //alert("step4");
+
+    };
+
 
     $scope.getRequestHeader = function() {
         $headerParamArr = [];
@@ -142,10 +158,14 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
 
 
 
-    $scope.searchResults = function() {
-        if (event.keyCode == 13) {
+    $scope.searchResults = function(query) {
+        if (event.keyCode == 13 && query != '') {
             $state.go("tab.searchresults");
         }
+    };
+
+    $scope.clearSearchField = function() {
+        $scope.query = '';
     };
 
     // Recent search modal
@@ -428,11 +448,40 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
     $scope.addEvent = function(title, location, notes, startDate, endDate) {
         //var WPstartDate = new Date(eventYear,eventMonth,startDate,startTime,0,0,0,0); // beware: month 0 = january, 11 = december
         var endDatee = new Date(endDate);
-        var success = function(message) { alert("Event added Successfully"); };
-        var error = function(message) { alert("Event Couldnot be added: " + message); };
-        window.plugins.calendar.createEvent(title, location, notes, startDate, endDatee, success, error);
+
+        /*var addEventPopup = $ionicPopup.confirm({
+            title: 'Add Event to Calendar',
+            template: 'Do you want to add the event to your calendar?'
+        });
+        addEventPopup.then(function(res) {
+            if (res) {
+                console.log('You are sure');
+            } else {
+                console.log('You are not sure');
+            }
+        });*/
+
+        var success = function(message) { Utils.displayAlert("Event added Successfully"); };
+        var error = function(message) { Utils.displayAlert("Event Couldnot be added: " + message); };
+        var eventFound = function(message) {
+            if (message == "") {
+                window.plugins.calendar.createEvent(title, location, notes, startDate, endDatee, success, error);
+            } else {
+                Utils.displayAlert('Event is already added in your calendar.');
+            }
+        };
+        var errorEvent = function(message) {
+            Utils.displayAlert('Error in calendar.');
+        };
+        window.plugins.calendar.findEvent(title, location, notes, startDate, endDatee, eventFound, errorEvent);
+
+        //window.plugins.calendar.createEvent(title, location, notes, startDate, endDatee, success, error);
     };
 
+    $scope.openPage = function(url) {
+        window.open("http://" + url, '_system');
+        console.log("meeting url: " + url);
+    };
 
 }];
 
@@ -466,6 +515,8 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
         $scope.fromDate = $scope.initialDate;
         $scope.toDate = $scope.initialDate;
         $scope.filterSlider.hide();
+
+        //angular.element('.popup').css('display','none');
     };
 
     $scope.sortOptions = [
@@ -477,6 +528,7 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
 
     $scope.sortOptionChecked = function(option) {
         console.log(option);
+        $scope.searchResultsText = "SORTED BY " + option;
         $scope.sortSlider.hide();
     };
 
@@ -536,6 +588,8 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
         $scope.items = data;
     });
 
+    $scope.searchResultsText = "SEARCH RESULTS";
+
 
 
     $scope.limit = 2;
@@ -566,6 +620,38 @@ var DiscoverEventsCtrl = ['$scope', '$rootScope', '$state', '$http', '$statePara
                 $scope.events = $scope.overallevents[event];
             }
         }
+    };
+    $scope.addEvent = function(title, location, notes, startDate, endDate) {
+        //var WPstartDate = new Date(eventYear,eventMonth,startDate,startTime,0,0,0,0); // beware: month 0 = january, 11 = december
+        var endDatee = new Date(endDate);
+
+        /*var addEventPopup = $ionicPopup.confirm({
+            title: 'Add Event to Calendar',
+            template: 'Do you want to add the event to your calendar?'
+        });
+        addEventPopup.then(function(res) {
+            if (res) {
+                console.log('You are sure');
+            } else {
+                console.log('You are not sure');
+            }
+        });*/
+
+        var success = function(message) { alert("Event added Successfully"); };
+        var error = function(message) { alert("Event Couldnot be added: " + message); };
+        var eventFound = function(message) {
+            if (message == "") {
+                window.plugins.calendar.createEvent(title, location, notes, startDate, endDatee, success, error);
+            } else {
+                alert('Event is already added in your calendar.');
+            }
+        };
+        var errorEvent = function(message) {
+            alert('Error in calendar.');
+        };
+        window.plugins.calendar.findEvent(title, location, notes, startDate, endDatee, eventFound, errorEvent);
+
+        //window.plugins.calendar.createEvent(title, location, notes, startDate, endDatee, success, error);
     }
 
 }];

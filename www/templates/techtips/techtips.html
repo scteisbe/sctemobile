@@ -7,8 +7,12 @@
         <div ng-repeat="techTipsContent in techTipsContents" class="techtips-video-pdf-types">
             <div ng-if="techTipsContent.template == 'video'">
                 <h4><b>{{techTipsContent.title}}</b></h4>
-               <div class="video-containerYoutube">
-                <iframe ng-src="{{techTipsContent.videourl}}" frameborder="0" width="350" height="200"></iframe> 
+               <div class="video-containerYoutube" id="popupVid">
+                <iframe ng-src="{{techTipsContent.videourl}}" frameborder="0" width="350" height="200" ng-show="flag[$index]=='true'" autoplay></iframe> 
+                <img ng-src="{{techTipsContent.coverimageurl}}" class="img-responsive" ng-hide="flag[$index]=='true'" ng-click="toggleImageAndVideo($index)"/>
+                 <a href="#" ng-hide="flag[$index]=='true'" ng-click="toggleImageAndVideo($index)">
+                 <img src="img/playoverlay.png"/>       
+                 </a>
                 </div>
             </div>
             <div ng-if="techTipsContent.template == 'html'" ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)">
@@ -23,12 +27,12 @@
                 <p><b>{{techTipsContent.subtitle  | limitTo: 200}}{{techTipsContent.subtitle > 200 ? '...' : ''}}</b></p>
                 <div class="techtips-digital">
                     <a ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)">Read more</a>
-                    <div class="techtips-ratings">
-                        <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+                    <div class="techtips-ratings"> 
+                        <ionic-ratings ratingsobj='techTipsContent.ratingsObject' ng-click="stopPropagation($event)"></ionic-ratings>
                     </div>
                 </div>
             </div>
-            <hr />
+            
         </div>
         <script id="templates/modal.html" type="text/ng-template">
             <ion-modal-view class="video-modal-maincontainer">

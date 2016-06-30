@@ -15,7 +15,7 @@
         </label>
     </ion-header-bar>
     <ion-content class="search-results-wrapper">
-        <div class="main-title">Search Results</div>
+        <div class="main-title">{{searchResultsText}}</div>
         <div ng-repeat="item in items | limitTo: limit as results">
             <div class="search-results-box media-video" ng-if="item.topic == 'learning' && item.type == 'video'">
                 <div class="topic-box">

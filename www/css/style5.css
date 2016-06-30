@@ -114,6 +114,10 @@
     content: '\0058';
 }
 
+.platform-ios.platform-cordova .recent-search-wrapper {
+    top: 125px;
+}
+
 .recent-search-wrapper {
     top: 100px;
 }

@@ -1,4 +1,4 @@
- /*Empty. Add your own CSS if you like */
+/*Empty. Add your own CSS if you like */
 
 @font-face {
     font-family: 'Helvetica Neue';
@@ -55,22 +55,25 @@ input {
     background-color: #0089cf;
 }
 
+
 /********* common css starts **********/
 
+
 /* .platform-android .bar-subheader {
-    top: 60px; !important
+top: 60px; !important
 }
 
 .platform-ios .bar-subheader {
-    top: 60px; !important
+top: 60px; !important
 } */
 
+
 /* body .scroll-content {
-    top: 60px;
+top: 60px;
 }
 
 body .login-wrapper .scroll-content {
-    top: 0;
+top: 0;
 } */
 
 
@@ -92,11 +95,10 @@ body .view-container .pane {
     margin-top: 5px;
 }
 
-
 .app-common .bar.bar-stable {
     background-color: #00548e;
     /* height: 61px;
-    line-height: 60px; */
+line-height: 60px; */
     /* padding-top: 100px; */
 }
 
@@ -110,7 +112,8 @@ body .view-container .pane {
 }
 
 .app-common .bar-stable .button.button-clear {
-    color: #ffffff;
+    color: #dddddd;
+    font-family: 'Helvetica Neue light';
 }
 
 .tabs-striped .tabs {
@@ -170,7 +173,12 @@ body .view-container .pane {
 .bottom-tab .tab-nav.tabs .tab-title {
     /* margin-top: 3px; */
     color: #ffffff;
-    font-size: 12px;
+    font-size: 10px;
+    font-family: "Helvetica Neue Bold";
+}
+
+.bottom-tab .tabs .tab-item {
+    line-height: 10px
 }
 
 
@@ -195,7 +203,7 @@ body .view-container .pane {
 .sort-slider .sort-title {
     font-family: 'Helvetica Neue bold';
     font-size: 14px;
-    color: grey;  
+    color: grey;
     padding: 8px 0 0 17px;
 }
 
@@ -206,7 +214,7 @@ body .view-container .pane {
 .filter-slider .filter-title {
     font-family: 'Helvetica Neue bold';
     font-size: 14px;
-    color: grey;  
+    color: grey;
     padding: 8px 0 0 17px;
 }
 
@@ -218,7 +226,6 @@ body .view-container .pane {
     margin-left: 17px;
     font-family: 'Helvetica Neue bold';
 }
-
 
 .filter-slider .item-checkbox-right .item-content span {
     font-family: 'Helvetica Neue';
@@ -246,7 +253,7 @@ body .view-container .pane {
     -webkit-appearance: none;
     background-color: #fafafa;
     border: 1px solid #cacece;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
     padding: 9px;
     border-radius: 50px;
     display: inline-block;
@@ -261,7 +268,7 @@ body .view-container .pane {
     position: absolute;
     top: 3px;
     background: #387ef5;
-    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3);
     text-shadow: 0px;
     left: 3px;
     font-size: 32px;
@@ -271,11 +278,12 @@ body .view-container .pane {
     background-color: #e9ecee;
     color: #99a1a7;
     border: 1px solid #adb8c0;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1), inset 0px 0px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1), inset 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.filter-slider .regular-radio:active, .filter-slider .regular-radio:checked:active {
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+.filter-slider .regular-radio:active,
+.filter-slider .regular-radio:checked:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .filter-slider .published-box .date-box .title {
@@ -312,33 +320,37 @@ body .view-container .pane {
     text-align: center;
 }
 
-.ionic_datepicker_popup .popup-body .selected_date_full{
-   background-color:#387ef5 !important; 
+.ionic_datepicker_popup .popup-body .selected_date_full {
+    background-color: #387ef5 !important;
 }
-.ionic_datepicker_popup .selected_date{
-    background-color:#387ef5 !important; 
+
+.ionic_datepicker_popup .selected_date {
+    background-color: #387ef5 !important;
 }
-.ionic_datepicker_popup .popup-buttons button{
-     background-color:#387ef5 !important; 
+
+.ionic_datepicker_popup .popup-buttons button {
+    background-color: #387ef5 !important;
 }
+
 .popup-container.popup-showing {
     z-index: 9999;
     visibility: visible;
 }
+
 
 /********** common css ends **********/
 
 
 /* Saravanan */
 
+
 /*Style for login screen */
 
-
-
-.imageproperties
-{
- width: 125px; /*150px;*/
- height: 53px; /*64px;*/
+.imageproperties {
+    width: 125px;
+    /*150px;*/
+    height: 53px;
+    /*64px;*/
 }
 
 #logintop,
@@ -353,7 +365,7 @@ body .view-container .pane {
     background-color: #00548e;
     /* height: 100%; */
     min-height: 70%;
-    top:0;
+    top: 0;
     padding-bottom: 10px;
 }
 
@@ -366,185 +378,159 @@ body .view-container .pane {
     bottom: 0;
 }
 
-body.keyboard-open { 
-bottom: 0;
+body.keyboard-open {
+    bottom: 0;
 }
 
-@media (max-height: 600px)
-{
+@media (max-height: 600px) {
     .imageLogo {
-     margin-left: auto;
-     margin-right: auto;
-     margin-top: 5%;
-     margin-bottom: 2%;
- }
-
- #usernamediv.list-inset {
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 5%;
-    margin-bottom: 1%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5%;
+        margin-bottom: 2%;
+    }
+    #usernamediv.list-inset {
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 5%;
+        margin-bottom: 1%;
+    }
+    #passworddiv.list-inset {
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    #logindiv {
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+    #forgot-password.list-inset {
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    .haveacctext {
+        font-family: 'Helvetica Neue Light';
+        font-size: 15px;
+        color: #6dcff6;
+        background: transparent;
+    }
+    #forgot-password .button.button-clear {
+        color: #ffffff;
+        font-family: 'Helvetica Neue Light';
+        font-size: 12pt;
+        vertical-align: text-top;
+    }
+    #logindiv .button.button-energized {
+        border-color: transparent;
+        background-color: #ffc900;
+        color: #111;
+        font-family: 'Helvetica Neue Bold';
+        font-size: 14pt;
+    }
+    #signuptext.col.text-center.col-center {
+        margin-right: 5%;
+        margin-left: 5%;
+        margin-top: 3%;
+        margin-bottom: 1px;
+    }
+    #joinSCTEdiv.col.text-center.col-center {
+        margin-right: 5%;
+        margin-left: 5%;
+        margin-top: 1px;
+        margin-bottom: 3%;
+        width: 75%;
+    }
+    #joinscte.button.button-energized.button-outline {
+        font-family: 'Helvetica Neue Bold';
+        font-size: 14px;
+        width: 75%
+    }
+    .weblink {
+        color: #ffffff;
+        font-family: 'Helvetica Neue';
+        font-size: 12pt;
+        padding: 2%;
+    }
 }
 
-#passworddiv.list-inset {
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-#logindiv {
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 5%;
-}
-
-#forgot-password.list-inset {
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-.haveacctext {
-    font-family: 'Helvetica Neue Light';
-    font-size: 15px;
-    color: #6dcff6;
-    background: transparent;
-}
-
-#forgot-password .button.button-clear {
-    color: #ffffff;
-    font-family: 'Helvetica Neue Light';
-    font-size: 12pt;
-    vertical-align: text-top;
-}
-
-#logindiv .button.button-energized {
-    border-color: transparent;
-    background-color: #ffc900;
-    color: #111;
-    font-family: 'Helvetica Neue Bold';
-    font-size: 14pt;
-}
-
-#signuptext.col.text-center.col-center {
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-top: 3%;
-    margin-bottom: 1px;
-}
-
-#joinSCTEdiv.col.text-center.col-center {
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-top: 1px;
-    margin-bottom: 3%;
-    width: 75%;
-}
-
-#joinscte.button.button-energized.button-outline {
-    font-family: 'Helvetica Neue Bold';
-    font-size: 14px;
-    width: 75%
-}
-
-.weblink
-{
-    color: #ffffff;
-    font-family: 'Helvetica Neue';
-    font-size: 12pt;
-    padding: 2%;
-}
-}
-
-@media (min-height: 601px) and (max-height: 1250px)
-{
+@media (min-height: 601px) and (max-height: 1500px) {
     .imageLogo {
-     margin-left: auto;
-     margin-right: auto;
-     margin-top: 18%;
-     margin-bottom: 2%;
- }
-
- #usernamediv.list-inset {
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 8%;
-    margin-bottom: 2%;
-}
-
-#passworddiv.list-inset {
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-#logindiv {
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 5%;
-    margin-bottom: 8%;
-}
-
-#forgot-password.list-inset {
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-.haveacctext {
-    font-family: 'Helvetica Neue Light';
-    font-size: 15px;
-    color: #6dcff6;
-    background: transparent;
-}
-
-#forgot-password .button.button-clear {
-    color: #ffffff;
-    font-family: 'Helvetica Neue Light';
-    font-size: 12pt;
-    vertical-align: text-top;
-}
-
-#logindiv .button.button-energized {
-    border-color: transparent;
-    background-color: #ffc900;
-    color: #111;
-    font-family: 'Helvetica Neue Bold';
-    font-size: 14pt;
-}
-
-#signuptext.col.text-center.col-center {
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-top: 5%;
-    margin-bottom: 2px;
-}
-
-#joinSCTEdiv.col.text-center.col-center {
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-top: 2px;
-    margin-bottom: 8%;
-    width: 75%;
-}
-
-#joinscte.button.button-energized.button-outline {
-    font-family: 'Helvetica Neue Bold';
-    font-size: 14px;
-    width: 75%
-}
-
-.weblink
-{
-    color: #ffffff;
-    font-family: 'Helvetica Neue';
-    font-size: 12pt;
-    padding: 2%;
-}
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 18%;
+        margin-bottom: 2%;
+    }
+    #usernamediv.list-inset {
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 8%;
+        margin-bottom: 2%;
+    }
+    #passworddiv.list-inset {
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+    #logindiv {
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 5%;
+        margin-bottom: 8%;
+    }
+    #forgot-password.list-inset {
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+    .haveacctext {
+        font-family: 'Helvetica Neue Light';
+        font-size: 15px;
+        color: #6dcff6;
+        background: transparent;
+    }
+    #forgot-password .button.button-clear {
+        color: #ffffff;
+        font-family: 'Helvetica Neue Light';
+        font-size: 12pt;
+        vertical-align: text-top;
+    }
+    #logindiv .button.button-energized {
+        border-color: transparent;
+        background-color: #ffc900;
+        color: #111;
+        font-family: 'Helvetica Neue Bold';
+        font-size: 14pt;
+    }
+    #signuptext.col.text-center.col-center {
+        margin-right: 5%;
+        margin-left: 5%;
+        margin-top: 5%;
+        margin-bottom: 2px;
+    }
+    #joinSCTEdiv.col.text-center.col-center {
+        margin-right: 5%;
+        margin-left: 5%;
+        margin-top: 2px;
+        margin-bottom: 8%;
+        width: 75%;
+    }
+    #joinscte.button.button-energized.button-outline {
+        font-family: 'Helvetica Neue Bold';
+        font-size: 14px;
+        width: 75%
+    }
+    .weblink {
+        color: #ffffff;
+        font-family: 'Helvetica Neue';
+        font-size: 12pt;
+        padding: 2%;
+    }
 }
 
 
@@ -563,21 +549,18 @@ bottom: 0;
     background-color: lightgray;
 }
 
-.searchbox
-{
+.searchbox {
     height: 35px;
 }
 
-#searchbar.row
-{
+#searchbar.row {
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 5px;
     padding-right: 5px;
 }
 
-.dic-title
-{
+.dic-title {
     font-family: 'Helvetica Neue Light';
     font-size: 16px;
     font-weight: bold;
@@ -586,6 +569,7 @@ bottom: 0;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .dic-container {
     background-color: rgb(242, 243, 244);
 }
@@ -676,13 +660,10 @@ div#listview.row {
     padding: 3px;
 }
 
-
-
 .ion_alpha_sidebar li {
     line-height: 1.3;
     font-family: 'Helvetica Neue Light';
     font-weight: bold;
-    color: #1070B4;
     font-size: 12px;
     width: 15px
 }
@@ -699,6 +680,15 @@ ul.ion_alpha_sidebar {
 
 
 /********** discover tab starts **********/
+
+
+/* .platform-ios.platform-cordova:not(.fullscreen) .has-subheader.discover-wrapper {
+    top: 130px;
+} */
+
+.platform-ios.platform-cordova .scroll-content.discover-wrapper {
+    top: 130px;
+}
 
 .scroll-content.discover-wrapper {
     top: 123px;
@@ -725,15 +715,16 @@ ul.ion_alpha_sidebar {
     float: right;
 }
 
+
 /* .discover-wrapper .top-header .scte-isbe-logo img {
-    width: 65px;
-    border-right: 1px solid #ddd;
-    padding-right: 7px;
+width: 65px;
+border-right: 1px solid #ddd;
+padding-right: 7px;
 }
 
 .discover-wrapper .top-header .cortex-logo img {
-    width: 100px;
-    margin-left: 10px;
+width: 100px;
+margin-left: 10px;
 } */
 
 .discover-wrapper .top-header img.scte-isbe-cortex-logo {
@@ -800,6 +791,8 @@ ul.ion_alpha_sidebar {
     color: #9fa4a6;
     padding: 0;
     margin: 0;
+    font-size: medium;
+    font-weight: bold;
     font-family: 'Helvetica Neue Light';
 }
 
@@ -849,7 +842,6 @@ ul.ion_alpha_sidebar {
 }
 
 
-
 /********** discover tab ends *********/
 
 
@@ -875,20 +867,24 @@ ul.ion_alpha_sidebar {
     padding-top: 5px;
 }
 
+.my-learning .subheader-tabs .border {
+    border-left: 1px solid #eee;
+}
+
 .my-learning .subheader-tabs i {
     font-size: 22px;
     color: #00548e;
 }
 
 .my-learning .subheader-tabs div.tab-title {
-    font-size: 12px;
+    font-size: 10px;
+    font-family: "Helvetica Neue Bold";
 }
 
 .my-learning .tabs-secondary {
     background-size: 0px;
     left: 0;
 }
-
 
 .my-learning .subheader-tabs .tab-item {
     font-family: 'Helvetica Neue';
@@ -899,14 +895,16 @@ ul.ion_alpha_sidebar {
     /* border-bottom: 2px solid royalblue; */
     border-top: none;
 }
+
 .my-learning .subheader-tabs a {
     color: black;
     font-weight: bold;
     padding-top: 5px;
 }
 
+
 /*.my-learning .tab-title {
-    color: black;
+color: black;
 }*/
 
 .my-learning .has-subheader {
@@ -1000,22 +998,24 @@ ul.ion_alpha_sidebar {
     font-family: 'Helvetica Neue Light';
 }
 
-.my-learning .course-module-content a  i {
+.my-learning .course-module-content a i {
     float: right;
 }
 
+
 /*.my-learning .course-list a {
-    color: #000000;
+color: #000000;
 }
 */
+
 .my-learning .mylearning-webinars {
-    margin: 2px;
- /* width: 100%;*/
+    /* margin: 2px; */
+    /* width: 100%;*/
 }
 
 .my-learning .mylearning-webinars img {
-  width: 100%;
-  text-align: center;
+    width: 100%;
+    text-align: center;
 }
 
 .my-learning .mylearning-game-header {
@@ -1031,7 +1031,7 @@ ul.ion_alpha_sidebar {
     position: absolute;
     right: 5px;
     color: #00548e;
-    font-weight: 400;
+    font-family: sans-serif;
 }
 
 .my-learning .mylearning-games {
@@ -1043,11 +1043,12 @@ ul.ion_alpha_sidebar {
 .my-learning .mylearning-game-header .mylearning-games {
     font-family: 'Helvetica Neue Light Bold';
 }
+
 .my-learning .games {
-  width: 100%;
-  background-color: #D0D0D0;
-  margin: 5px;
-  font-family: 'Helvetica Neue';
+    width: 100%;
+    background-color: #D0D0D0;
+    margin: 5px;
+    font-family: 'Helvetica Neue';
 }
 
 .my-learning .games .mylearning-games-title-description {
@@ -1071,41 +1072,44 @@ ul.ion_alpha_sidebar {
 .my-learning .games .col-75 {
     padding-left: 15px;
 }
+
+
 /*.my-learning .games {
-    position: relative;
+position: relative;
 }
 
 .my-learning .games .heading {
-    color: #B8B8B8;
+color: #B8B8B8;
 }
 
 .my-learning .games .see-all {
-    position: absolute;
-    top: 0px;
-    right: 5px;
+position: absolute;
+top: 0px;
+right: 5px;
 }
 
 .my-learning .games .game-list {
-    border: 5px solid #E8E8E8;
-    padding: 5px 5px 5px 5px;
-    background-color: #FFFFFF;
-    text-align: center;
+border: 5px solid #E8E8E8;
+padding: 5px 5px 5px 5px;
+background-color: #FFFFFF;
+text-align: center;
 }
 
 .my-learning .games .game-list a {
-    text-decoration: none;
+text-decoration: none;
 }
 
 .my-learning .games .game-list .mylearning-game-image {
-    width: 100%;
+width: 100%;
 }
 
 .my-learning .games .game-list .text {
-    word-wrap: break-word;
-    color: #080808;
-    text-decoration-color: #F80000;
+word-wrap: break-word;
+color: #080808;
+text-decoration-color: #F80000;
 }
 */
+
 
 /*****************my learning styling ends*****************/
 
@@ -1149,10 +1153,12 @@ ul.ion_alpha_sidebar {
 
 /********** techtip video container starts*********/
 
+
 /* .slide-in-up.ng-enter-active {
-    margin-top: 18px;
+margin-top: 18px;
 }
- */
+*/
+
 .video-container {
     border: 1px solid black;
     background-color: beige;
@@ -1212,7 +1218,6 @@ ul.ion_alpha_sidebar {
 .search-results-wrapper .brand img {
     width: 250px;
 }
-
 
 .search-results-wrapper .search-results-box {
     width: 100%;
@@ -1275,7 +1280,6 @@ ul.ion_alpha_sidebar {
 .search-results-box.media-video .content-box .cards .title {
     color: black;
 }
-
 
 .search-results-box .content-box .cards .title {
     font-family: "Helvetica Neue Bold";
@@ -1417,7 +1421,7 @@ ul.ion_alpha_sidebar {
     right: 0px;
 }
 
-.app-library .text{
+.app-library .text {
     font-weight: bold;
     font-size: medium;
     padding-left: 5px;
@@ -1429,7 +1433,6 @@ ul.ion_alpha_sidebar {
 
 
 /*************** Resource Style starts **************/
-
 
 .resource .bar-subheader {
     height: 55px;
@@ -1475,8 +1478,6 @@ ul.ion_alpha_sidebar {
     margin-right: 20px;
 }
 
-
-
 .resource .events .events-list .events-image {
     width: 100%;
 }
@@ -1495,12 +1496,10 @@ ul.ion_alpha_sidebar {
     position: absolute;
     left: 12px;
     top: 17px;
-
 }
 
-
-.resource .topic{
-  background-color: #F3F3F3;
+.resource .topic {
+    background-color: #F3F3F3;
     color: #BEBEBE;
     padding-left: 24px;
     padding-top: 10px;
@@ -1509,8 +1508,9 @@ ul.ion_alpha_sidebar {
     font-size: 15px;
     font-weight: bold
 }
-.resource .events .my-events .event-details{
-  padding: 1px;
+
+.resource .events .my-events .event-details {
+    padding: 1px;
 }
 
 .resource .events .event-date {
@@ -1521,14 +1521,14 @@ ul.ion_alpha_sidebar {
     /*line-height: 80px;*/
     padding: 18px;
 }
-.resource .events .event-date .month{
+
+.resource .events .event-date .month {
     font-size: small;
 }
 
 .resource .events .event-date span {
     display: inline-block;
 }
-
 
 .resource .events .event-date .circle {
     border-radius: 100%;
@@ -1539,11 +1539,10 @@ ul.ion_alpha_sidebar {
     /*padding: 10px 10px;*/
 }
 
- 
 .resource .events .my-events .event-details .event-date h5 {
-  color: #0099FF;
+    color: #0099FF;
 }
- 
+
 .resource .events .my-events .event-details .circle {
     border-radius: 100%;
     background-color: #FFFFFF;
@@ -1553,22 +1552,21 @@ ul.ion_alpha_sidebar {
     padding: 10px 10px;
 }
 
-.resource .events .eventindiv{
-  background-color: white;
-  border: 1px solid white;
-  margin: 7px 20px;
-  padding:  0px;
+.resource .events .eventindiv {
+    background-color: white;
+    border: 1px solid white;
+    margin: 7px 20px;
+    padding: 0px;
 }
 
 .resource .events .eventindiv .date-box {
-  position: relative;
-  width: 50px;
+    position: relative;
+    width: 50px;
 }
 
 .resource .events .eventindiv div {
-  /* display: inline-block; */
+    /* display: inline-block; */
 }
-
 
 .resource .events .eventindiv .date-box .date {
     position: absolute;
@@ -1578,7 +1576,7 @@ ul.ion_alpha_sidebar {
 }
 
 .resource .events .eventindiv .date-box .month {
-  text-transform: uppercase;
+    text-transform: uppercase;
     position: absolute;
     top: 39px;
     left: 10px;
@@ -1587,35 +1585,28 @@ ul.ion_alpha_sidebar {
     font-weight: bold;
 }
 
-
 .resource .events .eventindiv .date-box img {
-  width: 50px;
+    width: 50px;
 }
 
-
-
-
-.resource .events .eventindiv .bg{
-background-image: url(./svg/img_calendar.svg);
+.resource .events .eventindiv .bg {
+    background-image: url(./svg/img_calendar.svg);
 }
 
-
-.resource .dictionary .dummy{
-   
-    width:30px;
-    height:30px;
+.resource .dictionary .dummy {
+    width: 30px;
+    height: 30px;
     line-height: 30px;
     border: 1px solid #008cc9;
-    margin:0px 2px 5px 2px;
+    margin: 0px 2px 5px 2px;
     display: inline-block;
     text-align: center;
     font-weight: bold;
-    color: #008cc9; 
+    color: #008cc9;
 }
 
-
-.resource .dictionary .alphapad{
-  padding: 5px 25px 0px 25px;
+.resource .dictionary .alphapad {
+    padding: 5px 25px 0px 25px;
 }
 
 .resource .events .event-date .alpha {
@@ -1645,8 +1636,9 @@ background-image: url(./svg/img_calendar.svg);
 
 .resource .dictionary .see-all {
     position: absolute;
-    top: 0px;
-    right: 5px;
+    top: 4px;
+    right: 10px;
+    font-family: sans-serif;
 }
 
 .resource .dictionary .text {
@@ -1671,7 +1663,6 @@ background-image: url(./svg/img_calendar.svg);
     font-weight: bold;
 }
 
-
 .resource .scte .heading {
     color: #BEBEBE;
     padding-left: 25px;
@@ -1689,9 +1680,10 @@ background-image: url(./svg/img_calendar.svg);
 .resource .scte .see-all {
     position: absolute;
     top: 13px;
-    right: 5px;
+    right: 0px;
     padding-right: 15px;
     padding-top: 7px;
+    font-family: sans-serif;
 }
 
 .resource .scte .scte-list {
@@ -1702,8 +1694,8 @@ background-image: url(./svg/img_calendar.svg);
     margin-right: 5px;
     margin-bottom: 1px;
     border-bottom: 1px solid #8c8b8b;
-    
 }
+
 .resource .scte1 .scte-list1 {
     border: #E8E8E8;
     padding: 0px;
@@ -1712,11 +1704,10 @@ background-image: url(./svg/img_calendar.svg);
     margin-right: 5px;
     margin-bottom: 1px;
     border-bottom: 1px solid #8c8b8b;
-    
 }
 
 .resource .scte .scte-list .arrow {
-      position: absolute;
+    position: absolute;
     width: 8%;
     padding: 20px 13px 13px 0px;
     right: 7px;
@@ -1725,7 +1716,7 @@ background-image: url(./svg/img_calendar.svg);
 }
 
 .resource .scte1 .scte-list1 .arrow1 {
-      position: absolute;
+    position: absolute;
     width: 8%;
     padding: 20px 13px 13px 0px;
     right: 7px;
@@ -1733,33 +1724,28 @@ background-image: url(./svg/img_calendar.svg);
     max-height: 25px;
 }
 
-.resource .scte .scte-list .break{
-  white-space: initial;
-  font-size: small;
-
+.resource .scte .scte-list .break {
+    white-space: initial;
+    font-size: small;
 }
 
-.resource .scte1 .scte-list1 .break{
-  white-space: initial;
-  font-size: small;
-
+.resource .scte1 .scte-list1 .break {
+    white-space: initial;
+    font-size: small;
 }
 
-
-.resource .scte .scte-list .publish{
-  white-space: initial;
-  font-size: small;
-  color: #000000;
-  font-weight: bold;
-
+.resource .scte .scte-list .publish {
+    white-space: initial;
+    font-size: small;
+    color: #000000;
+    font-weight: bold;
 }
 
-.resource .scte1 .scte-list1 .publish{
-  white-space: initial;
-  font-size: small;
-  color: #000000;
-  font-weight: bold;
-
+.resource .scte1 .scte-list1 .publish {
+    white-space: initial;
+    font-size: small;
+    color: #000000;
+    font-weight: bold;
 }
 
 .resource .scte .scte-list .scte-image {
@@ -1776,14 +1762,12 @@ background-image: url(./svg/img_calendar.svg);
     position: relative;
 }
 
-
 .resource .alpha .link {
     font-size: 15px;
 }
 
 
 /***************Resource style ends**************/
-
 
 
 /***************SCTE std document page**************/
@@ -1797,6 +1781,10 @@ background-image: url(./svg/img_calendar.svg);
 
 
 /*****************techtips styling starts*****************/
+
+.techtips .techtips-video-pdf-types {
+    border-bottom: 1px solid;
+}
 
 .techtips .techtips-video-pdf-types h4 {
     color: royalblue;
@@ -1822,29 +1810,36 @@ background-image: url(./svg/img_calendar.svg);
 .techtips .techtips-ratings {
     text-align: right;
     position: relative;
-    top: -16px;
+    top: -19px;
+    right: -155px;
 }
 
+.ionic_ratings .icon {
+    font-size: 20px;
+}
+
+
 /*.techtips .techtips-link div {
-    display: inline;
+display: inline;
 }*/
+
 
 /* .digitalleakage .scroll-content {
 >>>>>>> .r108
-    top: 61px;
+top: 61px;
 } */
 
+
 /* .digitalleakage .button-icon {
-    left: 10px;
+left: 10px;
 }
- */
+*/
+
 
 /*****************techtips styling ends*****************/
 
 
 /*****************my events styling starts*****************/
-
-
 
 .my-events .subheader-tabs {
     line-height: 13px;
@@ -1852,6 +1847,10 @@ background-image: url(./svg/img_calendar.svg);
     color: #000000;
     padding-top: 5px;
     left: 0;
+}
+
+.my-events .subheader-tabs .border {
+    border-left: 1px solid #eee;
 }
 
 .my-events .subheader-tabs i {
@@ -1865,7 +1864,8 @@ background-image: url(./svg/img_calendar.svg);
 }
 
 .my-events .subheader-tabs div.tab-title {
-    font-size: 12px;
+    font-size: 10px;
+    font-family: "Helvetica Neue Bold";
 }
 
 .my-events .subheader-tabs .tab-item {
@@ -1874,10 +1874,9 @@ background-image: url(./svg/img_calendar.svg);
     font-family: 'Helvetica Neue';
     text-align: center;
     text-overflow: initial;
-    font-size: 12px; 
+    font-size: 12px;
     padding-top: 5px;
 }
-
 
 .my-events .bar-subheader .my-events-nationwide {
     padding-top: 4px;
@@ -1887,16 +1886,16 @@ background-image: url(./svg/img_calendar.svg);
     top: 120px;
 }
 
-.resource .eventindiv{
-  background-color: #ffffff;
-  border: 1px solid #ffffff;
-  margin: 7px 20px;
-  padding:  0px;
+.resource .eventindiv {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    margin: 7px 20px;
+    padding: 0px;
 }
 
 .my-events .eventindiv .date-box {
-  position: relative;
-  width: 50px;
+    position: relative;
+    width: 50px;
 }
 
 .my-events .eventindiv .date-box .date {
@@ -1907,7 +1906,7 @@ background-image: url(./svg/img_calendar.svg);
 }
 
 .my-events .eventindiv .date-box .month {
-  text-transform: uppercase;
+    text-transform: uppercase;
     position: absolute;
     top: 35px;
     left: 5px;
@@ -1917,7 +1916,7 @@ background-image: url(./svg/img_calendar.svg);
 }
 
 .my-events .eventindiv .date-box img {
-  width: 50px;
+    width: 50px;
 }
 
 .my-events .eventindiv .text-box {
@@ -1957,7 +1956,9 @@ background-image: url(./svg/img_calendar.svg);
     width: 15px;
 }
 
+
 /*****************my events styling ends****************/
+
 
 /*****************svg icons size set starts****************/
 
@@ -2011,6 +2012,13 @@ background-image: url(./svg/img_calendar.svg);
     margin-right: 10px;
 }
 
+.header-search-icon {
+    margin-top: 6px;
+    margin-right: 10px;
+    color: #ffffff;
+    font-size: 20px;
+}
+
 .icon-tab-discover {
     padding-top: 7px;
 }
@@ -2051,25 +2059,28 @@ background-image: url(./svg/img_calendar.svg);
     content: url("../img/svg/bottom-menu_resources.svg");
 }
 
+
 /*****************svg icons size set ends****************/
 
 
 /*****************techtip submit popup***************/
+
 .submit-tech-tip-popup {
     border-color: transparent;
     background-color: #0a558c;
     color: #fff;
     line-height: 3;
 }
+
 .techtip-popup-main.popup-container .popup {
-   width: 90%;
+    width: 90%;
     height: 65%;
     background-color: #f9f9f9;
-
 }
-.techtip-popup-main .popup-head{
-padding:0px;
-}   
+
+.techtip-popup-main .popup-head {
+    padding: 0px;
+}
 
 .techtip-popup-main .tech-tip-heading {
     width: 90%;
@@ -2080,57 +2091,67 @@ padding:0px;
     padding-bottom: 20px;
     padding-left: 19px;
 }
-.techtip-popup-main .closetip{
-    font-size:30px;
+
+.techtip-popup-main .closetip {
+    font-size: 30px;
     font-family: 'Helvetica Neue Light Condensed';
-    color:#aaaaaa;
+    color: #aaaaaa;
 }
 
-.techtip-popup-main .video-upload{
-   padding: 33px 40px 4px 133px;
- 
+.techtip-popup-main .video-upload {
+    padding: 33px 40px 4px 133px;
 }
 
-.techtip-popup-main .video-upload-text{
+.techtip-popup-main .video-upload-text {
     font-family: 'Helvetica Neue bold';
     color: #00548e;
     font-size: 15px;
     padding-left: 44px;
 }
 
-.tech-tip-notes{
-
+.tech-tip-notes {
     border-top: 1px solid #dddddd;
     padding: 10px 0px 0px 10px;
     margin-top: 20px;
 }
-.techtip-popup-main button{
-        padding: 10px 10px 10px 10px;
-       width: 250px;
+
+.techtip-popup-main button {
+    padding: 10px 10px 10px 10px;
+    width: 250px;
     background-color: #0089cf;
     border-radius: 5px;
     color: white;
     font-size: 19px;
 }
 
+
 /*****************techtip submit popup***************/
 
 
 /*****************make the modal to slide from right***************/
+
 .slide-in-right {
-  -webkit-transform: translateX(100%);
-    transform: translateX(100%); }
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
 
-.slide-in-right.ng-enter, .slide-in-right > .ng-enter {
-  -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
-  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms; }
+.slide-in-right.ng-enter,
+.slide-in-right > .ng-enter {
+    -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+    transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+}
 
-.slide-in-right.ng-enter-active, .slide-in-right > .ng-enter-active {
-  -webkit-transform: translateX(0);
-    transform: translateX(0); }
+.slide-in-right.ng-enter-active,
+.slide-in-right > .ng-enter-active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
 
-.slide-in-right.ng-leave, .slide-in-right > .ng-leave {
-  -webkit-transition: all ease-in-out 250ms;
-  transition: all ease-in-out 250ms; }
+.slide-in-right.ng-leave,
+.slide-in-right > .ng-leave {
+    -webkit-transition: all ease-in-out 250ms;
+    transition: all ease-in-out 250ms;
+}
+
 
 /*****************make the modal to slide from right***************/

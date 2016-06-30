@@ -1,5 +1,5 @@
 <ion-view view-title="{{cortexLogo}}" class="my-events">
-    <ion-content class="has-subheader scroll-content background padding">
+    <ion-content class="scroll-content background padding event-detail-content">
         <div ng-init="eventFullDescription()">
             <div class="card eventindiv">
                 <div class="row">
@@ -26,7 +26,7 @@
                         <a href="{{events.meetingUrl}}"><img src="img/svg/icon_web-link.svg" /> <b>{{events.meetingUrl}}</b></a>
                     </div>
                     <br>
-                    <button class="myevents-calendar" ng-click="addEvent(event.eventDate,event.WPeventYear,event.WPeventMonth,event.WPstartTime, event.WPendTime,event.eventTitle,event.eventLocation)"><b>Add to Calendar</b></button>
+                    <button class="myevents-calendar" ng-click="addEvent(events.title,events.city,events.title,events.formattedBeginDate, events.formattedEndDate)"><b>Add to Calendar</b></button>
                 </div>
             </div>
         </div>

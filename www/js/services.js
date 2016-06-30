@@ -5,7 +5,27 @@ angular.module('scteApp.services', ['times.tabletop'])
 
   var Utils = {
     
-    
+    getApiDetails : function(){
+        return {
+            "BaseURL":"https://devapi.scte.org",
+            "loginAPI" : {
+                "URL": "https://devapi.scte.org",
+                "httpMethod": "post",
+                "contexPath": "/MobileAppUI/api/Token/PostToken"
+            },
+            "whitepaperAPI":{
+                "URL":"https://devapi.scte.org/MobileAppUI/api/Documents/GetDocuments",
+                "httpMethod": "get",
+                "contexPath" : "/MobileAppUI/api/Documents/GetDocuments"
+            },
+            "getGlossaryAPI":{
+                "URL":"https://devapi.scte.org/MobileAppUI/api/Glossary/GetGlossary",
+                "httpMethod": "get",
+                "contexPath" : "/MobileAppUI/api/Glossary/GetGlossary"
+            } 
+        };
+    },
+
     doHttpRequest : function ($method,$url,$header,requestParamArr) {
        
        console.log("$url................" + $url);
@@ -78,6 +98,79 @@ angular.module('scteApp.services', ['times.tabletop'])
 					console.log("failed response.." + response.data["message"]);
 					//Utils.displayAlert("Wrong username or password !");
 				}
+			} 
+		);
+    },
+    
+    scteSSOAuthenticate : function () {
+        
+        $requestParamArr = [];
+        // $requestParamArr.push({ "UID": $localStorage['username'] });
+        // $requestParamArr.push({ "password": $localStorage['password'] });
+        // $requestParamArr.push({ "GrantType": "password" });
+
+	    $headerParamArr = [];
+        console.log("in autoLogin ................");           
+        return  $http({
+			method: 'GET',
+			url: 'https://www.scte.org/SCTE/Sign_In.aspx',
+			//data: {Email:'MAGGIE', password: 'testrecord', grant_type:'password'},
+			//data: Utils.getStringFromArray($requestParamArr),
+			//headers: Utils.getJsonFromArray($headerParamArr) ,
+		}).then( 
+			function successCallback(response) {
+				$content = response.data;
+                
+                console.log("in scteSSOAuthenticate completed................");
+                //console.log($content);
+                
+                var parser = new DOMParser();
+                var doc = parser.parseFromString($content,"text/html");
+                
+                doc.getElementById("ctl01_TemplateBody_WebPartManager1_gwpciNewContactSignInCommon_ciNewContactSignInCommon_signInUserName").value = "tester@scte.org";
+                doc.getElementById("ctl01_TemplateBody_WebPartManager1_gwpciNewContactSignInCommon_ciNewContactSignInCommon_signInPassword").value = "scte1234";
+                console.log( doc.getElementById("aspnetForm"));
+                
+                var element = doc.getElementById("aspnetForm");
+                element.submit();
+                Utils.scteSSOTest();
+                return $content
+			},
+			
+			function errorCallback(response) {
+	            console.log("in scteSSOAuthenticate failure................");
+                console.log(response.data);
+			} 
+		);
+    },
+    
+    scteSSOTest : function () {
+        
+        $requestParamArr = [];
+        // $requestParamArr.push({ "UID": $localStorage['username'] });
+        // $requestParamArr.push({ "password": $localStorage['password'] });
+        // $requestParamArr.push({ "GrantType": "password" });
+
+	    $headerParamArr = [];
+        console.log("in autoLogin ................");           
+        return  $http({
+			method: 'GET',
+			url: 'https://www.scte.org/SCTE/Contact_Management/Contact/AccountPage.aspx',
+			//data: {Email:'MAGGIE', password: 'testrecord', grant_type:'password'},
+			//data: Utils.getStringFromArray($requestParamArr),
+			//headers: Utils.getJsonFromArray($headerParamArr) ,
+		}).then( 
+			function successCallback(response) {
+				$content = response.data;
+                
+                console.log("in scteSSOTest completed................");
+                console.log($content);
+                return $content
+			},
+			
+			function errorCallback(response) {
+	            console.log("in scteSSOTest failure................");
+                console.log(response.data);
 			} 
 		);
     },

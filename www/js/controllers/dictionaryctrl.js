@@ -33,7 +33,7 @@ var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ion
   });
 
   $scope.openPopover = function($event,index) {
-    
+
     // Not needed for demo, need to finalize the content with Kevin : Surojit
     // $scope.popupitem = $scope.filteredItems[index];
     // $scope.popover.show($event);
@@ -59,8 +59,8 @@ var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ion
     });
 
    $scope.redirectDisover = function() {
-       Utils.redirectDiscover();
-    };
+     Utils.redirectDiscover();
+   };
 
 // Check if a state change happened
 
@@ -91,6 +91,7 @@ $scope.$on('$stateChangeSuccess',
         $scope.filteredItems = temp;
       }
       
+      
     }
     );
 
@@ -114,9 +115,18 @@ $scope.searchTextDidChange = function() {
 }
 
 $scope.filteredItems = temp;
+$scope.alphaCount =2;
 }
 
-
+$scope.set_color = function (alphaCount) {
+  var keys = Object.keys($scope.sorted_items);
+  if(keys.length >1 )
+    return { 'color': "#1070B4" };
+  else
+  {
+    return {'color':"darkgray"};
+  }
+}
 
 $scope.btnBack = function(userName, password, rememberMe){
 

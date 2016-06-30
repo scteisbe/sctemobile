@@ -6,6 +6,7 @@ angular.module('scteApp.staticservices', ['times.tabletop', 'ngStorage'])
         var StaticService = {
 
             fetchStaticData: function () {
+
                 var deferred = $q.defer();
                 
                 Tabletop.then(function (tableData) {
@@ -37,7 +38,7 @@ angular.module('scteApp.staticservices', ['times.tabletop', 'ngStorage'])
                             // store result in localstorage for fast access next time
                             $localStorage['staticcontent.' + sheet] = staticContent[sheet];
 
-                            //console.log(sheet + "..." + JSON.stringify(staticContent[sheet]));
+                            console.log(sheet + "..." + JSON.stringify(staticContent[sheet]));
                         } catch (error) {
                             console.log("Can't read sheet '" + sheet + "'. Using local client cache. " + error);
                         }
@@ -52,6 +53,12 @@ angular.module('scteApp.staticservices', ['times.tabletop', 'ngStorage'])
 
                 });
                 return deferred.promise;
+            },
+
+            initAPIContainer : function(){
+                // This assignment to null is to make sure that whitepaper localstorage is made null before the assignment.
+                $localStorage['whitePapers'] = '';
+                $localStorage['dictionarywords'] = '';
             }
         }
         return StaticService;

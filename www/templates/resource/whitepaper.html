@@ -11,7 +11,7 @@
                         </label>
                     </div>
                 </div>
-                <ion-list>
+<!--                 <ion-list>
                     <div class="list">
                         <div ng-repeat="item in standards | filter:searchString track by $index" ng-click="openURL(item.url)">
                             <ion-item class="item-stable scte-list1">
@@ -19,6 +19,23 @@
                                     <div>
                                         <div class="row">
                                             <a ng-click="openURL(standard.url)"> {{item.identifier}}  </a>
+                                        </div>
+                                        <div class="row break">{{item.title}}</div>
+                                    </div>
+                                    <div class="arrow1"><img src="svg/icon_arrow.svg" /></div>
+                                </div>
+                            </ion-item>
+                        </div>
+                    </div>
+                </ion-list> -->
+                <ion-list>
+                    <div class="list">
+                        <div collection-repeat="item in whitePapers | filter:searchString track by $index" ng-click="openURL(item.fileName)">
+                            <ion-item class="item-stable scte-list1">
+                                <div class="row">
+                                    <div>
+                                        <div class="row">
+                                            <a> {{item.title}}  </a>
                                         </div>
                                         <div class="row break">{{item.title}}</div>
                                     </div>

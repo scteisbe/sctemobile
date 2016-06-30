@@ -281,6 +281,7 @@
      height: 45px;
      text-transform: uppercase;
      color: #ffffff;
+    border-color: #0099FF;
  }
  
  .my-events .eventindiv .event-description {
@@ -319,5 +320,9 @@
      background-color: #00548e;*/
      color: #008cc9;
      padding: 5px;
+ }
+ 
+ .my-events .event-detail-content {
+     top: 44px;
  }
  /*****************my events styling ends***************/

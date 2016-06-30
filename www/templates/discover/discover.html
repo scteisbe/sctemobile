@@ -18,12 +18,13 @@
             </div>
         </div>
     </ion-nav-title>
-    <ion-header-bar class="bar-subheader search-wrapper">
+    <ion-header-bar class="bar-subheader search-wrapper" style="position: relative">
         <label class="item-input-wrapper">
             <img src="img/icon_textbox-search.png" class="search-icn">
-            <input type="search" placeholder="Enter keyword here" ng-model="query" ng-init="query=''" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults()">
-            <img src="img/icon_textbox-mic.png" class="mic-icn">
+            <input type="search" placeholder="Enter keyword here" ng-model="query" ng-init="query=''" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults(query)">
         </label>
+        <button class="button button-clear button-stable" ng-click="voiceRecog()" style="    position: absolute; top: 16px; right: 19px" ng-if="query == ''"><img src="img/icon_textbox-mic.png" class="mic-icn"></button>
+        <button class="button button-clear button-stable" ng-click="clearSearchField()" style="    position: absolute; top: 16px; right: 19px" ng-if="query != ''"><i class="ion-close-circled mic-icn"></i></button>
     </ion-header-bar>
     <ion-content class="discover-wrapper">
         <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="activeIndex" ng-init="activeIndex = 0" class="slide-wrapper">

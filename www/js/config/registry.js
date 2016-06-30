@@ -1,19 +1,27 @@
 var cortexConfig = angular.module('cortexConfig', ['ionic', 'ionic-ratings', 'ionic-datepicker',
-                                                    'ngHolder', 'scteApp.services',
-                                                    'scteApp.staticservices',
-                                                     'ngStorage',
-                                                     'times.tabletop'
-                                                    ]);
+    'ngHolder', 'scteApp.services',
+    'scteApp.staticservices',
+    'ngStorage',
+    'times.tabletop'
+]);
+
+var deploy = new Ionic.Deploy();
 
 cortexConfig.config(appRoute)
 
-cortexConfig.run(function($rootScope) {
-    $rootScope.$on("$locationChangeStart", function(event, next, current) { 
+cortexConfig.run(function ($rootScope) {
+    $rootScope.$on("$locationChangeStart", function (event, next, current) {
         console.log("in state change");
-        var div = document.getElementsByTagName("video");
-       for(i=0;i<div.length;i++){
-        div[i].pause();
-       }
+        var state = 'pause';
+        var div = document.getElementById("popupVid");
+        var iframetemp = document.getElementsByTagName("iframe");
+        for (i = 0; i < iframetemp.length; i++) {
+            var iframe = document.getElementsByTagName("iframe")[i].contentWindow;
+
+            div.style.display = state == 'hide' ? '' : '';
+            func = 'pauseVideo';
+            iframe.postMessage('{"event":"command","func":"' + func + '","args":""}', '*');
+        }
     });
 });
 
@@ -21,6 +29,7 @@ cortexConfig.run(['$ionicPlatform', 'StaticService', function ($ionicPlatform, S
 
     //Fetch the data
     console.log("Gauri:in run");
+    StaticService.initAPIContainer();
     StaticService.fetchStaticData();
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -56,7 +65,7 @@ cortexConfig.config(['TabletopProvider', function (TabletopProvider) {
         simpleSheet: false,
         //callback: $storeDataProvider.storeData,
     });
-  }]);
+}]);
 
 
 
@@ -85,8 +94,8 @@ cortexConfig.controller('TechtipsCtrlTitle', TechtipsCtrlTitle)
 /***********************************************************************************/
 
 cortexConfig.directive('ionAlphaScroll', ionAlphaScroll)
-    /***********************************************************************************/
-    /***********************************************************************************/
+/***********************************************************************************/
+/***********************************************************************************/
 
 /**********************************************************************************/
 /**********************COMMON CODE For all applications****************************/
@@ -101,49 +110,70 @@ cortexConfig.config(['localStorageServiceProvider', function(localStorageService
 /**********************************************************************************/
 /**********************************************************************************/
 
-cortexConfig.config(function($sceDelegateProvider) {
-  $sceDelegateProvider.resourceUrlWhitelist([
-    // Allow same origin resource loads.
-    'self',
-    // Allow loading from our assets domain.  Notice the difference between * and **.
-    'https://www.youtube.com/**',
-    'https://devapi.scte.org/**'
-  ]);
+cortexConfig.config(function ($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+        // Allow same origin resource loads.
+        'self',
+        // Allow loading from our assets domain.  Notice the difference between * and **.
+        'https://www.youtube.com/**',
+        'https://devapi.scte.org/**'
+    ]);
 
-  // The blacklist overrides the whitelist so the open redirect here is blocked.
-  $sceDelegateProvider.resourceUrlBlacklist([
-    'http://myapp.example.com/clickThru**'
-  ]);
+    // The blacklist overrides the whitelist so the open redirect here is blocked.
+    $sceDelegateProvider.resourceUrlBlacklist([
+        'http://myapp.example.com/clickThru**'
+    ]);
 });
 
 cortexConfig.run(function ($ionicPopup) {
-    var deploy = new Ionic.Deploy();
+    
     console.log("in wathcer..")
     console.log(JSON.stringify(deploy));
-    deploy.watch().then(function () {}, function () {}, function (updateAvailable) {
+    deploy.watch().then(function () { }, function () { }, function (updateAvailable) {
         console.log("updateAvailable.." + updateAvailable);
         if (updateAvailable) {
             deploy.download().then(function () {
                 deploy.extract().then(function () {
                     deploy.unwatch();
-                    $ionicPopup.show({
-                        title: 'New version available!',
-                        subTitle: 'Ready to use the latest features?',
-                        buttons: [
-                            {
-                                text: 'Not now'
-                            },
-                            {
-                                text: 'Yes',
-                                type: 'button-positive',
-                                onTap: function (e) {
-                                    deploy.load();
+                    $title = 'New version available!';
+                    $message = 'Ready to use the latest features?';
+                    if (navigator != null && navigator.notification != null) {
+                        showConfirm($title,$message);
+                    } else {
+                        $ionicPopup.show({
+                            title: $title,
+                            subTitle: $message,
+                            buttons: [
+                                {
+                                    text: 'Not now'
+                                },
+                                {
+                                    text: 'Yes',
+                                    type: 'button-positive',
+                                    onTap: function (e) {
+                                        deploy.load();
+                                    }
                                 }
-              }
-            ]
-                    });
+                            ]
+                        });
+                    }
                 });
             });
         }
     });
 });
+
+function showConfirm($title, $message) {
+    navigator.notification.confirm(
+        $message,  // message
+        onConfirm,              // callback to invoke with index of button pressed
+        $title,            // title
+        'Yes,Not now'          // buttonLabels
+    );
+};
+
+function onConfirm(buttonIndex) {
+    if(buttonIndex == 1) {
+        deploy.load();
+    }
+};
