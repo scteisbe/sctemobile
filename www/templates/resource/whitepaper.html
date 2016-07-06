@@ -1,34 +1,15 @@
 <ion-view view-title="{{cortexLogo}}">
+    <ion-header-bar class="bar-subheader searchinput">
+        <label class="item item-input searchbox">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
+        </label>
+    </ion-header-bar>
     <ion-content class="mylearning-wrapper">
         <div class="resource">
             <div class="scte1">
                 <h4 class="heading1">WHITE PAPER</h4>
-                <div id='searchbar' class="row searchinput">
-                    <div class="col col-center">
-                        <label class="item item-input searchbox">
-                            <i class="icon ion-ios-search placeholder-icon"></i>
-                            <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
-                        </label>
-                    </div>
-                </div>
-<!--                 <ion-list>
-                    <div class="list">
-                        <div ng-repeat="item in standards | filter:searchString track by $index" ng-click="openURL(item.url)">
-                            <ion-item class="item-stable scte-list1">
-                                <div class="row">
-                                    <div>
-                                        <div class="row">
-                                            <a ng-click="openURL(standard.url)"> {{item.identifier}}  </a>
-                                        </div>
-                                        <div class="row break">{{item.title}}</div>
-                                    </div>
-                                    <div class="arrow1"><img src="svg/icon_arrow.svg" /></div>
-                                </div>
-                            </ion-item>
-                        </div>
-                    </div>
-                </ion-list> -->
-                <ion-list>
+                <!-- <ion-list>
                     <div class="list">
                         <div collection-repeat="item in whitePapers | filter:searchString track by $index" ng-click="openURL(item.fileName)">
                             <ion-item class="item-stable scte-list1">
@@ -44,6 +25,14 @@
                             </ion-item>
                         </div>
                     </div>
+                </ion-list> -->
+                <ion-list class="standards-list">
+                    <ion-item class="item-remove-animate item-avatar item-icon-right" collection-repeat="item in whitePapers | filter:searchString track by $index" ng-click="openURL(item.fileName)" type="item-text-wrap">
+                        <img src="img/u214.png">
+                        <h2><a>{{item.title}}</a></h2>
+                        <p>{{item.title}}</p>
+                        <i class="icon ion-chevron-right icon-accessory"></i>
+                    </ion-item>
                 </ion-list>
             </div>
         </div>

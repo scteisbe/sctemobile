@@ -112,38 +112,40 @@
     <ion-content class="has-subheader scroll-content background padding">
         <!-- <div ng-show="activeTab == 0"> -->
         <div class="card eventindiv" ng-repeat="event in eventType">
-            <div class="row">
-                <div class="col-30">
-                    <div class="date-box">
-                        <img src="img/svg/img_calendar.svg" />
-                        <div class="date"><b>{{event.formattedBeginDate | date: 'dd'}}</b></div>
-                        <div class="month"><b>{{event.formattedBeginDate | date: 'MMM'}} '{{event.formattedBeginDate | date: 'yy'}}</b></div>
+            <div ng-click="eventDetail(event.eventId,eventTabName,event.webDescription)">
+                <div class="row">
+                    <div class="col-30">
+                        <div class="date-box">
+                            <img src="img/svg/img_calendar.svg" />
+                            <div class="date"><b>{{event.formattedBeginDate | date: 'dd'}}</b></div>
+                            <div class="month"><b>{{event.formattedBeginDate | date: 'MMM'}} '{{event.formattedBeginDate | date: 'yy'}}</b></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-70">
-                    <div class="text-box">
-                        <div class="row-top"><a href="">{{event.title}}</a></div>
-                        <div class="row-bottom" ng-hide="!event.address1 && !event.address2 && !event.address3 && !event.city && !event.stateProvince && !event.postal"><b>Location: </b>{{event.address1}} {{event.address2}} {{event.address3}} {{event.city}} {{event.stateProvince}} {{event.postal}}
-                            <br>
-                            <b>When: </b>{{event.formattedBeginDate | date: 'shortTime'}}
+                    <div class="col-70">
+                        <div class="text-box">
+                            <div class="row-top"><a href="">{{event.title}}</a></div>
+                            <div class="row-bottom" ng-hide="!event.address1 && !event.address2 && !event.address3 && !event.city && !event.stateProvince && !event.postal"><b>Location: </b>{{event.address1}} {{event.address2}} {{event.address3}} {{event.city}} {{event.stateProvince}} {{event.postal}}
+                                <br>
+                                <b>When: </b>{{event.formattedBeginDate | date: 'shortTime'}}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="event-description">
-                <p>{{event.description}}</p>
-                <div class="description-button" ng-show="event.webDescription">
-                    <a ng-click="eventDetail(event.eventId,eventTabName)">Read more</a>
-                </div>
-                <div ng-show="event.meetingUrl">
-                    <a ng-click="openPage(event.meetingUrl)"><img src="img/svg/icon_web-link.svg" /> <b>{{event.meetingUrl}}</b></a>
-                </div>
-                <br>
-                <!-- <div ng-show="event.webDescription">
+                <div class="event-description">
+                    <!-- <p>{{event.description}}</p> -->
+                    <div class="description-button" ng-show="event.webDescription">
+                        <a>Read more</a>
+                    </div>
+                    <div ng-show="event.meetingUrl">
+                        <a ng-click="openPage(event.meetingUrl)"><img src="img/svg/icon_web-link.svg" /> <b>{{event.meetingUrl}}</b></a>
+                    </div>
+                    <br>
+                    <!-- <div ng-show="event.webDescription">
                     <br>
                 </div> -->
-                <button class="myevents-calendar" ng-click="addEvent(event.title,event.city,event.title,event.formattedBeginDate, event.formattedEndDate)"><b>Add  Calendar</b></button>
+                </div>
             </div>
+            <button class="myevents-calendar" ng-click="addEvent(event.title,event.city,event.title,event.formattedBeginDate, event.formattedEndDate)"><b>Add to Calendar</b></button>
         </div>
         <!-- </div> -->
         <!-- <div ng-show="activeTab == 1" class="my-events">

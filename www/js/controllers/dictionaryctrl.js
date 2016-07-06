@@ -1,4 +1,6 @@
 var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionicPopover', '$stateParams','Utils', '$localStorage', function($scope,$state, $rootScope, $ionicLoading, $ionicPopover, $stateParams,Utils,$localStorage){
+    $scope.dictionarywords = [];
+    $scope.dictionarywords = $localStorage['dictionarywords'];
 
 
 	var template = '<style>.popover { height:180px; width: 180px; }</style>' + 
@@ -7,21 +9,21 @@ var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ion
   '<div class="row">' +
   '<div class="col col-center">' +
   '<lable>' +
-  '<spam class="descriptivetext"><b>Term:</b> {{popupitem.term}}</spam>' +
+  '<spam class="descriptivetext"><b>Term:</b> {{popupitem.Term}}</spam>' +
   '</lable>' +
   '</div>' +
   '</div>' +
   '<div class="row">' +
   '<div class="col col-center">' +
   '<lable>' +
-  '<spam class="descriptivetext"><b>Definition:</b> {{popupitem.definition}}</spam>' +
+  '<spam class="descriptivetext"><b>Definition:</b> {{popupitem.Description2}}</spam>' +
   '</lable>' +
   '</div>' +
   '</div>' +
   '<div class="row">' +
   '<div class="col col-center">' +
   '<lable>' +
-  '<spam class="descriptivetext"><b>Category:</b> {{popupitem.category}}</spam>' +
+  '<spam class="descriptivetext"><b>Category:</b> {{popupitem.Category}}</spam>' +
   '</lable>' +
   '</div>' +
   '</div>' + 
@@ -35,8 +37,8 @@ var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ion
   $scope.openPopover = function($event,index) {
 
     // Not needed for demo, need to finalize the content with Kevin : Surojit
-    // $scope.popupitem = $scope.filteredItems[index];
-    // $scope.popover.show($event);
+    //$scope.popupitem = $scope.dictionarywords[index];
+    //$scope.popover.show($event);
   };
 
   $scope.closePopover = function() {
@@ -66,74 +68,16 @@ var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ion
 
 $scope.searchString = "";
 
-$scope.filteredItems = $localStorage["dictionarywords"];
-$scope.dictionarywords = $scope.filteredItems;
-
 
 $scope.$on('$stateChangeSuccess',
   function onStateSuccess(event, toState, toParams, fromState) {
-      //stuff
-      //console.log($state.params.focusAlpha);
       if($state.params.focusAlpha != 'all')
       {
-        var items = $scope.dictionarywords;
-        var searchText = $state.params.focusAlpha;
+        
+        $scope.searchString = $state.params.focusAlpha;
         searchText = searchText.toLowerCase();
-        var temp = [];
-        for(var loopIndex = 0; loopIndex < items.length; loopIndex++) {
-          var dictionary = items[loopIndex];
-          var _word = dictionary.word.toLowerCase();
-          if(_word.indexOf(searchText) === 0) {
-            temp.push(dictionary);
-          }
-        }
-
-        $scope.filteredItems = temp;
-      }
-      
-      
+      }  
     }
     );
 
-$scope.searchTextDidChange = function() {
-
- var items = $scope.dictionarywords;
- var searchText = $scope.searchString.toLowerCase();
- var temp = [];
-
- for(var loopIndex = 0; loopIndex < items.length; loopIndex++) {
-
-  var dictionary = items[loopIndex];
-
-  var _word = dictionary.word.toLowerCase();
-  var _description = dictionary.description.toLowerCase();
-
-  if(_word.indexOf(searchText) != -1 || _description.indexOf(searchText) != -1) {
-
-   temp.push(dictionary);
- }
-}
-
-$scope.filteredItems = temp;
-$scope.alphaCount =2;
-}
-
-$scope.set_color = function (alphaCount) {
-  var keys = Object.keys($scope.sorted_items);
-  if(keys.length >1 )
-    return { 'color': "#1070B4" };
-  else
-  {
-    return {'color':"darkgray"};
-  }
-}
-
-$scope.btnBack = function(userName, password, rememberMe){
-
-};
-
-$scope.itemSelected= function()
-{
-
-};
 }];

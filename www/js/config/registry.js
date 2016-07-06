@@ -11,17 +11,16 @@ cortexConfig.config(appRoute)
 
 cortexConfig.run(function ($rootScope) {
     $rootScope.$on("$locationChangeStart", function (event, next, current) {
-        console.log("in state change");
-        var state = 'pause';
+       if($rootScope.globalVideoflag+"flag") {var state = 'pause';
         var div = document.getElementById("popupVid");
         var iframetemp = document.getElementsByTagName("iframe");
         for (i = 0; i < iframetemp.length; i++) {
             var iframe = document.getElementsByTagName("iframe")[i].contentWindow;
-
             div.style.display = state == 'hide' ? '' : '';
             func = 'pauseVideo';
             iframe.postMessage('{"event":"command","func":"' + func + '","args":""}', '*');
         }
+    }
     });
 });
 
@@ -29,7 +28,7 @@ cortexConfig.run(['$ionicPlatform', 'StaticService', function ($ionicPlatform, S
 
     //Fetch the data
     console.log("Gauri:in run");
-    StaticService.initAPIContainer();
+    //StaticService.initAPIContainer();
     StaticService.fetchStaticData();
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

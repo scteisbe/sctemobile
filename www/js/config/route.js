@@ -15,7 +15,7 @@ var appStates = {
     tabmylearningmodal: { name: 'tab.mylearningmodal', cache: false, url: '/mylearning/modal/:id', views: { 'tab-mylearning@tab': { templateUrl: "templates/mylearning/modal.html", controller: 'MyLearningCtrl' } } },
     tabgamesviewmodal: { name: 'tab.gamesViewModal', cache: false, url: '/mylearning/games', views: { 'tab-mylearning@tab': { templateUrl: "templates/mylearning/games.html", controller: 'MyLearningCtrl' } } },
     tabapplibrary: { name: 'tab.applibrary', cache: false, url: '/applibrary', views: { 'tab-applibrary@tab': { templateUrl: "templates/applibrary/applibrary.html", controller: 'AppLibraryCtrl' } } },
-    tabtechtips: { name: 'tab.techtips', url: '/techtips', cache: false,  views: { 'tab-techtips@tab': { templateUrl: "templates/techtips/techtips.html", controller: 'TechtipsCtrl' } } },
+    tabtechtips: { name: 'tab.techtips', url: '/techtips', views: { 'tab-techtips@tab': { templateUrl: "templates/techtips/techtips.html", controller: 'TechtipsCtrl' } } },
     tabtechtipsleafcontent: { name: 'tab.techtipsleafcontent', cache: false, url: '/techtipsleafcontent', views: { 'tab-techtips@tab': { templateUrl: "templates/techtips/techtipsleafcontent.html", controller: 'TechtipsCtrlTitle' } } },
 
     tabresource: { name: 'tab.resource', cache: false, url: '/resource', views: { 'tab-resource@tab': { templateUrl: "templates/resource/resource.html", controller: 'ResourceCtrl' } } },

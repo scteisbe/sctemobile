@@ -8,20 +8,20 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
     $rootScope.globalTitle = "";
     $rootScope.globalContent = "";
     $scope.staticContent['techtips'] = $localStorage['staticcontent.techtips'];
-    if(!$scope.staticContent['techtips']){
-      Utils.displayAlert('Network error');  
-    }
+    //Email to address has to be read from the spread sheet.
+    $scope.emailToAdd = $localStorage['staticcontent.configs'][2];
    
+
      $scope.stopPropagation = function ($event) {
         console.log('event bubbling');
          $event.stopPropagation();
     };
 
-    $scope.ratingsCallback = function (rating) {
-        Utils.displayAlert("Rating given : "+rating);
-        console.log('Selected rating is : ', rating);
+    // $scope.ratingsCallback = function (rating) {
+    //     Utils.displayAlert("Rating given : "+rating);
+    //     console.log('Selected rating is : ', rating);
          
-    };
+    // };
 
     $scope.techTipsContents = $scope.staticContent['techtips'];
 
@@ -34,9 +34,10 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
         iconOnColor: 'rgb(65, 105, 225)',  //Optional
         iconOffColor: 'rgb(65, 105, 225)', //Optional
         rating: techTip.rating,
-        callback: function (rating) {  //Mandatory    
-            $scope.ratingsCallback(rating);
-        }
+//         callback: function (rating) {  //Mandatory    
+//             Utils.displayAlert("Rating given : "+rating);
+            
+//         }
 };
 
 
@@ -70,8 +71,10 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
         };*/
 
     $scope.flag=[];
+    $scope.globalFlag=$rootScope.globalVideoflag;
       $scope.toggleImageAndVideo = function (index) {
       if($scope.flag[index]!='true'){
+        $rootScope.globalVideoflag='true';
       $scope.flag[index]='true';
         }
 
@@ -122,12 +125,13 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
         $scope.techtipURL = "";
 
         $scope.techtipSubmit = function (tip, url) {
-            $scope.mandatoryMsg="";
             console.log("inside submit techtip.." + tip);
             
             var subject = "SCTE Techtip";
-            var to = "techtips@scte.org";
-            var body = tip + "%0D%0A %0D%0A" + url;
+            //var to = "techtips@scte.org";
+            var to = $scope.emailToAdd["value"];
+            
+            var body = "Message: "+tip + "%0D%0A %0D%0A" + "URL: "+url;
             
             var link = "mailto:" + to + "?subject=" + subject + 
                             "&body="+ body;     
@@ -151,14 +155,6 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
             // }).then(null, function () {
             //     console.log('User cancels the email.');
             // });
-        };
-        $scope.enterMandatoryMsg=false;
-
-         $scope.techtipMandatory = function () {
-            $scope.enterMandatoryMsg=true;
-            $scope.mandatoryMsg="Please enter all mandatory fields";
-         }
-
-
+        }
     };
 }];

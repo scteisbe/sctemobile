@@ -1,21 +1,26 @@
-	<ion-view view-title="{{cortexLogo}}">
-	<ion-nav-buttons side="secondary">
+<ion-view view-title="{{cortexLogo}}" ng-controller="dictionaryCtrl">
+    <ion-nav-buttons side="secondary">
         <img ng-click="redirectDisover()" src="img/svg/icon_search_grey.svg" class="icon-my-learning-search" />
     </ion-nav-buttons>
-	<ion-content scroll='false' id="dictionart-view" ng-controller="dictionaryCtrl" class="has-header dic-container">
-		<div id='searchbar' class="row searchinput">
-			<div class="col col-center">
-				<label class="item item-input searchbox">
-					<i class="icon ion-ios-search placeholder-icon"></i>
-					<input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
-				</label>
-			</div>
-		</div>
-		<ion-alpha-scroll ng-model="filteredItems" key="word" id="popoverviewdiv">
-			<div id="listview" class="row" ng-click = "openPopover($event,$index)">
-				<div class="col col-25 list-leftword">{{item.word}}</div>
-				<div class="col col-75 list-rightword">{{item.description}}</div>
-			</div>
-		</ion-alpha-scroll>
-		</ion-content>
-	</ion-view>
+    <ion-header-bar class="bar-subheader searchinput">
+        <label class="item item-input searchbox">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
+        </label>
+    </ion-header-bar>
+    <ion-content overflow-scroll="true" id="dictionart-view" class="has-header has-subheader dic-container">
+        <h4 class="dic-title">Dictionary</h4>
+        <ion-list>
+            <ion-item collection-repeat="item in dictionarywords | filter:searchString" item-render-buffer='20'>
+                <div id="listview" class="row row-center" ng-click="openPopover($event,$index)">
+                    <div class="col col-25">
+                        <label id="leftlable" class="item list-leftword">{{item.Abbreviation}}</label>
+                    </div>
+                    <div class="col col-75">
+                        <label id="rightlable" class="item list-rightword">{{item.Description}}</label>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

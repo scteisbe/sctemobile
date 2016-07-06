@@ -1,38 +1,95 @@
-var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils', function($scope, $state, $rootScope, $http,Utils) {
+var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils','$localStorage', function($scope, $state, $rootScope, $http,Utils,$localStorage, $window) {
+   
+    $scope.staticContent= [];
+    $scope.Config = [];
+    $scope.platform = ionic.Platform.platform();
+    $scope.staticContent['configs'] = $localStorage['staticcontent.configs'];
+    $scope.Config = $scope.staticContent['configs'];
+    $scope.btnCourseData = $scope.Config[0];
+    $scope.btnCourseDataURL = $scope.Config[1];
 
-    $scope.inprogressCourses = [{
-        "courseName": "Network Overview"
-    }, {
-        "courseName": "Signal Theory"
-    }, {
-        "courseName": "Health & Safety"
-    }];
+// Mylearning API call and integration.
+    $requestParamArr = [];
+    $headerParamArr = [];
 
-    $scope.completedCourses = [{
-        "courseName": "Introduction to Structured Cabling"
-    }, {
-        "courseName": "LAN Hardware"
-    }, {
-        "courseName": "Installing Structured Cabling"
-    }];
+    $headerParamArr.push({"authToken":$rootScope.authToken});
+    $headerParamArr.push({"authType":"Bearer"});
+    $headerParamArr.push({"Content-Type": "application/json"});
+
+    if($localStorage["myLearning"] != null){
+        $scope.myLearning = $localStorage["myLearning"];
+        var learnObj = $scope.myLearning;
+        console.log("JOSN Stringify"+learnObj[0].LearningPlan);
+        $scope.inprogressCourses = learnObj[0].LearningPlan["In Progress"];
+        
+        $scope.completedCourses = learnObj[0].LearningPlan["Completed"];
+
+        $scope.allCourses = learnObj[0].LearningPlan["All Courses"];
+    }
+
+    Utils.doHttpRequest(Utils.getApiDetails().myLearningAPI.httpMethod,Utils.getApiDetails().myLearningAPI.URL,$headerParamArr,$requestParamArr).then(function(response) {
+        console.log(response);
+        //console.log(response['data']);
+        if(response != null) {
+            //data available from live API
+            $message = response['message'];
+            data = response['data'];
+            console.log("statusCode.." + $message['statusCode']);
+            $scope.hideLoader();
+                
+            if($message['statusCode'] == 200) {
+                console.log("authToken.." +  $rootScope.authToken);
+                    
+                    if( data != null) {
+                        $localStorage["myLearning"]=data;
+                        $scope.myLearning = data;
+                    }   
+            } else {
+                    // $scope.displayAlert("Wrong username or password !");
+                    console.log($message['statusMessage'])
+                }
+            }
+            else{
+                //No API access
+                $scope.hideLoader();
+                //display data from stub
+                $localStorage["myLearning"]=$scope.MyLearningStub;
+            }
+    }); 
+
+    // $scope.inprogressCourses = [{
+    //     "courseName": "Network Overview"
+    // }, {
+    //     "courseName": "Signal Theory"
+    // }, {
+    //     "courseName": "Health & Safety"
+    // }];
+
+    // $scope.completedCourses = [{
+    //     "courseName": "Introduction to Structured Cabling"
+    // }, {
+    //     "courseName": "LAN Hardware"
+    // }, {
+    //     "courseName": "Installing Structured Cabling"
+    // }];
 
     $scope.redirectDisover = function() {
        Utils.redirectDiscover();
     };
 
-    $scope.allCourses = [{
-        "courseName": "Introduction to Structured Cabling"
-    }, {
-        "courseName": "LAN Hardware"
-    }, {
-        "courseName": "Installing Structured Cabling"
-    }, {
-        "courseName": "Network Overview"
-    }, {
-        "courseName": "Signal Theory"
-    }, {
-        "courseName": "Health & Safety"
-    }];
+    // $scope.allCourses = [{
+    //     "courseName": "Introduction to Structured Cabling"
+    // }, {
+    //     "courseName": "LAN Hardware"
+    // }, {
+    //     "courseName": "Installing Structured Cabling"
+    // }, {
+    //     "courseName": "Network Overview"
+    // }, {
+    //     "courseName": "Signal Theory"
+    // }, {
+    //     "courseName": "Health & Safety"
+    // }];
 
     $scope.inprogressModules = [{
         "id": 1,
@@ -42,12 +99,13 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils', functio
         "moduleName": "Resource sharing"
     }];
 
-    $scope.viewModal = function(id, name) {
+    $scope.viewModal = function(id, data) {
         console.log(name);
         // $scope.modulename = name;
         $state.go('tab.mylearningmodal', {id: id});
         // $scope.inprogressModules = data;
-        $rootScope.modulename = name;
+        $rootScope.modulename = data.Mod;
+        $rootScope.inprogressModule = data;
 
     };
 
@@ -121,6 +179,16 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils', functio
 
     $scope.gamesView = function() {
         $state.go('tab.gamesViewModal');
+    };
+
+    $scope.openURL = function()
+    {
+        var myURL = encodeURI($scope.btnCourseDataURL.value);
+        window.open(myURL, '_system');
+    };
+
+    $scope.openModURL = function(url){
+        window.open(url, '_system');
     };
 
     $http.get('json/games-list.json').success(function(data) {

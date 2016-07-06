@@ -5,10 +5,8 @@
 (function() {
   'use strict';
   angular.module('ionic-ratings', ['ionic'])
-  .directive('ionicRatings',ionicRatings);
-  
-  function ionicRatings () {
-    return {
+  .directive('ionicRatings',['Utils',function(Utils){
+     return {
       restrict: 'AE',
       replace: true,
       template: '<div class="text-center ionic_ratings">' +
@@ -55,34 +53,45 @@
 
         //Called when he user clicks on the rating
         scope.ratingsClicked = function(val) {
-          if (scope.minRating !== 0 && val < scope.minRating) {
-            scope.rating = scope.minRating;
-          } else {
-            scope.rating = val;
-          }
-          scope.prevRating = val;
-          scope.ratingsObj.callback(scope.rating);
+       //    // alert("2nd alert"+val);
+       //    if (scope.minRating !== 0 && val < scope.minRating) {
+       //      scope.rating = scope.minRating;
+       //    } else {
+       //      scope.rating = val;
+       //    }
+       //    scope.prevRating = val;
+       //   scope.ratingsObj.callback(scope.rating);
+        Utils.displayAlert("The rating given is :"+val);
+        //alert("The rating given is :"+val);
         };
 
         //Called when he user un clicks on the rating
         scope.ratingsUnClicked = function(val) {
-          if (scope.minRating !== 0 && val < scope.minRating) {
-            scope.rating = scope.minRating;
-          } else {
-            scope.rating = val;
-          }
-          if (scope.prevRating == val) {
-            if (scope.minRating !== 0) {
-              scope.rating = scope.minRating;
-            } else {
-              scope.rating = 0;
-            }
-          }
-          scope.prevRating = val;
-          scope.ratingsObj.callback(scope.rating);
+         // // alert("3rd alert"+val);
+         //  if (scope.minRating !== 0 && val < scope.minRating) {
+         //    scope.rating = scope.minRating;
+         //  } else {
+         //  scope.rating = val;
+         //  }
+         //  if (scope.prevRating == val) {
+         //    if (scope.minRating !== 0) {
+         //      scope.rating = scope.minRating;
+         //    } else {
+         //     scope.rating = 0;
+         //    }
+         //  }
+         //  scope.prevRating = val;
+         //  scope.ratingsObj.callback(scope.rating);
+          Utils.displayAlert("The rating given is :"+val);
+        //alert("The rating given is :"+val);
         };
       }
     }
-  }
+  }]);
+
+ 
+  
+  
+  
   
 })();

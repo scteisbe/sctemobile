@@ -6,7 +6,7 @@
 <textarea rows="2" cols="50" placeholder="Enter the video url" ng-model="techtipURL" class="techtip-submit-URL"></textarea>
 <div class="submit-tech-button-div">
 <button class="submit-tech-button" ng-click="techtipSubmit(techtip, techtipURL)" ng-if="techtip!='' && techtipURL!=''"> Submit </button>
-<button class="submit-tech-button" ng-click="techtipMandatory()" ng-if="techtip=='' || techtipURL==''"> Submit</button>
+<button class="submit-tech-button" ng-click="techtipMandatory()" ng-if="techtip=='' || techtipURL==''" style="opacity: 0.65"> Submit</button>
 <p style="color:red;" ng-show="enterMandatoryMsg">{{mandatoryMsg}}</p>
 </div>
 </div>

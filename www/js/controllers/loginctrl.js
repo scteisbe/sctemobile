@@ -1,6 +1,5 @@
 var loginCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicLoading', '$ionicPopup', '$localStorage', 'Utils', '$q', 'StaticService', '$timeout', '$window', '$location',	function ($scope, $state, $rootScope, $http, $ionicLoading, $ionicPopup, $localStorage, Utils, $q, StaticService, $timeout, $window, $location) {
 
-		//Utils.scteSSOAuthenticate();
 		//Auto login code
 		if($localStorage['authToken'] != null) {
 			//$state.go('tab.discover');
@@ -23,6 +22,9 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicLoading', '$i
 		// Just for developmet, need to remove before production release	
 		$scope.username = 'tester@scte.org';
 		$scope.password = 'scte1234';
+
+		//$scope.username = '';
+		//$scope.password = '';
 		
 		$scope.goLogin = 'no';
 		//Fetch the static data from google spreasheet
@@ -103,7 +105,20 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicLoading', '$i
 					$location.path('tab/mylearning');
 					break;	
 				case 'techtips':
+					if($rootScope.globalVideoflag=='true'){
+						$state.go('tab.techtips');var div = document.getElementById("popupVid");
+       				 var iframetemp = document.getElementsByTagName("iframe");
+        				for (i = 0; i < iframetemp.length; i++) {
+            			var iframe = document.getElementsByTagName("iframe")[i].contentWindow;
+
+           				 div.style.display = state == 'hide' ? '' : '';
+            				func = 'pauseVideo';
+            				iframe.postMessage('{"event":"command","func":"' + func + '","args":""}', '*');
+       															 }
+															}
+					else{
 					$location.path('tab/techtips');
+						}
 					break;
 				case 'applibrary':
 					$location.path('tab/applibrary');

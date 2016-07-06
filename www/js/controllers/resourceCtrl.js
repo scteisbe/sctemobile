@@ -3,26 +3,25 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
 	$scope.standards = $localStorage['staticcontent.standards'];
     //$scope.whitePapers = $localStorage['staticcontent.whitepapers'];
 	
-    dictionarywords= [];
     whitePapers = [];
     //if(Utils.getBuildType() == "stub"){
-    $scope.dictionarywordsStub=[{word : "A", description : "Ampere", definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "A/D", description : "Analog to Digital (convertion)" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "A/D/A", description : "Analog to Digital to Analog" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "AAC", description : "Advanced Audio Coding" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "AACS", description : "Advanced Access Content System" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "B", description : "Ball" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "BA", description : "B" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "BCC", description : "Ball" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "C", description : "Cable" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "CA", description : "Cable" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "CEO", description : "Cable" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "D", description : "Digital" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "D", description : "Digital" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "DA", description : "Digital" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "E", description : "Element" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "ETA", description : "Element" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
-        {word : "ENR", description : "Element" , definition : "Some long text comes here. test string ignore it.", category : "Some Text", term: "sample Term"},
+    $scope.dictionarywordsStub=[{Abbreviation : "A", Description : "Ampere", Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "A/D", Description : "Analog to Digital (convertion)" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "A/D/A", Description : "Analog to Digital to Analog" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "AAC", Description : "Advanced Audio Coding" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "AACS", Description : "Advanced Access Content System" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "B", Description : "Ball" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "BA", Description : "B" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "BCC", Description : "Ball" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "C", Description : "Cable" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "CA", Description : "Cable" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "CEO", Description : "Cable" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "D", Description : "Digital" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "D", Description : "Digital" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "DA", Description : "Digital" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "E", Description : "Element" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "ETA", Description : "Element" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
+        {Abbreviation : "ENR", Description : "Element" , Description2 : "Some long text comes here. test string ignore it.", Category : "Some Text", term: "sample Term"},
         ];
     //} else {
         
@@ -53,18 +52,7 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
                     console.log("authToken.." +  $rootScope.dictionaryData);
                     
                     if( data != null) {
-                        //console.log("Glossary .. Count ==>" + JSON.stringify($scope.glossaryContent));
-                        
-                        angular.forEach(data, function (object) {
-                            
-                            dictObject = {word : "" + object["Abbreviation"] , description : "" + object["Description"], term : "" + object["Term"],
-                                                    definition : "" + object["Description2"] , category : "" + object["Category"]};
-                            //console.log("dictObject.." + JSON.stringify(dictObject));
-                            dictionarywords.push(dictObject);
-                        });
-                        
-                        $localStorage["dictionarywords"]=dictionarywords;
-                        //console.log("dictionarywords..." + $scope.dictionarywords.length);
+                        $localStorage["dictionarywords"]=data;
                     }   
                 } else {
                     // $scope.displayAlert("Wrong username or password !");
@@ -80,45 +68,44 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
         });
 
 // This call is for whitepapers. If else is placed here to stop it from calling the API again and again.
-        if($localStorage["whitePapers"] == '' ){
-            Utils.doHttpRequest(Utils.getApiDetails().whitepaperAPI.httpMethod,Utils.getApiDetails().whitepaperAPI.URL,$headerParamArr,$requestParamArr).then(function(response) {
-                console.log(response);
-                //console.log(response['data']);
-                if(response != null) {
-                    //data available from live API
-                    $message = response['message'];
-                    data = response['data'];
-                    console.log("statusCode.." + $message['statusCode']);
-                    $scope.hideLoader();
+// Test to see if data persist.
+        if($localStorage["whitePapers"] != ''){
+            $scope.whitePapers = $localStorage["whitePapers"];
+            //$localStorage["whitePapers"] = '';
+        }
+
+        Utils.doHttpRequest(Utils.getApiDetails().whitepaperAPI.httpMethod,Utils.getApiDetails().whitepaperAPI.URL,$headerParamArr,$requestParamArr).then(function(response) {
+            console.log(response);
+            //console.log(response['data']);
+            if(response != null) {
+                //data available from live API
+                $message = response['message'];
+                data = response['data'];
+                console.log("statusCode.." + $message['statusCode']);
+                $scope.hideLoader();
                 
-                    if($message['statusCode'] == 200) {
-                        console.log("authToken.." +  $rootScope.dictionaryData);
+            if($message['statusCode'] == 200) {
+                console.log("authToken.." +  $rootScope.dictionaryData);
                     
-                        if( data != null) {
-                            $localStorage["whitePapers"]=data;
-                            $scope.whitePapers = data;
-                        }   
-                    } else {
-                        // $scope.displayAlert("Wrong username or password !");
-                        console.log($message['statusMessage'])
-                    }
+                    if( data != null) {
+                        $localStorage["whitePapers"]=data;
+                        $scope.whitePapers = data;
+                    }   
+            } else {
+                    // $scope.displayAlert("Wrong username or password !");
+                    console.log($message['statusMessage'])
                 }
-                else{
-                    //No API access
-                    $scope.hideLoader();
-                    //display data from stub
-                    $localStorage["whitePapers"]=$scope.whitePapersStub;
-                }
-            }); 
-        } else {
-                    $scope.whitePapers = $localStorage["whitePapers"];
-        }   
-
-
-
-    //}
-    
-    /*$scope.events = [{
+            }
+            else{
+                //No API access
+                $scope.hideLoader();
+                //display data from stub
+                $localStorage["whitePapers"]=$scope.whitePapersStub;
+            }
+        }); 
+   
+//}
+        /*$scope.events = [{
         "image": "img/u183.png",
         "date":"18",
         "month":"May '16",

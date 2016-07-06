@@ -7,6 +7,12 @@ $scope.showLoader = function() {
     });
   };
   
+  $scope.$on('$ionicView.loaded', function() {
+  ionic.Platform.ready( function() {
+    if(navigator && navigator.splashscreen) navigator.splashscreen.hide();
+  });
+});
+  
 $scope.hideLoader = function(){
     $ionicLoading.hide();
 };

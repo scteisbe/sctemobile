@@ -9,8 +9,8 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
     ];
 
     $requestParamArr = [];
-    $scope.voiceRecog = function() {
-        //alert("audio input");
+   /* $scope.voiceRecog = function() {
+        
         var recognition = new SpeechRecognition();
         recognition.onresult = function(event) {
             if (event.results.length > 0) {
@@ -23,7 +23,63 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
         recognition.start();
         //alert("step4");
 
+    };*/
+   // $scope.recognition = new speechRecognitionAndroid();
+    $scope.voiceRecog = function() {
+        //alert("audio input new plugin");
+        var recognition=$scope.recognition;
+        recognition.onresult = function(event) {
+            $ionicLoading.hide();
+            if (event.results.length > 0) {
+                $scope.recognizedText = event.results[0][0].transcript;
+                Utils.displayAlert($scope.recognizedText);
+               
+                $scope.query = $scope.recognizedText;
+                $scope.$apply();
+            }
+        };
+        recognition.onreadyForSpeech = function(event){
+            console.log("ready for speech");
+            $ionicLoading.show({
+                   template: "<h2>Please speak</h2><div><button class='button button-clear' ng-click='stopSpeech()'>Stop Sync</button></div>",
+                   content: 'Loading',
+                   animation: 'fade-in',
+                   showBackdrop: true,
+                   maxWidth: 300,
+                   showDelay: 0,
+                   scope: $scope
+               });
+
+ 
+        };
+        recognition.onerror = function(event) {
+            $ionicLoading.hide();
+            console.log("error");
+        };
+        recognition.onpartialResults = function(event){
+            console.log("partial speech" + event.results[0][0].transcript);
+            $scope.query = event.results[0][0].transcript;
+            $scope.$apply();
+        };
+        recognition.start();        
     };
+    $scope.stopSpeech = function()
+    {
+        console.log("inside stopSpeechReco");
+        $scope.recognition.stop();
+        console.log("stopped");
+        $ionicLoading.hide();
+        $ionicLoading.show({
+                   template: '<div>Processing</div><div>....</div>',
+                   content: 'Loading',
+                   animation: 'fade-in',
+                   showBackdrop: true,
+                   maxWidth: 300,
+                   showDelay: 0,
+                   scope:$scope
+               });
+    };
+
 
 
     $scope.getRequestHeader = function() {
@@ -157,7 +213,7 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
     }
 
 
-
+    $scope.query='';
     $scope.searchResults = function(query) {
         if (event.keyCode == 13 && query != '') {
             $state.go("tab.searchresults");
@@ -374,7 +430,7 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
 
 }];
 
-var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '$sce', function($scope, $rootScope, $http, $state, $filter, $sce) {
+var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '$sce','Utils', function($scope, $rootScope, $http, $state, $filter, $sce, Utils) {
 
     $scope.discoverEvents = function() {
         $http.get('json/event_response.json').success(function(res) {
@@ -438,10 +494,13 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
         $state.go('tab.eventsdetails');
     };*/
 
-    $scope.eventDetail = function(id, eventTabName) {
+    $scope.eventDetail = function(id, eventTabName, htmlDescription) {
         $rootScope.eventDetailId = id;
         $rootScope.eventTabName = eventTabName;
-        $state.go('tab.eventsdetails');
+        if (htmlDescription != "" && htmlDescription != null) {
+            
+            $state.go('tab.eventsdetails');
+        }
 
     };
 
@@ -485,7 +544,19 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
 
 }];
 
-var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionicModal', function($scope, $state, $http, ionicDatePicker, $ionicModal) {
+var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionicModal', 'Utils','$controller', function($scope, $state, $http, ionicDatePicker, $ionicModal, Utils, $controller) {
+
+var SearchResultsCtrlModel = $scope.$new(); //You need to supply a scope while instantiating.
+   //Provide the scope, you can also do $scope.$new(true) in order to create an isolated scope.
+   //In this case it is the child scope of this scope.
+   $controller('DiscoverCtrl',{$scope : SearchResultsCtrlModel });
+   
+   
+   //SearchResultsCtrlModel.recognition; //And call the method on the newScope
+   $scope.voiceRecog= function() {
+       SearchResultsCtrlModel.voiceRecog(); //And call the method on the newScope 
+    };
+
 
     // sort slider
     $ionicModal.fromTemplateUrl('templates/discover/sort-slider.html', {
@@ -511,6 +582,7 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
     $scope.showFilterSlider = function() {
         $scope.filterSlider.show();
     };
+    
     $scope.hideFilterSlider = function() {
         $scope.fromDate = $scope.initialDate;
         $scope.toDate = $scope.initialDate;
@@ -555,29 +627,43 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
     var ipObj1 = {
         callback: function(val) { //Mandatory
             console.log('Return value from the datepicker popup is : ' + val, new Date(val));
-            var selectedDate = new Date(val);
-            var date = selectedDate.getDate();
-            var month = selectedDate.getMonth() + 1;
-            var year = selectedDate.getFullYear();
-            $scope.initialDate = "";
-            $scope.fromDate = date + "-" + month + "-" + year;
+            $scope.firstDate = val;
+
+            if ($scope.secondDate < val) {
+                Utils.displayAlert("select valid date");
+            } else {
+                var selectedDate = new Date(val);
+                var date = selectedDate.getDate();
+                var month = selectedDate.getMonth() + 1;
+                var year = selectedDate.getFullYear();
+                $scope.initialDate = "";
+                $scope.fromDate = date + "-" + month + "-" + year;
+            }
+
+            
         }
     };
 
     var ipObj2 = {
-        callback: function(val) { //Mandatory
+        callback: function(val) { 
+            $scope.secondDate = val;
             console.log('Return value from the datepicker popup is : ' + val, new Date(val));
-            var selectedDate = new Date(val);
-            var date = selectedDate.getDate();
-            var month = selectedDate.getMonth() + 1;
-            var year = selectedDate.getFullYear();
-            $scope.initialDate = "";
-            $scope.toDate = date + "-" + month + "-" + year;
+            if ($scope.firstDate > val) {
+                Utils.displayAlert("select valid date");
+            } else {
+                var selectedDate = new Date(val);
+                var date = selectedDate.getDate();
+                var month = selectedDate.getMonth() + 1;
+                var year = selectedDate.getFullYear();
+                $scope.initialDate = "";
+                $scope.toDate = date + "-" + month + "-" + year;
+            }
         }
     };
 
     $scope.openDatePickerFrom = function() {
         ionicDatePicker.openDatePicker(ipObj1);
+
     };
 
     $scope.openDatePickerTo = function() {
@@ -590,13 +676,12 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
 
     $scope.searchResultsText = "SEARCH RESULTS";
 
-
-
     $scope.limit = 2;
+
 
 }];
 
-var DiscoverEventsCtrl = ['$scope', '$rootScope', '$state', '$http', '$stateParams', function($scope, $rootScope, $state, $http, $stateParams) {
+var DiscoverEventsCtrl = ['$scope', '$rootScope', '$state', '$http', '$stateParams','Utils', function($scope, $rootScope, $state, $http, $stateParams, Utils) {
     $scope.overallevents = '';
     $scope.events = '';
 
@@ -637,17 +722,17 @@ var DiscoverEventsCtrl = ['$scope', '$rootScope', '$state', '$http', '$statePara
             }
         });*/
 
-        var success = function(message) { alert("Event added Successfully"); };
-        var error = function(message) { alert("Event Couldnot be added: " + message); };
+        var success = function(message) { Utils.displayAlert("Event added Successfully"); };
+        var error = function(message) { Utils.displayAlert("Event Couldnot be added: " + message); };
         var eventFound = function(message) {
             if (message == "") {
                 window.plugins.calendar.createEvent(title, location, notes, startDate, endDatee, success, error);
             } else {
-                alert('Event is already added in your calendar.');
+                Utils.displayAlert('Event is already added in your calendar.');
             }
         };
         var errorEvent = function(message) {
-            alert('Error in calendar.');
+            Utils.displayAlert('Error in calendar.');
         };
         window.plugins.calendar.findEvent(title, location, notes, startDate, endDatee, eventFound, errorEvent);
 

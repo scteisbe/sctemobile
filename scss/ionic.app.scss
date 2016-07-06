@@ -15,12 +15,246 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$calm:														#0a558c !default;
-$royal: 													#178acd !default;
-
+$calm: #0a558c !default;
+$royal: #178acd !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-
+//variables
+$color-primary: #00548e; //main color of the app
+$color-light: #ffffff;
+$color-cream: #eeeeee;
+$color-dull: #dddddd;
+$color-grey: #9fa4a6;
+$color-dark: #000000;
+$color-link: #008cc9;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "custom.sass";
+@import "allicons.scss";
+@import "login.scss";
+@import "discover.scss";
+@import "mylearning.scss";
+@import "techtips.scss";
+@import "myapps.scss";
+@import "resources.scss";
+@font-face {
+    font-family: 'regular';
+    src: url('../font/Helvetica-Neue.ttf');
+}
+
+@font-face {
+    font-family: 'light';
+    src: url('../font/Helvetica-Neue-45-Light.ttf');
+}
+
+@font-face {
+    font-family: 'bold';
+    src: url('../font/Helvetica-Neue-75-Bold.ttf');
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'regular';
+}
+
+body {
+    .view-container {
+        .pane {
+            background-color: $color-cream;
+        }
+    }
+}
+
+.img-responsive {
+    width: 100%;
+}
+
+.header-corter-logo {
+    width: 35px;
+    margin-top: 5px;
+}
+
+.tabs-striped {
+    .tabs {
+        border-bottom: none;
+    }
+}
+
+.app-common {
+    .bar {
+        &.bar-stable {
+            background-color: $color-primary;
+        }
+        &.bar-header {
+            .button-clear {
+                color: $color-light;
+            }
+        }
+    }
+}
+
+.bottom-tab {
+    .tab-nav {
+        &.tabs {
+            background-color: $color-primary;
+            i {
+                color: $color-light;
+                font-size: 28px;
+                margin-top: 3px;
+            }
+            .tab-title {
+                color: $color-light;
+                font-size: 10px;
+            }
+            .tab-item {
+                line-height: 10px
+            }
+        }
+    }
+}
+
+button {
+    font-family: 'regular' !important;
+}
+
+.common-main-title {
+    text-transform: uppercase;
+    font-family: 'bold';
+    color: $color-grey;
+}
+
+
+/*****************svg icons size set starts****************/
+
+.icon-sort {
+    width: 20px;
+    color: red;
+}
+
+.icon-filter {
+    width: 25px;
+}
+
+.icon-search-my-learning {
+    width: 22px;
+    top: 13px;
+    left: 14px
+}
+
+.icon-search-manuals {
+    width: 22px;
+    top: 13px;
+    left: 14px
+}
+
+.my-learning-main-header div {
+    display: inline;
+}
+
+.icon-search-web {
+    width: 22px;
+    top: 16px;
+    left: 14px
+}
+
+.icon-search-pocket-guide {
+    width: 22px;
+    top: 14px;
+    left: 16px
+}
+
+.icon-placeholder-pdf {
+    /* position: absolute; */
+    width: 45px;
+    position: absolute;
+    top: 25px;
+    left: 19px
+}
+
+.icon-my-learning-search {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.header-search-icon {
+    margin-top: 6px;
+    margin-right: 10px;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.icon-tab-discover {
+    padding-top: 7px;
+}
+
+.icon-tab-discover:before {
+    content: url("../img/svg/bottom-menu_discover.svg");
+}
+
+.icon-tab-my-learning {
+    padding-top: 5px;
+}
+
+.icon-tab-my-learning:before {
+    content: url("../img/svg/bottom-menu_my-learning.svg");
+}
+
+.icon-tab-tech-tips {
+    padding-top: 2px;
+}
+
+.icon-tab-tech-tips:before {
+    content: url("../img/svg/bottom-menu_techtips.svg");
+}
+
+.icon-tab-apps {
+    padding-top: 3px;
+}
+
+.icon-tab-apps:before {
+    content: url("../img/svg/bottom-menu_apps.svg");
+}
+
+.icon-tab-resources {
+    padding-top: 5px;
+}
+
+.icon-tab-resources:before {
+    content: url("../img/svg/bottom-menu_resources.svg");
+}
+
+
+/*****************svg icons size set ends****************/
+
+
+/*****************make the modal to slide from right***************/
+
+.slide-in-right {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.slide-in-right.ng-enter,
+.slide-in-right > .ng-enter {
+    -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+    transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+}
+
+.slide-in-right.ng-enter-active,
+.slide-in-right > .ng-enter-active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.slide-in-right.ng-leave,
+.slide-in-right > .ng-leave {
+    -webkit-transition: all ease-in-out 250ms;
+    transition: all ease-in-out 250ms;
+}
+
+
+/*****************make the modal to slide from right***************/

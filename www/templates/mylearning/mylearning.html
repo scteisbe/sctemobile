@@ -1,5 +1,4 @@
-<ion-view view-title="{{cortexLogo}}" class="my-learning
-">
+<ion-view view-title="{{cortexLogo}}" class="my-learning">
     <ion-nav-buttons side="secondary">
         <!-- <img ng-click="redirectDisover()" src="img/svg/icon_search_grey.svg" class="icon-my-learning-search" /> -->
         <i ng-click="redirectDisover()" class="all-icon-icon_search_white header-search-icon"></i>
@@ -26,9 +25,9 @@
         </div>
     </ion-header-bar>
     <ion-content class="has-subheader scroll-content background padding">
-        <div class="main-title">My Learning</div>
+        <h4 class="main-title">My Learning</h4>
         <div class="course-catalog">
-            <a class="button" ng-click="openURL()"> GO TO COURSE CATALOG
+            <a class="button" ng-click="openURL()"> {{btnCourseData.value}}
             <img src="img/svg/icon_arrow.svg"/>
             <!-- <i class="icon ion-chevron-right"></i> -->
             </a>
@@ -37,12 +36,12 @@
             <ion-list>
                 <div ng-repeat="inprogressCourse in inprogressCourses" class="course-module-content">
                     <ion-item class="item-stable course-list" ng-click="toggleInprogressCourse(inprogressCourse)" ng-class="{active: isInprogressCourseShown(inprogressCourse)}">
-                        <b>{{inprogressCourse.courseName}}</b>
+                        <b>{{inprogressCourse.FullName}}</b>
                         <i class="icon accordian-icon" ng-class="isInprogressCourseShown(inprogressCourse) ? 'ion-minus' : 'ion-plus'"></i>
                     </ion-item>
-                    <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isInprogressCourseShown(inprogressCourse)">
-                        <a ng-click="viewModal(inprogressModule.id, inprogressModule.moduleName)">
-                            <div>{{inprogressModule.moduleName}}
+                    <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressCourse.ComputedModuleList" ng-show="isInprogressCourseShown(inprogressCourse)">
+                        <a ng-click="openModURL(inprogressModule.Url)">
+                            <div>{{inprogressModule.Mod}}
                                 <i class="icon ion-chevron-right"></i>
                             </div>
                         </a>
@@ -54,11 +53,11 @@
             <ion-list>
                 <div ng-repeat="allCourse in allCourses" class="course-module-content">
                     <ion-item class="item-stable course-list" ng-click="toggleAllCourse(allCourse)" ng-class="{active: isAllCourseShown(allCourse)}">
-                        <b>{{allCourse.courseName}}</b>
+                        <b>{{allCourse.FullName}}</b>
                         <i class="icon accordian-icon" ng-class="isAllCourseShown(allCourse) ? 'ion-minus' : 'ion-plus'"></i>
                     </ion-item>
-                    <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isAllCourseShown(allCourse)" ng-click="viewModal(inprogressModule.id, inprogressModule.moduleName)">
-                        <a>{{inprogressModule.moduleName}}
+                    <ion-item class="item-accordion" ng-repeat="allCourseModule in allCourse.ComputedModuleList" ng-show="isAllCourseShown(allCourse)" ng-click="openModURL(allCourseModule.Url)">
+                        <a>{{inprogressModule.Mod}}
                     <i class="icon ion-chevron-right"></i>
                 </a>
                     </ion-item>
@@ -69,11 +68,11 @@
             <ion-list>
                 <div ng-repeat="completedCourse in completedCourses" class="course-module-content">
                     <ion-item class="item-stable course-list" ng-click="toggleCompletedCourse(completedCourse)" ng-class="{active: isCompletedCourseShown(completedCourse)}">
-                        <b>{{completedCourse.courseName}}</b>
+                        <b>{{completedCourse.FullName}}</b>
                         <i class="icon accordian-icon" ng-class="isCompletedCourseShown(completedCourse) ? 'ion-minus' : 'ion-plus'"></i>
                     </ion-item>
-                    <ion-item class="item-accordion" ng-repeat="inprogressModule in inprogressModules" ng-show="isCompletedCourseShown(completedCourse)" ng-click="viewModal(inprogressModule.id, inprogressModule.moduleName)">
-                        <a>{{inprogressModule.moduleName}}
+                    <ion-item class="item-accordion" ng-repeat="completedCourseModule in completedCourse.ComputedModuleList" ng-show="isCompletedCourseShown(completedCourse)" ng-click="openModURL(completedCourseModule.Url)">
+                        <a>{{inprogressModule.Mod}}
                     <i class="icon ion-chevron-right"></i>
                 </a>
                     </ion-item>

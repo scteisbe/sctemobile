@@ -1,10 +1,15 @@
 <ion-view view-title="{{cortexLogo}}">
     <ion-content class="mylearning-wrapper">
-        <div class="main-title">My Learning</div>
+        <h4 class="main-title">My Learning</h4>
         <div class="sub-title">{{modulename}}</div>
-        <div class="card cards" ng-repeat="item in items">
+        <div class="card cards">
+            {{inprogressModule.Name}}
+            {{inprogressModule.Url}}
+            {{inprogressModule.Module}}
+            {{inprogressModule.Added}}
+        </div>
+<!--         <div class="card cards" ng-repeat="item in items">
             <div ng-if="item.type == 'video'" class="media-video">
-                <!-- <div class="type">{{item.type}} <span ng-if="item.type != 'pdf'">:</span> {{item.duration}}</div> -->
                 <div><img src="img/video-placeholder.jpg"></div>
                 <div class="title">{{item.title}}</div>
                 <div class="progress-bar" ng-if="item.completed > 0">
@@ -25,6 +30,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
     </ion-content>
 </ion-view>
