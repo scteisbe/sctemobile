@@ -21,8 +21,6 @@ Mac: `sudo npm install -g bower  cordova  ionic  gulp  ios-sim`
 
 `bower install`
 
-`ionic setup sass`
-
 `ionic config build`
 
 ####Run it
