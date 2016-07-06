@@ -1,0 +1,279 @@
+.techtips {
+    .main-title {
+        @extend .common-main-title;
+    }
+    .list {
+        a {
+            position: relative;
+        }
+    }
+    .techtips-link {
+        .row {
+            padding: 4px;
+        }
+        div {
+            position: relative;
+            top: 0px;
+        }
+        background-color: $color-light;
+        img {
+            width: 70px;
+        }
+        a {
+            color: $color-dark;
+        }
+        .col-75 {
+            padding: 10px;
+        }
+    }
+    .techtips-video-pdf-types {
+        border-bottom: 1px solid $color-grey;
+        h4 {
+            color: $color-primary;
+        }
+        .techtips-digital {
+            .techtips-ratings {
+                position: absolute;
+                right: 10px;
+                a {
+                    position: relative;
+                }
+            }
+        }
+        .row {
+            .col-75 {
+                padding-left: 10px;
+            }
+            .col-25 {
+                img {
+                    padding-top: 16px;
+                }
+            }
+        }
+        col-75 {
+            text-align: center;
+        }
+        h4 {
+            font-family: 'bold';
+        }
+        p {
+            font-family: 'light';
+        }
+    }
+    .row {
+        .col-80 {
+            .button {
+                padding: 0px 7px;
+                min-height: 43px;
+                border-radius: 8px;
+            }
+            .button-calm {
+                top: 5px;
+                margin: -5px;
+            }
+        }
+    }
+    .techtips-rating {
+        .text-center {
+            text-align: right;
+            padding-right: 10px;
+        }
+    }
+    .techtips-digital {
+        text-align: center;
+        position: relative;
+        .techtips-ratings {
+            position: absolute;
+            top: 0;
+            right: 10px;
+        }
+    }
+    .techtips-digital-leakage {
+        position: relative;
+        .techtips-digital {
+            .techtips-ratings {
+                position: absolute;
+                top: 0;
+                right: 10px;
+            }
+        }
+    }
+    .techtips-ratings {
+        text-align: right;
+        position: relative;
+        top: -19px;
+        right: -155px;
+    }
+}
+
+.techtip-content-wrapper {
+    h4 {
+        font-family: 'bold';
+    }
+}
+
+.secondary-buttons {
+    label {
+        &.submit-btn {
+            color: $color-light;
+            margin: 9px;
+        }
+    }
+}
+
+.ionic_ratings {
+    .icon {
+        font-size: 20px;
+    }
+}
+
+.video-containerYoutube {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    a {
+        position: absolute;
+        display: block;
+        height: 48px;
+        width: 50px;
+        top: 68px;
+        left: 142px;
+        background: url("../img/play.png") center center no-repeat;
+    }
+}
+
+@media (min-width: 768px) {
+    .video-containerYoutube a {
+        position: absolute;
+        display: block;
+        height: 48px;
+        width: 50px;
+        top: 140px;
+        left: 320px;
+        background: url("../img/play.png") center center no-repeat;
+    }
+}
+
+.video-containerYoutube iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.alpha {
+    display: none;
+}
+
+.techtip-submit-text {
+    padding: 9px 0px 0px 20px;
+    border: 1px solid $color-grey;
+    font-size: 17px;
+    font-family: 'light';
+    line-height: 1.6em;
+}
+
+.techtip-submit-URL {
+    padding: 9px 0px 0px 20px;
+    margin-top: 20px;
+    border: 1px solid #bbb;
+    font-size: 17px;
+    font-family: 'light';
+}
+
+.submit-tech-button-div {
+    text-align: center;
+    padding-top: 12%;
+}
+
+.submit-tech-tip-popup {
+    border-color: transparent;
+    background-color: $color-primary;
+    color: #fff;
+    line-height: 3;
+}
+
+.techtip-popup-main.popup-container {
+    .popup {
+        width: 90%;
+        height: 65%;
+        background-color: $color-light;
+    }
+}
+
+.techtip-popup-main {
+    .popup-head {
+        padding: 0px;
+    }
+    .tech-tip-heading {
+        width: 90%;
+        float: left;
+        font-family: 'light';
+        font-size: 22px;
+        color: $color-dark;
+        padding-bottom: 20px;
+        padding-left: 19px;
+    }
+    .closetip {
+        font-size: 30px;
+        font-family: 'light';
+        color: $color-dark;
+    }
+    .video-upload {
+        padding: 33px 40px 4px 133px;
+    }
+    .video-upload-text {
+        font-family: 'bold';
+        color: $color-primary;
+        font-size: 15px;
+        padding-left: 44px;
+    }
+    button {
+        padding: 10px 10px 10px 10px;
+        width: 250px;
+        background-color: $color-link;
+        border-radius: 5px;
+        color: white;
+        font-size: 19px;
+    }
+}
+
+.tech-tip-notes {
+    border-top: 1px solid #dddddd;
+    padding: 10px 0px 0px 10px;
+    margin-top: 20px;
+}
+
+
+/********** techtip video container starts*********/
+
+.video-container {
+    border: 1px solid black;
+    background-color: beige;
+    width: 320px;
+    height: 300px;
+    margin-left: 10px;
+}
+
+.video-modal-close {
+    margin-left: 320px;
+    margin-top: 10px;
+}
+
+.video-load-container {
+    width: 320px;
+    margin-left: 20px;
+    height: 500px;
+}
+
+.video-container-camera-img {
+    width: 100px;
+    margin-left: 125px;
+}
+
+
+/********** techtip video container ends*********/

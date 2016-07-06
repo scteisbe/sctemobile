@@ -1,0 +1,90 @@
+.app-library {
+    .main-title {
+        @extend .common-main-title;
+    }
+    .scroll-category {
+        overflow: scroll;
+    }
+    .category {
+        position: relative;
+        top: 0px;
+        table {
+            td {
+                padding: 0 7px;
+                text-align: center;
+            }
+        }
+        a {
+            text-decoration: none;
+            color: $color-dark;
+        }
+        .category-see-all {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+    }
+    .appLib-title {
+        white-space: normal;
+        font-family: 'regular'
+    }
+    .appLib-desc {
+        white-space: normal;
+    }
+}
+
+.appLib-title {
+    overflow: hidden;
+    position: relative;
+    line-height: 1.2em;
+    max-height: 2.4em;
+    text-align: left;
+    margin-right: -1em;
+    padding-right: 1em;
+}
+
+
+/* create the ... */
+
+.appLib-title:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.appLib-title:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background-color: white;
+}
+
+.appLib-desc {
+    overflow: hidden;
+    position: relative;
+    line-height: 1.2em;
+    max-height: 3.6em;
+    text-align: left;
+    margin-right: -1em;
+    padding-right: 1em;
+}
+
+.appLib-desc:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.appLib-desc:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+}

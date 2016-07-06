@@ -1,0 +1,259 @@
+.my-learning {
+    .main-title {
+        @extend .common-main-title;
+    }
+    .subheader-tabs {
+        line-height: 13px;
+        text-align: center;
+        padding-top: 5px;
+        .tabs {
+            height: 44px;
+            top: -1px;
+            width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+            padding: 0;
+            margin: 0;
+            border-top-width: 0;
+        }
+        .tab-item {
+            text-align: center;
+            &.active {
+                border-top: none;
+            }
+        }
+        .border {
+            border-left: 1px solid #eee;
+        }
+        i {
+            font-size: 22px;
+            color: $color-primary;
+        }
+        .tab-title {
+            font-size: 10px;
+            font-family: "bold";
+        }
+        a {
+            color: $color-dark;
+            font-family: 'bold';
+            padding-top: 5px;
+        }
+    }
+    .tabs-secondary {
+        background-size: 0;
+        left: 0;
+    }
+    .course-catalog {
+        background-color: $color-dull;
+        position: relative;
+        top: 0px;
+        width: 100%;
+        padding: 20px 20px;
+        font-family: 'bold';
+        color: $color-link;
+        .button {
+            padding: 0px 15px;
+            font-size: 15px;
+            min-height: 40px;
+            line-height: 40px;
+            height: 40px;
+            border: 1px solid $color-link;
+            width: 100%;
+            background: transparent;
+            align-self: center;
+        }
+        a {
+            color: $color-link;
+            img {
+                float: right;
+                font-size: 10px;
+                width: 10px;
+                padding: 10px 0 0 0;
+            }
+        }
+        .course-button {
+            .course-arrow-button {
+                right: 0;
+                position: absolute;
+            }
+        }
+    }
+    .scroll-content {
+        width: 100%;
+    }
+    .course-list {
+        position: relative;
+        .accordian-icon {
+            position: absolute;
+            right: 10px;
+        }
+    }
+    .course-module-content {
+        a {
+            color: $color-grey;
+            font-family: 'light';
+            i {
+                float: right;
+            }
+        }
+    }
+    .mylearning-webinars {
+        img {
+            width: 100%;
+            text-align: center;
+        }
+    }
+    .mylearning-game-header {
+        position: relative;
+        top: 0px;
+        div {
+            display: inline;
+        }
+        .see-all {
+            position: absolute;
+            right: 5px;
+            color: $color-link;
+            font-family: sans-serif;
+        }
+    }
+    .mylearning-games {
+        text-transform: uppercase;
+        margin: 10px;
+        color: $color-grey;
+        font-family: 'bold';
+    }
+    .games {
+        width: 100%;
+        background-color: $color-dull;
+        margin: 5px;
+        .col-75 {
+            padding-left: 15px;
+        }
+    }
+    .mylearning-games-title-description {
+        font-family: 'bold';
+        color: $color-dark;
+        p {
+            font-family: 'light';
+            color: $color-dark;
+            white-space: normal;
+        }
+    }
+    .inprogress-course {
+        background-color: #E8E8E8;
+        font-family: 'light';
+        .course-module-content {
+            ion-item {
+                font-family: 'light';
+                color: $color-primary;
+            }
+        }
+        .course-list {
+            i {
+                color: $color-primary;
+            }
+        }
+    }
+}
+
+.games-wrapper {
+    .game-title {
+        text-align: center;
+        padding: 15px 10px 15px 10px;
+    }
+    .game_description {
+        text-align: center;
+        padding: 15px 10px 15px 10px;
+    }
+    .game-image {
+        text-align: center;
+    }
+    .game-image img {
+        width: 150px;
+    }
+    .game-play-button {
+        width: 180px;
+        height: 30px;
+        border: 1px solid $color-link;
+        background-color: $color-link;
+        border-radius: 5px;
+        text-align: center;
+        padding: 3px;
+        margin-bottom: 10px;
+        color: white;
+    }
+}
+
+.mylearning-wrapper {
+    .main-title {
+        @extend .common-main-title;
+        margin: 10px;
+    }
+    .sub-title {
+        margin: 10px;
+        color: $color-primary;
+        font-size: 18px;
+    }
+    .progress-bar {
+        height: 20px;
+        width: 100%;
+        background: $color-dull;
+        position: relative;
+        .completed {
+            height: 20px;
+            background: $color-link;
+        }
+        span {
+            text-transform: uppercase;
+            color: black;
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            text-align: center
+        }
+    }
+    .cards {
+        padding: 0;
+        .media-video {
+            img {
+                width: 100%;
+            }
+            .title {
+                padding: 5px;
+                text-align: center;
+                font-family: 'bold';
+            }
+        }
+        .media-pdf {
+            .placeholder {
+                width: 100%;
+                height: 100px;
+                background: $color-link;
+                position: relative;
+            }
+        }
+    }
+    .card {
+        .media-pdf {
+            .placeholder {
+                img {
+                    width: 50px;
+                    position: absolute;
+                    top: 26px;
+                    left: 20px;
+                }
+            }
+            .text-box {
+                padding: 10px;
+            }
+            .title {
+                color: $color-link;
+                font-family: 'light';
+            }
+            .description {
+                font-family: 'light';
+            }
+        }
+    }
+}
