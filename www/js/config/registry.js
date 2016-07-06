@@ -2,7 +2,8 @@ var cortexConfig = angular.module('cortexConfig', ['ionic', 'ionic-ratings', 'io
     'ngHolder', 'scteApp.services',
     'scteApp.staticservices',
     'ngStorage',
-    'times.tabletop'
+    'times.tabletop',
+    'ionic.service.analytics'
 ]);
 
 var deploy = new Ionic.Deploy();
@@ -27,7 +28,7 @@ cortexConfig.run(function ($rootScope) {
 cortexConfig.run(['$ionicPlatform', 'StaticService', function ($ionicPlatform, StaticService) {
 
     //Fetch the data
-    console.log("Gauri:in run");
+//     console.log("Gauri:in run");
     //StaticService.initAPIContainer();
     StaticService.fetchStaticData();
     $ionicPlatform.ready(function () {
@@ -44,6 +45,15 @@ cortexConfig.run(['$ionicPlatform', 'StaticService', function ($ionicPlatform, S
         }
 
     });
+}]);
+
+cortexConfig.run(['$ionicPlatform', '$ionicAnalytics', function($ionicPlatform, $ionicAnalytics) {
+  $ionicPlatform.ready(function() {
+    $ionicAnalytics.register({
+      silent: true,   // By default all analytics events are logged to the console for debugging. The silent flag disables this.
+      dryRun: false   // dryRun=true won't send any events to the analytics backend. (useful during development)
+    });
+  });
 }]);
 
 cortexConfig.config(function ($ionicConfigProvider) {
@@ -126,8 +136,8 @@ cortexConfig.config(function ($sceDelegateProvider) {
 
 cortexConfig.run(function ($ionicPopup) {
     
-    console.log("in wathcer..")
-    console.log(JSON.stringify(deploy));
+//     console.log("in wathcer..")
+//     console.log(JSON.stringify(deploy));
     deploy.watch().then(function () { }, function () { }, function (updateAvailable) {
         console.log("updateAvailable.." + updateAvailable);
         if (updateAvailable) {
