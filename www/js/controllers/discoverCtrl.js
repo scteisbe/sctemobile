@@ -1,4 +1,4 @@
-var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage', '$sce', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils, $localStorage, $sce) {
+var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage', '$sce', '$window', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils, $localStorage, $sce, $window) {
     $scope.staticContent = [];
     $scope.platform = ionic.Platform.platform();
     $scope.username = $localStorage['username'];
@@ -89,8 +89,14 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
         return $headerParamArr;
     }
 
-    $scope.openURL = function(url) {
+    $scope.openPromo = function(url) {
+        ga('send', 'event', 'Promo banner', 'Opened from discover tab', url);
         window.open(url, '_system');
+    };
+
+    $scope.openURL = function(item) {
+        ga('send', 'event', item.type, 'Opened from featured resources', item.title);
+        window.open(item.url, '_system');
     };
 
     $scope.withinDates = function(startDate, endDate) {
@@ -164,6 +170,7 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
                     console.log("in fetchProfile()..FirstName.." + $profileData['FirstName']);
                     $scope.username = $profileData['FirstName'];
                     $scope.fetchEvents();
+                    $window.ga('set', 'userId', $profileData['Id']);
                 }
             }
         });

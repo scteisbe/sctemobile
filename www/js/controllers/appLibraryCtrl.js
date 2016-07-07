@@ -83,11 +83,13 @@ var AppLibraryCtrl = ['$scope', '$state', '$rootScope','Utils','$localStorage', 
 // ];
 
     $scope.redirectDisover = function() {
-       Utils.redirectDiscover();
+        ga('send', 'event', 'Search button', 'tap', 'from app library tab');
+        Utils.redirectDiscover();
     };
     
-    $scope.openPage = function(url) {
-        window.open(url, '_system');
+    $scope.openPage = function(item) {
+        ga('send', 'event', item.type, 'Opened from app library', item.title);
+        window.open(item.url, '_system');
     };
 
 }];

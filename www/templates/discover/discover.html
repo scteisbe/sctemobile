@@ -21,7 +21,7 @@
     <ion-header-bar class="bar-subheader search-box-wrapper" style="position: relative">
         <label class="item-input-wrapper">
             <img src="img/icon_textbox-search.png" class="search-icn">
-            <input type="search" placeholder="Enter keyword here" ng-model="query" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults(query)">
+            <input type="search" placeholder="Enter keyword here-k2" ng-model="query" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults(query)">
         </label>
         <button class="button button-clear button-stable" ng-click="voiceRecog()" style="    position: absolute; top: 16px; right: 19px" ng-if="query == ''"><img src="img/icon_textbox-mic.png" class="mic-icn"></button>
         <button class="button button-clear button-stable" ng-click="clearSearchField()" style="    position: absolute; top: 16px; right: 19px" ng-if="query != ''"><i class="ion-close-circled mic-icn"></i></button>
@@ -29,7 +29,7 @@
     <ion-content class="discover-wrapper">
         <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="activeIndex" ng-init="activeIndex = 0" class="slide-wrapper">
             <ion-slide ng-repeat="item in staticContent.announcements" ng-if="item.template == 'imagewithlink' && withinDates(item.datestart,item.dateend)">
-                <div class="slide-image"><img ng-src="{{item.fullwidthimageurl}}" ng-click="openURL(item.url)" /></div>
+                <div class="slide-image"><img ng-src="{{item.fullwidthimageurl}}" ng-click="openPromo(item.url)" /></div>
             </ion-slide>
         </ion-slide-box>
         <div class="resources-wrapper">
@@ -44,7 +44,7 @@
                             <img class="pdf-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type!='app'" alt="{{item.title}}">
                         </td>-->
                         <td ng-repeat="item in staticContent.featuredresources" ng-if="item.os==platform">
-                            <img ng-src="{{item.coverimageurl}}" ng-click="openURL(item.url)">
+                            <img ng-src="{{item.coverimageurl}}" ng-click="openURL(item)">
                             <p>{{item.title}}</p>
                         </td>
                     </tr>

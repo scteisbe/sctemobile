@@ -10,20 +10,24 @@ var deploy = new Ionic.Deploy();
 
 cortexConfig.config(appRoute)
 
-cortexConfig.run(function ($rootScope) {
+cortexConfig.run(['$rootScope', '$location', '$window' ,function ($rootScope, $location, $window) {
     $rootScope.$on("$locationChangeStart", function (event, next, current) {
-       if($rootScope.globalVideoflag+"flag") {var state = 'pause';
-        var div = document.getElementById("popupVid");
-        var iframetemp = document.getElementsByTagName("iframe");
-        for (i = 0; i < iframetemp.length; i++) {
-            var iframe = document.getElementsByTagName("iframe")[i].contentWindow;
-            div.style.display = state == 'hide' ? '' : '';
-            func = 'pauseVideo';
-            iframe.postMessage('{"event":"command","func":"' + func + '","args":""}', '*');
+        if($rootScope.globalVideoflag+"flag") {var state = 'pause';
+            var div = document.getElementById("popupVid");
+            var iframetemp = document.getElementsByTagName("iframe");
+            for (i = 0; i < iframetemp.length; i++) {
+                var iframe = document.getElementsByTagName("iframe")[i].contentWindow;
+                div.style.display = state == 'hide' ? '' : '';
+                func = 'pauseVideo';
+                iframe.postMessage('{"event":"command","func":"' + func + '","args":""}', '*');
+            }
         }
-    }
     });
-});
+    $window.ga('create', 'UA-1851425-10', 'auto');
+    $rootScope.$on('$stateChangeSuccess', function (event) {
+        $window.ga('send', 'pageview', $location.path());
+    });
+}]);
 
 cortexConfig.run(['$ionicPlatform', 'StaticService', function ($ionicPlatform, StaticService) {
 
@@ -50,7 +54,7 @@ cortexConfig.run(['$ionicPlatform', 'StaticService', function ($ionicPlatform, S
 cortexConfig.run(['$ionicPlatform', '$ionicAnalytics', function($ionicPlatform, $ionicAnalytics) {
   $ionicPlatform.ready(function() {
     $ionicAnalytics.register({
-      silent: true,   // By default all analytics events are logged to the console for debugging. The silent flag disables this.
+      silent: false,   // By default all analytics events are logged to the console for debugging. The silent flag disables this.
       dryRun: false   // dryRun=true won't send any events to the analytics backend. (useful during development)
     });
   });

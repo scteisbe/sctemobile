@@ -1,4 +1,4 @@
-var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils','$localStorage', function($scope, $state, $rootScope, $http,Utils,$localStorage, $window) {
+var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localStorage', '$window', function($scope, $state, $rootScope, $http, Utils, $localStorage, $window) {
    
     $scope.staticContent= [];
     $scope.Config = [];
@@ -7,6 +7,12 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils','$localS
     $scope.Config = $scope.staticContent['configs'];
     $scope.btnCourseData = $scope.Config[0];
     $scope.btnCourseDataURL = $scope.Config[1];
+    $scope.activeTab = 0;   // initially activated secondary tab
+
+    $scope.$watch('activeTab', function() {
+        var a = ['/tab/mylearning/inprogress', '/tab/mylearning/completed', '/tab/mylearning/all'];
+        $window.ga('send', 'pageview', a[$scope.activeTab]);
+    });
 
 // Mylearning API call and integration.
     $requestParamArr = [];
@@ -74,7 +80,8 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils','$localS
     // }];
 
     $scope.redirectDisover = function() {
-       Utils.redirectDiscover();
+        ga('send', 'event', 'Search button', 'tap', 'from my learning tab');
+        Utils.redirectDiscover();
     };
 
     // $scope.allCourses = [{
