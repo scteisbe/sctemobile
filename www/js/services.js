@@ -33,7 +33,7 @@ angular.module('scteApp.services', ['times.tabletop'])
 
     doHttpRequest : function ($method,$url,$header,requestParamArr) {
        
-       console.log("$url................" + $url);
+//        console.log("$url................" + $url);
        return  $http({
 			method:$method,
 			url:$url,
@@ -45,8 +45,8 @@ angular.module('scteApp.services', ['times.tabletop'])
 				$content = response.data;
                 
                 $message = $content['message'];
-                console.log("Printing message..");
-                console.log($message);
+//                 console.log("Printing message..");
+//                 console.log($message);
                 return $content
 			},
 			
@@ -115,8 +115,8 @@ angular.module('scteApp.services', ['times.tabletop'])
             });
             
         });
-        console.log("body..");
-        console.log(output);
+//         console.log("body..");
+//         console.log(output);
         return output;
     },
     
@@ -129,13 +129,13 @@ angular.module('scteApp.services', ['times.tabletop'])
             });
          });
          //
-        console.log("header..");
-        console.log(JSON.stringify($headerMap));
+//         console.log("header..");
+//         console.log(JSON.stringify($headerMap));
         return $headerMap;
      },
      
      displayAlert : function($message) {
-        console.log("into Service.. displayAlert.." + $message);
+//         console.log("into Service.. displayAlert.." + $message);
         $ionicLoading.hide();
         
         if(navigator != null && navigator.notification != null ) {
