@@ -41,6 +41,13 @@ function alertDismissed() {
 	colsole.log("in alertDismissed..");
 }
 
+$scope.getRequestHeader = function() {
+        $headerParamArr = [];
+        $headerParamArr.push({ "authToken": $rootScope.authToken });
+        $headerParamArr.push({ "authType": "Bearer" });
+        return $headerParamArr;
+ }
+
 $scope.cortexLogo = '<img src="img/cortex_logo.png" class="header-corter-logo">';
 	
 }];

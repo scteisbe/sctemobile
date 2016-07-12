@@ -1,55 +1,47 @@
-<ion-view view-title='{{cortexLogo}}' class="techtips" ng-init="initialize()">
+<ion-view view-title='Tech tip' class="techtips" ng-init="initialize()">
+    <ion-nav-title>
+        <img src="img/cortex_logo.png" class="header-corter-logo">
+    </ion-nav-title>
     <ion-nav-buttons side="secondary">
-        <label class="submit-btn" ng-click="showPopup()">Submit</label>
+        <label class="submit-btn" ng-click="techTipSubmitPage()">Submit</label>
     </ion-nav-buttons>
     <ion-content class="padding">
         <h4 class="main-title">Tech Tips</h4>
-        <div ng-repeat="techTipsContent in techTipsContents" class="techtips-video-pdf-types">
-            <div ng-if="techTipsContent.template == 'video'">
-                <h4>{{techTipsContent.title}}</h4>
-                <div class="video-containerYoutube" id="popupVid">
+        <div class="card techtips-video-pdf-types" ng-repeat="techTipsContent in techTipsContents" ng-if="techTipsContent.template == 'video' || techTipsContent.template == 'html'" >
+        <div>
+            <div ng-if="techTipsContent.template == 'video'" class="video">
+                <div class="item item-text-wrap">
+                    <h2>{{techTipsContent.title}}</h2>
+                </div>
+                <div class="video-container-youtube" id="popupVid">
                     <iframe ng-src="{{techTipsContent.videourl}}" frameborder="0" width="350" height="200" ng-show="flag[$index]=='true' || globalFlag=='true'" autoplay></iframe>
                     <img ng-src="{{techTipsContent.coverimageurl}}" class="img-responsive" ng-hide="flag[$index]=='true' || globalFlag=='true'" ng-click="toggleImageAndVideo($index)" />
-                    <a href="#" ng-hide="flag[$index]=='true' || globalFlag=='true'" ng-click="toggleImageAndVideo($index)">
-                        <!-- <img src="img/play.png" />
-                    </a> -->
+                    <a href="#" ng-hide="flag[$index]=='true' || globalFlag=='true'" ng-click="toggleImageAndVideo($index)"></a>
                 </div>
             </div>
-            <div ng-if="techTipsContent.template == 'html'" ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)">
-                <div class="row">
-                    <div class="col-25">
-                        <img ng-src="{{techTipsContent.coverimageurl}}" class="img-responsive" />
-                    </div>
-                    <div class="col-75">
-                        <h4>{{techTipsContent.title}}</h4>
+            <div ng-if="techTipsContent.template == 'html'" ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)" class="html">
+                <div class="item item-text-wrap header">
+                    <div class="row">
+                        <div class="col-25">
+                            <img ng-src="{{techTipsContent.coverimageurl}}" class="img-responsive" />
+                        </div>
+                        <div class="col-75">
+                            <h2>{{techTipsContent.title}}</h2>
+                        </div>
                     </div>
                 </div>
-                <p>{{techTipsContent.subtitle | limitTo: 200}}{{techTipsContent.subtitle > 200 ? '...' : ''}}</p>
-                <div class="techtips-digital">
+                <div class="item item-text-wrap content">
+                    <p>{{techTipsContent.subtitle | limitTo: 200}}{{techTipsContent.subtitle > 200 ? '...' : ''}}</p>
+                </div>
+                <div class="item footer">
                     <a ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)">Read more</a>
                     <div class="techtips-ratings">
                         <ionic-ratings ratingsobj='techTipsContent.ratingsObject' ng-click="stopPropagation($event)"></ionic-ratings>
                     </div>
                 </div>
             </div>
+
+            
         </div>
-        <script id="templates/modal.html" type="text/ng-template">
-            <ion-modal-view class="video-modal-maincontainer">
-                <ion-header-bar class="bar bar-header bar-positive">
-                    <h3 class="title">Submit Your Tech Tip</h3>
-                    <img class="video-modal-close" src="img/u56.png" ng-click="modal.hide()"></img>
-                </ion-header-bar>
-                <ion-content class="padding">
-                    <div class="list">
-                        <div class="video-container">
-                        </div>
-                        <div class="video-container-camera-img">
-                            <img src="img/u292.png"></img>
-                        </div>
-                        <button class="button button-full button-positive" ng-click="createContact(newUser)">submit</button>
-                    </div>
-                </ion-content>
-            </ion-modal-view>
-        </script>
     </ion-content>
 </ion-view>

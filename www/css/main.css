@@ -1,27 +1,9 @@
 /*Empty. Add your own CSS if you like */
 
-#full-size {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-
-.backgroundprimarycolor {
-    background-color: #00548e;
-}
-
-.backgroundsecondarycolor {
-    background-color: #0089cf;
-}
-
 .tabs-striped .tab-item.tab-item-active,
 .tabs-striped .tab-item.active,
 .tabs-striped .tab-item.activated {
     border: none;
-}
-
-body.keyboard-open {
-    bottom: 0;
 }
 
 

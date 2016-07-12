@@ -1,117 +1,3 @@
-.techtips {
-    .main-title {
-        @extend .common-main-title;
-    }
-    .list {
-        a {
-            position: relative;
-        }
-    }
-    .techtips-link {
-        .row {
-            padding: 4px;
-        }
-        div {
-            position: relative;
-            top: 0px;
-        }
-        background-color: $color-light;
-        img {
-            width: 70px;
-        }
-        a {
-            color: $color-dark;
-        }
-        .col-75 {
-            padding: 10px;
-        }
-    }
-    .techtips-video-pdf-types {
-        border-bottom: 1px solid $color-grey;
-        h4 {
-            color: $color-primary;
-        }
-        .techtips-digital {
-            .techtips-ratings {
-                position: absolute;
-                right: 10px;
-                a {
-                    position: relative;
-                }
-            }
-        }
-        .row {
-            .col-75 {
-                padding-left: 10px;
-            }
-            .col-25 {
-                img {
-                    padding-top: 16px;
-                }
-            }
-        }
-        col-75 {
-            text-align: center;
-        }
-        h4 {
-            font-family: 'bold';
-        }
-        p {
-            font-family: 'light';
-        }
-    }
-    .row {
-        .col-80 {
-            .button {
-                padding: 0px 7px;
-                min-height: 43px;
-                border-radius: 8px;
-            }
-            .button-calm {
-                top: 5px;
-                margin: -5px;
-            }
-        }
-    }
-    .techtips-rating {
-        .text-center {
-            text-align: right;
-            padding-right: 10px;
-        }
-    }
-    .techtips-digital {
-        text-align: center;
-        position: relative;
-        .techtips-ratings {
-            position: absolute;
-            top: 0;
-            right: 10px;
-        }
-    }
-    .techtips-digital-leakage {
-        position: relative;
-        .techtips-digital {
-            .techtips-ratings {
-                position: absolute;
-                top: 0;
-                right: 10px;
-            }
-        }
-    }
-    .techtips-ratings {
-        text-align: right;
-        position: relative;
-        top: -19px;
-        right: -155px;
-    }
-}
-
-.techtip-content-wrapper {
-    h4 {
-        font-family: 'bold';
-    }
-}
-
 .secondary-buttons {
     label {
         &.submit-btn {
@@ -121,54 +7,109 @@
     }
 }
 
-.ionic_ratings {
-    .icon {
-        font-size: 20px;
+.techtips {
+    .main-title {
+        @extend .common-main-title;
     }
-}
 
-.video-containerYoutube {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    a {
-        position: absolute;
-        display: block;
-        height: 48px;
-        width: 50px;
-        top: 68px;
-        left: 142px;
-        background: url("../img/play.png") center center no-repeat;
+    .card {
+        &.techtips-video-pdf-types {
+           
+            h2 {
+                color: $color-primary;
+                font-family: 'bold';
+            }
+            p {
+                color: $color-dark;
+            }
+            .video {
+                .video-container-youtube {
+                    position: relative;
+                    padding-bottom: 56.25%;
+                    height: 0;
+                    overflow: hidden;
+                    a {
+                        position: absolute;
+                        display: block;
+                        height: 48px;
+                        width: 50px;
+                        top: 68px;
+                        left: 142px;
+                        background: url("../img/play.png") center center no-repeat;
+                    }
+                }
+                .video-container-youtube iframe,
+                .video-container object,
+                .video-container embed {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .html {
+                .header {
+                    .row {
+                        padding: 0;
+                        .col-75 {
+                            padding-left: 10px;
+                        }
+                        .col-25 {
+                            img {
+                                padding-top: 3px;
+                            }
+                        }
+                    }
+                }
+                .content {
+                    //...
+                }
+                .footer {
+                    text-align: center;
+                    position: relative;
+                    a {
+                        color: $color-link;
+                    }
+                    .techtips-ratings {
+                        position: absolute;
+                        top: 15px;
+                        right: 10px;
+                        .ionic_ratings {
+                            .icon {
+                                font-size: 22px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 @media (min-width: 768px) {
-    .video-containerYoutube a {
-        position: absolute;
-        display: block;
-        height: 48px;
-        width: 50px;
-        top: 140px;
-        left: 320px;
-        background: url("../img/play.png") center center no-repeat;
+    .techtips {
+        .card {
+            &.techtips-video-pdf-types {
+                .video {
+                    .video-container-youtube {
+                        a {
+                            position: absolute;
+                            display: block;
+                            height: 48px;
+                            width: 50px;
+                            top: 140px;
+                            left: 320px;
+                            background: url("../img/play.png") center center no-repeat;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
-.video-containerYoutube iframe,
-.video-container object,
-.video-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.alpha {
-    display: none;
-}
-
+//................
 .techtip-submit-text {
     padding: 9px 0px 0px 20px;
     border: 1px solid $color-grey;
@@ -178,7 +119,7 @@
 }
 
 .techtip-submit-URL {
-    padding: 9px 0px 0px 20px;
+    padding: 9px 0px 9px 20px;
     margin-top: 20px;
     border: 1px solid #bbb;
     font-size: 17px;
@@ -216,7 +157,7 @@
         font-size: 22px;
         color: $color-dark;
         padding-bottom: 20px;
-        padding-left: 19px;
+        padding-left: 5px;
     }
     .closetip {
         font-size: 30px;
@@ -247,33 +188,19 @@
     padding: 10px 0px 0px 10px;
     margin-top: 20px;
 }
+//............
 
+.techtip-submit-wrapper {
 
-/********** techtip video container starts*********/
-
-.video-container {
-    border: 1px solid black;
-    background-color: beige;
-    width: 320px;
-    height: 300px;
-    margin-left: 10px;
+.tech-tip-heading{
+text-transform: uppercase;
+    font-family: 'bold';
+    color: #9fa4a6;
 }
-
-.video-modal-close {
-    margin-left: 320px;
-    margin-top: 10px;
+button {
+&.button-positive{
+background-color:$color-primary;
+text-transform: uppercase;
 }
-
-.video-load-container {
-    width: 320px;
-    margin-left: 20px;
-    height: 500px;
 }
-
-.video-container-camera-img {
-    width: 100px;
-    margin-left: 125px;
 }
-
-
-/********** techtip video container ends*********/

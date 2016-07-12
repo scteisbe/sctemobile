@@ -1,16 +1,13 @@
 .resource {
     .main-title {
         @extend .common-main-title;
-        padding-left: 10px;
-        padding-top: 10px;
-        padding-bottom: 5px;
     }
     .dictionary {
         position: relative;
-        background-color: $color-light;
-        padding-bottom: 10px;
-        padding-top: 0;
-        .dummy {
+        .card {
+            margin-top: 0;
+        }
+        .eachpad {
             width: 30px;
             height: 30px;
             line-height: 30px;
@@ -22,120 +19,58 @@
             color: $color-link;
         }
         .alphapad {
-            padding: 5px 25px 0px 25px;
+            // padding: 5px 25px 0px 25px;
         }
         .heading {
-            color: #BEBEBE;
-            padding: 5px 0px 0px 25px;
+            color: $color-grey;
             font-family: 'bold';
         }
         .see-all {
+        font-family:'light';
             position: absolute;
-            top: 4px;
-            right: 10px;
+            top: 0;
+            right: 0;
             color: $color-link;
         }
         .text {
             word-wrap: break-word;
             text-decoration: none;
             color: $color-dark;
-            text-decoration-color: #F80000;
-            padding: 5px 0px 0px 25px;
         }
     }
-    .scte {
+    .scte,
+    .whitepaper {
         position: relative;
         background-color: $color-cream;
-        padding: 5px;
         font-family: 'bold';
         .heading {
-            color: $color-grey;
-            padding-left: 25px;
-            padding-top: 5px;
-            font-family: 'bold';
-        }
-        .see-all {
-            position: absolute;
-            top: 13px;
-            right: 0px;
-            padding-right: 15px;
-            padding-top: 7px;
-            color: $color-link;
-        }
-        .scte-list {
-            border: $color-dull;
-            padding: 0px;
-            background-color: $color-dull;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 1px;
-            border-bottom: 1px solid $color-grey;
-            .arrow {
-                position: absolute;
-                width: 8%;
-                padding: 20px 13px 13px 0px;
-                right: 7px;
-                max-width: 25px;
-                max-height: 25px;
-            }
-            .break {
-                white-space: initial;
-                font-size: small;
-            }
-            .publish {
-                white-space: initial;
-                font-size: small;
-                color: $color-dark;
-                font-family: 'bold';
-            }
-            .scte-image {
-                width: 100%;
-            }
-        }
-    }
-    .scte1 {
-        position: relative;
-        background-color: $color-cream;
-        padding: 7px;
-        font-family: 'bold';
-        .heading1 {
             @extend .common-main-title;
         }
-        .scte-list1 {
-            border: $color-dull;
-            padding: 0px;
-            background-color: $color-dull;
-            margin-left: 5px;
-            margin-right: 5px;
-            margin-bottom: 1px;
-            border-bottom: 1px solid $color-grey;
-            .arrow1 {
-                position: absolute;
-                width: 8%;
-                padding: 20px 13px 13px 0px;
-                right: 7px;
-                max-width: 25px;
-                max-height: 25px;
+        .see-all {
+        font-family:'light';
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: $color-link;
+        }
+        .list {
+            img {
+                border-radius: 0;
+                max-height: 50px;
             }
-            .break {
-                white-space: initial;
-                font-size: small;
-            }
-            .publish {
-                white-space: initial;
-                font-size: small;
-                color: $color-dark;
+            h2 {
+                color: $color-primary;
                 font-family: 'bold';
             }
-            .scte-image {
-                width: 100%;
+            p {
+                overflow: initial;
+                white-space: initial;
+                font-family: 'regular';
+            }
+            i {
+                color: $color-link;
             }
         }
-    }
-    .whitepaper {
-        background-color: $color-cream;
-        padding: 5px;
-        position: relative;
     }
     .alpha {
         .link {
@@ -144,16 +79,32 @@
     }
 }
 
-.scteStd-doc-img-container {
-    float: left;
+.standards-list,
+.whitepaper-list {
+    .item-avatar {
+        img {
+            border-radius: 0;
+            max-height: 50px;
+        }
+    }
+    h2 {
+        font-family: 'regular';
+        color: $color-primary
+    }
+    .icon-accessory {
+        color: $color-link;
+    }
 }
 
 
 /* dictionary */
 
-#dictionart-view {
+.dictionary-wrapper {
+    .dic-title {
+        @extend .common-main-title;
+        margin: 10px;
+    }
     ion-item.item {
-        background-color: transparent;
         padding: 1px;
         border-width: 0px;
     }
@@ -172,15 +123,6 @@
     padding-bottom: 2px;
     padding-left: 5px;
     padding-right: 5px;
-}
-
-.dic-title {
-    @extend .common-main-title;
-    margin: 10px;
-}
-
-.dic-container {
-    background-color: rgb(242, 243, 244);
 }
 
 .list-leftword {
@@ -313,20 +255,4 @@ ion-popover-view.fit {
     .item:last-child {
         @include border-bottom-radius($popover-border-radius-ios);
     }
-}
-
-.standards-list {
-    .item-avatar {
-        img {
-            border-radius: 0;
-            max-height: 50px;
-        }
-    }
-    .icon-accessory {
-        color: $color-primary;
-    }
-}
-
-.scte-std-arrow {
-    width: 14px;
 }

@@ -1,0 +1,27 @@
+
+
+
+
+<ion-view view-title="submit Tech Tip"  class="techtip-submit-wrapper">
+    <ion-nav-title>
+        <img src="img/cortex_logo.png" class="header-corter-logo">
+    </ion-nav-title>
+    <ion-content class="padding">
+    <h4 class="tech-tip-heading"> Submit Your Tech Tip</h4>
+<div class="card">
+<div class="test-tip-popup">
+    <div class="tech-tip-popup-header" style="position: relative">
+       
+        <p style="padding: 10px 5px 5px 8px;font-family: 'light';">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. </p>
+        <textarea rows="4" cols="50" placeholder="Enter your Tech Tip" class="techtip-submit-text" ng-model="techtip" style="width: 96%; margin-left: 2%;"></textarea>
+        <textarea autocapitalize="none" maxlength="34" rows="1" cols="50" placeholder="Enter the video url" ng-model="techtipURL" class="techtip-submit-URL" style="width: 96%;margin-left: 2%;"></textarea>
+        <div class="submit-tech-button-div">
+            <button class="button button-positive button-block" ng-click="techtipSubmit(techtip, techtipURL)" ng-if="techtip!='' && techtipURL!=''"> Submit </button>
+            <button class="button button-positive button-block" ng-click="techtipMandatory()" ng-if="techtip=='' || techtipURL==''" style="opacity: 0.65"> Submit</button>
+            <p style="color:red;" ng-show="enterMandatoryMsg">{{mandatoryMsg}}</p>
+        </div>
+    </div>
+    </div>
+    </div>
+    </ion-content>
+</ion-view>

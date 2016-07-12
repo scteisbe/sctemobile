@@ -33,7 +33,7 @@ angular.module('scteApp.services', ['times.tabletop'])
 
     doHttpRequest : function ($method,$url,$header,requestParamArr) {
        
-       console.log("$url................" + $url);
+//        console.log("$url................" + $url);
        return  $http({
 			method:$method,
 			url:$url,
@@ -45,8 +45,8 @@ angular.module('scteApp.services', ['times.tabletop'])
 				$content = response.data;
                 
                 $message = $content['message'];
-                console.log("Printing message..");
-                console.log($message);
+//                 console.log("Printing message..");
+//                 console.log($message);
                 return $content
 			},
 			
@@ -115,8 +115,8 @@ angular.module('scteApp.services', ['times.tabletop'])
             });
             
         });
-        console.log("body..");
-        console.log(output);
+//         console.log("body..");
+//         console.log(output);
         return output;
     },
     
@@ -129,13 +129,13 @@ angular.module('scteApp.services', ['times.tabletop'])
             });
          });
          //
-        console.log("header..");
-        console.log(JSON.stringify($headerMap));
+//         console.log("header..");
+//         console.log(JSON.stringify($headerMap));
         return $headerMap;
      },
      
      displayAlert : function($message) {
-        console.log("into Service.. displayAlert.." + $message);
+//         console.log("into Service.. displayAlert.." + $message);
         $ionicLoading.hide();
         
         if(navigator != null && navigator.notification != null ) {
@@ -189,7 +189,42 @@ angular.module('scteApp.services', ['times.tabletop'])
             console.log(JSON.stringify(storedUser));
         });
         return applicationGo;
-    }
+    },
+  
+  scteSSO : function () {
+        
+        console.log("in scteSSO ................");  
+        $requestParamArr = [];
+	    $requestParamArr.push({ "__EVENTTARGET": "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$SubmitButton" });
+        $requestParamArr.push({ "__ASYNCPOST": "true" });
+        $requestParamArr.push({ "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInUserName": $localStorage['username'] });  
+        $requestParamArr.push({ "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInPassword": $localStorage['password'] });         
+        
+        $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+        
+        return  $http({
+			method: 'POST',
+			//url: $localStorage['SSOUrl'],
+            url: 'https://dev.scte.org/SCTE/Sign_In.aspx',
+			data: Utils.getStringFromArray($requestParamArr),
+			headers: '{"cache-control": "no-cache","Content-Type": "application/x-www-form-urlencoded"}' ,
+            crossDomain: true,
+		}).then( 
+			function successCallback(response) {
+				console.log("in scteSSO completed................");
+                console.log(response);
+                // A hack to prevent first time opening issue : Surojit
+                Utils.doHttpRequest('GET','http://scte.staging.coursestage.com/mod/scorm/player.php?scoid=938&cm=2495&currentorg=Overview_of_IPv6_and_DOCSIS_3.0_organization&a=367', [], []);
+                return response;
+			},
+			
+			function errorCallback(response) {
+		        console.log("failed response from scteSSO");
+                console.log(response);
+			} 
+		);
+    },  
+    
   };
 
   return Utils;

@@ -1,33 +1,19 @@
-<ion-view view-title="{{cortexLogo}}">
+<ion-view view-title="SCTE Standards">
+    <ion-nav-title>
+        <img src="img/cortex_logo.png" class="header-corter-logo">
+    </ion-nav-title>
     <ion-header-bar class="bar-subheader searchinput">
         <label class="item item-input searchbox">
             <i class="icon ion-ios-search placeholder-icon"></i>
             <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
         </label>
     </ion-header-bar>
-    <ion-content class="mylearning-wrapper">
+    <ion-content class="padding">
         <div class="resource">
-            <div class="scte1">
-                <h4 class="heading1">SCTE STANDARDS</h4>
-                <!-- <ion-list>
-                    <div class="list">
-                        <div ng-repeat="item in standards | filter:searchString track by $index" ng-click="openStdURL(item.url)">
-                            <ion-item class="item-stable scte-list1">
-                                <div class="row">
-                                    <div>
-                                        <div class="row">
-                                            <a ng-click="openStdURL(standard.url)"> {{item.identifier}}  </a>
-                                        </div>
-                                        <div class="row break">{{item.title}}</div>
-                                    </div>
-                                    <div class="arrow1"><img class="scte-std-arrow" src="svg/icon_arrow.svg" /></div>
-                                </div>
-                            </ion-item>
-                        </div>
-                    </div>
-                </ion-list> -->
+            <div class="scte">
+                <h4 class="heading">SCTE STANDARDS</h4>
                 <ion-list class="standards-list">
-                    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in standards | filter:searchString track by $index" ng-click="openURL(item.url)" type="item-text-wrap">
+                    <ion-item class="item-remove-animate item-avatar item-icon-right" collection-repeat="item in standards | filter:searchString track by $index" ng-click="openURL(item.url)" type="item-text-wrap">
                         <img src="img/u214.png">
                         <h2><a>{{item.identifier}}</a></h2>
                         <p>{{item.title}}</p>

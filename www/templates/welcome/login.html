@@ -1,56 +1,48 @@
-<ion-view hide-nav-bar="true" class="login-wrapper">
-  <ion-content>
-    <div id='full-size' ng-controller="loginCtrl">
-      <div id='logintop'>
-        <!--<div id="logoview" class="imageLogo">
-         <img src="img/login_logos.png" class = "imageLogo"/>
-       </div>-->  
-       <div class="row">
-         <div id="logoview" class="imageLogo">
-           <img src="img/SCTE-ISBE-logo.png" class="imageproperties" />
-         </div>
-       </div>
-
-       <div id="usernamediv" class="list list-inset">
-        <label class="item item-input">
-          <input ng-model="username" type="text" placeholder="Enter Username" />
-        </label>
-      </div>
-      <div id="passworddiv" class="list list-inset">
-        <label class="item item-input">
-          <input ng-model="password" type="password" placeholder="Enter Password" />
-        </label>
-      </div>
-      <div id="forgot-password" class="list backgroundprimarycolor list-inset">
-        <button ng-click="forgotpassword()" class="button button-clear">
-         Forgot Password?
-       </button>
-     </div>
-     <div id="logindiv">
-      <button ng-click="login()" class="button button-block button-energized">
-        LOGIN
-      </button>
-    </div>
-  </div>
-  <div id='loginbottom'>
-    <div class="row">
-      <div id="signuptext" class="col text-center col-center">
-        <span class="haveacctext">Don't have an account to login?</span>
-      </div>
-    </div>
-    <div class="row">
-      <div id="joinSCTEdiv" class="col text-center col-center">
-        <button id="joinscte" ng-click="joinSCTE()" class="button button-outline button-energized">
-          JOIN SCTE NOW
-        </button>
-      </div>
-    </div>
-
-    <div class="row">
-      <div id="weblink" class="col text-center col-center">
-        <a class='weblink' href="http://www.scte.org">www.scte.org</a><span class="weblink">|</span><a class='weblink' href="http://www.isbe.org">www.isbe.org</a>
-      </div>
-    </div>
-  </div>
-</ion-content>
+<ion-view hide-nav-bar="true" ng-controller="loginCtrl" class="login-wrapper">
+    <ion-content>
+        <div class='full-size'>
+            <div class='logintop'>
+                <div class="row">
+                    <div class="image-logo">
+                        <img src="img/SCTE-ISBE-logo.png" />
+                    </div>
+                </div>
+                <div class="usernamediv">
+                    <label class="item item-input">
+                        <input ng-model="username" type="text" placeholder="Enter Username" />
+                    </label>
+                </div>
+                <div class="passworddiv">
+                    <label class="item item-input">
+                        <input ng-model="password" type="password" placeholder="Enter Password" />
+                    </label>
+                </div>
+                <div class="forgot-password">
+                    <button ng-click="forgotpassword()" class="button button-clear">
+                        Forgot Password?
+                    </button>
+                </div>
+                <div class="logindiv">
+                    <button ng-click="login()" class="button button-energized button-block">
+                        LOGIN
+                    </button>
+                </div>
+            </div>
+            <div class='loginbottom'>
+                <div class="row">
+                    <div class="col signuptext text-center">
+                        <span>Don't have an account to login?</span>
+                    </div>
+                </div>
+                <div class="join-scte">
+                    <button ng-click="joinSCTE()" class="button button-outline button-energized button-block">
+                        JOIN SCTE NOW
+                    </button>
+                </div>
+                <div class="weblink text-center">
+                    <a href="http://www.scte.org">www.scte.org</a><span> | </span><a href="http://www.isbe.org">www.isbe.org</a>
+                </div>
+            </div>
+        </div>
+    </ion-content>
 </ion-view>

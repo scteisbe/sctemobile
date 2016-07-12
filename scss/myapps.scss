@@ -24,67 +24,58 @@
             right: 0px;
         }
     }
+    .group-title {
+        @extend .common-main-title;
+    }
     .appLib-title {
         white-space: normal;
-        font-family: 'regular'
+        font-family: 'bold';
+        color: $color-primary;
+        overflow: hidden;
+        position: relative;
+        line-height: 1.2em;
+        max-height: 2.4em;
+        text-align: left;
+        margin-right: -1em;
+        padding-right: 1em;
+    }
+    .appLib-title:before {
+        content: '...';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+    .appLib-title:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 1em;
+        height: 1em;
+        margin-top: 0.2em;
+        background-color: white;
     }
     .appLib-desc {
         white-space: normal;
+        overflow: hidden;
+        position: relative;
+        line-height: 1.2em;
+        max-height: 3.6em;
+        text-align: left;
+        margin-right: -1em;
+        padding-right: 1em;
     }
-}
-
-.appLib-title {
-    overflow: hidden;
-    position: relative;
-    line-height: 1.2em;
-    max-height: 2.4em;
-    text-align: left;
-    margin-right: -1em;
-    padding-right: 1em;
-}
-
-
-/* create the ... */
-
-.appLib-title:before {
-    content: '...';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
-.appLib-title:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 1em;
-    height: 1em;
-    margin-top: 0.2em;
-    background-color: white;
-}
-
-.appLib-desc {
-    overflow: hidden;
-    position: relative;
-    line-height: 1.2em;
-    max-height: 3.6em;
-    text-align: left;
-    margin-right: -1em;
-    padding-right: 1em;
-}
-
-.appLib-desc:before {
-    content: '...';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
-.appLib-desc:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 1em;
-    height: 1em;
-    margin-top: 0.2em;
+    .appLib-desc:before {
+        content: '...';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+    .appLib-desc:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 1em;
+        height: 1em;
+        margin-top: 0.2em;
+    }
 }

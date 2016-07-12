@@ -1,70 +1,47 @@
-<ion-view view-title="{{cortexLogo}}" class="resource">
+<ion-view view-title="Resources" class="resource">
+    <ion-nav-title>
+        <img src="img/cortex_logo.png" class="header-corter-logo">
+    </ion-nav-title>
     <ion-nav-buttons side="secondary">
-        <!-- <img ng-click="redirectDisover()" src="img/svg/icon_search_grey.svg" class="icon-my-learning-search" /> -->
         <i ng-click="redirectDisover()" class="all-icon-icon_search_white header-search-icon"></i>
     </ion-nav-buttons>
-    <ion-content>
+    <ion-content class="padding">
         <h4 class="main-title">RESOURCES</h4>
         <div class="dictionary">
-            <h4 class="heading">DICTIONARY</h4>
+            <h5 class="heading">DICTIONARY</h5>
             <a class="see-all" ng-click="dictionaryview('all')">See All &gt;</a>
-            <div>
-                <p class="text">{{dictInfo}}</p>
-            </div>
-            <div class="alphapad">
-                <div class="dummy" ng-repeat="alpha in alphabets" ng-click="dictionaryview(alpha.letter)">{{alpha.letter}}</div>
+            <div class="card">
+                <div class="item item-text-wrap">
+                    <p class="text">{{dictInfo}}</p>
+                    <div class="alphapad">
+                        <div class="eachpad" ng-repeat="alpha in alphabets" ng-click="dictionaryview(alpha.letter)">{{alpha.letter}}</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="scte">
-            <h4 class="heading">SCTE STANDARDS</h4>
+            <h5 class="heading">SCTE STANDARDS</h5>
             <a class="see-all" ng-click="SCTEstd()">See All &gt;</a>
-            <ion-list>
-                <!--  <div class="inprogress-course"> -->
-                <ion-list>
-                    <div ng-repeat="index in [0,1,2]" ng-click="openStdURL(standards[index].url)">
-                        <ion-item class="item-stable scte-list">
-                            <div class="row">
-                                <div class="col col-20">
-                                    <img class="image" ng-src="img/u214.png">
-                                </div>
-                                <div class="col col-60">
-                                    <div class="row">
-                                        <a ng-click="openStdURL(standards[index].url)"> {{standards[index].identifier}}  </a> </div>
-                                    <div class="row break">{{standards[index].title}}</div>
-                                </div>
-                                <div class="col col-90 arrow"><img src="svg/icon_arrow.svg" /></div>
-                            </div>
-                        </ion-item>
-                </ion-list>
-                <!--<div class="item item-icon-left" ng-repeat="index in [0,1,2]" ng-click="openPage(standards[index].url)">
-                    <i class="icon ion-document"></i>
+            <ion-list class="list">
+                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="index in [0,1,2]" ng-click="openStdURL(standards[index].url)">
+                    <img ng-src="img/u214.png">
                     <h2>{{standards[index].identifier}}</h2>
                     <p>{{standards[index].title}}</p>
-                </div>-->
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
             </ion-list>
-            </div>
-            <div class="whitepaper">
-                <h4 class="heading">WHITE PAPERS</h4>
-                <a class="see-all" ng-click="whitepaperOpen()">See All &gt;</a>
-                <ion-list>
-                    <ion-list>
-                        <div ng-repeat="index in [0,1,2]" ng-click="openURL(whitePapers[index].fileName)">
-                            <ion-item class="item-stable scte-list">
-                                <div class="row">
-                                    <div class="col col-20">
-                                        <img class="image" ng-src="img/u214.png">
-                                    </div>
-                                    <div class="col col-60">
-                                        <div class="row">
-                                            <a ng-click="openURL(whitePapers[index].fileName)"> {{whitePapers[index].title}}  </a> </div>
-                                        <div class="row break">{{whitePapers[index].title}}</div>
-                                    </div>
-                                    <div class="col col-90 arrow"><img src="svg/icon_arrow.svg" /></div>
-                                </div>
-                            </ion-item>
-                        </div>
-                    </ion-list>
-                </ion-list>
-            </div>
+        </div>
+        <div class="whitepaper">
+            <h5 class="heading">WHITE PAPERS</h5>
+            <a class="see-all" ng-click="whitepaperOpen()">See All &gt;</a>
+            <ion-list class="list">
+                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="index in [0,1,2]" ng-click="openURL(whitePapers[index].fileName)">
+                    <img ng-src="img/u214.png">
+                    <h2>{{whitePapers[index].title}}</h2>
+                    <p>{{whitePapers[index].title}}</p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+            </ion-list>
+        </div>
     </ion-content>
 </ion-view>

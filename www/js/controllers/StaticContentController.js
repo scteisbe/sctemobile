@@ -35,7 +35,8 @@ function StaticContentController($scope, $localStorage, ConfigService) {
     'standards',
     'whitepapers',
     'operationalpractices',
-    'configs'
+    'configs',
+    'cobranding'
   ];
 
   // immediately populate from localstorage

@@ -1,0 +1,116 @@
+.my-events {
+    .scroll-content {
+        top: 90px;
+    }
+    .subheader-tabs {
+        line-height: 13px;
+        text-align: center;
+        color: $color-dark;
+        padding-top: 5px;
+        left: 0;
+        .tab-title {
+            font-size: 10px;
+        }
+        .tab-item {
+            text-align: center;
+            text-overflow: initial;
+            font-size: 12px;
+            padding-top: 5px;
+        }
+        .border {
+            border-left: 1px solid $color-cream;
+        }
+        i {
+            font-size: 22px;
+            color: $color-primary;
+        }
+        a {
+            color: $color-dark;
+            font-family: 'bold';
+        }
+    }
+    .eventindiv {
+        // margin: -8px -10px;
+        padding: 3px;
+        .date-box {
+            position: relative;
+            width: 50px;
+            bottom: 10px;
+            .date {
+                position: absolute;
+                top: 22px;
+                left: 16px;
+            }
+            .month {
+                text-transform: uppercase;
+                position: absolute;
+                top: 43px;
+                left: 0;
+                text-align: center;
+                font-size: 10px;
+                color: $color-light;
+                font-size: 10px;
+                width: 100%;
+                div {
+                    position: absolute;
+                    left: 0;
+                }
+            }
+            img {
+                width: 50px;
+                padding-top: 10px;
+            }
+        }
+        .text-box {
+            padding: 0;
+            padding-left: 35px;
+            .row-top {
+                a {
+                    color: $color-primary;
+                    font-family: 'bold';
+                }
+            }
+            .row-bottom {
+                font-family: 'light';
+            }
+        }
+        .bg {
+            background-image: url(./svg/img_calendar.svg);
+        }
+        .event-description {
+            width: 100%;
+            font-family: 'light';
+            p {
+                padding: 7px;
+                color: $color-dark;
+            }
+            a {
+                padding: 7px;
+                color: $color-dark;
+                text-decoration: none;
+                img {
+                    width: 15px;
+                }
+            }
+            .description-button {
+                text-align: center;
+                padding-top: 15px;
+                a {
+                    color: $color-link;
+                    padding: 5px;
+                }
+            }
+        }
+    }
+    .myevents-calendar {
+        width: 100%;
+        background-color: $color-primary;
+        height: 45px;
+        text-transform: uppercase;
+        color: $color-light;
+        border: none;
+    }
+    .event-detail-content {
+        top: 44px;
+    }
+}

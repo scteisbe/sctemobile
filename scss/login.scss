@@ -1,174 +1,109 @@
-.imageproperties {
-    width: 125px;
-    height: 53px;
-}
-
-#logintop {
-    position: relative;
-    left: 0;
-    right: 0;
-    margin: 0;
-    background-color: #00548e;
-    min-height: 70%;
-    top: 0;
-    padding-bottom: 10px;
-}
-
-#loginbottom {
-    position: relative;
-    left: 0;
-    right: 0;
-    margin: 0;
-    min-height: 30%;
-    background-color: #1070B4;
-    bottom: 0;
-}
-
-@media (max-height: 600px) {
-    .imageLogo {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 5%;
-        margin-bottom: 2%;
+.login-wrapper {
+    .full-size {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
     }
-    #usernamediv.list-inset {
-        margin-right: 10%;
-        margin-left: 10%;
-        margin-top: 5%;
-        margin-bottom: 1%;
+    .image-logo {
+        margin: 5% auto;
+        img {
+            width: 125px;
+            height: 53px;
+        }
     }
-    #passworddiv.list-inset {
-        margin-right: 10%;
-        margin-left: 10%;
-        margin-top: 1%;
-        margin-bottom: 1%;
+    .logintop {
+        position: relative;
+        left: 0;
+        right: 0;
+        margin: 0;
+        background-color: #00548e;
+        min-height: 70%;
+        top: 0;
+        padding-bottom: 10px;
+        .usernamediv,
+        .passworddiv,
+        .forgot-password,
+        .logindiv {
+            margin: 0 auto;
+            width: 80%;
+        }
+        .passworddiv {
+            margin: 2% auto !important;
+        }
+        .forgot-password {
+            background: transparent;
+            .button {
+                color: $color-light;
+            }
+        }
+        .logindiv {
+            button {
+                color: $color-dark;
+                font-family: 'bold';
+            }
+        }
+        .test {
+            button {
+                width: 80%
+            }
+        }
     }
-    #logindiv {
-        margin-right: 10%;
-        margin-left: 10%;
-        margin-top: 5%;
-    }
-    #forgot-password.list-inset {
-        margin-right: 10%;
-        margin-left: 10%;
-        margin-top: 1%;
-        margin-bottom: 1%;
-    }
-    .haveacctext {
-        font-family: 'light';
-        font-size: 15px;
-        color: #6dcff6;
-        background: transparent;
-    }
-    #forgot-password .button.button-clear {
-        color: #ffffff;
-        font-family: 'light';
-        font-size: 12pt;
-        vertical-align: text-top;
-    }
-    #logindiv .button.button-energized {
-        border-color: transparent;
-        background-color: #ffc900;
-        color: #111;
-        font-family: 'bold';
-        font-size: 14pt;
-    }
-    #signuptext.col.text-center.col-center {
-        margin-right: 5%;
-        margin-left: 5%;
-        margin-top: 3%;
-        margin-bottom: 1px;
-    }
-    #joinSCTEdiv.col.text-center.col-center {
-        margin-right: 5%;
-        margin-left: 5%;
-        margin-top: 1px;
-        margin-bottom: 3%;
-        width: 75%;
-    }
-    #joinscte.button.button-energized.button-outline {
-        font-family: 'bold';
-        font-size: 14px;
-        width: 75%
-    }
-    .weblink {
-        color: #ffffff;
-        font-size: 12pt;
-        padding: 2%;
+    .loginbottom {
+        position: relative;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        min-height: 30%;
+        background-color: #1070B4;
+        .signuptext {
+            span {
+                font-family: 'light';
+                font-size: 15px;
+                color: #6dcff6;
+                background: transparent;
+            }
+        }
+        .join-scte {
+            margin: 0 auto;
+            width: 70%;
+            .button {
+                font-family: 'bold';
+            }
+        }
+        .weblink {
+            color: $color-light;
+            font-size: 12pt;
+            font-family: 'light';
+            a {
+                color: $color-light;
+                font-family: 'light';
+            }
+        }
     }
 }
 
 @media (min-height: 601px) and (max-height: 1500px) {
-    .imageLogo {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 18%;
-        margin-bottom: 2%;
-    }
-    #usernamediv.list-inset {
-        margin-right: 10%;
-        margin-left: 10%;
-        margin-top: 8%;
-        margin-bottom: 2%;
-    }
-    #passworddiv.list-inset {
-        margin-right: 10%;
-        margin-left: 10%;
-        margin-top: 2%;
-        margin-bottom: 2%;
-    }
-    #logindiv {
-        margin-right: 10%;
-        margin-left: 10%;
-        margin-top: 5%;
-        margin-bottom: 8%;
-    }
-    #forgot-password.list-inset {
-        margin-right: 10%;
-        margin-left: 10%;
-        margin-top: 2%;
-        margin-bottom: 2%;
-    }
-    .haveacctext {
-        font-family: 'light';
-        font-size: 15px;
-        color: #6dcff6;
-        background: transparent;
-    }
-    #forgot-password .button.button-clear {
-        color: #ffffff;
-        font-family: 'light';
-        font-size: 12pt;
-        vertical-align: text-top;
-    }
-    #logindiv .button.button-energized {
-        border-color: transparent;
-        background-color: #ffc900;
-        color: #111;
-        font-family: 'bold';
-        font-size: 14pt;
-    }
-    #signuptext.col.text-center.col-center {
-        margin-right: 5%;
-        margin-left: 5%;
-        margin-top: 5%;
-        margin-bottom: 2px;
-    }
-    #joinSCTEdiv.col.text-center.col-center {
-        margin-right: 5%;
-        margin-left: 5%;
-        margin-top: 2px;
-        margin-bottom: 8%;
-        width: 75%;
-    }
-    #joinscte.button.button-energized.button-outline {
-        font-family: 'bold';
-        font-size: 14px;
-        width: 75%
-    }
-    .weblink {
-        color: #ffffff;
-        font-size: 12pt;
-        padding: 2%;
+    .login-wrapper {
+        .image-logo {
+            margin-top: 18%;
+        }
+        .logintop {
+            .usernamediv {
+                margin-top: 8%;
+            }
+            .passworddiv,
+            .forgot-password {
+                margin: 2% auto;
+            }
+        }
+        .loginbottom {
+            .signuptext {
+                margin-top: 5%;
+            }
+            .join-scte {
+                margin-bottom: 8%;
+            }
+        }
     }
 }

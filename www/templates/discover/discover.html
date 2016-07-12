@@ -1,10 +1,11 @@
-<ion-view>
+<ion-view view-title="Discover">
     <ion-nav-title class="discover-wrapper">
         <div class="top-header">
             <div class="left">
                 <table>
                     <tr>
-                        <td><img src="img/SCTE-ISBE_Cortex_logos.png" class="scte-isbe-cortex-logo"></td>
+                        <!-- <td><img src="img/SCTE-ISBE_Cortex_logos.png" class="scte-isbe-cortex-logo"></td> -->
+                        <td><img ng-src="{{logoURL}}" class="scte-isbe-cortex-logo"></td>
                     </tr>
                 </table>
             </div>
@@ -29,13 +30,11 @@
     <ion-content class="discover-wrapper">
         <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="activeIndex" ng-init="activeIndex = 0" class="slide-wrapper">
             <ion-slide ng-repeat="item in staticContent.announcements" ng-if="item.template == 'imagewithlink' && withinDates(item.datestart,item.dateend)">
-                <div class="slide-image"><img ng-src="{{item.fullwidthimageurl}}" ng-click="openURL(item.url)" /></div>
+                <div class="slide-image"><img ng-src="{{item.fullwidthimageurl}}" ng-click="openPromo(item.url)" /></div>
             </ion-slide>
         </ion-slide-box>
         <div class="resources-wrapper">
-            <div class="header">
-                <h4>Featured Resources</h4>
-            </div>
+            <h5 class="header">Featured Resources</h5>
             <div class="app-box">
                 <table>
                     <tr>
@@ -44,7 +43,7 @@
                             <img class="pdf-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type!='app'" alt="{{item.title}}">
                         </td>-->
                         <td ng-repeat="item in staticContent.featuredresources" ng-if="item.os==platform">
-                            <img ng-src="{{item.coverimageurl}}" ng-click="openURL(item.url)">
+                            <img ng-src="{{item.coverimageurl}}" ng-click="openURL(item)">
                             <p>{{item.title}}</p>
                         </td>
                     </tr>
@@ -55,8 +54,8 @@
             <img src="img/u44.png">
         </div> -->
         <div class="events" ng-controller="DiscoverEventCtrl">
-            <div ng-init="discoverEvents()">
-                <h4 class="heading">Events</h4>
+            <div>
+                <h5 class="heading">Events</h5>
                 <a class="see-all" ng-click="myEventsList()">See All &gt;</a>
                 <div class="card eventindiv" ng-repeat="event in eventType |limitTo:3">
                     <div class="row" ng-click="eventDetail(event.eventId,eventTabName,event.webDescription)">

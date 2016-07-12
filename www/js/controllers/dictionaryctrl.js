@@ -68,12 +68,26 @@ var  dictionaryCtrl =  ['$scope', '$state', '$rootScope', '$ionicLoading', '$ion
 
 $scope.searchString = "";
 
+$scope.myCustomFilter = function(item) 
+{
+  return anyNameStartsWith(item, $scope.searchString);
+};
+
+function anyNameStartsWith (item, searchword) {
+  if (searchword === "")
+    return true;
+
+  var _word = item.Abbreviation.toLowerCase();
+  var _description = item.Description.toLowerCase();
+  var _searchword = searchword.toLowerCase();
+  if (_word.indexOf(_searchword) != -1 || _description.indexOf(_searchword) != -1)
+    return item;
+};
 
 $scope.$on('$stateChangeSuccess',
   function onStateSuccess(event, toState, toParams, fromState) {
       if($state.params.focusAlpha != 'all')
       {
-        
         $scope.searchString = $state.params.focusAlpha;
         searchText = searchText.toLowerCase();
       }  

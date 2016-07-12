@@ -1,4 +1,4 @@
-var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils','$localStorage', function($scope, $state, $rootScope, $http,Utils,$localStorage, $window) {
+var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localStorage', '$window', function($scope, $state, $rootScope, $http, Utils, $localStorage, $window) {
    
     $scope.staticContent= [];
     $scope.Config = [];
@@ -7,55 +7,59 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils','$localS
     $scope.Config = $scope.staticContent['configs'];
     $scope.btnCourseData = $scope.Config[0];
     $scope.btnCourseDataURL = $scope.Config[1];
+    $scope.activeTab = 0;   // initially activated secondary tab
+
+    $scope.$watch('activeTab', function() {
+        var a = ['/tab/mylearning/inprogress', '/tab/mylearning/completed', '/tab/mylearning/all'];
+        $window.ga('send', 'pageview', a[$scope.activeTab]);
+    });
+    
+    $scope.renderMyLearnings = function() {
+        $scope.myLearning = $localStorage["myLearning"];
+        $scope.inprogressCourses = $scope.myLearning["In Progress"]; 
+        $scope.completedCourses = $scope.myLearning["Completed"];
+        $scope.allCourses = $scope.myLearning["All Courses"];
+    };
 
 // Mylearning API call and integration.
-    $requestParamArr = [];
-    $headerParamArr = [];
-
-    $headerParamArr.push({"authToken":$rootScope.authToken});
-    $headerParamArr.push({"authType":"Bearer"});
-    $headerParamArr.push({"Content-Type": "application/json"});
-
-    if($localStorage["myLearning"] != null){
-        $scope.myLearning = $localStorage["myLearning"];
-        var learnObj = $scope.myLearning;
-        console.log("JOSN Stringify"+learnObj[0].LearningPlan);
-        $scope.inprogressCourses = learnObj[0].LearningPlan["In Progress"];
-        
-        $scope.completedCourses = learnObj[0].LearningPlan["Completed"];
-
-        $scope.allCourses = learnObj[0].LearningPlan["All Courses"];
+    
+    if($localStorage["myLearning"] != null) {
+         $scope.renderMyLearnings();
+    } else {
+        $scope.showLoader();
     }
-
-    Utils.doHttpRequest(Utils.getApiDetails().myLearningAPI.httpMethod,Utils.getApiDetails().myLearningAPI.URL,$headerParamArr,$requestParamArr).then(function(response) {
-        console.log(response);
-        //console.log(response['data']);
-        if(response != null) {
-            //data available from live API
-            $message = response['message'];
-            data = response['data'];
-            console.log("statusCode.." + $message['statusCode']);
-            $scope.hideLoader();
+    
+    // Utils.doHttpRequest(Utils.getApiDetails().myLearningAPI.httpMethod,Utils.getApiDetails().myLearningAPI.URL,$headerParamArr,$requestParamArr).then(function(response) {
+    //     console.log(response);
+    //     //console.log(response['data']);
+        
+    //     if(response != null) {
+    //         //data available from live API
+    //         $message = response['message'];
+    //         data = response['data'];
+    //         console.log("statusCode.." + $message['statusCode']);
+    //         $scope.hideLoader();
                 
-            if($message['statusCode'] == 200) {
-                console.log("authToken.." +  $rootScope.authToken);
+    //         if($message['statusCode'] == 200) {
+    //             console.log("authToken.." +  $rootScope.authToken);
                     
-                    if( data != null) {
-                        $localStorage["myLearning"]=data;
-                        $scope.myLearning = data;
-                    }   
-            } else {
-                    // $scope.displayAlert("Wrong username or password !");
-                    console.log($message['statusMessage'])
-                }
-            }
-            else{
-                //No API access
-                $scope.hideLoader();
-                //display data from stub
-                $localStorage["myLearning"]=$scope.MyLearningStub;
-            }
-    }); 
+    //                 if( data != null) {
+    //                     $localStorage["myLearning"]=data;
+    //                     $scope.myLearning = data;
+    //                     $scope.renderMyLearnings();
+    //                 }   
+    //         } else {
+    //                 // $scope.displayAlert("Wrong username or password !");
+    //                 console.log($message['statusMessage'])
+    //             }
+    //         }
+    //         else{
+    //             //No API access
+    //             $scope.hideLoader();
+    //             //display data from stub
+    //             $localStorage["myLearning"]=$scope.MyLearningStub;
+    //         }
+    // }); 
 
     // $scope.inprogressCourses = [{
     //     "courseName": "Network Overview"
@@ -72,9 +76,12 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils','$localS
     // }, {
     //     "courseName": "Installing Structured Cabling"
     // }];
+    
+    $scope.renderMyLearnings();
 
     $scope.redirectDisover = function() {
-       Utils.redirectDiscover();
+        ga('send', 'event', 'Search button', 'tap', 'from my learning tab');
+        Utils.redirectDiscover();
     };
 
     // $scope.allCourses = [{
@@ -125,6 +132,17 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils','$localS
         } else {
             $scope.shownInprogressCourse = inprogressCourse;
         }
+    };
+
+    $scope.chkMyLearning = function(val){
+        var displayCourse = false;
+        angular.forEach(val.ComputedModuleList, function(key, value){
+            if(key.Mod == "scorm"){
+                displayCourse = true;
+            }
+        });
+
+        return displayCourse;
     };
 
     $scope.isInprogressCourseShown = function(inprogressCourse) {
@@ -188,7 +206,7 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http','Utils','$localS
     };
 
     $scope.openModURL = function(url){
-        window.open(url, '_system');
+        window.open(url);
     };
 
     $http.get('json/games-list.json').success(function(data) {

@@ -2,8 +2,8 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicLoading', '$i
 
 		//Auto login code
 		if($localStorage['authToken'] != null) {
-			//$state.go('tab.discover');
-			//$rootScope.authToken = $localStorage['authToken'];
+			// $state.go('tab.discover');
+			// $rootScope.authToken = $localStorage['authToken'];
 		}
 		
 		$scope.userCred = [{

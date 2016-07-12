@@ -22,17 +22,19 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 //variables
 $color-primary: #00548e; //main color of the app
 $color-light: #ffffff;
-$color-cream: #eeeeee;
-$color-dull: #dddddd;
-$color-grey: #9fa4a6;
-$color-dark: #000000;
-$color-link: #008cc9;
+$color-cream: #eeeeee; // page bg color
+$color-dull: #dddddd; //bg color of some container
+$color-grey: #9fa4a6; //heading
+$color-dark: #000000; //contents
+$color-link: #008cc9; //right arrow and links(like 'Read more')
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "custom.sass";
 @import "allicons.scss";
 @import "login.scss";
 @import "discover.scss";
+@import "searchresults.scss";
+@import "myevents.scss";
 @import "mylearning.scss";
 @import "techtips.scss";
 @import "myapps.scss";
@@ -70,18 +72,7 @@ body {
 }
 
 .img-responsive {
-    width: 100%;
-}
-
-.header-corter-logo {
-    width: 35px;
-    margin-top: 5px;
-}
-
-.tabs-striped {
-    .tabs {
-        border-bottom: none;
-    }
+    width: 100%; //responsive images
 }
 
 .app-common {
@@ -93,6 +84,15 @@ body {
             .button-clear {
                 color: $color-light;
             }
+            .header-corter-logo {
+                width: 35px;
+                margin-top: 5px;
+            }
+        }
+    }
+    .tabs-striped {
+        .tabs {
+            border-bottom: none;
         }
     }
 }
@@ -117,118 +117,11 @@ body {
     }
 }
 
-button {
-    font-family: 'regular' !important;
-}
-
 .common-main-title {
     text-transform: uppercase;
     font-family: 'bold';
     color: $color-grey;
 }
-
-
-/*****************svg icons size set starts****************/
-
-.icon-sort {
-    width: 20px;
-    color: red;
-}
-
-.icon-filter {
-    width: 25px;
-}
-
-.icon-search-my-learning {
-    width: 22px;
-    top: 13px;
-    left: 14px
-}
-
-.icon-search-manuals {
-    width: 22px;
-    top: 13px;
-    left: 14px
-}
-
-.my-learning-main-header div {
-    display: inline;
-}
-
-.icon-search-web {
-    width: 22px;
-    top: 16px;
-    left: 14px
-}
-
-.icon-search-pocket-guide {
-    width: 22px;
-    top: 14px;
-    left: 16px
-}
-
-.icon-placeholder-pdf {
-    /* position: absolute; */
-    width: 45px;
-    position: absolute;
-    top: 25px;
-    left: 19px
-}
-
-.icon-my-learning-search {
-    width: 20px;
-    margin-right: 10px;
-}
-
-.header-search-icon {
-    margin-top: 6px;
-    margin-right: 10px;
-    color: #ffffff;
-    font-size: 20px;
-}
-
-.icon-tab-discover {
-    padding-top: 7px;
-}
-
-.icon-tab-discover:before {
-    content: url("../img/svg/bottom-menu_discover.svg");
-}
-
-.icon-tab-my-learning {
-    padding-top: 5px;
-}
-
-.icon-tab-my-learning:before {
-    content: url("../img/svg/bottom-menu_my-learning.svg");
-}
-
-.icon-tab-tech-tips {
-    padding-top: 2px;
-}
-
-.icon-tab-tech-tips:before {
-    content: url("../img/svg/bottom-menu_techtips.svg");
-}
-
-.icon-tab-apps {
-    padding-top: 3px;
-}
-
-.icon-tab-apps:before {
-    content: url("../img/svg/bottom-menu_apps.svg");
-}
-
-.icon-tab-resources {
-    padding-top: 5px;
-}
-
-.icon-tab-resources:before {
-    content: url("../img/svg/bottom-menu_resources.svg");
-}
-
-
-/*****************svg icons size set ends****************/
 
 
 /*****************make the modal to slide from right***************/

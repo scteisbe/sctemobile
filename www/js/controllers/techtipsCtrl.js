@@ -99,29 +99,19 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
 
 
 
-    $scope.showPopup = function () {
-        $scope.submitTechtip();
-    };
+   
+
+    
+     $scope.techTipSubmitPage = function () {
+            $state.go('tab.techtipsubmit');
+        };
 
     $scope.openPage = function (url) {
         window.open(url, '_system');
     };
 
-    $scope.submitTechtip = function ($message) {
-        console.log("into submit techtip.." + $message);
-
-        var myPopup = $ionicPopup.show({
-            templateUrl: 'templates/techTipSubmitpopup.html',
-            cssClass: "techtip-popup-main",
-            scope: $scope,
-
-        });
-
-        $scope.closeTechtip = function () {
-            myPopup.close();
-        };
-
-        $scope.techtip = "";
+    
+    $scope.techtip = "";
         $scope.techtipURL = "";
 
         $scope.techtipSubmit = function (tip, url) {
@@ -156,5 +146,4 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
             //     console.log('User cancels the email.');
             // });
         }
-    };
 }];

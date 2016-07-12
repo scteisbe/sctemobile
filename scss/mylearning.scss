@@ -53,11 +53,10 @@
         font-family: 'bold';
         color: $color-link;
         .button {
-            padding: 0px 15px;
-            font-size: 15px;
+            padding: 0px 10px;
+            font-size: 14px;
             min-height: 40px;
             line-height: 40px;
-            height: 40px;
             border: 1px solid $color-link;
             width: 100%;
             background: transparent;
@@ -69,7 +68,7 @@
                 float: right;
                 font-size: 10px;
                 width: 10px;
-                padding: 10px 0 0 0;
+                padding: 6px 0 0 0;
             }
         }
         .course-button {
@@ -91,10 +90,11 @@
     }
     .course-module-content {
         a {
-            color: $color-grey;
+            color: $color-dark;
             font-family: 'light';
             i {
                 float: right;
+                color: $color-link;
             }
         }
     }
@@ -106,22 +106,19 @@
     }
     .mylearning-game-header {
         position: relative;
-        top: 0px;
         div {
             display: inline;
         }
         .see-all {
             position: absolute;
-            right: 5px;
+            top: 0;
+            right: 0;
             color: $color-link;
-            font-family: sans-serif;
         }
-    }
-    .mylearning-games {
-        text-transform: uppercase;
-        margin: 10px;
-        color: $color-grey;
-        font-family: 'bold';
+        .mylearning-games {
+            margin: 10px;
+            @extend .common-main-title;
+        }
     }
     .games {
         width: 100%;
@@ -132,8 +129,8 @@
         }
     }
     .mylearning-games-title-description {
+        color: $color-primary;
         font-family: 'bold';
-        color: $color-dark;
         p {
             font-family: 'light';
             color: $color-dark;
@@ -157,6 +154,9 @@
     }
 }
 
+
+/* games page */
+
 .games-wrapper {
     .game-title {
         text-align: center;
@@ -168,9 +168,9 @@
     }
     .game-image {
         text-align: center;
-    }
-    .game-image img {
-        width: 150px;
+        img {
+            width: 150px;
+        }
     }
     .game-play-button {
         width: 180px;
@@ -184,6 +184,9 @@
         color: white;
     }
 }
+
+
+/* modal */
 
 .mylearning-wrapper {
     .main-title {
@@ -206,11 +209,11 @@
         }
         span {
             text-transform: uppercase;
-            color: black;
+            color: $color-dark;
             position: absolute;
-            top: 0px;
+            top: 0;
             width: 100%;
-            text-align: center
+            text-align: center;
         }
     }
     .cards {

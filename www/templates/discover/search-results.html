@@ -1,9 +1,12 @@
-<ion-view view-title="{{cortexLogo}}" ng-controller="SearchResultsCtrl">
+<ion-view view-title="Search Results" ng-controller="SearchResultsCtrl" class="search-results-wrapper">
+    <ion-nav-title>
+        <img src="img/cortex_logo.png" class="header-corter-logo">
+    </ion-nav-title>
     <ion-nav-buttons side="secondary">
         <table class="search-results-wrapper">
             <tr class="header-bar-icns">
-                <td ng-click="showSortSlider()"><img src="img/svg/icon_sort.svg" alt="sort" class="icon-sort"></td>
-                <td ng-click="showFilterSlider()"><img src="img/svg/icon_filter.svg" alt="filter" class="icon-filter"></td>
+                <td ng-click="showSortSlider()"><i class="icon-sort all-icon-icon_sort"></i></td>
+                <td ng-click="showFilterSlider()"><i class="icon-filter all-icon-icon_filter"></i></td>
             </tr>
         </table>
     </ion-nav-buttons>
@@ -15,13 +18,13 @@
         <button class="button button-clear button-stable" ng-click="voiceRecog()" style="    position: absolute; top: 16px; right: 19px" ng-if="query == ''"><img src="img/icon_textbox-mic.png" class="mic-icn"></button>
         <button class="button button-clear button-stable" ng-click="clearSearchField()" style="    position: absolute; top: 16px; right: 19px" ng-if="query != ''"><i class="ion-close-circled mic-icn"></i></button>
     </ion-header-bar>
-    <ion-content class="search-results-wrapper">
+    <ion-content class="padding search-results-wrapper">
         <h4 class="main-title">{{searchResultsText}}</h4>
         <div ng-repeat="item in items | limitTo: limit as results">
             <div class="search-results-box media-video" ng-if="item.topic == 'learning' && item.type == 'video'">
                 <div class="topic-box">
                     <div class="row">
-                        <div class="col-30 icn"><img src="img/svg/icon_search-results_my-learning.svg" class="icon-search-my-learning"></div>
+                        <div class="col-30 icn"><i class="all-icon-icon_search-results_my-learning"></i></div>
                         <div class="col-70 topic">{{item.topic}}</div>
                     </div>
                 </div>
@@ -38,14 +41,14 @@
             <div class="search-results-box media-pdf" ng-if="item.topic == 'learning' && item.type == 'pdf'">
                 <div class="topic-box">
                     <div class="row">
-                        <div class="col-30 icn"><img src="img/svg/icon_search-results_my-learning.svg" class="icon-search-my-learning"></div>
+                        <div class="col-30 icn"><i class="all-icon-icon_search-results_my-learning"></i></div>
                         <div class="col-70 topic">{{item.topic}}</div>
                     </div>
                 </div>
                 <div class="content-box">
                     <div class="cards">
                         <div class="row">
-                            <div class="col-35 placeholder"><img src="img/svg/icon_pdf.svg" class="icon-placeholder-pdf"></div>
+                            <div class="col-35 placeholder"><i class="all-icon-icon_pdf"></i></div>
                             <div class="col-65 pdf-text-box">
                                 <div class="title"><b>{{item.title}}</b></div>
                                 <div class="description">{{item.description}}</div>
@@ -59,14 +62,14 @@
             <div class="search-results-box media-pdf" ng-if="item.topic == 'pocket guide' && item.type == 'pdf'">
                 <div class="topic-box">
                     <div class="row">
-                        <div class="col-30 icn"><img src="img/svg/icon_search-results_pocket-guides.svg" class="icon-search-pocket-guide"></div>
+                        <div class="col-30 icn"><i class="all-icon-icon_search-results_pocket-guides"></i></div>
                         <div class="col-70 topic">{{item.topic}}</div>
                     </div>
                 </div>
                 <div class="content-box">
                     <div class="cards">
                         <div class="row">
-                            <div class="col-35 placeholder"><img src="img/svg/icon_pdf.svg" class="icon-placeholder-pdf"></div>
+                            <div class="col-35 placeholder"><i class="all-icon-icon_pdf"></i></div>
                             <div class="col-65 pdf-text-box">
                                 <div class="title"><b>{{item.title}}</b></div>
                                 <div class="description">{{item.description}}</div>
@@ -80,14 +83,14 @@
             <div class="search-results-box media-pdf" ng-if="item.topic == 'manuals' && item.type == 'pdf'">
                 <div class="topic-box">
                     <div class="row">
-                        <div class="col-30 icn"><img src="img/svg/icon_search-results_manuals.svg" class="icon-search-manuals"></div>
+                        <div class="col-30 icn"><i class="all-icon-icon_search-results_manuals"></i></div>
                         <div class="col-70 topic">{{item.topic}}</div>
                     </div>
                 </div>
                 <div class="content-box">
                     <div class="cards">
                         <div class="row">
-                            <div class="col-35 placeholder"><img src="img/svg/icon_pdf.svg" class="icon-placeholder-pdf"></div>
+                            <div class="col-35 placeholder"><i class="all-icon-icon_pdf"></i></div>
                             <div class="col-65 pdf-text-box">
                                 <div class="title"><b>{{item.title}}</b></div>
                                 <div class="description">{{item.description}}</div>
@@ -101,7 +104,7 @@
             <div class="search-results-box media-web" ng-if="item.topic == 'web search'">
                 <div class="topic-box">
                     <div class="row">
-                        <div class="col-30 icn"><img src="img/svg/icon_search-results_web-search.svg" class="icon-search-web"></div>
+                        <div class="col-30 icn"><i class="all-icon-icon_search-results_web-search"></i></div>
                         <div class="col-70 topic">{{item.topic}}</div>
                     </div>
                 </div>

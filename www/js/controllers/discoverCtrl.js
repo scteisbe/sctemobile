@@ -1,96 +1,40 @@
-var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage', '$sce', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils, $localStorage, $sce) {
+var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage', '$sce', '$window', function($scope, $state, $rootScope, $ionicModal, $ionicLoading, Utils, $localStorage, $sce, $window) {
     $scope.staticContent = [];
     $scope.platform = ionic.Platform.platform();
     $scope.username = $localStorage['username'];
-
+    
+	
+	$scope.recognitionStopped =false;
+	
     var sheetnames = [
         'announcements',
         'featuredresources',
     ];
 
     $requestParamArr = [];
-   /* $scope.voiceRecog = function() {
-        
-        var recognition = new SpeechRecognition();
-        recognition.onresult = function(event) {
-            if (event.results.length > 0) {
-                $scope.recognizedText = event.results[0][0].transcript;
-                alert($scope.recognizedText);
-                $scope.query = $scope.recognizedText;
-                $scope.$apply();
-            }
-        };
-        recognition.start();
-        //alert("step4");
-
-    };*/
-   // $scope.recognition = new speechRecognitionAndroid();
-    $scope.voiceRecog = function() {
-        //alert("audio input new plugin");
-        var recognition=$scope.recognition;
-        recognition.onresult = function(event) {
-            $ionicLoading.hide();
-            if (event.results.length > 0) {
-                $scope.recognizedText = event.results[0][0].transcript;
-                Utils.displayAlert($scope.recognizedText);
-               
-                $scope.query = $scope.recognizedText;
-                $scope.$apply();
-            }
-        };
-        recognition.onreadyForSpeech = function(event){
-            console.log("ready for speech");
-            $ionicLoading.show({
-                   template: "<h2>Please speak</h2><div><button class='button button-clear' ng-click='stopSpeech()'>Stop Sync</button></div>",
-                   content: 'Loading',
-                   animation: 'fade-in',
-                   showBackdrop: true,
-                   maxWidth: 300,
-                   showDelay: 0,
-                   scope: $scope
-               });
-
- 
-        };
-        recognition.onerror = function(event) {
-            $ionicLoading.hide();
-            console.log("error");
-        };
-        recognition.onpartialResults = function(event){
-            console.log("partial speech" + event.results[0][0].transcript);
-            $scope.query = event.results[0][0].transcript;
+	
+	$scope.voiceRecog = function() {
+		var maxMatches = 5;
+		var promptString = "Please Speak now"; // optional
+		var language = "en-US";                     // optional
+		window.plugins.speechrecognizer.startRecognize(function(result){
+			console.log("voiceRecog...received result..");
+            console.log(result);
+            $scope.query = result[0];
             $scope.$apply();
-        };
-        recognition.start();        
-    };
-    $scope.stopSpeech = function()
-    {
-        console.log("inside stopSpeechReco");
-        $scope.recognition.stop();
-        console.log("stopped");
-        $ionicLoading.hide();
-        $ionicLoading.show({
-                   template: '<div>Processing</div><div>....</div>',
-                   content: 'Loading',
-                   animation: 'fade-in',
-                   showBackdrop: true,
-                   maxWidth: 300,
-                   showDelay: 0,
-                   scope:$scope
-               });
-    };
-
-
-
-    $scope.getRequestHeader = function() {
-        $headerParamArr = [];
-        $headerParamArr.push({ "authToken": $rootScope.authToken });
-        $headerParamArr.push({ "authType": "Bearer" });
-        return $headerParamArr;
-    }
-
-    $scope.openURL = function(url) {
+		}, function(errorMessage){
+			console.log("Error message: " + errorMessage);
+		}, maxMatches, promptString, language);
+	}
+	
+    $scope.openPromo = function(url) {
+        ga('send', 'event', 'Promo banner', 'Opened from discover tab', url);
         window.open(url, '_system');
+    };
+
+    $scope.openURL = function(item) {
+        ga('send', 'event', item.type, 'Opened from featured resources', item.title);
+        window.open(item.url, '_system');
     };
 
     $scope.withinDates = function(startDate, endDate) {
@@ -108,32 +52,12 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
         $scope.staticContent[sheet] = $localStorage['staticcontent.' + sheet];
     });
 
-    $scope.fetchEvents = function() {
-
-        Utils.doHttpRequest('GET', 'https://devapi.scte.org/mobileappui/api/Events/GetEvents', $scope.getRequestHeader(), $requestParamArr).then(function(response) {
-
-            //console.log(response);
-            if (response != null) {
-                $message = response['message'];
-                $eventsData = response['data'];
-                console.log("in fetchEvents()..GetEvents statusCode.." + $message['statusCode']);
-                $scope.hideLoader();
-
-                if ($message['statusCode'] == 200) {
-                    console.log("Printing events data..");
-                    console.log($eventsData);
-                    $localStorage['eventsdata'] = $eventsData;
-
-                    $scope.myEvents = $eventsData['relevantEvents'];
-                    $scope.liveLearning = $eventsData['liveLearnings'];
-                    $scope.nationwideEvents = $eventsData['nationalEvents'];
-
-                } else {
-                    // $scope.displayAlert("Wrong username or password !");
-                    console.log($message['statusMessage'])
-                }
+    $scope.getCobrandingURL = function(compId){
+        for(var i = 0; i<$scope.cobrandingRecords.length; i++){
+            if($scope.cobrandingRecords[i].companyid==compId){
+                return $scope.cobrandingRecords[i].logourl;
             }
-        });
+        }
     };
 
     $scope.fetchProfile = function() {
@@ -161,9 +85,16 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
                     //$rootScope.profileData = $data[0];
                     $profileData = $data[0];
                     $localStorage['profiledata'] = $profileData;
+                    $localStorage['SSOUrl'] = $profileData['SSOUrl'];
+                    $localStorage["myLearning"]= $profileData.LearningPlan;
+                    console.log("in fetchProfile()..SSOUrl.." + $localStorage['SSOUrl']);
                     console.log("in fetchProfile()..FirstName.." + $profileData['FirstName']);
                     $scope.username = $profileData['FirstName'];
-                    $scope.fetchEvents();
+                    $scope.cobrandingRecords = $localStorage['staticcontent.cobranding'];
+                    $scope.logoURL = $scope.getCobrandingURL($profileData['CompanyId']);  
+                    console.log("Logo URL is here : "+$scope.logoURL);                  
+                    $window.ga('set', 'userId', $profileData['Id']);
+                    Utils.scteSSO();
                 }
             }
         });
@@ -173,45 +104,21 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
     console.log("user name stored is :--" + $localStorage['username']);
 
     console.log("Loaded static content from local cache.");
-    if (Utils.getBuildType() == "stub") {
-        $scope.username = "Bradley";
+    
+    $profileData = $localStorage['profiledata'];
+    $eventsData = $localStorage['eventsdata'];
 
-        $scope.events = [{
-            "image": "img/u183.png",
-            "date": "18",
-            "month": "May '16",
-            "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
-            "eventInfo": "Where:TBD,Sioux Falls, SD"
-        }, {
-            "image": "img/u183.png",
-            "date": "18",
-            "month": "May '16",
-            "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
-            "eventInfo": "Where:TBD,Sioux Falls, SD"
-        }, {
-            "image": "img/u183.png",
-            "date": "18",
-            "month": "May '16",
-            "eventDate": "Dakota Territory Chapter 13th Vendor Day and Cable-tec Games",
-            "eventInfo": "Where:TBD,Sioux Falls, SD"
-        }];
+    if ($profileData == null || $eventsData == null) {
+        $scope.showLoader();
     } else {
-        $profileData = $localStorage['profiledata'];
-        $eventsData = $localStorage['eventsdata'];
-
-        if ($profileData == null || $eventsData == null) {
-            $scope.showLoader();
-        } else {
-            if ($profileData != null) {
-                $scope.username = $profileData['FirstName'];
-            }
-            if ($eventsData != null) {
-                $scope.events = $eventsData['liveLearnings'];
-            }
+        if ($profileData != null) {
+            $scope.username = $profileData['FirstName'];
         }
-        $scope.fetchProfile();
+        if ($eventsData != null) {
+            $scope.events = $eventsData['liveLearnings'];
+        }
     }
-
+    $scope.fetchProfile();
 
     $scope.query='';
     $scope.searchResults = function(query) {
@@ -285,171 +192,80 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', '$ionicLoad
         "img": "img/100x100.png",
         "title": "Lorem Ipsum Dolor Sit"
     }];
-
-    /*$scope.myEvents = [{
-        "eventDate": "19",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "East Pennsylvania Chapter Training",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "19-Aug-2016"
-    }, {
-        "eventDate": "20",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "Northeast Commtech Show & Seminars",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "20-Aug-2016"
-    }, {
-        "eventDate": "21",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "East Pennsylvania Chapter Training",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "21-Aug-2016"
-    }];
-
-    $scope.liveLearning = [{
-        "eventDate": "22",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "Northeast Commtech Show & Seminars",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "22-Aug-2016"
-    }, {
-        "eventDate": "23",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "East Pennsylvania Chapter Training",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "23-Aug-2016"
-    }, {
-        "eventDate": "24",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "Northeast Commtech Show & Seminars",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "24-Aug-2016"
-    }];
-
-    $scope.myChapters = [{
-        "eventDate": "25",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "East Pennsylvania Chapter Training",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "25-Aug-2016"
-    }, {
-        "eventDate": "26",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "Northeast Commtech Show & Seminars",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "26-Aug-2016"
-    }, {
-        "eventDate": "27",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "East Pennsylvania Chapter Training",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "27-Aug-2016"
-    }];
-
-    $scope.nationwideEvents = [{
-        "eventDate": "28",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "Northeast Commtech Show & Seminars",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "28-Aug-2016"
-    }, {
-        "eventDate": "29",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "East Pennsylvania Chapter Training",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "29-Aug-2016"
-    }, {
-        "eventDate": "30",
-        "eventMonth": "Aug '16",
-        "WPeventYear": "2016",
-        "WPeventMonth": "7",
-        "WPstartTime": "00",
-        "WPendTime": "24",
-        "eventTitle": "Northeast Commtech Show & Seminars",
-        "eventLocation": "SCTE Exton, PA",
-        "eventTime": "All Day",
-        "WPeventDate": "30-Aug-2016"
-    }];*/
-
-
-
 }];
 
-var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '$sce','Utils', function($scope, $rootScope, $http, $state, $filter, $sce, Utils) {
+var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '$sce','Utils','$localStorage', function($scope, $rootScope, $http, $state, $filter, $sce, Utils,$localStorage) {
 
-    $scope.discoverEvents = function() {
-        $http.get('json/event_response.json').success(function(res) {
-            $scope.eventTabName = 'relevantEvents';
-            $rootScope.eventTyperelevantEvents = res.data.relevantEvents;
-            $scope.eventType = $rootScope.eventTyperelevantEvents;
-            $scope.dateFormatType();
-            $scope.eventWebDescription();
+    $scope.fetchEvents = function() {
+        Utils.doHttpRequest('GET', 'https://devapi.scte.org/mobileappui/api/Events/GetEvents', $scope.getRequestHeader(), $requestParamArr).then(function(response) {
+
+            //console.log(response);
+            if (response != null) {
+                $message = response['message'];
+                $eventsData = response['data'];
+                console.log("in fetchEvents()..GetEvents statusCode.." + $message['statusCode']);
+                $scope.hideLoader();
+
+                if ($message['statusCode'] == 200) {
+                    console.log("Printing events data..");
+                    console.log($eventsData);
+                    if($localStorage['eventsdata'] != null) {
+                        $localStorage['eventsdata'] = $eventsData;
+                        $scope.discoverEvents();
+                    } else {
+                        $localStorage['eventsdata'] = $eventsData;
+                    }
+                } else {
+                    // $scope.displayAlert("Wrong username or password !");
+                    console.log($message['statusMessage'])
+                }
+            }
         });
     };
+     $scope.dateFormatType = function() {
+        for (i = 0; i < $scope.eventType.length; i++) {
+            var dateFormat = $scope.eventType[i].formattedBeginDate;
+            var dateEvent = new Date(dateFormat);
+            $scope.eventType[i].formattedBeginDate = dateEvent;
+        }
+    };
+
+    $scope.eventWebDescription = function() {
+        for (j = 0; j < $scope.eventType.length; j++) {
+            if($scope.eventType[j].webDescription != null) {
+                //console.log("webDescription.....................");
+                //console.log(JSON.stringify($scope.eventType[j].webDescription));
+                $scope.eventType[j].webDescription = $sce.trustAsHtml("" + $scope.eventType[j].webDescription);
+                //$scope.eventType[j].webDescription = webDescription;
+            }
+        }
+    };
+    
+    $scope.discoverEvents = function() {
+            $eventsData = $localStorage['eventsdata'];    
+            $scope.eventTabName = 'relevantEvents';
+            $rootScope.eventTyperelevantEvents = $eventsData['relevantEvents'];
+            $scope.eventType = $rootScope.eventTyperelevantEvents;
+            $scope.dateFormatType();
+            $scope.eventWebDescription();     
+    };
+    
+    $scope.fetchEvents();
+    
+    if($localStorage['eventsdata'] != null) {
+        $scope.discoverEvents();
+    } else {
+        $scope.showLoader();
+    }
+    
 
     $scope.liveLearningEvents = function() {
-        $http.get('json/event_response.json').success(function(res) {
-            $scope.eventTabName = 'liveLearnings';
-            $rootScope.eventTypeliveLearnings = res.data.liveLearnings;
-            $scope.eventType = $rootScope.eventTypeliveLearnings;
-            $scope.dateFormatType();
-            $scope.eventWebDescription();
-        });
+        $eventsData = $localStorage['eventsdata'];
+        $scope.eventTabName = 'liveLearnings';
+        $rootScope.eventTypeliveLearnings = $eventsData['liveLearnings'];
+        $scope.eventType = $rootScope.eventTypeliveLearnings;
+        $scope.dateFormatType();
+        $scope.eventWebDescription();
     };
 
     /*$scope.myChapter = function() {
@@ -462,29 +278,14 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
     };*/
 
     $scope.nationwideEvents = function() {
-        $http.get('json/event_response.json').success(function(res) {
-            $scope.eventTabName = 'nationalEvents';
-            $rootScope.eventTypenationalEvents = res.data.nationalEvents;
-            $scope.eventType = $rootScope.eventTypenationalEvents;
-            $scope.dateFormatType();
-            $scope.eventWebDescription();
-        });
+        $scope.eventTabName = 'nationalEvents';
+        $rootScope.eventTypenationalEvents = $eventsData['nationalEvents'];
+        $scope.eventType = $rootScope.eventTypenationalEvents;
+        $scope.dateFormatType();
+        $scope.eventWebDescription();
     };
 
-    $scope.dateFormatType = function() {
-        for (i = 0; i < $scope.eventType.length; i++) {
-            var dateFormat = $scope.eventType[i].formattedBeginDate;
-            var dateEvent = new Date(dateFormat);
-            $scope.eventType[i].formattedBeginDate = dateEvent;
-        }
-    };
-
-    $scope.eventWebDescription = function() {
-        for (j = 0; j < $scope.eventType.length; j++) {
-            $scope.eventType[j].webDescription = $sce.trustAsHtml($scope.eventType[j].webDescription);
-            //$scope.eventType[j].webDescription = webDescription;
-        }
-    };
+   
 
     $scope.myEventsList = function() {
         $state.go('tab.discoversmyevents');
@@ -586,6 +387,33 @@ var SearchResultsCtrlModel = $scope.$new(); //You need to supply a scope while i
     $scope.hideFilterSlider = function() {
         $scope.fromDate = $scope.initialDate;
         $scope.toDate = $scope.initialDate;
+        $scope.filterSlider.hide();
+
+        //angular.element('.popup').css('display','none');
+    };
+
+     $scope.hideFilterSliderCancel = function() {
+        $scope.fromDate = $scope.initialDate;
+        $scope.toDate = $scope.initialDate;
+        $scope.contentType = [
+        { text: "Learning", checked: false },
+        { text: "Pocket Guide", checked: false },
+        { text: "Tech Tips", checked: false },
+        { text: "Web Content", checked: false },
+        { text: "Standards", checked: false }
+    ];
+
+    $scope.formatType = [
+        { text: "Video", checked: false },
+        { text: "PDF", checked: false },
+        { text: "Online Content", checked: false }
+    ];
+    $scope.unCheck=false;
+    $scope.publishedPeriod = [
+        { text: "Last 1 week", checked: false },
+        { text: "Last 2 weeks", checked: false },
+        { text: "Last 3 weeks", checked: false }
+    ];
         $scope.filterSlider.hide();
 
         //angular.element('.popup').css('display','none');

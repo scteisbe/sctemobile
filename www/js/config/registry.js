@@ -2,32 +2,37 @@ var cortexConfig = angular.module('cortexConfig', ['ionic', 'ionic-ratings', 'io
     'ngHolder', 'scteApp.services',
     'scteApp.staticservices',
     'ngStorage',
-    'times.tabletop'
+    'times.tabletop',
+    'ionic.service.analytics'
 ]);
 
 var deploy = new Ionic.Deploy();
 
 cortexConfig.config(appRoute)
 
-cortexConfig.run(function ($rootScope) {
+cortexConfig.run(['$rootScope', '$location', '$window' ,function ($rootScope, $location, $window) {
     $rootScope.$on("$locationChangeStart", function (event, next, current) {
-       if($rootScope.globalVideoflag+"flag") {var state = 'pause';
-        var div = document.getElementById("popupVid");
-        var iframetemp = document.getElementsByTagName("iframe");
-        for (i = 0; i < iframetemp.length; i++) {
-            var iframe = document.getElementsByTagName("iframe")[i].contentWindow;
-            div.style.display = state == 'hide' ? '' : '';
-            func = 'pauseVideo';
-            iframe.postMessage('{"event":"command","func":"' + func + '","args":""}', '*');
+        if($rootScope.globalVideoflag+"flag") {var state = 'pause';
+            var div = document.getElementById("popupVid");
+            var iframetemp = document.getElementsByTagName("iframe");
+            for (i = 0; i < iframetemp.length; i++) {
+                var iframe = document.getElementsByTagName("iframe")[i].contentWindow;
+                div.style.display = state == 'hide' ? '' : '';
+                func = 'pauseVideo';
+                iframe.postMessage('{"event":"command","func":"' + func + '","args":""}', '*');
+            }
         }
-    }
     });
-});
+    $window.ga('create', 'UA-1851425-10', 'auto');
+    $rootScope.$on('$stateChangeSuccess', function (event) {
+        $window.ga('send', 'pageview', $location.path());
+    });
+}]);
 
 cortexConfig.run(['$ionicPlatform', 'StaticService', function ($ionicPlatform, StaticService) {
 
     //Fetch the data
-    console.log("Gauri:in run");
+//     console.log("Gauri:in run");
     //StaticService.initAPIContainer();
     StaticService.fetchStaticData();
     $ionicPlatform.ready(function () {
@@ -44,6 +49,15 @@ cortexConfig.run(['$ionicPlatform', 'StaticService', function ($ionicPlatform, S
         }
 
     });
+}]);
+
+cortexConfig.run(['$ionicPlatform', '$ionicAnalytics', function($ionicPlatform, $ionicAnalytics) {
+  $ionicPlatform.ready(function() {
+    $ionicAnalytics.register({
+      silent: false,   // By default all analytics events are logged to the console for debugging. The silent flag disables this.
+      dryRun: false   // dryRun=true won't send any events to the analytics backend. (useful during development)
+    });
+  });
 }]);
 
 cortexConfig.config(function ($ionicConfigProvider) {
@@ -126,8 +140,8 @@ cortexConfig.config(function ($sceDelegateProvider) {
 
 cortexConfig.run(function ($ionicPopup) {
     
-    console.log("in wathcer..")
-    console.log(JSON.stringify(deploy));
+//     console.log("in wathcer..")
+//     console.log(JSON.stringify(deploy));
     deploy.watch().then(function () { }, function () { }, function (updateAvailable) {
         console.log("updateAvailable.." + updateAvailable);
         if (updateAvailable) {

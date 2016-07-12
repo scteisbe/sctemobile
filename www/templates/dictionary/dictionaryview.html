@@ -1,6 +1,9 @@
-<ion-view view-title="{{cortexLogo}}" ng-controller="dictionaryCtrl">
+<ion-view view-title="Dictionary" ng-controller="dictionaryCtrl" class="dictionary-wrapper">
+    <ion-nav-title>
+        <img src="img/cortex_logo.png" class="header-corter-logo">
+    </ion-nav-title>
     <ion-nav-buttons side="secondary">
-        <img ng-click="redirectDisover()" src="img/svg/icon_search_grey.svg" class="icon-my-learning-search" />
+        <i ng-click="redirectDisover()" class="all-icon-icon_search_white header-search-icon"></i>
     </ion-nav-buttons>
     <ion-header-bar class="bar-subheader searchinput">
         <label class="item item-input searchbox">
@@ -8,10 +11,10 @@
             <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
         </label>
     </ion-header-bar>
-    <ion-content overflow-scroll="true" id="dictionart-view" class="has-header has-subheader dic-container">
+    <ion-content overflow-scroll="true" class="has-header has-subheader padding">
         <h4 class="dic-title">Dictionary</h4>
         <ion-list>
-            <ion-item collection-repeat="item in dictionarywords | filter:searchString" item-render-buffer='20'>
+            <ion-item collection-repeat="item in dictionarywords | filter:{'Abbreviation':searchString}" item-render-buffer='20'>
                 <div id="listview" class="row row-center" ng-click="openPopover($event,$index)">
                     <div class="col col-25">
                         <label id="leftlable" class="item list-leftword">{{item.Abbreviation}}</label>
