@@ -10,7 +10,7 @@ var deploy = new Ionic.Deploy();
 
 cortexConfig.config(appRoute)
 
-cortexConfig.run(['$rootScope', '$location', '$window' ,function ($rootScope, $location, $window) {
+cortexConfig.run(['$rootScope', '$location', '$window', '$localStorage',function ($rootScope, $location, $window, $localStorage) {
     $rootScope.$on("$locationChangeStart", function (event, next, current) {
         if($rootScope.globalVideoflag+"flag") {var state = 'pause';
             var div = document.getElementById("popupVid");
@@ -23,7 +23,17 @@ cortexConfig.run(['$rootScope', '$location', '$window' ,function ($rootScope, $l
             }
         }
     });
-    $window.ga('create', 'UA-1851425-10', 'auto');
+
+    var clientId = $localStorage['clientId'] || _.random(1, true).toString().replace("0.", "");
+    $localStorage['clientId'] = clientId;
+
+    $window.ga('create', 'UA-1851425-10', {
+      'storage': 'none',
+      'clientId': clientId
+    });
+    
+    $window.ga('set', 'checkProtocolTask', null); // Disable file protocol checking because Ionic serves from file:// on actual devices
+
     $rootScope.$on('$stateChangeSuccess', function (event) {
         $window.ga('send', 'pageview', $location.path());
     });
