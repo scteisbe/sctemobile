@@ -1,0 +1,41 @@
+.app-library {
+    .main-title {
+        @extend .common-main-title;
+    }
+    .scroll-category {
+        overflow: scroll;
+    }
+    .category {
+        position: relative;
+        top: 0;
+        table {
+            td {
+                padding: 0 7px;
+                text-align: center;
+            }
+        }
+        a {
+            text-decoration: none;
+            color: $color-dark;
+        }
+    }
+    .group-title {
+        @extend .common-main-title;
+    }
+    .app-title,
+    .app-desc {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+    }
+    .app-title {
+        font-weight: 700;
+        color: $color-primary;
+        -webkit-line-clamp: 2;
+    }
+    .app-desc {
+        -webkit-line-clamp: 3;
+    }
+}

@@ -1,0 +1,32 @@
+<ion-view hide-nav-bar="true" class="intro-wrapper" ng-init="init()">
+    <ion-content>
+        <div class="full-width">
+            <div class="header">
+                <div class="img-box">
+                    <img src="img/SCTE-ISBE_Cortex_logos.png" class="img-responsive">
+                </div>
+            </div>
+            <div class="contents">
+                <td-cards>
+                    <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)">
+                        <div class="box">
+                            <div class="box-header text-center">
+                                <h4>{{card.title}}</h4>
+                            </div>
+                            <div class="box-content text-center">
+                                <img ng-src="{{card.img}}" class="img-responsive">
+                                <p>{{card.desc}}</p>
+                            </div>
+                            <div class="box-footer text-center">
+                                <p>{{card.status}}</p>
+                            </div>
+                        </div>
+                    </td-card>
+                </td-cards>
+            </div>
+            <div class="footer">
+                <button class="button button-energized button-block" ng-click="skipIntro()">{{buttonName}}</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

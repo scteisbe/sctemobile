@@ -1,0 +1,23 @@
+<ion-view view-title="Toolkit" class="app-library">
+    <ion-nav-title>
+        <img src="img/cortex_logo.png" class="header-corter-logo">
+    </ion-nav-title>
+    <ion-nav-buttons side="secondary">
+        <i ng-click="redirectDisover()" class="all-icon-icon_search_white header-search-icon"></i>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <h4 class="main-title">Toolkit</h4>
+        <div class="list">
+            <div ng-repeat="item in appList">
+                <div class="item item-divider" ng-show="item.type == 'separator'" ng-if="item.os == platform">
+                    <h3 class="group-title">{{item.title}}</h3>
+                </div>
+                <div class="item item-thumbnail-left" ng-show="item.type != 'separator' && item.os==platform" ng-click="openPage(item.url)">
+                    <img ng-src="{{item.coverimageurl}}">
+                    <h3 class="app-title">{{item.title}}</h3>
+                    <p class="app-desc">{{item.description}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

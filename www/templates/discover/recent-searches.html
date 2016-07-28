@@ -1,0 +1,18 @@
+<ion-modal-view class="recent-search-wrapper">
+    <!-- <ion-header-bar class="bar-calm">
+        <button class="button button-clear" ng-click="closeAdd()">
+            <i class="icon ion-android-close"></i>
+        </button>
+        <div class="h1 title">Recent searches</div>
+    </ion-header-bar> -->
+    <ion-content>
+        <!-- <div class="item title">PREVIOUS SEARCHES</div> -->
+        <div class="list">
+            <a class="item item-icon-right" ng-click="searchResults({'searchText': srhItm, 'oldSearch': true})" ng-repeat="srhItm in previousSearches track by $index">
+                <!-- <label class="date ">Previous Search</label> -->
+                <label class="query ">{{srhItm}}</label>
+                <i class="icon ion-ios-arrow-right arrow-icon"></i>
+            </a>
+        </div>
+    </ion-content>
+</ion-modal-view>

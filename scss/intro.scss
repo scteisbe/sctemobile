@@ -1,0 +1,120 @@
+.intro-wrapper {
+    .full-width {
+        width: 100%;
+        height: 100%;
+        background-color: $color-primary;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 15%;
+            .img-box {
+                width: 80%;
+                margin: 6% auto;
+            }
+        }
+        .contents {
+            position: absolute;
+            top: 15%;
+            bottom: 15%;
+            width: 100%;
+            height: 70%;
+            display: table;
+            td-cards {
+                display: block;
+                position: absolute;
+                top: -25px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+            // td-card:not(:last-child) {
+            //     .box-footer {
+            //         p:last-child {
+            //             display: none;
+            //         }
+            //     }
+            // }
+            td-card {
+                position: absolute;
+                // left: 20px;
+                // right: 20px;
+                margin: 0 auto;
+                margin-left: -140px;
+                // width: 80%;
+                // height: 100%;
+                width: 280px;
+                height: 320px;
+                border-radius: 0;
+                background-color: $color-light;
+                box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+                .box {
+                    // position: relative;
+                    clear: both;
+                    .box-header {
+                        padding: 10px 0;
+                        h4 {
+                            color: $color-primary;
+                            font-weight: 400;
+                            font-size: 16px;
+                        }
+                    }
+                    .box-content {
+                        img,
+                        p {
+                            padding: 0 25px;
+                        }
+                        p {
+                            font-size: 13px;
+                            color: #555555;
+                            line-height: 13px;
+                        }
+                    }
+                    .box-footer {
+                        position: absolute;
+                        bottom: 10px;
+                        width: 100%;
+                        font-size: 10px;
+                        color: $color-grey;
+                        font-style: italic;
+                        font-weight: 700;
+                    }
+                }
+            }
+            td-card:last-child {
+                // pointer-events: none;
+                // .box-footer {
+                //     p:first-child {
+                //         display: none;
+                //     }
+                // }
+            }
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 15%;
+            .button {
+                position: absolute;
+                bottom: 0;
+                color: $color-dark;
+                font-weight: 700;
+                border-radius: 0px;
+            }
+            .button.button-block
+            {
+                margin-bottom: 0px;
+            }
+        }
+    }
+}

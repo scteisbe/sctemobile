@@ -1,0 +1,25 @@
+[{
+    "id": 1,
+    "title": "Welcome to Cortex",
+    "img": "img/ph.jpg",
+    "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada vitae ipsum vel gravida. Etiam ultrices turpis neque, at blandit sem condimentum vitae.",
+    "status": "Swipe to continue"
+}, {
+    "id": 2,
+    "title": "Cortex mobile provides technical resources and support to SCTE members on the move",
+    "img": "img/ph.jpg",
+    "desc": "Latest SCTE learning, reference and technical materials",
+    "status": "Swipe to continue"
+}, {
+    "id": 3,
+    "title": "Cortex mobile provides technical resources and support to SCTE members on the move",
+    "img": "img/ph.jpg",
+    "desc": "Product-specific information from industry partners",
+    "status": "Swipe to continue"
+}, {
+    "id": 4,
+    "title": "Cortex mobile provides technical resources and support to SCTE members on the move",
+    "img": "img/ph.jpg",
+    "desc": "Digital library of apps, tools, pocket guides and tech tips",
+    "status": "Done"
+}]

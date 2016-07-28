@@ -1,0 +1,28 @@
+<ion-view view-title="Archived Webinars" class="archivedwebinars-wrapper">
+    <ion-nav-title>
+        <img src="img/cortex_logo.png" class="header-corter-logo">
+    </ion-nav-title>
+    <ion-header-bar class="bar-subheader searchinput">
+        <label class="item item-input searchbox">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
+        </label>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="resource">
+            <div class="archivedwebinars">
+                <h4 class="heading">PREVIOUS WEBINARS</h4>
+                <ion-list class="archivedwebinars-list">
+                    <ion-item class="item-remove-animate item-avatar item-icon-right" collection-repeat="item in archivedwebinars | filter:searchString track by $index" ng-click="openURL(item.url)" type="item-text-wrap">
+                        <div class="item-icon-left">
+                            <img ng-src="img/archivedplay.png">
+                        </div>
+                        <h2><a>{{item.title}}</a></h2>
+                        <p>{{item.title}}</p>
+                        <i class="icon ion-chevron-right icon-accessory"></i>
+                    </ion-item>
+                </ion-list>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
