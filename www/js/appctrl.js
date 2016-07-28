@@ -47,6 +47,15 @@ $scope.getRequestHeader = function() {
         $headerParamArr.push({ "authType": "Bearer" });
         return $headerParamArr;
  }
+ 
+ $scope.openPage = function(url) {
+        if (!url.match(/^[a-zA-Z]+:\/\//))
+        {
+            url = 'http://' + url;
+        }
+        window.open(url, '_system');
+        console.log("meeting url: " + url);
+  };
 
 $scope.cortexLogo = '<img src="img/cortex_logo.png" class="header-corter-logo">';
 	

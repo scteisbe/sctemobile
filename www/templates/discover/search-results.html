@@ -1,127 +1,180 @@
-<ion-view view-title="Search Results" ng-controller="SearchResultsCtrl" class="search-results-wrapper">
+<ion-view view-title="Search Results" ng-controller="SearchResultsCtrl" class="search-results-wrapper" ng-init="search()">
     <ion-nav-title>
         <img src="img/cortex_logo.png" class="header-corter-logo">
     </ion-nav-title>
     <ion-nav-buttons side="secondary">
         <table class="search-results-wrapper">
             <tr class="header-bar-icns">
-                <td ng-click="showSortSlider()"><i class="icon-sort all-icon-icon_sort"></i></td>
-                <td ng-click="showFilterSlider()"><i class="icon-filter all-icon-icon_filter"></i></td>
+                <!-- <td ng-click="showSortSlider()"><i class="icon-sort all-icon-icon_sort"></i></td> -->
+                <td ng-click="showFilterSlider()" ng-show="errorMsg==''"><i class="icon-filter all-icon-icon_filter"></i></td>
             </tr>
         </table>
     </ion-nav-buttons>
     <ion-header-bar class="bar-subheader search-box-wrapper">
         <label class="item-input-wrapper">
-            <img src="img/icon_textbox-search.png" class="search-icn">
-            <input type="search" placeholder="Enter keyword here" ng-model="query" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults(query)">
+            <i class="all-icon-icon_search_white search-icn"></i>
+            <input type="search" placeholder="Enter keyword here" ng-model="query" ng-keyup="$event.keyCode == 13 && searchResults(query)">
         </label>
-        <button class="button button-clear button-stable" ng-click="voiceRecog()" style="    position: absolute; top: 16px; right: 19px" ng-if="query == ''"><img src="img/icon_textbox-mic.png" class="mic-icn"></button>
-        <button class="button button-clear button-stable" ng-click="clearSearchField()" style="    position: absolute; top: 16px; right: 19px" ng-if="query != ''"><i class="ion-close-circled mic-icn"></i></button>
+        <button class="button button-clear button-stable" ng-click="voiceRecog()" style="    position: absolute; top: 16px; right: 19px" ng-show="query == ''">
+            <i class="all-icon-icon_mic mic-icn"></i>
+        </button>
+        <button class="button button-clear button-stable" ng-click="clearSearchField()" style="    position: absolute; top: 16px; right: 19px" ng-show="query != ''"><i class="ion-close-circled mic-icn"></i></button>
     </ion-header-bar>
     <ion-content class="padding search-results-wrapper">
-        <h4 class="main-title">{{searchResultsText}}</h4>
-        <div ng-repeat="item in items | limitTo: limit as results">
-            <div class="search-results-box media-video" ng-if="item.topic == 'learning' && item.type == 'video'">
+        <!-- <h4 class="main-title">SEARCH RESULTS</h4> -->
+        <div ng-repeat="item in items | limitTo: limit" ng-show="filterFlag == 'false' && errorMsg==''" class="search-results-box" ng-click="openUrl(item.url)">
+            <div class="card" ng-if="item.format == 'video'">
+                <div class="item item-text-wrap title">
+                    <h2>{{item.title}}</h2>
+                </div>
+                <div class="item item-text-wrap content-box-video">
+                    <img src="img/video-placeholder.jpg">
+                </div>
+            </div>
+            <div class="card" ng-if="item.format != 'video'">
+                <div class="item item-text-wrap title">
+                    <div class="row">
+                        <div class="col-25" ng-if="item.thumbnailUrl">
+                            <img ng-src="{{item.thumbnailUrl}}" class="img-responsive" />
+                        </div>
+                        <div class="col">
+                            <h2>{{item.title}}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-text-wrap">
+                    <p ng-bind-html="item.description"></p>
+                </div>
+                <div class="item item-text-wrap footer">
+                    <div class="left">{{item.contentType}}</div>
+                    <div class="right">{{item.format}}</div>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="item in filteredItems | limitTo: filteredLimit" ng-show="filterFlag == 'true' && filterMessage==''" class="search-results-box" ng-click="openUrl(item.url)">
+            <div class="card" ng-if="item.format == 'video'">
+                <div class="item item-text-wrap title">
+                    <h2>{{item.title}}</h2>
+                </div>
+                <div class="item item-text-wrap content-box-video">
+                    <img src="img/video-placeholder.jpg">
+                </div>
+            </div>
+            <div class="card" ng-if="item.format != 'video'">
+                <div class="item item-text-wrap title">
+                    <div class="row">
+                        <div class="col-25" ng-if="item.thumbnailUrl">
+                            <img ng-src="{{item.thumbnailUrl}}" class="img-responsive" />
+                        </div>
+                        <div class="col">
+                            <h2>{{item.title}}</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="item item-text-wrap">
+                    <p ng-bind-html="item.description"></p>
+                </div>
+                <div class="item item-text-wrap footer">
+                    <div class="left">{{item.contentType}}</div>
+                    <div class="right">{{item.format}}</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div ng-repeat="item in items | limitTo: limit" ng-show="filterFlag == 'false'">
+            <div class="search-results-box media-video" ng-if="item.format == 'video'">
                 <div class="topic-box">
                     <div class="row">
                         <div class="col-30 icn"><i class="all-icon-icon_search-results_my-learning"></i></div>
-                        <div class="col-70 topic">{{item.topic}}</div>
+                        <div class="col-70 topic">{{item.contentType}}</div>
                     </div>
                 </div>
                 <div class="content-box">
                     <div class="placeholder"><img src="img/video-placeholder.jpg"></div>
                     <div class="cards">
                         <div class="title"><b>{{item.title}}</b></div>
-                        <div class="duration">{{item.duration}}</div>
-                        <div class="published"><b>Published: </b>{{item.published}}</div>
-                        <div class="description">{{item.description}}</div>
+                        <div class="description" ng-bind-html="item.description"></div>
                     </div>
                 </div>
             </div>
-            <div class="search-results-box media-pdf" ng-if="item.topic == 'learning' && item.type == 'pdf'">
+            <div class="search-results-box media-docs" ng-if="item.format != 'video'">
                 <div class="topic-box">
                     <div class="row">
                         <div class="col-30 icn"><i class="all-icon-icon_search-results_my-learning"></i></div>
-                        <div class="col-70 topic">{{item.topic}}</div>
+                        <div class="col-70 topic">{{item.contentType}}</div>
                     </div>
                 </div>
                 <div class="content-box">
                     <div class="cards">
-                        <div class="row">
-                            <div class="col-35 placeholder"><i class="all-icon-icon_pdf"></i></div>
-                            <div class="col-65 pdf-text-box">
-                                <div class="title"><b>{{item.title}}</b></div>
-                                <div class="description">{{item.description}}</div>
-                                <hr/>
-                                <div class="published"><b>Published: </b>{{item.published}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="search-results-box media-pdf" ng-if="item.topic == 'pocket guide' && item.type == 'pdf'">
-                <div class="topic-box">
-                    <div class="row">
-                        <div class="col-30 icn"><i class="all-icon-icon_search-results_pocket-guides"></i></div>
-                        <div class="col-70 topic">{{item.topic}}</div>
-                    </div>
-                </div>
-                <div class="content-box">
-                    <div class="cards">
-                        <div class="row">
-                            <div class="col-35 placeholder"><i class="all-icon-icon_pdf"></i></div>
-                            <div class="col-65 pdf-text-box">
-                                <div class="title"><b>{{item.title}}</b></div>
-                                <div class="description">{{item.description}}</div>
-                                <hr/>
-                                <div class="published"><b>Published: </b>{{item.published}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="search-results-box media-pdf" ng-if="item.topic == 'manuals' && item.type == 'pdf'">
-                <div class="topic-box">
-                    <div class="row">
-                        <div class="col-30 icn"><i class="all-icon-icon_search-results_manuals"></i></div>
-                        <div class="col-70 topic">{{item.topic}}</div>
-                    </div>
-                </div>
-                <div class="content-box">
-                    <div class="cards">
-                        <div class="row">
-                            <div class="col-35 placeholder"><i class="all-icon-icon_pdf"></i></div>
-                            <div class="col-65 pdf-text-box">
-                                <div class="title"><b>{{item.title}}</b></div>
-                                <div class="description">{{item.description}}</div>
-                                <hr/>
-                                <div class="published"><b>Published: </b>{{item.published}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="search-results-box media-web" ng-if="item.topic == 'web search'">
-                <div class="topic-box">
-                    <div class="row">
-                        <div class="col-30 icn"><i class="all-icon-icon_search-results_web-search"></i></div>
-                        <div class="col-70 topic">{{item.topic}}</div>
-                    </div>
-                </div>
-                <div class="content-box">
-                    <div class="cards">
-                        <div class="media-web-search">
-                            <div class="title"><b>{{item.title}}</b></div>
-                            <div class="description">{{item.description}}</div>
-                            <hr/>
-                            <div class="hyperlink"><i class="icon ion-at"></i> {{item.url}}</div>
-                        </div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="placeholder"><i class="all-icon-icon_pdf"></i></div>
+                                </td>
+                                <td style="vertical-align: top">
+                                    <div class="docs-text-box">
+                                        <div class="title"><b>{{item.title}}</b></div>
+                                        <div class="description" ng-bind-html="item.description"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="view-more" ng-hide="results.length === items.length" ng-click="limit = limit +2">
+        <div ng-repeat="item in filteredItems | limitTo: filteredLimit" ng-show="filterFlag == 'true' && filterMessage==''">
+            <div class="search-results-box media-video" ng-if="item.format == 'video'">
+                <div class="topic-box">
+                    <div class="row">
+                        <div class="col-30 icn"><i class="all-icon-icon_search-results_my-learning"></i></div>
+                        <div class="col-70 topic">{{item.contentType}}</div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="placeholder"><img src="img/video-placeholder.jpg"></div>
+                    <div class="cards">
+                        <div class="title"><b>{{item.title}}</b></div>
+                        <div class="description" ng-bind-html="item.description"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="search-results-box media-docs" ng-if="item.format != 'video'">
+                <div class="topic-box">
+                    <div class="row">
+                        <div class="col-30 icn"><i class="all-icon-icon_search-results_my-learning"></i></div>
+                        <div class="col-70 topic">{{item.contentType}}</div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="cards">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="placeholder"><i class="all-icon-icon_pdf"></i></div>
+                                </td>
+                                <td style="vertical-align: top">
+                                    <div class="docs-text-box">
+                                        <div class="title"><b>{{item.title}}</b></div>
+                                        <div class="description" ng-bind-html="item.description"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="view-more" ng-show="filterFlag == 'false' && readmoreClickFlag=='false'" ng-hide="limit.length == items.length || items.length<11" ng-click="readMore('items')">
             View More
+        </div>
+        <div class="view-more" ng-show="filterFlag == 'true' && filterReadmoreClickFlag=='false'" ng-click="readMore('filteredItems')">
+            View More
+        </div>
+        <div class="error-msg" ng-show="errorMsg!=''">
+            {{errorMsg}}
+        </div>
+        <div class="error-msg" ng-show="filterMessage!=''">
+            {{filterMessage}}
         </div>
         <div class="brand">
             <img src="img/SCTE-ISBE_Logos_Full_Gray.png" alt="brand" />

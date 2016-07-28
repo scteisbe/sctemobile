@@ -2,13 +2,25 @@
     .main-title {
         @extend .common-main-title;
     }
+    .live-learning {
+        position: relative;
+        .event-box-text {
+            position: absolute;
+            bottom: 5px;
+            right: 0;
+            color: $color-light;
+            font-size: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            text-align: right;
+        }
+    }
     .subheader-tabs {
-        line-height: 13px;
+        line-height: 11px;
         text-align: center;
         padding-top: 5px;
         .tabs {
             height: 44px;
-            top: -1px;
             width: 100%;
             position: relative;
             top: 0;
@@ -27,16 +39,16 @@
             border-left: 1px solid #eee;
         }
         i {
-            font-size: 22px;
+            font-size: 20px;
             color: $color-primary;
         }
         .tab-title {
             font-size: 10px;
-            font-family: "bold";
+            font-weight: 700;
         }
         a {
             color: $color-dark;
-            font-family: 'bold';
+            font-weight: 700;
             padding-top: 5px;
         }
     }
@@ -46,35 +58,18 @@
     }
     .course-catalog {
         background-color: $color-dull;
-        position: relative;
-        top: 0px;
         width: 100%;
-        padding: 20px 20px;
-        font-family: 'bold';
-        color: $color-link;
-        .button {
-            padding: 0px 10px;
+        padding: 5px 10px;
+        button {
+            font-weight: 500;
             font-size: 14px;
-            min-height: 40px;
-            line-height: 40px;
-            border: 1px solid $color-link;
-            width: 100%;
-            background: transparent;
-            align-self: center;
-        }
-        a {
             color: $color-link;
-            img {
-                float: right;
-                font-size: 10px;
-                width: 10px;
-                padding: 6px 0 0 0;
-            }
-        }
-        .course-button {
-            .course-arrow-button {
-                right: 0;
+            &::before {
                 position: absolute;
+                top: 55%;
+                right: 5px;
+                -webkit-transform: translateY(-55%);
+                transform: translateY(-55%);
             }
         }
     }
@@ -82,16 +77,23 @@
         width: 100%;
     }
     .course-list {
-        position: relative;
         .accordian-icon {
             position: absolute;
             right: 10px;
+        }
+        i {
+            float: right;
+            margin-left: 2%;
         }
     }
     .course-module-content {
         a {
             color: $color-dark;
-            font-family: 'light';
+            font-weight: 300;
+            p {
+                width: 90%;
+                float: left;
+            }
             i {
                 float: right;
                 color: $color-link;
@@ -104,16 +106,16 @@
             text-align: center;
         }
     }
+    .event-box {
+        @extend .common-event-list;
+    }
     .mylearning-game-header {
         position: relative;
         div {
             display: inline;
         }
         .see-all {
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: $color-link;
+            @extend .common-see-all;
         }
         .mylearning-games {
             margin: 10px;
@@ -121,34 +123,77 @@
         }
     }
     .games {
-        width: 100%;
-        background-color: $color-dull;
-        margin: 5px;
-        .col-75 {
-            padding-left: 15px;
+        h2 {
+            color: $color-primary;
+            font-weight: 700;
         }
-    }
-    .mylearning-games-title-description {
-        color: $color-primary;
-        font-family: 'bold';
         p {
-            font-family: 'light';
+            font-weight: 300;
             color: $color-dark;
             white-space: normal;
+        }
+        .para p:not(:first-child) {
+            display: none;
+        }
+        .para {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 3;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+        .all-para {
+            p {
+                display: block;
+            }
+        }
+        a {
+            &.read-more {
+                font-size: 14px;
+            }
         }
     }
     .inprogress-course {
         background-color: #E8E8E8;
-        font-family: 'light';
+        font-weight: 300;
+        .coursesNil {
+            color: #9fa4a6;
+            padding: 10px;
+        }
         .course-module-content {
             ion-item {
-                font-family: 'light';
+                font-weight: 300;
                 color: $color-primary;
             }
         }
         .course-list {
             i {
                 color: $color-primary;
+            }
+        }
+    }
+    .event-box {
+        height: 165px;
+        font-size: large;
+        background: url(../img/bg.jpeg);
+        padding: 44px 0;
+        @extend .common-event-list;
+        .eventindiv {
+            .date-box {
+                .date {
+                    &.datelearning {
+                        left: 15px;
+                    }
+                }
+            }
+            .text-box {
+                .row-top {
+                    a {
+                        &.title {
+                            color: $color-light;
+                        }
+                    }
+                }
             }
         }
     }
@@ -162,7 +207,7 @@
         text-align: center;
         padding: 15px 10px 15px 10px;
     }
-    .game_description {
+    .game-description {
         text-align: center;
         padding: 15px 10px 15px 10px;
     }
@@ -225,7 +270,7 @@
             .title {
                 padding: 5px;
                 text-align: center;
-                font-family: 'bold';
+                font-weight: 700;
             }
         }
         .media-pdf {
@@ -252,10 +297,65 @@
             }
             .title {
                 color: $color-link;
-                font-family: 'light';
+                font-weight: 300;
             }
             .description {
-                font-family: 'light';
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+@media (min-width: 680px) {
+    .my-learning {
+        .course-catalog {
+            text-align: center;
+            .button {
+                width: 45%;
+            }
+        }
+        .subheader-tabs {
+            .tab-inprogress,
+            .tab-completed {
+                padding-right: 65px;
+            }
+        }
+    }
+    .games-wrapper {
+        .game-description {
+            padding: 15px 100px 15px 100px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .my-learning {
+        .course-catalog {
+            background-color: $color-dull;
+            position: relative;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            font-weight: 700;
+            color: $color-link;
+            //
+            .row .col img {
+                position: absolute;
+                left: 90%;
+                right: 0;
+                margin: 0 auto;
+                top: 35%;
+                transform: translateY(-50%);
+            }
+            .button {
+                width: 45%;
+                left: 170px;
+            }
+        }
+        .live-learning {
+            .event-box-text {
+                font-size: 30px;
+                line-height: 35px;
             }
         }
     }

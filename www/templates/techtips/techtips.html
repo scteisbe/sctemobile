@@ -1,4 +1,4 @@
-<ion-view view-title='Tech tip' class="techtips" ng-init="initialize()">
+<ion-view view-title='Tech tip' class="techtips">
     <ion-nav-title>
         <img src="img/cortex_logo.png" class="header-corter-logo">
     </ion-nav-title>
@@ -7,41 +7,64 @@
     </ion-nav-buttons>
     <ion-content class="padding">
         <h4 class="main-title">Tech Tips</h4>
-        <div class="card techtips-video-pdf-types" ng-repeat="techTipsContent in techTipsContents" ng-if="techTipsContent.template == 'video' || techTipsContent.template == 'html'" >
-        <div>
-            <div ng-if="techTipsContent.template == 'video'" class="video">
-                <div class="item item-text-wrap">
-                    <h2>{{techTipsContent.title}}</h2>
+        <div class="card techtips-video-pdf-types" ng-repeat="techTipsContent in techTipsContents" ng-if="techTipsContent.template == 'video' || techTipsContent.template == 'html'">
+            <div>
+                <div ng-if="techTipsContent.template == 'video'" class="video">
+                    <div class="item item-text-wrap">
+                        <h2>{{techTipsContent.title}}</h2>
+                    </div>
+                    <div class="video-container-youtube" id="popupVid">
+                        <iframe ng-src="{{techTipsContent.videourl}}" frameborder="0" width="350" height="200" ng-show="flag[$index]=='true'" autoplay='true'></iframe>
+                        <img ng-src="{{techTipsContent.coverimageurl}}" class="img-responsive" ng-hide="flag[$index]=='true'" ng-click="toggleImageAndVideo($index)" />
+                        <a href="#" ng-hide="flag[$index]=='true'" ng-click="toggleImageAndVideo($index)"></a>
+                    </div>
                 </div>
-                <div class="video-container-youtube" id="popupVid">
-                    <iframe ng-src="{{techTipsContent.videourl}}" frameborder="0" width="350" height="200" ng-show="flag[$index]=='true' || globalFlag=='true'" autoplay></iframe>
-                    <img ng-src="{{techTipsContent.coverimageurl}}" class="img-responsive" ng-hide="flag[$index]=='true' || globalFlag=='true'" ng-click="toggleImageAndVideo($index)" />
-                    <a href="#" ng-hide="flag[$index]=='true' || globalFlag=='true'" ng-click="toggleImageAndVideo($index)"></a>
+                <div ng-if="techTipsContent.template == 'html'" ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)" class="html">
+                    <div class="item item-text-wrap header">
+                        <div class="row">
+                            <div class="col-25">
+                                <img ng-src="{{techTipsContent.coverimageurl}}" class="img-responsive" />
+                            </div>
+                            <div class="col-75">
+                                <h2>{{techTipsContent.title}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item item-text-wrap content">
+                        <p>{{techTipsContent.subtitle | limitTo: 200}}{{techTipsContent.subtitle > 200 ? '...' : ''}}</p>
+                    </div>
+                    <div class="item footer">
+                        <a ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)">Read more</a>
+                        <div class="techtips-ratings">
+                            <ionic-ratings ratingsobj='techTipsContent.ratingsObject' ng-click="stopPropagation($event)"></ionic-ratings>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div ng-if="techTipsContent.template == 'html'" ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)" class="html">
+        </div>
+        <h4 class="main-title">Primers</h4>
+        <div class="card techtips-video-pdf-types" ng-repeat="index in primersContents" ng-if="index.template == 'sponsored'">
+            <div class="html" ng-click="openPage(index.url)">
                 <div class="item item-text-wrap header">
                     <div class="row">
-                        <div class="col-25">
-                            <img ng-src="{{techTipsContent.coverimageurl}}" class="img-responsive" />
-                        </div>
                         <div class="col-75">
-                            <h2>{{techTipsContent.title}}</h2>
+                            <h2>{{index.title}}</h2>
+                        </div>
+                        <div class="col-25">
+                            <img ng-src="{{index.sponsorlogourl}}" class="img-responsive" />
                         </div>
                     </div>
                 </div>
                 <div class="item item-text-wrap content">
-                    <p>{{techTipsContent.subtitle | limitTo: 200}}{{techTipsContent.subtitle > 200 ? '...' : ''}}</p>
+                    <p>{{index.subtitle | limitTo: 200}}{{index.subtitle > 200 ? '...' : ''}}</p>
                 </div>
-                <div class="item footer">
-                    <a ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)">Read more</a>
+                <div class="item footer-primers">
+                    <a>Duration: </a>{{index.duration_in_minutes}} min
                     <div class="techtips-ratings">
-                        <ionic-ratings ratingsobj='techTipsContent.ratingsObject' ng-click="stopPropagation($event)"></ionic-ratings>
+                        <ionic-ratings ratingsobj='index.ratingsObject' ng-click="stopPropagation($event)"></ionic-ratings>
                     </div>
                 </div>
             </div>
-
-            
         </div>
     </ion-content>
 </ion-view>

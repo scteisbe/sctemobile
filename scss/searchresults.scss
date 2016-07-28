@@ -19,7 +19,7 @@
             width: 250px;
         }
     }
-    .search-results-box {
+    /* .search-results-box {
         width: 100%;
         margin-top: 20px;
         .topic-box {
@@ -42,7 +42,8 @@
                 color: $color-grey;
                 margin-left: 10px;
                 line-height: 50px;
-                font-family: 'bold';
+                font-weight: 700;
+                font-size: 18px;
                 white-space: nowrap;
             }
         }
@@ -54,38 +55,36 @@
                 border-left: 3px solid $color-primary;
                 padding: 10px;
                 margin-top: -5px;
-                .title {
-                    font-family: "bold";
-                    color: $color-link;
+                .title,
+                .description {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    white-space: normal;
                 }
-                .published {
-                    b {
-                        font-family: "bold";
-                    }
+                .title {
+                    font-weight: 700;
+                    color: $color-link;
+                    -webkit-line-clamp: 2;
                 }
                 .description {
                     color: $color-grey;
+                    -webkit-line-clamp: 4;
                 }
-                hr {
-                    border-color: #eee;
-                    opacity: 0.4
-                }
-                .pdf-text-box {
+                .docs-text-box {
                     padding-left: 10px;
-                }
-                .media-web-search {
-                    padding: 10px;
                 }
             }
         }
-        &.media-pdf {
+        &.media-docs {
             .content-box {
                 .placeholder {
-                    width: 110px;
-                    height: 100px;
+                    width: 90px;
+                    height: 120px;
                     background: $color-link;
                     text-align: center;
-                    line-height: 100px;
+                    line-height: 120px;
                     i {
                         font-size: 50px;
                         color: $color-light;
@@ -100,10 +99,36 @@
                         width: 100%;
                     }
                 }
-                .cards {
-                    .title {
-                        color: $color-dark;
-                    }
+            }
+        }
+    } */
+    .search-results-box {
+        width: 100%;
+        .card {
+            h2 {
+                color: $color-primary;
+                font-weight: 700;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                white-space: normal;
+                -webkit-line-clamp: 2;
+            }
+            .content-box-video {
+                padding: 0;
+                img {
+                    width: 100%;
+                }
+            }
+            .footer {
+                padding-bottom: 35px;
+                .left {
+                    float: left;
+                    text-transform: capitalize;
+                }
+                .right {
+                    float: right;
                 }
             }
         }
@@ -135,6 +160,12 @@
     }
 }
 
+.error-msg {
+    color: $color-grey;
+    text-align: center;
+    margin-top: 20px;
+}
+
 
 /* popup of the date picker in searc results page */
 
@@ -152,5 +183,15 @@
                 width: 500px;
             }
         }
+    }
+    .errorMsg {
+        color: gray;
+        padding-top: 100px;
+        padding-left: 235px;
+        font-size: x-large;
+    }
+    .filterErrorMsg {
+        padding: 50px;
+        color: gray;
     }
 }

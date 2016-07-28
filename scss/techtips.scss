@@ -11,13 +11,11 @@
     .main-title {
         @extend .common-main-title;
     }
-
     .card {
         &.techtips-video-pdf-types {
-           
             h2 {
                 color: $color-primary;
-                font-family: 'bold';
+                font-weight: 700;
             }
             p {
                 color: $color-dark;
@@ -65,8 +63,8 @@
                 .content {
                     //...
                 }
-                .footer {
-                    text-align: center;
+                .footer,
+                .footer-primers {
                     position: relative;
                     a {
                         color: $color-link;
@@ -79,6 +77,34 @@
                             .icon {
                                 font-size: 22px;
                             }
+                        }
+                    }
+                }
+                .footer {
+                    text-align: center;
+                }
+                .footer-primers {
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 599px) {
+    .techtips {
+        .card {
+            &.techtips-video-pdf-types {
+                .video {
+                    .video-container-youtube {
+                        a {
+                            position: absolute;
+                            display: block;
+                            height: 48px;
+                            width: 50px;
+                            top: 130px;
+                            left: 250px;
+                            background: url("../img/play.png") center center no-repeat;
                         }
                     }
                 }
@@ -109,98 +135,54 @@
     }
 }
 
-//................
-.techtip-submit-text {
-    padding: 9px 0px 0px 20px;
-    border: 1px solid $color-grey;
-    font-size: 17px;
-    font-family: 'light';
-    line-height: 1.6em;
-}
-
-.techtip-submit-URL {
-    padding: 9px 0px 9px 20px;
-    margin-top: 20px;
-    border: 1px solid #bbb;
-    font-size: 17px;
-    font-family: 'light';
-}
-
-.submit-tech-button-div {
-    text-align: center;
-    padding-top: 12%;
-}
-
-.submit-tech-tip-popup {
-    border-color: transparent;
-    background-color: $color-primary;
-    color: #fff;
-    line-height: 3;
-}
-
-.techtip-popup-main.popup-container {
-    .popup {
-        width: 90%;
-        height: 65%;
-        background-color: $color-light;
+@media (max-width: 330px) {
+    .techtips {
+        .card {
+            &.techtips-video-pdf-types {
+                .video {
+                    .video-container-youtube {
+                        a {
+                            position: absolute;
+                            display: block;
+                            height: 48px;
+                            width: 50px;
+                            top: 54px;
+                            left: 116px;
+                            background: url("../img/play.png") center center no-repeat;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
-
-.techtip-popup-main {
-    .popup-head {
-        padding: 0px;
-    }
-    .tech-tip-heading {
-        width: 90%;
-        float: left;
-        font-family: 'light';
-        font-size: 22px;
-        color: $color-dark;
-        padding-bottom: 20px;
-        padding-left: 5px;
-    }
-    .closetip {
-        font-size: 30px;
-        font-family: 'light';
-        color: $color-dark;
-    }
-    .video-upload {
-        padding: 33px 40px 4px 133px;
-    }
-    .video-upload-text {
-        font-family: 'bold';
-        color: $color-primary;
-        font-size: 15px;
-        padding-left: 44px;
-    }
-    button {
-        padding: 10px 10px 10px 10px;
-        width: 250px;
-        background-color: $color-link;
-        border-radius: 5px;
-        color: white;
-        font-size: 19px;
-    }
-}
-
-.tech-tip-notes {
-    border-top: 1px solid #dddddd;
-    padding: 10px 0px 0px 10px;
-    margin-top: 20px;
-}
-//............
 
 .techtip-submit-wrapper {
-
-.tech-tip-heading{
-text-transform: uppercase;
-    font-family: 'bold';
-    color: #9fa4a6;
-}
-button {
-&.button-positive{
-background-color:$color-primary;
-text-transform: uppercase;
-}
-}
+    .main-title {
+        @extend .common-main-title;
+    }
+    .techtip-submit-text,
+    .techtip-submit-url {
+        font-size: 17px;
+        font-weight: 300;
+        border: 1px solid $color-grey;
+        width: 100%;
+    }
+    .techtip-submit-text {
+        line-height: 1.6em;
+        padding: 9px 0 0 20px;
+    }
+    .techtip-submit-url {
+        margin-top: 20px;
+        padding: 9px 0 9px 20px;
+    }
+    .submit-tech-button-div {
+        margin-top: 20px;
+        button {
+            &.button-positive {
+                background-color: $color-primary;
+                text-transform: uppercase;
+            }
+        }
+    }
 }

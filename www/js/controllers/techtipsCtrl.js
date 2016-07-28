@@ -8,10 +8,16 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
     $rootScope.globalTitle = "";
     $rootScope.globalContent = "";
     $scope.staticContent['techtips'] = $localStorage['staticcontent.techtips'];
+    
+    //$scope.staticcontent['primers'] = $localStorage['staticcontent.primers'];
+    //Primes to be added in the techtip section after the techtips section.
+    $scope.primersContents = $localStorage['staticcontent.primers'];
+    //console.log("primers..................");
+    //console.log($scope.primersContents);
     //Email to address has to be read from the spread sheet.
     $scope.emailToAdd = $localStorage['staticcontent.configs'][2];
    
-
+    
      $scope.stopPropagation = function ($event) {
         console.log('event bubbling');
          $event.stopPropagation();
@@ -23,26 +29,42 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
          
     // };
 
-    $scope.techTipsContents = $scope.staticContent['techtips'];
-
-    $scope.techTipsContents.forEach(function (techTip) {
-        techTip.rating=Math.round(techTip.rating);
-        console.log(techTip.rating);
-        techTip.ratingsObject = {
+    $scope.primersContents.forEach(function (primer) {
+        primer.rating=Math.round(primer.rating);
+        console.log(primer.rating);
+        primer.ratingsObject = {
         iconOn: 'ion-ios-star', //Optional
         iconOff: 'ion-ios-star-outline',  //Optional
         iconOnColor: 'rgb(65, 105, 225)',  //Optional
         iconOffColor: 'rgb(65, 105, 225)', //Optional
-        rating: techTip.rating,
+        rating: primer.rating,
 //         callback: function (rating) {  //Mandatory    
 //             Utils.displayAlert("Rating given : "+rating);
             
 //         }
 };
+}, this);
+
+    $scope.techTipsContents = $scope.staticContent['techtips'];
+
+    $scope.techTipsContents.forEach(function (techTip) {
+        techTip.rating=Math.round(techTip.rating);
+        //console.log(techTip.rating);
+        techTip.ratingsObject = {
+            iconOn: 'ion-ios-star', //Optional
+            iconOff: 'ion-ios-star-outline',  //Optional
+            iconOnColor: 'rgb(65, 105, 225)',  //Optional
+            iconOffColor: 'rgb(65, 105, 225)', //Optional
+            rating: techTip.rating,
+            //         callback: function (rating) {  //Mandatory    
+            //             Utils.displayAlert("Rating given : "+rating);
+                        
+            //         }
+        };
 
 
         if (techTip['videourl']) {
-            console.log("url.." + techTip['videourl']);
+            //console.log("url.." + techTip['videourl']);
             var re = /^(https:\/\/www.youtube.com\/)(watch\?.*v=)(.*)$/;
             var subst = '$1embed/$3?enablejsapi=1';
             techTip['videourl'] = techTip['videourl'].replace(re, subst);
@@ -53,6 +75,19 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
         }
     }, this);
 
+
+    $scope.primersContents.forEach(function (primer) {
+            primer.rating=Math.round(primer.rating);
+            //console.log(primer.rating);
+            primer.ratingsObject = {
+                iconOn: 'ion-ios-star', //Optional
+                iconOff: 'ion-ios-star-outline',  //Optional
+                iconOnColor: 'rgb(65, 105, 225)',  //Optional
+                iconOffColor: 'rgb(65, 105, 225)', //Optional
+                rating: primer.rating,
+            };
+
+    }, this);
     
 
     // $scope.techTipsContents = [{
@@ -71,10 +106,10 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
         };*/
 
     $scope.flag=[];
-    $scope.globalFlag=$rootScope.globalVideoflag;
+   // $scope.globalFlag=$rootScope.globalVideoflag;
       $scope.toggleImageAndVideo = function (index) {
       if($scope.flag[index]!='true'){
-        $rootScope.globalVideoflag='true';
+        //$rootScope.globalVideoflag='true';
       $scope.flag[index]='true';
         }
 
@@ -97,6 +132,9 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
         Utils.redirectDiscover();
     };
 
+     $scope.relod = function () {
+        alert("hiii");
+    };
 
 
    

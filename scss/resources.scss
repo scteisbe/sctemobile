@@ -15,7 +15,7 @@
             margin: 0px 2px 5px 2px;
             display: inline-block;
             text-align: center;
-            font-family: 'bold';
+            font-weight: 700;
             color: $color-link;
         }
         .alphapad {
@@ -23,14 +23,10 @@
         }
         .heading {
             color: $color-grey;
-            font-family: 'bold';
+            font-weight: 700;
         }
         .see-all {
-        font-family:'light';
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: $color-link;
+            @extend .common-see-all;
         }
         .text {
             word-wrap: break-word;
@@ -39,19 +35,16 @@
         }
     }
     .scte,
-    .whitepaper {
+    .whitepaper,
+    .archivedwebinars {
         position: relative;
         background-color: $color-cream;
-        font-family: 'bold';
+        font-weight: 700;
         .heading {
             @extend .common-main-title;
         }
         .see-all {
-        font-family:'light';
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: $color-link;
+            @extend .common-see-all;
         }
         .list {
             img {
@@ -60,12 +53,12 @@
             }
             h2 {
                 color: $color-primary;
-                font-family: 'bold';
+                font-weight: 700;
             }
             p {
                 overflow: initial;
                 white-space: initial;
-                font-family: 'regular';
+                font-weight: 500;
             }
             i {
                 color: $color-link;
@@ -79,25 +72,43 @@
     }
 }
 
+.dictionary-wrapper,
+.standards-wrapper,
+.whitepaper-wrapper,
+.archivedwebinars-wrapper {
+    .searchinput {
+        background-color: $color-dull;
+        .searchbox {
+            height: 35px;
+        }
+    }
+}
+
 .standards-list,
-.whitepaper-list {
+.whitepaper-list,
+.archivedwebinars-list {
     .item-avatar {
         img {
             border-radius: 0;
             max-height: 50px;
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            max-width: 40px;
+            max-height: 40px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
         }
     }
     h2 {
-        font-family: 'regular';
+        font-weight: 500;
         color: $color-primary
     }
     .icon-accessory {
         color: $color-link;
     }
 }
-
-
-/* dictionary */
 
 .dictionary-wrapper {
     .dic-title {
@@ -108,33 +119,32 @@
         padding: 1px;
         border-width: 0px;
     }
-}
-
-.searchinput {
-    background-color: $color-dull;
-}
-
-.searchbox {
-    height: 35px;
-}
-
-#searchbar.row {
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.list-leftword {
-    font-family: 'bold';
-    color: black;
-    font-size: 14px;
-}
-
-.list-rightword {
-    font-family: 'bold';
-    color: #1070B4;
-    font-size: 14px;
+    .list-leftword,
+    .list-rightword {
+        font-weight: 700;
+        font-size: 14px;
+        background-color: transparent;
+        position: relative;
+        z-index: 2;
+        display: block;
+        margin: -1px;
+        padding: 1px;
+        border-width: 0;
+    }
+    .list-leftword {
+        color: $color-dark;
+    }
+    .list-rightword {
+        color: $color-primary;
+    }
+    .descriptivetext {
+        font-weight: 300;
+        color: $color-dark;
+        font-size: 15px;
+    }
+    .listview {
+        padding: 5px;
+    }
 }
 
 .platform-android {
@@ -143,59 +153,10 @@
     }
 }
 
-#popoverviewdiv {
-    element.style {
-        left: 30%;
-    }
-}
-
-#popuplable {
-    .item {
-        background-color: $color-light;
-        border-width: 0px;
-    }
-}
-
-.subheadingtext {
-    font-family: 'bold';
-    color: $color-dark;
-    font-size: 15px;
-}
-
-.descriptivetext {
-    font-family: 'light';
-    color: $color-dark;
-    font-size: 15px;
-}
-
 .popover {
     .scroll-content {
         top: 1px;
     }
-}
-
-div#listview.row {
-    padding: 5px;
-}
-
-#leftlable.item {
-    background-color: transparent;
-    position: relative;
-    z-index: 2;
-    display: block;
-    margin: -1px;
-    padding: 1px;
-    border-width: 0px;
-}
-
-#rightlable.item {
-    background-color: transparent;
-    position: relative;
-    z-index: 2;
-    display: block;
-    margin: -1px;
-    padding: 1px;
-    border-width: 0px;
 }
 
 .ion_alpha_list_outer {
@@ -206,7 +167,7 @@ div#listview.row {
     }
     .item {
         border-right: none;
-        font-family: 'bold';
+        font-weight: 700;
         color: $color-link;
         font-size: 12px;
     }
@@ -219,25 +180,16 @@ div#listview.row {
     overflow: auto;
     margin: 1px;
     padding: 3px;
-    li {
-        line-height: 1.3;
-        font-family: 'bold';
-        font-size: 12px;
-        width: 15px;
-    }
-}
-
-ul.ion_alpha_sidebar {
     background-color: $color-cream;
     align-items: center;
     border-radius: 8px;
     text-align: center;
-}
-
-.bar.search-space {
-    background-color: $color-dull;
-    height: 60px;
-    padding: 10px;
+    li {
+        line-height: 1.3;
+        font-weight: 700;
+        font-size: 12px;
+        width: 15px;
+    }
 }
 
 ion-popover-view.fit {

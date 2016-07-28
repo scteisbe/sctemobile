@@ -32,12 +32,13 @@ $color-link: #008cc9; //right arrow and links(like 'Read more')
 @import "custom.sass";
 @import "allicons.scss";
 @import "login.scss";
+@import "intro.scss";
 @import "discover.scss";
 @import "searchresults.scss";
 @import "myevents.scss";
 @import "mylearning.scss";
 @import "techtips.scss";
-@import "myapps.scss";
+@import "applibrary.scss";
 @import "resources.scss";
 @font-face {
     font-family: 'regular';
@@ -87,6 +88,9 @@ body {
             .header-corter-logo {
                 width: 35px;
                 margin-top: 5px;
+                &.informed-logo {
+                    width: 115px;
+                }
             }
         }
     }
@@ -117,10 +121,89 @@ body {
     }
 }
 
+.header-search-icon {
+    margin-top: 6px;
+    margin-right: 10px;
+    color: $color-light;
+    font-size: 20px;
+}
+
 .common-main-title {
     text-transform: uppercase;
-    font-family: 'bold';
+    font-weight: 700;
     color: $color-grey;
+}
+
+.common-see-all {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $color-link;
+    font-weight: 500;
+}
+
+.common-event-list {
+    .eventindiv {
+        padding: 0;
+        .date-box {
+            position: relative;
+            width: 50px;
+            .date {
+                position: absolute;
+                top: 13px;
+                left: 17px;
+                font-weight: 700;
+            }
+            .month {
+                text-transform: uppercase;
+                position: absolute;
+                top: 35px;
+                left: 0;
+                font-size: 10px;
+                color: $color-light;
+                text-align: center;
+                font-weight: 700;
+                width: 100%;
+                div {
+                    position: absolute;
+                    left: 0px;
+                }
+            }
+            img {
+                width: 50px;
+            }
+        }
+        .text-box {
+            padding: 0;
+            padding-left: 10px;
+            .row-top {
+                a {
+                    color: $color-primary;
+                    font-weight: 700;
+                }
+            }
+            .row-bottom {
+                font-weight: 300;
+            }
+        }
+        .bg {
+            background-image: url(./svg/img_calendar.svg);
+        }
+    }
+}
+
+.tabs-striped {
+    .tab-item {
+        &.tab-item-active,
+        &.active,
+        &.activated {
+            border: none;
+        }
+    }
+}
+
+.overflow-scroll {
+    overflow-y: auto; //fix: scroll bar was visible even when there is empty content in a page
 }
 
 

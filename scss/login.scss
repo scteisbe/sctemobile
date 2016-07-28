@@ -39,12 +39,7 @@
         .logindiv {
             button {
                 color: $color-dark;
-                font-family: 'bold';
-            }
-        }
-        .test {
-            button {
-                width: 80%
+                font-weight: 700;
             }
         }
     }
@@ -58,7 +53,7 @@
         background-color: #1070B4;
         .signuptext {
             span {
-                font-family: 'light';
+                font-weight: 300;
                 font-size: 15px;
                 color: #6dcff6;
                 background: transparent;
@@ -68,16 +63,16 @@
             margin: 0 auto;
             width: 70%;
             .button {
-                font-family: 'bold';
+                font-weight: 700;
             }
         }
         .weblink {
             color: $color-light;
             font-size: 12pt;
-            font-family: 'light';
+            font-weight: 300;
             a {
                 color: $color-light;
-                font-family: 'light';
+                font-weight: 300;
             }
         }
     }
