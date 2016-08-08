@@ -1,6 +1,6 @@
 <ion-view view-title='Tech tip' class="techtips">
     <ion-nav-title>
-        <img src="img/cortex_logo.png" class="header-corter-logo">
+        <img src="img/cortex_logo.png" class="header-cortex-logo">
     </ion-nav-title>
     <ion-nav-buttons side="secondary">
         <label class="submit-btn" ng-click="techTipSubmitPage()">Submit</label>
@@ -43,11 +43,11 @@
             </div>
         </div>
         <h4 class="main-title">Primers</h4>
-        <div class="card techtips-video-pdf-types" ng-repeat="index in primersContents" ng-if="index.template == 'sponsored'">
+        <div class="card techtips-video-pdf-types" ng-repeat="index in primersContents" ng-if="index.template == 'sponsored'" ng-show="primersErrorMsg==''">
             <div class="html" ng-click="openPage(index.url)">
                 <div class="item item-text-wrap header">
                     <div class="row">
-                        <div class="col-75">
+                        <div class="col-75" style="margin-left: -10px;">
                             <h2>{{index.title}}</h2>
                         </div>
                         <div class="col-25">
@@ -59,12 +59,15 @@
                     <p>{{index.subtitle | limitTo: 200}}{{index.subtitle > 200 ? '...' : ''}}</p>
                 </div>
                 <div class="item footer-primers">
-                    <a>Duration: </a>{{index.duration_in_minutes}} min
+                    {{index.duration_in_minutes}} min
                     <div class="techtips-ratings">
                         <ionic-ratings ratingsobj='index.ratingsObject' ng-click="stopPropagation($event)"></ionic-ratings>
                     </div>
                 </div>
             </div>
         </div>
+        <div ng-show="primersErrorMsg!=''">
+             <div class="card item item-text-wrap">{{primersErrorMsg}}</div>
+            </div>
     </ion-content>
 </ion-view>

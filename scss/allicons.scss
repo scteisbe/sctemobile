@@ -16,98 +16,110 @@
     -moz-osx-font-smoothing: grayscale
 }
 
-.all-icon-bottom-menu_apps:before {
+.all-icon-bottom-menu_discover:before {
     content: '\0041';
 }
 
-.all-icon-bottom-menu_discover:before {
+.all-icon-bottom-menu_my-learning:before {
     content: '\0042';
 }
 
-.all-icon-bottom-menu_my-learning:before {
+.all-icon-bottom-menu_techtips:before {
     content: '\0043';
 }
 
-.all-icon-bottom-menu_resources:before {
+.all-icon-bottom-menu_apps:before {
     content: '\0044';
 }
 
-.all-icon-bottom-menu_techtips:before {
+.all-icon-bottom-menu_resources:before {
     content: '\0045';
 }
 
-.all-icon-icon_arrow:before {
+.all-icon-icon_filter:before {
     content: '\0046';
 }
 
-.all-icon-icon_filter:before {
+.all-icon-icon_search-results_manuals:before {
     content: '\0047';
 }
 
-.all-icon-icon_mic:before {
+.all-icon-icon_search-results_my-learning:before {
     content: '\0048';
 }
 
-.all-icon-icon_minus:before {
+.all-icon-icon_search-results_pocket-guides:before {
     content: '\0049';
 }
 
-.all-icon-icon_pdf:before {
+.all-icon-tab_events_livelearning:before {
     content: '\004a';
 }
 
-.all-icon-icon_plus:before {
+.all-icon-tab_events_nationwide:before {
     content: '\004b';
 }
 
-.all-icon-icon_search_white:before {
+.all-icon-icon_arrow:before {
     content: '\004c';
 }
 
-.all-icon-icon_search-results_manuals:before {
+.all-icon-icon_mic:before {
     content: '\004d';
 }
 
-.all-icon-icon_search-results_pocket-guides:before {
+.all-icon-icon_minus:before {
     content: '\004e';
 }
 
-.all-icon-icon_search-results_my-learning:before {
+.all-icon-icon_pdf:before {
     content: '\004f';
 }
 
-.all-icon-icon_search-results_web-search:before {
+.all-icon-icon_plus:before {
     content: '\0050';
 }
 
-.all-icon-icon_sort:before {
+.all-icon-icon_search_grey:before {
     content: '\0051';
 }
 
-.all-icon-icon_web-link:before {
+.all-icon-icon_search_white:before {
     content: '\0052';
 }
 
-.all-icon-tab_events_livelearning:before {
+.all-icon-icon_search-results_web-search:before {
     content: '\0053';
 }
 
-.all-icon-tab_events_my-events:before {
+.all-icon-icon_sort:before {
     content: '\0054';
 }
 
-.all-icon-tab_events_nationwide:before {
+.all-icon-icon_web-link:before {
     content: '\0055';
 }
 
-.all-icon-tab_my-learning_all-courses:before {
+.all-icon-img_calendar:before {
     content: '\0056';
 }
 
-.all-icon-tab_my-learning_completed:before {
+.all-icon-img_prof-pic:before {
     content: '\0057';
 }
 
-.all-icon-tab_my-learning_in-progress:before {
+.all-icon-tab_events_my-events:before {
     content: '\0058';
+}
+
+.all-icon-tab_my-learning_all-courses:before {
+    content: '\0059';
+}
+
+.all-icon-tab_my-learning_completed:before {
+    content: '\005a';
+}
+
+.all-icon-tab_my-learning_in-progress:before {
+    content: '\0061';
 }

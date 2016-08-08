@@ -1,26 +1,22 @@
 <ion-view view-title="Whitepaper" class="whitepaper-wrapper">
     <ion-nav-title>
-        <img src="img/cortex_logo.png" class="header-corter-logo">
+        <img src="img/cortex_logo.png" class="header-cortex-logo">
     </ion-nav-title>
-    <ion-header-bar class="bar-subheader searchinput">
-        <label class="item item-input searchbox">
+    <ion-header-bar class="bar-subheader search-box">
+        <label class="item item-input search-input">
             <i class="icon ion-ios-search placeholder-icon"></i>
             <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
         </label>
     </ion-header-bar>
     <ion-content class="padding">
-        <div class="resource">
-            <div class="whitepaper">
-                <h4 class="heading">WHITE PAPERS</h4>
-                <ion-list class="whitepaper-list">
-                    <ion-item class="item-remove-animate item-avatar item-icon-right" collection-repeat="item in whitePapers | filter:searchString track by $index" ng-click="openURL(item.fileName)" type="item-text-wrap">
-                        <img src="img/u214.png">
-                        <h2><a>{{item.title}}</a></h2>
-                        <p>{{item.title}}</p>
-                        <i class="icon ion-chevron-right icon-accessory"></i>
-                    </ion-item>
-                </ion-list>
-            </div>
-        </div>
+        <h4 class="heading">WHITE PAPERS</h4>
+        <ion-list class="whitepaper-list">
+            <ion-item class="item-remove-animate item-avatar item-icon-right" collection-repeat="item in whitePapers | filter:searchString track by $index" ng-click="openURL(item.fileName)" type="item-text-wrap">
+                <img src="img/u214.png">
+                <h2><a>{{item.title}}</a></h2>
+                <p>{{item.title}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>

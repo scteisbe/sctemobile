@@ -1,6 +1,9 @@
 .my-events {
     .scroll-content {
         top: 90px;
+        &.event-detail-content {
+            top: 44px !important;
+        }
     }
     .subheader-tabs {
         line-height: 11px;
@@ -56,17 +59,11 @@
                     }
                 }
             }
+            button.reg-btn {
+                margin-bottom: 0;
+                background-color: $color-primary;
+                text-transform: uppercase;
+            }
         }
-    }
-    .myevents-calendar {
-        width: 100%;
-        background-color: $color-primary;
-        height: 45px;
-        text-transform: uppercase;
-        color: $color-light;
-        border: none;
-    }
-    .event-detail-content {
-        top: 44px;
     }
 }

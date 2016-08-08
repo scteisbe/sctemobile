@@ -1,31 +1,24 @@
 <ion-view view-title="Standards And Specifications" class="standards-wrapper">
     <ion-nav-title>
-        <img src="img/cortex_logo.png" class="header-corter-logo">
+        <img src="img/cortex_logo.png" class="header-cortex-logo">
     </ion-nav-title>
-    <ion-header-bar class="bar-subheader searchinput">
-        <label class="item item-input searchbox">
+    <ion-header-bar class="bar-subheader search-box">
+        <label class="item item-input search-input">
             <i class="icon ion-ios-search placeholder-icon"></i>
             <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
         </label>
     </ion-header-bar>
     <ion-content class="padding">
-        <div class="resource">
-            <div class="scte">
-                <h4 class="heading">STANDARDS AND SPECIFICATIONS</h4>
-                <ion-list class="standards-list">
-                    <ion-item class="item-remove-animate item-avatar item-icon-right" collection-repeat="item in standardsSpecDetail | orderBy: 'title' | filter:searchString track by $index" ng-click="openURL(item.url)" type="item-text-wrap">
-                        <!-- <div class="item-avatar"> -->
-                        <!-- </div> -->
-                        <img ng-show="item.identifier" ng-src="img/SCTE_logo.jpg" />
-                        <img ng-show="!item.identifier" ng-src="img/CableLabs_logo.png" />
-                        <!-- <h2><a>{{item.identifier}}</a></h2> -->
-                        <h2 ng-show="item.identifier == undefined">{{item.title}}</h2>
-                        <h2 ng-show="item.identifier !=''">{{item.identifier}}</h2>
-                        <p>{{item.title}}</p>
-                        <i class="icon ion-chevron-right icon-accessory"></i>
-                    </ion-item>
-                </ion-list>
-            </div>
-        </div>
+        <h4 class="heading">STANDARDS AND SPECIFICATIONS</h4>
+        <ion-list class="standards-list">
+            <ion-item class="item-thumbnail-left item-icon-right" collection-repeat="item in standardsSpecDetail | orderBy: 'title' | filter:searchString track by $index" ng-click="openCableSpecUrl(item.url)" type="item-text-wrap">
+                <img ng-show="item.identifier" ng-src="img/SCTE-ISBE_LogoBugs_Black.png" style="width:100%;height:auto" />
+                <img ng-show="!item.identifier" ng-src="img/CAB_logo_BW.png" style="width:100%;height:auto" />
+                <h2 ng-show="item.identifier == undefined">{{item.title}}</h2>
+                <h2 ng-show="item.identifier !=''">{{item.identifier}}</h2>
+                <p>{{item.title}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>

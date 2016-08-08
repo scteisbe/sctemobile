@@ -1,12 +1,33 @@
 <ion-view view-title="Event Details" class="my-events">
     <ion-nav-title>
-        <img src="img/cortex_logo.png" class="header-corter-logo">
+        <img src="img/cortex_logo.png" class="header-cortex-logo">
     </ion-nav-title>
     <ion-content class="scroll-content background padding event-detail-content">
-        <div ng-init="eventFullDescription()" class="event-box">
+        <div ng-init="eventFullDescription()" class="event-box" style="padding-bottom:10px;">
             <div class="card eventindiv">
                 <div class="row">
-                    <div class="col-30">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="date-box">
+                                    <img src="img/svg/img_calendar.svg" />
+                                    <div class="date"><b>{{events.formattedBeginDate | date: 'dd'}}</b></div>
+                                    <div class="month"><b>{{events.formattedBeginDate | date: 'MMM'}} '{{events.formattedBeginDate | date: 'yy'}}</b></div>
+                                </div>
+                            </td>
+                            <td class="table-content">
+                                <div class="text-box">
+                                    <div class="row-top"><a href="">{{events.title}}</a></div>
+                                    <div class="row-bottom"><b>Location: </b>{{events.address1}} {{events.address2}} {{events.address3}} {{events.city}} {{events.stateProvince}} {{events.postal}}
+                                        <br>
+                                        <b>When: </b>{{events.formattedBeginDate | date: 'shortTime'}}
+                                        <br><a ng-click="addEvent(events.title,events.city,events.title,events.formattedBeginDate, events.formattedEndDate)" href="#"><u>Add To Calendar</u></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--    <div class="col-30">
                         <div class="date-box">
                             <img src="img/svg/img_calendar.svg" />
                             <div class="date"><b>{{events.formattedBeginDate | date: 'dd'}}</b></div>
@@ -22,16 +43,22 @@
                                 <br><a ng-click="addEvent(events.title,events.city,events.title,events.formattedBeginDate, events.formattedEndDate)" href="#"><u>Add To Calendar</u></a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="event-description">
                     <p ng-bind-html="events.webDescription"></p>
-                    <div ng-show="event.meetingUrl">
-                        <a href="{{events.meetingUrl}}"><img src="img/svg/icon_web-link.svg" /> <b>{{events.meetingUrl}}</b></a>
+                    <div ng-show="events.meetingUrl" class="event-url">
+                        <a ng-click="openInAppBrowser(events.meetingUrl)">
+                            <div class="row">
+                                <div class="col-15" style="padding-top: 5px"><img src="img/svg/icon_web-link.svg" />
+                                </div>
+                                <div class="col" style="padding-right: 15px"> {{events.meetingUrl}}
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                    <br>
-                    <button class="myevents-calendar" ng-click="openPage(events.url)">Registration Page</button>
                 </div>
+                <button class="button button-full button-positive reg-btn" ng-click="openInAppBrowser(events.url)">Registration Page</button>
             </div>
         </div>
     </ion-content>

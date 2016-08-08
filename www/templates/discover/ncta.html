@@ -1,0 +1,26 @@
+<ion-view view-title="NCTA" class="discover-wrapper">
+    <ion-nav-title>
+        <img src="img/cortex_logo.png" class="header-cortex-logo">
+    </ion-nav-title>
+    <ion-header-bar class="bar-subheader search-box">
+        <label class="item item-input search-input">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
+        </label>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="rss-feeds-box padding-zero">
+            <div>
+                <img src="img/NCTA-Horizontal.png" class="informed-logo">
+            </div>
+            <ion-list class="list">
+                <ion-item class="item-thumbnail-left item-icon-right" collection-repeat="nctaData in nctaDatas | filter:searchString track by $index" ng-click="openPage(nctaData.link)" type="item-text-wrap">
+                    <img src="{{nctaData.thumbnail}}" style="width:auto;height:auto" />
+                    <h2>{{nctaData.title}}</h2>
+                    <p class="rss-description" ng-bind-html="nctaData.description"></p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>

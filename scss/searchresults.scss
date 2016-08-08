@@ -19,101 +19,19 @@
             width: 250px;
         }
     }
-    /* .search-results-box {
-        width: 100%;
-        margin-top: 20px;
-        .topic-box {
-            margin: 0;
-            padding: 0;
-            .icn {
-                width: 50px;
-                height: 50px;
-                background: $color-link;
-                border-radius: 100%;
-                text-align: center;
-                line-height: 56px;
-                i {
-                    font-size: 25px;
-                    color: $color-light;
-                }
-            }
-            .topic {
-                text-transform: uppercase;
-                color: $color-grey;
-                margin-left: 10px;
-                line-height: 50px;
-                font-weight: 700;
-                font-size: 18px;
-                white-space: nowrap;
-            }
-        }
-        .content-box {
-            margin-top: 5px;
-            .cards {
-                width: 100%;
-                background: $color-light;
-                border-left: 3px solid $color-primary;
-                padding: 10px;
-                margin-top: -5px;
-                .title,
-                .description {
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    white-space: normal;
-                }
-                .title {
-                    font-weight: 700;
-                    color: $color-link;
-                    -webkit-line-clamp: 2;
-                }
-                .description {
-                    color: $color-grey;
-                    -webkit-line-clamp: 4;
-                }
-                .docs-text-box {
-                    padding-left: 10px;
-                }
-            }
-        }
-        &.media-docs {
-            .content-box {
-                .placeholder {
-                    width: 90px;
-                    height: 120px;
-                    background: $color-link;
-                    text-align: center;
-                    line-height: 120px;
-                    i {
-                        font-size: 50px;
-                        color: $color-light;
-                    }
-                }
-            }
-        }
-        &.media-video {
-            .content-box {
-                .placeholder {
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
-        }
-    } */
     .search-results-box {
         width: 100%;
         .card {
             h2 {
                 color: $color-primary;
                 font-weight: 700;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                white-space: normal;
+                @extend .common-ellipsis;
                 -webkit-line-clamp: 2;
+            }
+            .row,
+            .col,
+            .col-25 {
+                padding: 0 !important;
             }
             .content-box-video {
                 padding: 0;
@@ -141,39 +59,10 @@
     }
 }
 
-
-/* date picker in search results page */
-
-.ionic_datepicker_popup {
-    .popup-body {
-        .selected_date_full {
-            background-color: $color-primary !important;
-        }
-    }
-    .selected_date {
-        background-color: $color-primary !important;
-    }
-    .popup-buttons {
-        button {
-            background-color: $color-primary !important;
-        }
-    }
-}
-
 .error-msg {
     color: $color-grey;
     text-align: center;
     margin-top: 20px;
-}
-
-
-/* popup of the date picker in searc results page */
-
-.popup-container {
-    &.popup-showing {
-        z-index: 9999;
-        visibility: visible;
-    }
 }
 
 @media (min-width: 768px) {
@@ -183,15 +72,5 @@
                 width: 500px;
             }
         }
-    }
-    .errorMsg {
-        color: gray;
-        padding-top: 100px;
-        padding-left: 235px;
-        font-size: x-large;
-    }
-    .filterErrorMsg {
-        padding: 50px;
-        color: gray;
     }
 }

@@ -1,10 +1,12 @@
-var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionicModal', 'Utils', '$controller', '$localStorage', function($scope, $state, $http, ionicDatePicker, $ionicModal, Utils, $controller, $localStorage) {
+var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionicModal', 'Utils', '$controller', 
+    '$localStorage','AppConstants', '$ionicPopup', '$rootScope', 
+    function($scope, $state, $http, ionicDatePicker, $ionicModal, Utils, $controller, $localStorage,
+    AppConstants,$ionicPopup,$rootScope) {
 
     var SearchResultsCtrlModel = $scope.$new(); //You need to supply a scope while instantiating.
     //Provide the scope, you can also do $scope.$new(true) in order to create an isolated scope.
     //In this case it is the child scope of this scope.
     $controller('DiscoverCtrl', { $scope: SearchResultsCtrlModel });
-
 
     //SearchResultsCtrlModel.recognition; //And call the method on the newScope
     $scope.voiceRecog = function() {
@@ -17,7 +19,31 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
 
     $scope.searchResults = function(query) {
         SearchResultsCtrlModel.searchResults(query);
+        SearchResultsCtrlModel.hideRecentSearches();
     };
+
+    $scope.showRecentSearches = function(){
+        SearchResultsCtrlModel.showRecentSearches();
+    };
+
+    $scope.hideRecentSearches = function(){
+        SearchResultsCtrlModel.hideRecentSearches();
+    };
+
+    $scope.searcheChange = function(){
+        SearchResultsCtrlModel.searcheChange();
+    };
+
+    $scope.redirectDiscover = function() {
+        alert("hii");
+       $location.path('tab/discover');
+    };
+    
+    var config = $localStorage['staticcontent.configs'];    
+    config.forEach(function(element) {
+        if(element['key'] == 'not_entitled_message')
+            $scope.noAccessMsg = element['value'];
+    }, this);
 
     $scope.query = $localStorage['PreviousSearch'][0];
 
@@ -32,15 +58,19 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
     $scope.filteredItems = [];
     $scope.filterFlag = "false";
     $scope.errorMsg = '';
-
+    $scope.isAndroid = ionic.Platform.isAndroid();
     $scope.search = function() {
 
         // Below section of the code is for fetch search response from API. 
         // Please comment out the entire marked section, in case you want to read from Stub 
 
         /*************************************** Read Response from API ****************************/
-        $scope.showLoader();
-        Utils.doHttpRequest(Utils.getApiDetails().searchEngineAPI.httpMethod, encodeURI(Utils.getApiDetails().searchEngineAPI.URL + Utils.getApiDetails().searchEngineAPI.contexPath + $scope.query), [], []).then(function(response) {
+       $scope.showLoaderSearch();
+        var searchBody = {"searchText":$scope.query,"courses":$rootScope.courses,"modules":$rootScope.modules};
+        //Utils.doHttpRequest(Utils.getApiDetails().searchEngineAPI.httpMethod, encodeURI(Utils.getApiDetails().searchEngineAPI.URL + Utils.getApiDetails().searchEngineAPI.contexPath + $scope.query), [], []).then(function(response) {
+        Utils.doHttpRequest(Utils.getApiDetails().searchEngineAPI.httpMethod, 
+            encodeURI(Utils.getApiDetails().searchEngineAPI.URL + Utils.getApiDetails().searchEngineAPI.contexPath), [], 
+            searchBody,true).then(function(response) {
             console.log(response);
             //console.log(response['data']);
             if (response != null) {
@@ -48,19 +78,34 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
                 $message = response['message'];
                 data = response['data'];
                 console.log("statusCode.." + $message['statusCode']);
-                $scope.hideLoader();
+                //$scope.hideLoader();
 
                 if ($message['statusCode'] == 200) {
                     console.log("post query for search..");
-
                     if (data != null) {
                         $scope.items = data;
-                        $scope.processResult();
+                        if ($scope.items.length == 0) {
+                            $scope.errorMsg = AppConstants.searchErrorMsg;
+                            $scope.hideLoader();
+                        } else {
+                            $scope.processResult();
+                        }
                     }
                 } else {
+                    if ($scope.items.length == 0) {
+                            $scope.errorMsg = AppConstants.searchErrorMsg;
+                            $scope.hideLoader();
+                        } 
+                    $scope.displayAlert(AppConstants.searchServerErrorMsg);
+                    $scope.errorMsg = AppConstants.searchErrorMsg;
                     console.log($message['statusMessage'])
+                    
                 }
             } else {
+                   if ($scope.items.length == 0) {
+                            $scope.errorMsg = AppConstants.searchErrorMsg;
+                            //$scope.hideLoader();
+                        } 
                 //No API access
                 $scope.hideLoader();
             }
@@ -78,8 +123,9 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
         // $http.get('json/sample-search-results.json').success(function(res) {
         //     $scope.items = res.data;
         //     $scope.itemss = res;
+        //     $scope.errorMsg = '';
         //     if ($scope.items.length == 0) {
-        //         $scope.errorMsg = 'No results found!!!';
+        //         $scope.errorMsg = AppConstants.searchErrorMsg;
         //         $scope.hideLoader();
         //     } else {
         //         $scope.processResult();
@@ -88,36 +134,67 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
         // });
 
         /**************************************************************************************************/
-
     };
+
+ 
 
     $scope.processResult = function() {
 
+        // var newResults = [];
+        
+        // $scope.items.forEach(function(item) {
+        //     if(item.hasAccess == 'True') {
+        //         newResults.push(item);
+        //     }
+        // }, this);
+        
+        // $scope.items = newResults;
+        
+        var newArr = [],
+        origLen = $scope.items.length,
+        found, x, y;
 
-        var contentTypetempSet = new Set();
-        var formatTypetempSet = new Set();
-        var contentTypetempSettempVariable = {};
-        var formatTypetempSettempVariable = {};
-        if ($scope.items.length < 11) {
-            $scope.readmoreClickFlag = 'true';
-        }
-        for (var i = 0; i < $scope.items.length; i++) {
-            contentTypetempSet.add($scope.items[i].contentType);
-            formatTypetempSet.add($scope.items[i].format);
-        }
+        for (x = 0; x < origLen; x++) {
+            found = undefined;
+            for (y = 0; y < newArr.length; y++) {
+                if ($scope.items[x].contentType === newArr[y]) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                newArr.push($scope.items[x].contentType);
+            }
+        }   
 
-        contentTypetempSet.forEach(function(item) {
-            contentTypetempSettempVariable = { text: item, checked: false };
-            $scope.contentType.push(contentTypetempSettempVariable);
-        }, this);
 
-        formatTypetempSet.forEach(function(item) {
-            formatTypetempSettempVariable = { text: item, checked: false };
-            $scope.formatType.push(formatTypetempSettempVariable);
-        }, this);
+        var newArr1 = [],
+        origLen1 = $scope.items.length,
+        found1, x1, y1;
 
+        for (x1 = 0; x1 < origLen1; x1++) {
+            found1 = undefined;
+            for (y1 = 0; y1 < newArr1.length; y1++) {
+                if ($scope.items[x1].format === newArr1[y1]) {
+                    found1 = true;
+                    break;
+                }
+            }
+            if (!found1) {
+                newArr1.push($scope.items[x1].format);
+            }
+        }   
+
+        newArr.forEach(function(item) {
+            contentTypetempSettempVariable = { text: item, checked: false };
+            $scope.contentType.push(contentTypetempSettempVariable);
+        }, this);
+
+        newArr1.forEach(function(item) {
+            formatTypetempSettempVariable = { text: item, checked: false };
+            $scope.formatType.push(formatTypetempSettempVariable);
+        }, this);
         $scope.hideLoader();
-
     }
 
     // sort slider
@@ -159,15 +236,80 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
         }
     };
 
+      $scope.hideFilterSliderOnCancel = function() {
+            $scope.formatType.forEach(function(key, idx){
+               
+                key.checked = $scope.formatTypeAfterApply[idx];
+               
+            });
+
+            $scope.contentType.forEach(function(key, idx){
+               
+                key.checked = $scope.contentTypeAfterApply[idx];
+               
+            });
+ 
+           
+
+
+            //$scope.formatType=$scope.formatTypeAfterApply;
+            $scope.filterSlider.hide();
+    };
+
     $scope.hideFilterSlider = function() {
         $scope.filterSlider.hide();
     };
 
-    $scope.openUrl = function(url) {
-        window.open(url, '_system');
+    $scope.openUrl = function(item) {
+        if(item.hasAccess.toLowerCase() == 'true') {
+            if(item.url.indexOf('inkling.com') != -1){
+                $scope.openInkLing();
+            } else{
+                window.open(item.url, '_system');
+            }
+        } else {
+            //$scope.displayAlert("No Access");
+        }
     };
 
+    $scope.openInkLing = function() {
+        var confirmPopup = $ionicPopup.confirm({
+            title: AppConstants.inkLingtitle,
+            template: AppConstants.inkLingMessage
+            });
+        
+        confirmPopup.then(function(res) {
+            if(res) {
+                if(ionic.Platform.platform() == 'android'){
+                    window.open(AppConstants.googlePlayStoreLink, '_system');
+                } else{
+                    window.open(AppConstants.appleAppStoreLink, '_system');
+                }
+            }
+        });
+    };
+
+      $scope.contentTypeAfterApply=[];
+     $scope.formatTypeAfterApply=[];
+
     $scope.getCheckedValues = function(ct, ft) {
+        $scope.contentTypeAfterApply=[];
+        $scope.formatTypeAfterApply=[];
+        ft.forEach(function(key, idx){           
+            if (key.checked) {
+                $scope.formatTypeAfterApply.push(true);
+            } else{
+                $scope.formatTypeAfterApply.push(false);
+            }
+         });
+ 
+        ct.forEach(function(key, idx){   
+            if (key.checked) {
+                $scope.contentTypeAfterApply.push(true);
+            } else{
+                $scope.contentTypeAfterApply.push(false);
+            }        
+                });
         $scope.onlyCT = false;
         $scope.onlyFT = false;
         $scope.bothCTFT = false;
@@ -252,7 +394,7 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
 
         if ($scope.filteredItems.length == 0 && $scope.filterFlag == "true") {
             // $scope.filterReadMoreFlag = "true";
-            $scope.filterMessage = "No results available for the selection!!!"
+            $scope.filterMessage = AppConstants.searchFilterMessage;
         }
     };
 

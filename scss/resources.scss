@@ -12,7 +12,7 @@
             height: 30px;
             line-height: 30px;
             border: 1px solid $color-link;
-            margin: 0px 2px 5px 2px;
+            margin: 0 2px 5px 2px;
             display: inline-block;
             text-align: center;
             font-weight: 700;
@@ -49,7 +49,7 @@
         .list {
             img {
                 border-radius: 0;
-                max-height: 50px;
+                // max-height: 50px;
             }
             h2 {
                 color: $color-primary;
@@ -72,41 +72,43 @@
     }
 }
 
-.dictionary-wrapper,
 .standards-wrapper,
 .whitepaper-wrapper,
 .archivedwebinars-wrapper {
-    .searchinput {
-        background-color: $color-dull;
-        .searchbox {
-            height: 35px;
+    .heading {
+        @extend .common-main-title;
+    }
+    .standards-list,
+    .whitepaper-list,
+    .archivedwebinars-list {
+        .item-thumbnail-left {
+            min-height: 72px;
+            img {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                max-width: 80px;
+                max-height: 80px;
+            }
         }
-    }
-}
-
-.standards-list,
-.whitepaper-list,
-.archivedwebinars-list {
-    .item-avatar {
-        img {
-            border-radius: 0;
-            max-height: 50px;
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            max-width: 40px;
-            max-height: 40px;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
+        .item-avatar {
+            img {
+                border-radius: 0;
+                max-height: 50px;
+                position: absolute;
+                top: 16px;
+                left: 16px;
+                max-width: 40px;
+                max-height: 40px;
+            }
         }
-    }
-    h2 {
-        font-weight: 500;
-        color: $color-primary
-    }
-    .icon-accessory {
-        color: $color-link;
+        h2 {
+            font-weight: 500;
+            color: $color-primary
+        }
+        .icon-accessory {
+            color: $color-link;
+        }
     }
 }
 
@@ -118,6 +120,12 @@
     ion-item.item {
         padding: 1px;
         border-width: 0px;
+    }
+    .alphabet-data-not-found {
+        color: $color-grey;
+        text-align: center;
+        padding: 15px;
+        font-size: 14px;
     }
     .list-leftword,
     .list-rightword {

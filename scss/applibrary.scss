@@ -24,11 +24,7 @@
     }
     .app-title,
     .app-desc {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        white-space: normal;
+        @extend .common-ellipsis;
     }
     .app-title {
         font-weight: 700;

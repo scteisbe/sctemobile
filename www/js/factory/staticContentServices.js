@@ -1,4 +1,4 @@
-var StaticService = ['$ionicLoading', '$state', '$q', 'Tabletop', '$localStorage', function ($ionicLoading, $state, $q, Tabletop, $localStorage) {
+var StaticService = ['$ionicLoading', '$state', '$q', 'Tabletop', '$localStorage','AppConstants', function ($ionicLoading, $state, $q, Tabletop, $localStorage,AppConstants) {
 
         // Might use a resource here that returns a JSON array
 
@@ -39,7 +39,7 @@ var StaticService = ['$ionicLoading', '$state', '$q', 'Tabletop', '$localStorage
                             // try to update from feed
                             staticContent[sheet] = allSheets[sheet].elements;
                             if (!staticContent[sheet].length) {
-                                throw "No entries found. Are there empty rows in the sheet?";
+                                throw AppConstants.staticNoentriesFound;
                             }
                             // store result in localstorage for fast access next time
                             $localStorage['staticcontent.' + sheet] = staticContent[sheet];

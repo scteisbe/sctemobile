@@ -3,8 +3,8 @@
         <div class='full-size'>
             <div class='logintop'>
                 <div class="row">
-                    <div class="image-logo">
-                        <img src="img/SCTE-ISBE-logo.png" />
+                    <div class="image-logo text-center">
+                        <img src="img/cortex-logo-white.png" />
                     </div>
                 </div>
                 <div class="usernamediv">
@@ -23,24 +23,22 @@
                     </button>
                 </div>
                 <div class="logindiv">
-                    <button ng-click="login()" class="button button-energized button-block">
+                    <button ng-click="login(username, password)" class="button button-positive button-block">
                         LOGIN
                     </button>
                 </div>
             </div>
             <div class='loginbottom'>
-                <div class="row">
-                    <div class="col signuptext text-center">
-                        <span>Don't have an account to login?</span>
-                    </div>
+                <div class="scte-logo text-center">
+                    <img src="img/SCTE-ISBE-logo.png" />
+                </div>
+                <div class="signuptext text-center">
+                    <span>Don't have an account to login?</span>
                 </div>
                 <div class="join-scte">
                     <button ng-click="joinSCTE()" class="button button-outline button-energized button-block">
                         JOIN SCTE NOW
                     </button>
-                </div>
-                <div class="weblink text-center">
-                    <a href="http://www.scte.org">www.scte.org</a><span> | </span><a href="http://www.isbe.org">www.isbe.org</a>
                 </div>
             </div>
         </div>

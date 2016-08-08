@@ -1,13 +1,31 @@
-var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage', '$sce', '$window', '$ionicHistory', function($scope, $state, $rootScope, $http, $ionicModal, $ionicLoading, Utils, $localStorage, $sce, $window, $ionicHistory) {
-    //$ionicHistory.clearHistory();
+var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage', '$sce', '$window', '$ionicHistory', 'AppConstants', function($scope, $state, $rootScope, $http, $ionicModal, $ionicLoading, Utils, $localStorage, $sce, $window, $ionicHistory, AppConstants) {
     $scope.staticContent = [];
     $scope.platform = ionic.Platform.platform();
     $scope.username = $localStorage['username'];
     $scope.voiceFlag = false;
     $scope.recognitionStopped = false;
     $scope.previousSearches = $localStorage["PreviousSearch"];
+    $scope.isAndroid = ionic.Platform.isAndroid();
+    
+    $scope.ionicUpdate = function() {
+        console.log("into ionicUpdate..");
+        var deploy = new Ionic.Deploy();
+        console.log("deploy..");
+        console.log(deploy);
+        deploy.watch().then(function() {}, function() {}, function(updateAvailable) {
+          console.log("updateAvailable.." + updateAvailable);
+          if (updateAvailable) {
+              deploy.download().then(function() {
+                  deploy.extract().then(function() {
+                      deploy.unwatch();
+                      deploy.load();
+                  });
+              });
+          }
+      });
+    }
 
-
+    $scope.ionicUpdate();
 
     var sheetnames = [
         'announcements',
@@ -23,30 +41,36 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     $scope.voiceRecog = function() {
         $scope.voiceFlag = true;
         var maxMatches = 5;
-        var promptString = "Please Speak now"; // optional
-        var language = "en-US"; // optional
+        var promptString = AppConstants.speakNow; // optional
+        var language = AppConstants.enUS; // optional
 
         window.plugins.speechrecognizer.startRecognize(function(result) {
-            console.log("voiceRecog...received result..");
-            console.log(result);
             $scope.query = result[0];
             $scope.$apply();
             if ($scope.voiceFlag && $scope.query) {
                 $scope.searchResults();
             }
-        }, function(errorMessage) {
-            console.log("Error message: " + errorMessage);
-        }, maxMatches, promptString, language);
+        }, function(errorMessage) {}, maxMatches, promptString, language);
     }
 
     $scope.openPromo = function(url) {
-        ga('send', 'event', 'Promo banner', 'Opened from discover tab', url);
-        window.open(url, '_system');
+        ga(AppConstants.send, AppConstants.event, AppConstants.promoBanner, AppConstants.fromDiscoverTab, url);
+        window.open(url, AppConstants.system);
     };
 
     $scope.openURL = function(item) {
-        ga('send', 'event', item.type, 'Opened from featured resources', item.title);
-        window.open(item.url, '_system');
+        ga(AppConstants.send, AppConstants.event, AppConstants.fromFeaturedResourcesTab, item.title);
+        window.open(item.url, AppConstants.system);
+    };
+
+    $scope.openInformedURL = function() {
+        ga(AppConstants.send, AppConstants.event, AppConstants.fromFeaturedResourcesTab);
+        window.open(AppConstants.informedURL, AppConstants.system);
+    };
+
+    $scope.openNctadURL = function() {
+        ga(AppConstants.send, AppConstants.event, AppConstants.fromDiscoverTab);
+        window.open(AppConstants.nctaURL, AppConstants.system);
     };
 
     $scope.withinDates = function(startDate, endDate) {
@@ -75,26 +99,23 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     $scope.fetchProfile = function() {
         if ($rootScope.online) {
             Utils.doHttpRequest(Utils.getApiDetails().getIndividualAPI.httpMethod, Utils.getApiDetails().BaseURL + Utils.getApiDetails().getIndividualAPI.contexPath, Utils.getHttpHeader(), $requestParamArr).then(function(response) {
-                console.log("in fetchProfile()..Got response in GetIndividual..");
-                //console.log(response);
                 if (response != null) {
                     $message = response['message'];
                     $data = response['data'];
-                    console.log("in fetchProfile() statusCode.." + $message['statusCode']);
                     $scope.hideLoader();
 
-                    if ($message['statusCode'] == 401 || $message['statusCode'] == 105) {
+                    if ($message['statusCode'] == AppConstants.status401 || $message['statusCode'] == AppConstants.status105) {
                         Utils.autoLogin().then(function(response) {
 
                             if (response != null) {
                                 $message = response['message'];
-                                if ($message['statusCode'] == 200) {
+                                if ($message['statusCode'] == AppConstants.status200) {
                                     $rootScope.authToken = $localStorage['authToken'];
                                     $scope.fetchProfile();
                                 }
                             }
                         });
-                    } else if ($message['statusCode'] == 200) {
+                    } else if ($message['statusCode'] == AppConstants.status200) {
                         $rootScope.profileData = $data[0];
                         $profileData = $data[0];
                         $localStorage['profiledata'] = $profileData;
@@ -105,28 +126,61 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
                         }
                         $localStorage['SSOUrl'] = $profileData['SSOUrl'];
                         $localStorage["myLearning"] = $profileData.LearningPlan;
-                        console.log("in fetchProfile()..SSOUrl.." + $localStorage['SSOUrl']);
-                        console.log("in fetchProfile()..FirstName.." + $profileData['FirstName']);
                         $scope.username = $profileData['FirstName'];
                         $scope.cobrandingRecords = $localStorage['staticcontent.cobranding'];
-                        $scope.logoURL = $scope.getCobrandingURL($profileData['CompanyId']);
-                        console.log("Logo URL is here : " + $scope.logoURL);
-                        $window.ga('set', 'userId', $profileData['Id']);
+                        $rootScope.logoURL = $scope.getCobrandingURL($profileData['CompanyId']);
+                        $window.ga(AppConstants.set, AppConstants.userId, $profileData['Id']);
                         $localStorage['games'] = $profileData.Games;
-                        console.log("Games from API.." + $localStorage['games'].length);
+                        $scope.prepareSearchRequestBody();
                     }
                 }
             });
         } else {
-             $scope.displayAlert("Internet not available. Please check network connectivity.");
+            $scope.displayAlert(AppConstants.noInternet);
         }
 
     };
 
+    $scope.prepareSearchRequestBody = function() {
+        var courses = [];
+        var modules = [];
+        var myLearning = $localStorage["myLearning"];
+
+        var inprogressCourses = myLearning["In Progress"];
+        var completedCourses = myLearning["Completed"];
+        var allCourses = myLearning["All Courses"];
+
+        inprogressCourses.forEach(function(element) {
+            courses.push(element["Id"]);
+            var computedModuleList = element["ComputedModuleList"];
+            computedModuleList.forEach(function(item) {
+                modules.push(item["Id"]);
+            }, this);
+        }, this);
+
+        completedCourses.forEach(function(element) {
+            courses.push(element["Id"]);
+            var computedModuleList = element["ComputedModuleList"];
+            computedModuleList.forEach(function(item) {
+                modules.push(item["Id"]);
+            }, this);
+        }, this);
+
+        allCourses.forEach(function(element) {
+            courses.push(element["Id"]);
+            var computedModuleList = element["ComputedModuleList"];
+            computedModuleList.forEach(function(item) {
+                modules.push(item["Id"]);
+            }, this);
+        }, this);
+
+        $rootScope.courses = courses;
+        $rootScope.modules = modules;
+    }
 
     console.log("user name stored is :--" + $localStorage['username']);
-
     console.log("Loaded static content from local cache.");
+
 
     $profileData = $localStorage['profiledata'];
     $eventsData = $localStorage['eventsdata'];
@@ -144,31 +198,50 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
 
 
     $scope.query = '';
-    $scope.searchResults = function(query) {
 
+     $scope.redirectDiscover = function() {
+        alert("hii");
+       $location.path('tab/discover');
+    };
+    
+
+    $scope.searchResults = function(query) {
+        $scope.showLoaderSearch();
         if ($scope.voiceFlag && $scope.query) {
             $scope.addSearchHistory($scope.query);
-            $state.go("tab.searchresults");
+            if ($state.current.name == AppConstants.tabsearchresultName) {
+                $state.reload();
+            } else {
+                $state.go(AppConstants.tabsearchresultName);
+            }
         }
 
         if (event.keyCode == 13 && query != '') {
             $scope.addSearchHistory(query);
-            $state.go("tab.searchresults");
+            if ($state.current.name == AppConstants.tabsearchresultName) {
+                $state.reload();
+            } else {
+                $state.go(AppConstants.tabsearchresultName);
+            }
         }
 
         if (query.oldSearch) {
             //$scope.hideRecentSearches();
             $scope.addSearchHistory(query.searchText);
-            $state.go("tab.searchresults");
+            if ($state.current.name == AppConstants.tabsearchresultName) {
+                $state.reload();
+            } else {
+                $state.go(AppConstants.tabsearchresultName);
+            }
         }
     };
 
     $scope.addSearchHistory = function(queryElement) {
         var srhArr = [];
-      
-        if($localStorage["PreviousSearch"] != undefined){
+
+        if ($localStorage["PreviousSearch"] != undefined) {
             srhArr = srhArr.concat($localStorage["PreviousSearch"]);
-        } 
+        }
 
         $localStorage["PreviousSearch"] = '';
 
@@ -192,14 +265,18 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     };
 
     // Recent search modal
-    $ionicModal.fromTemplateUrl('templates/discover/recent-searches.html', {
+    $ionicModal.fromTemplateUrl(AppConstants.recentSearchesPage, {
         scope: $scope,
         animation: 'slide-in-up '
     }).then(function(modal) {
         $scope.modalRecentSearches = modal;
     });
     $scope.showRecentSearches = function() {
-        $scope.modalRecentSearches.show();
+        if ($scope.previousSearches) {
+            $scope.modalRecentSearches.show();
+        } else {
+            $scope.modalRecentSearches.hide();
+        }
     };
     $scope.hideRecentSearches = function() {
         $scope.modalRecentSearches.hide();
@@ -212,102 +289,29 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
         }
     };
 
-    $scope.viewProfile = function() {
-        $state.go('tab.myprofile');
-
-    };
-
     $scope.goButton = function() {
-        $state.go('tab.searchresults');
+        $state.go(AppConstants.tabsearchresultName);
     };
 
     $scope.fetchIonicDeployInfo = function() {
         var deploy = new Ionic.Deploy();
-        console.log("into fetchIonicDeployInfo()..");
-        //console.log(deploy);
         deploy.info().then(function(deployInfo) {
-            console.log("deployInfo..");
-            console.log(deployInfo);
-            $scope.displayAlert("UUID : " + deployInfo.deploy_uuid);
-        }, function() {
-            console.log("into fetchIonicDeployInfo()..2nd");
-        }, function() {
-            console.log("into fetchIonicDeployInfo()..3rd");
-        });
+            $scope.displayAlert(AppConstants.UUID + deployInfo.deploy_uuid);
+        }, function() {}, function() {});
 
-        deploy.getVersions().then(function(versions) {
-            console.log("versions..");
-            console.log(versions);
-        });
+        deploy.getVersions().then(function(versions) {});
     };
-
-    $scope.items = [{
-        "img": "img/100x100.png",
-        "title": "Lorem Ipsum Dolor Sit"
-    }, {
-        "img": "img/100x100.png",
-        "title": "Lorem Ipsum Dolor Sit"
-    }, {
-        "img": "img/100x100.png",
-        "title": "Lorem Ipsum Dolor Sit"
-    }, {
-        "img": "img/100x100.png",
-        "title": "Lorem Ipsum Dolor Sit"
-    }, {
-        "img": "img/100x100.png",
-        "title": "Lorem Ipsum Dolor Sit"
-    }, {
-        "img": "img/100x100.png",
-        "title": "Lorem Ipsum Dolor Sit"
-    }, {
-        "img": "img/100x100.png",
-        "title": "Lorem Ipsum Dolor Sit"
-    }, {
-        "img": "img/100x100.png",
-        "title": "Lorem Ipsum Dolor Sit"
-    }, {
-        "img": "img/100x100.png",
-        "title": "Lorem Ipsum Dolor Sit"
-    }, {
-        "img": "img/100x100.png",
-        "title": "Lorem Ipsum Dolor Sit"
-    }];
 
     $scope.rssFeedDetailScreen = function() {
-        $state.go('tab.rssfeeds');
+        $state.go(AppConstants.tabrssfeedsName);
     };
 
-    /*$scope.rssFeeds = [{
-        "title": "Title 1",
-        "publishedDate": "18/07/2016",
-        "description": "Lorem Ipsum"
-    }, {
-        "title": "Title 2",
-        "publishedDate": "19/07/2016",
-        "description": "Lorem Ipsum"
-    }, {
-        "title": "Title 3",
-        "publishedDate": "20/07/2016",
-        "description": "Lorem Ipsum"
-    }, {
-        "title": "Title 4",
-        "publishedDate": "21/07/2016",
-        "description": "Lorem Ipsum"
-    }, {
-        "title": "Title 5",
-        "publishedDate": "22/07/2016",
-        "description": "Lorem Ipsum"
-    }];*/
-    /*$scope.rssFeeds = function() {
-
-    };*/
-
-    /*$scope.rssFeedLink = function() {
-
-    };*/
+    $scope.nctaDetailScreen = function() {
+        $state.go(AppConstants.tabnctaName);
+    };
 
     $scope.openPage = function(url) {
-        window.open(url, '_system');
+        window.open(url, AppConstants.system);
     };
 
 }];

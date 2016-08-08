@@ -1,55 +1,51 @@
-var appStates = {
-    login: { name: 'login', url: "/login", templateUrl: "templates/welcome/login.html", controller: 'loginCtrl' },
-    intro: { name: 'intro', url: "/intro", templateUrl: "templates/welcome/intro.html", controller: 'introCtrl' },
-    tabdictionaryview: { name: 'tab.dictionaryview', url: "/dictionaryview/:focusAlpha", views: { 'tab-resource@tab': { templateUrl: "templates/resource/dictionary.html", controller: 'dictionaryCtrl' } } },
-    tab: { name: 'tab', url: "/tab", templateUrl: "templates/tabs.html", abstract: true, controller: 'loginCtrl' },
-    tabdiscover: { name: 'tab.discover', cache: false, url: '/discover', views: { 'tab-discover@tab': { templateUrl: "templates/discover/discover.html", controller: 'DiscoverCtrl', title: 'Discover' } } },
-    tabsearchresult: { name: 'tab.searchresults', cache: false, url: '/discover/searchresults', views: { 'tab-discover@tab': { templateUrl: "templates/discover/search-results.html", controller: 'SearchResultsCtrl' } } },
+var appRoute = ['$stateProvider', '$urlRouterProvider', 'AppConstants', function($stateProvider, $urlRouterProvider, AppConstants) {
 
-    tabdiscoversmyevents: { name: 'tab.discoversmyevents', url: '/events', views: { 'tab-discover@tab': { templateUrl: "templates/discover/events.html", controller: 'DiscoverEventCtrl', title: 'Events' } } },
-    tabrssfeeds: { name: 'tab.rssfeeds', url: '/rss', views: { 'tab-discover@tab': { templateUrl: "templates/discover/rssfeeds.html", controller: 'DiscoverCtrl', title: 'Discover' } } },
+    var appStates = {
+        login: { name: AppConstants.loginName, url: AppConstants.loginURL, templateUrl: AppConstants.loginPage, controller: AppConstants.loginCtrl },
+        intro: { name: AppConstants.introName, url: AppConstants.introURL, templateUrl: AppConstants.introPage, controller: AppConstants.introCtrl },
+        tabdictionaryview: { name: AppConstants.tabdictionaryviewName, url: AppConstants.tabdictionaryviewURL, views: { 'tab-resource@tab': { templateUrl: AppConstants.tabdictionaryviewPage, controller: AppConstants.tabdictionaryviewCtrl } } },
+        tab: { name: AppConstants.tabName, url: AppConstants.tabURL, templateUrl: AppConstants.tabPage, abstract: true, controller: AppConstants.loginCtrl },
+        tabdiscover: { name: AppConstants.tabdiscoverName, cache: false, url: AppConstants.tabdiscoverURL, views: { 'tab-discover@tab': { templateUrl: AppConstants.tabdiscoverPage, controller: AppConstants.tabdiscoverCtrl, title: AppConstants.discoverTitle } }, changeColor: true },
+        tabsearchresult: { name: AppConstants.tabsearchresultName, cache: false, url: AppConstants.tabsearchresultURL, views: { 'tab-discover@tab': { templateUrl: AppConstants.tabsearchresultPage, controller: AppConstants.tabsearchresultCtrl } } },
 
-    tabmylearning: { name: 'tab.mylearning', cache: false, url: '/mylearning', views: { 'tab-mylearning@tab': { templateUrl: "templates/mylearning/mylearning.html", controller: 'MyLearningCtrl', title: 'Mt Learning' } } },
-    tabmylearningcompleted: { name: 'tab.mylearning.completed', cache: false, parent: 'tab.mylearning', url: '/completed', views: { 'tab-mylearning': { templateUrl: "templates/mylearning/completed-course-and-module-list.html", controller: 'MyLearningCtrl' } } },
-    tabmylearningallcourses: { name: 'tab.mylearning.allcourses', cache: false, parent: 'tab.mylearning', url: '/allcourses', views: { 'tab-mylearning': { templateUrl: "templates/mylearning/allcourses-course-and-module-list.html", controller: 'MyLearningCtrl' } } },
+        tabdiscoversmyevents: { name: AppConstants.tabdiscoversmyEvents, url: AppConstants.tabdiscoversmyeventsURL, views: { 'tab-discover@tab': { templateUrl: AppConstants.tabdiscoversmyeventsPage, controller: AppConstants.tabdiscoversmyeventsCtrl, title: AppConstants.eventsTitle } } },
+        tabrssfeeds: { name: AppConstants.tabrssfeedsName, url: AppConstants.tabrssfeedsURL, views: { 'tab-discover@tab': { templateUrl: AppConstants.tabrssfeedsPage, controller: AppConstants.tabdiscoverCtrl, title: AppConstants.discoverTitle } } },
+        tabncta: { name: AppConstants.tabnctaName, url: AppConstants.tabnctaURL, views: { 'tab-discover@tab': { templateUrl: AppConstants.tabnctaPage, controller: AppConstants.tabdiscoverCtrl, title: AppConstants.nctaTitle } } },
 
-    tabmylearningmodal: { name: 'tab.mylearningmodal', cache: false, url: '/mylearning/modal/:id', views: { 'tab-mylearning@tab': { templateUrl: "templates/mylearning/modal.html", controller: 'MyLearningCtrl' } } },
-    tabgamesviewmodal: { name: 'tab.gamesViewModal', cache: false, url: '/mylearning/games', views: { 'tab-mylearning@tab': { templateUrl: "templates/mylearning/games.html", controller: 'MyLearningCtrl' } } },
-    tabapplibrary: { name: 'tab.applibrary', cache: false, url: '/applibrary', views: { 'tab-applibrary@tab': { templateUrl: "templates/applibrary/app-library.html", controller: 'AppLibraryCtrl', title: 'App Library' } } },
-    tabtechtips: { name: 'tab.techtips', url: '/techtips', cache: false, views: { 'tab-techtips@tab': { templateUrl: "templates/techtips/techtips.html", controller: 'TechtipsCtrl', title: 'Tech Tip' } } },
-    tabtechtipsubmit: { name: 'tab.techtipsubmit', url: '/techtipsubmit', views: { 'tab-techtips@tab': { templateUrl: "templates/techtips/submit-techtip.html", controller: 'TechtipsCtrl' } } },
+        tabmylearning: { name: AppConstants.tabmylearningName, cache: false, url: AppConstants.tabmylearningURL, views: { 'tab-mylearning@tab': { templateUrl: AppConstants.tabmylearningPage, controller: AppConstants.tabmylearningCtrl, title: AppConstants.myLearningTitle } } },
+        tabmylearningcompleted: { name: AppConstants.tabmylearningcompletedName, cache: false, parent: AppConstants.mylearningParent, url: AppConstants.tabmylearningcompletedURL, views: { 'tab-mylearning': { templateUrl: AppConstants.tabmylearningcompletedPage, controller: AppConstants.tabmylearningCtrl } } },
+        tabmylearningallcourses: { name: AppConstants.tabmylearningallcoursesName, cache: false, parent: AppConstants.mylearningParent, url: AppConstants.tabmylearningallcoursesURL, views: { 'tab-mylearning': { templateUrl: AppConstants.tabmylearningallcoursesPage, controller: AppConstants.tabmylearningCtrl } } },
 
-    tabtechtipsleafcontent: { name: 'tab.techtipsleafcontent', cache: false, url: '/techtipsleafcontent', views: { 'tab-techtips@tab': { templateUrl: "templates/techtips/techtip-content.html", controller: 'TechtipsCtrlTitle' } } },
+        tabgamesviewmodal: { name: AppConstants.tabgamesviewmodalName, cache: false, url: AppConstants.tabgamesviewmodalURL, views: { 'tab-mylearning@tab': { templateUrl: AppConstants.tabgamesviewmodalPage, controller: AppConstants.tabmylearningCtrl } } },
+        tabapplibrary: { name: AppConstants.tabapplibraryName, cache: false, url: AppConstants.tabapplibraryURL, views: { 'tab-applibrary@tab': { templateUrl: AppConstants.tabapplibraryPage, controller: AppConstants.tabapplibraryCtrl, title: AppConstants.appLibraryTitle } } },
+        tabtechtips: { name: AppConstants.tabtechtipsName, url: AppConstants.tabtechtipsURL, cache: false, views: { 'tab-techtips@tab': { templateUrl: AppConstants.tabtechtipsPage, controller: AppConstants.tabtechtipsCtrl, title: AppConstants.techTipTitle } } },
+        tabtechtipsubmit: { name: AppConstants.tabtechtipsubmitName, url: AppConstants.tabtechtipsubmitURL, views: { 'tab-techtips@tab': { templateUrl: AppConstants.tabtechtipsubmitPage, controller: AppConstants.tabtechtipsCtrl } } },
 
-    tabresource: { name: 'tab.resource', cache: false, url: '/resource', views: { 'tab-resource@tab': { templateUrl: "templates/resource/resource.html", controller: 'ResourceCtrl', title: 'Resources' } } },
-    tabscteSTD: { name: 'tab.resource.scteSTD', cache: false, url: '/SCTE-STANDARDS', views: { 'tab-resource@tab': { templateUrl: "templates/resource/scte-standards.html", controller: 'ResourceCtrl' } } },
-    tabwhitepaper: { name: 'tab.whitepaper', cache: false, url: '/whitepaper', views: { 'tab-resource@tab': { templateUrl: "templates/resource/whitepaper.html", controller: 'ResourceCtrl' } } },
-    tabarchivedwebinars: { name: 'tab.archivedwebinars', cache: false, url: '/archivedwebinars', views: { 'tab-resource@tab': { templateUrl: "templates/resource/archivedwebinars.html", controller: 'ResourceCtrl' } } },
+        tabtechtipsleafcontent: { name: AppConstants.tabtechtipsleafcontentName, cache: false, url: AppConstants.tabtechtipsleafcontentURL, views: { 'tab-techtips@tab': { templateUrl: AppConstants.tabtechtipsleafcontentPage, controller: AppConstants.tabtechtipsleafcontentCtrl } } },
 
-    tabeventsdetails: { name: 'tab.eventsdetails', cache: false, url: '/events/eventsdetails/:id', views: { 'tab-discover@tab': { templateUrl: "templates/discover/event-details.html", controller: 'DiscoverEventsDetailCtrl' } } },
+        tabresource: { name: AppConstants.tabresourceName, cache: false, url: AppConstants.tabresourceURL, views: { 'tab-resource@tab': { templateUrl: AppConstants.tabresourcePage, controller: AppConstants.tabresourceCtrl, title: AppConstants.resourcesTitle } } },
+        tabscteSTD: { name: AppConstants.tabscteSTDName, cache: false, url: AppConstants.tabscteSTDURL, views: { 'tab-resource@tab': { templateUrl: AppConstants.tabscteSTDPage, controller: AppConstants.tabresourceCtrl } } },
+        tabwhitepaper: { name: AppConstants.tabwhitepaperName, cache: false, url: AppConstants.tabwhitepaperURL, views: { 'tab-resource@tab': { templateUrl: AppConstants.tabwhitepaperPage, controller: AppConstants.tabresourceCtrl } } },
+        tabarchivedwebinars: { name: AppConstants.tabarchivedwebinarsName, cache: false, url: AppConstants.tabarchivedwebinarsURL, views: { 'tab-resource@tab': { templateUrl: AppConstants.tabarchivedwebinarsPage, controller: AppConstants.tabresourceCtrl } } },
 
-
-};
-
+        tabeventsdetails: { name: AppConstants.tabeventsdetailsName, cache: false, url: AppConstants.tabeventsdetailsURL, views: { 'tab-discover@tab': { templateUrl: AppConstants.tabeventsdetailsPage, controller: AppConstants.tabeventsdetailsCtrl } } },
 
 
-
-var appRoute = ['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
-
-
+    };
 
     for (var state in appStates) {
         $stateProvider.state(appStates[state])
             //$stateProvider.state('login') 
     }
-    
-    var authTok = window.localStorage['ngStorage-authToken'];
-    if(authTok!= null){
 
-     $urlRouterProvider.otherwise('tab/discover')
-   }
-    
-    else{
-        $urlRouterProvider.otherwise('login')
+    var authTok = window.localStorage['ngStorage-authToken'];
+    if (authTok != null) {
+        if(window.localStorage['ngStorage-noIntro'] == null){
+            $urlRouterProvider.otherwise(AppConstants.introName)
+        }else{
+            $urlRouterProvider.otherwise(AppConstants.tabDiscoverURLSub)
+        }
+    } else {
+        $urlRouterProvider.otherwise(AppConstants.loginName)
     }
 }];

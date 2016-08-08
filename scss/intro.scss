@@ -24,9 +24,9 @@
         .contents {
             position: absolute;
             top: 15%;
-            bottom: 15%;
+            bottom: 20%;
             width: 100%;
-            height: 70%;
+            height: 65%;
             display: table;
             td-cards {
                 display: block;
@@ -37,35 +37,23 @@
                 right: 0;
                 margin: auto;
             }
-            // td-card:not(:last-child) {
-            //     .box-footer {
-            //         p:last-child {
-            //             display: none;
-            //         }
-            //     }
-            // }
             td-card {
                 position: absolute;
-                // left: 20px;
-                // right: 20px;
                 margin: 0 auto;
                 margin-left: -140px;
-                // width: 80%;
-                // height: 100%;
                 width: 280px;
                 height: 320px;
                 border-radius: 0;
                 background-color: $color-light;
                 box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
                 .box {
-                    // position: relative;
                     clear: both;
                     .box-header {
-                        padding: 10px 0;
+                        padding: 10px 10px;
                         h4 {
-                            color: $color-primary;
-                            font-weight: 400;
-                            font-size: 16px;
+                            color: $color-login-secondary;
+                            font-weight: 700;
+                            font-size: 20px;
                         }
                     }
                     .box-content {
@@ -73,47 +61,68 @@
                         p {
                             padding: 0 25px;
                         }
+                        img {
+                            height: 50px;
+                        }
                         p {
-                            font-size: 13px;
-                            color: #555555;
-                            line-height: 13px;
+                            font-size: 18px;
+                            line-height: 23px;
                         }
                     }
                     .box-footer {
                         position: absolute;
                         bottom: 10px;
                         width: 100%;
-                        font-size: 10px;
-                        color: $color-grey;
+                        font-size: 13px;
+                        color: $color-link;
                         font-style: italic;
                         font-weight: 700;
                     }
                 }
-            }
-            td-card:last-child {
-                // pointer-events: none;
-                // .box-footer {
-                //     p:first-child {
-                //         display: none;
-                //     }
-                // }
             }
         }
         .footer {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 15%;
+            height: 20%;
+            .scte-logo {
+                img {
+                    width: 80px;
+                }
+            }
             .button {
                 position: absolute;
                 bottom: 0;
-                color: $color-dark;
-                font-weight: 700;
-                border-radius: 0px;
+                margin-bottom: 0;
+                text-transform: uppercase;
+                background-color: $color-login-secondary;
+                font-weight: 500;
             }
-            .button.button-block
-            {
-                margin-bottom: 0px;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .intro-wrapper {
+        .full-width {
+            .contents {
+                td-card {
+                    height: 250px;
+                    margin-top: 20px;
+                    .box {
+                        .box-header {
+                            h4 {
+                                font-size: 17px;
+                            }
+                        }
+                        .box-content {
+                            p {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

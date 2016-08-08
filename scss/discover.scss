@@ -19,10 +19,11 @@
 
 .discover-wrapper {
     .top-header {
-        margin-top: 5px;
         .left {
             float: left;
-            padding-top: 5px;
+            img {
+                width: 35px;
+            }
         }
         .right {
             float: right;
@@ -47,9 +48,11 @@
         }
         .scte-isbe-cortex-logo {
             width: 175px;
+            padding-right: 33px;
+            padding-top: 3px;
         }
     }
-    .slide-wrapper {
+    .slide-box {
         .slide-image {
             img {
                 max-width: 100%;
@@ -65,17 +68,17 @@
             .slider-pager-page {
                 opacity: 1;
                 color: $color-light;
-                margin: 0px 2px;
+                margin: 0 2px;
                 &.active {
                     color: $color-primary;
                 }
             }
         }
     }
-    .resources-wrapper {
+    .toolkit-box {
         background-color: $color-cream;
         margin: 0 0 15px 0;
-        padding: 10px 0px 0px 10px;
+        padding: 10px 0 0 10px;
         position: relative;
         .heading {
             @extend .common-main-title;
@@ -93,16 +96,16 @@
             td {
                 width: 80px;
                 padding: 0 20px 0 0;
-            }
-            img {
-                width: 80px;
-            }
-            p {
-                width: 80px;
-                word-wrap: break-word;
-                font-size: 10pt;
-                color: $color-dark;
-                text-align: center;
+                img {
+                    width: 80px;
+                }
+                p {
+                    width: 80px;
+                    word-wrap: break-word;
+                    font-size: 10pt;
+                    color: $color-dark;
+                    text-align: center;
+                }
             }
         }
     }
@@ -112,13 +115,10 @@
             margin: 5px 10px;
         }
     }
-    .events {
-        .card {
-            margin: 0px 0px !important;
-        }
+    .events-box {
         position: relative;
         background-color: $color-cream;
-        padding: 0px 10px 10px 10px;
+        padding: 0 10px 10px 10px;
         .heading {
             @extend .common-main-title;
         }
@@ -129,34 +129,39 @@
         }
         .event-box {
             @extend .common-event-list;
+            .card {
+                margin: 0 !important;
+            }
+        }
+        .event-description {
+            .event-url {
+                .row {
+                    .col-15 {
+                        padding-top: 5px !important;
+                    }
+                }
+            }
         }
     }
-    .searchinput {
-        background-color: $color-dull;
-        .searchbox {
-            height: 35px;
-        }
-    }
-    .rss-feeds {
+    .rss-feeds-box {
         position: relative;
         background-color: $color-cream;
         font-weight: 700;
-        &.discover-rss {
-            padding: 0px 10px 10px 10px !important;
+        padding: 0 10px 10px 10px;
+        &.padding-zero {
+            padding: 0;
+        }
+        .informed-logo {
+            width: 100px;
         }
         .heading {
             @extend .common-main-title;
         }
         .see-all {
             @extend .common-see-all;
-            top: -2px !important;
             right: 10px !important;
         }
         .list {
-            img {
-                max-height: 50px;
-                border-radius: 0;
-            }
             h2 {
                 color: $color-primary;
                 font-weight: 700;
@@ -166,28 +171,25 @@
                 white-space: initial;
                 font-weight: 500;
             }
+            i {
+                color: $color-link;
+            }
             .rss-description p:not(:first-child) {
                 display: none;
             }
             .rss-description {
-                overflow: hidden;
-                text-overflow: ellipsis;
+                @extend .common-ellipsis;
                 -webkit-line-clamp: 3;
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-            }
-            i {
-                color: $color-link;
             }
         }
     }
 }
 
 
-/*search box in sub header*/
+/* search box in sub header */
 
 .search-box-wrapper {
-    background-color: $color-primary;
+    background-color: $color-cream;
     height: 60px;
     padding: 10px;
     .item-input-wrapper {
@@ -195,6 +197,7 @@
         padding-left: 15px;
         padding-right: 15px;
         border-radius: 3px;
+        border: 1px solid $color-primary;
         input {
             width: 100%;
             padding: 0 10px;
@@ -202,7 +205,7 @@
         }
     }
     .mic-icn {
-        font-size: 25px;
+        font-size: 22px;
         color: $color-primary;
     }
     .search-icn {
@@ -245,6 +248,9 @@
     }
 }
 
+
+/* filter slider */
+
 .overlay-bg {
     position: fixed;
     top: 0;
@@ -254,104 +260,26 @@
     background: rgba(0, 0, 0, 0.8);
 }
 
-.sort-slider,
 .filter-slider {
     width: 78%;
     background: $color-light;
     right: 0;
 }
 
-.sort-slider {
-    .sort-title {
-        font-weight: 700;
-        font-size: 14px;
-        color: $color-grey;
-        padding: 8px 0 0 17px;
-    }
-}
-
 .filter-slider {
     .filter-header {
         margin-top: 10px;
-    }
-    .filter-title {
-        font-weight: 700;
-        font-size: 14px;
-        color: $color-grey;
-        padding: 8px 0 0 17px;
+        .title {
+            font-weight: 700;
+            font-size: 14px;
+            color: $color-grey;
+            padding: 8px 0 0 17px;
+        }
     }
     .content-type-box {
         .title {
             margin-left: 17px;
             font-weight: 700;
-        }
-    }
-    .published-box {
-        background-color: #eee;
-        padding: 10px 0 20px 0;
-        .radio-box {
-            margin-left: 17px;
-            .radio-select {
-                padding: 5px 0;
-            }
-        }
-        .title {
-            margin-left: 17px;
-            font-weight: 700;
-        }
-        .date-box {
-            .title {
-                font-size: 12px;
-            }
-            .item-input-wrapper {
-                font-size: 12px;
-                margin: 0 10px;
-                position: relative;
-                img {
-                    position: absolute;
-                    right: 12px;
-                    top: 5px;
-                }
-                input {
-                    width: 100%;
-                }
-                input[disabled] {
-                    background-color: $color-light !important;
-                }
-            }
-        }
-    }
-    .regular-radio {
-        -webkit-appearance: none;
-        background-color: $color-light;
-        border: 1px solid $color-dull;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
-        padding: 9px;
-        border-radius: 50px;
-        display: inline-block;
-        position: relative;
-        &:checked {
-            background-color: $color-primary;
-            color: $color-dull;
-            border: 1px solid $color-dull;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1), inset 0px 0px 10px rgba(0, 0, 0, 0.1);
-            &:after {
-                content: ' ';
-                width: 12px;
-                height: 12px;
-                border-radius: 50px;
-                position: absolute;
-                top: 3px;
-                background: $color-primary;
-                box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3);
-                text-shadow: 0;
-                left: 3px;
-                font-size: 32px;
-            }
-        }
-        &:active,
-        &:checked:active {
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
         }
     }
     .format-box {
@@ -367,7 +295,6 @@
 }
 
 @media (min-width: 680px) {
-    .sort-slider.modal,
     .filter-slider.modal {
         width: 50% !important;
         top: 0 !important;
@@ -387,7 +314,6 @@
     }
     .recent-search-wrapper.modal {
         width: 100% !important;
-        /* top: 100px !important; */
         bottom: 0 !important;
         right: 0 !important;
         left: 0 !important;

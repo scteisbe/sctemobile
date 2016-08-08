@@ -36,7 +36,7 @@
             }
         }
         .border {
-            border-left: 1px solid #eee;
+            border-left: 1px solid $color-cream;
         }
         i {
             font-size: 20px;
@@ -56,47 +56,44 @@
         background-size: 0;
         left: 0;
     }
+    .coursesNil {
+        line-height: 1.2;
+        color: grey;
+        padding-bottom: 10px;
+    }
     .course-catalog {
-        background-color: $color-dull;
         width: 100%;
         padding: 5px 10px;
         button {
             font-weight: 500;
             font-size: 14px;
             color: $color-link;
-            &::before {
-                position: absolute;
-                top: 55%;
-                right: 5px;
-                -webkit-transform: translateY(-55%);
-                transform: translateY(-55%);
-            }
+            min-height: 40px;
+            margin-top: 0 !important;
+            text-transform: uppercase;
         }
     }
     .scroll-content {
         width: 100%;
     }
-    .course-list {
-        .accordian-icon {
-            position: absolute;
-            right: 10px;
-        }
-        i {
-            float: right;
-            margin-left: 2%;
-        }
-    }
     .course-module-content {
-        a {
-            color: $color-dark;
-            font-weight: 300;
-            p {
-                width: 90%;
-                float: left;
+        .item-stable {
+            background-color: $color-light;
+            color: $color-dark !important;
+        }
+        .course-list {
+            .icon {
+                font-size: 18px;
             }
-            i {
-                float: right;
-                color: $color-link;
+        }
+        .item-accordion {
+            .item {
+                color: $color-primary;
+                background-color: $color-dull;
+                .ion-chevron-right {
+                    font-size: 18px;
+                    color: $color-primary;
+                }
             }
         }
     }
@@ -126,6 +123,8 @@
         h2 {
             color: $color-primary;
             font-weight: 700;
+            @extend .common-ellipsis;
+            -webkit-line-clamp: 2;
         }
         p {
             font-weight: 300;
@@ -136,11 +135,8 @@
             display: none;
         }
         .para {
-            overflow: hidden;
-            text-overflow: ellipsis;
+            @extend .common-ellipsis;
             -webkit-line-clamp: 3;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
         }
         .all-para {
             p {
@@ -156,10 +152,6 @@
     .inprogress-course {
         background-color: #E8E8E8;
         font-weight: 300;
-        .coursesNil {
-            color: #9fa4a6;
-            padding: 10px;
-        }
         .course-module-content {
             ion-item {
                 font-weight: 300;
@@ -172,41 +164,13 @@
             }
         }
     }
-    .event-box {
-        height: 165px;
-        font-size: large;
-        background: url(../img/bg.jpeg);
-        padding: 44px 0;
-        @extend .common-event-list;
-        .eventindiv {
-            .date-box {
-                .date {
-                    &.datelearning {
-                        left: 15px;
-                    }
-                }
-            }
-            .text-box {
-                .row-top {
-                    a {
-                        &.title {
-                            color: $color-light;
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
 
 /* games page */
 
 .games-wrapper {
-    .game-title {
-        text-align: center;
-        padding: 15px 10px 15px 10px;
-    }
+    .game-title,
     .game-description {
         text-align: center;
         padding: 15px 10px 15px 10px;
@@ -230,94 +194,12 @@
     }
 }
 
-
-/* modal */
-
-.mylearning-wrapper {
-    .main-title {
-        @extend .common-main-title;
-        margin: 10px;
-    }
-    .sub-title {
-        margin: 10px;
-        color: $color-primary;
-        font-size: 18px;
-    }
-    .progress-bar {
-        height: 20px;
-        width: 100%;
-        background: $color-dull;
-        position: relative;
-        .completed {
-            height: 20px;
-            background: $color-link;
-        }
-        span {
-            text-transform: uppercase;
-            color: $color-dark;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            text-align: center;
-        }
-    }
-    .cards {
-        padding: 0;
-        .media-video {
-            img {
-                width: 100%;
-            }
-            .title {
-                padding: 5px;
-                text-align: center;
-                font-weight: 700;
-            }
-        }
-        .media-pdf {
-            .placeholder {
-                width: 100%;
-                height: 100px;
-                background: $color-link;
-                position: relative;
-            }
-        }
-    }
-    .card {
-        .media-pdf {
-            .placeholder {
-                img {
-                    width: 50px;
-                    position: absolute;
-                    top: 26px;
-                    left: 20px;
-                }
-            }
-            .text-box {
-                padding: 10px;
-            }
-            .title {
-                color: $color-link;
-                font-weight: 300;
-            }
-            .description {
-                font-weight: 300;
-            }
-        }
-    }
-}
-
 @media (min-width: 680px) {
     .my-learning {
-        .course-catalog {
-            text-align: center;
-            .button {
-                width: 45%;
-            }
-        }
         .subheader-tabs {
             .tab-inprogress,
             .tab-completed {
-                padding-right: 65px;
+                padding-right: 0px;
             }
         }
     }
@@ -330,28 +212,6 @@
 
 @media (min-width: 768px) {
     .my-learning {
-        .course-catalog {
-            background-color: $color-dull;
-            position: relative;
-            top: 0;
-            width: 100%;
-            padding: 20px;
-            font-weight: 700;
-            color: $color-link;
-            //
-            .row .col img {
-                position: absolute;
-                left: 90%;
-                right: 0;
-                margin: 0 auto;
-                top: 35%;
-                transform: translateY(-50%);
-            }
-            .button {
-                width: 45%;
-                left: 170px;
-            }
-        }
         .live-learning {
             .event-box-text {
                 font-size: 30px;

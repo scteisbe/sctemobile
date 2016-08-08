@@ -2,10 +2,10 @@
     <ion-content>
         <div class="row filter-header">
             <div class="col-50">
-                <span class="filter-title">FILTER</span>
+                <span class="title">FILTER</span>
             </div>
             <div class="col-50">
-                <button class="button button-positive button-small" ng-click="hideFilterSlider()">APPLY FILTERS</button>
+                <button class="button button-positive button-small" ng-click="hideFilterSlider(); getCheckedValues(contentType, formatType)">APPLY FILTER</button>
             </div>
         </div>
         <div class="content-type-box">
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="filter-footer">
-            <button class="button button-positive button-small" ng-click="hideFilterSlider()">CANCEL</button>
+            <button class="button button-positive button-small" ng-click="hideFilterSliderOnCancel()">CANCEL</button>
             <button class="button button-positive button-small" ng-click="hideFilterSlider(); getCheckedValues(contentType, formatType)">APPLY FILTER</button>
         </div>
     </ion-content>

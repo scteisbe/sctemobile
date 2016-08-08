@@ -1,4 +1,4 @@
-var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localStorage', '$window', function($scope, $state, $rootScope, $http, Utils, $localStorage, $window) {
+var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localStorage', '$window','$ionicScrollDelegate','AppConstants', function($scope, $state, $rootScope, $http, Utils, $localStorage, $window,$ionicScrollDelegate,AppConstants) {
 
     Utils.scteSSO();
     $scope.staticContent = [];
@@ -10,6 +10,12 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
     $scope.btnCourseDataURL = $scope.Config[1];
     $scope.activeTab = 2; // initially activated secondary tab
     $scope.gameItems = $localStorage['staticcontent.games'];
+    $scope.gamesErrorMsg='';
+    tempgames=$scope.gameItems;
+                        
+    if(tempgames ==null || tempgames.length==0){
+        $scope.gamesErrorMsg=AppConstants.noData;
+    }
     $scope.apiGames = $localStorage['games'];
     $scope.aliases = $localStorage['staticcontent.aliases'];
 
@@ -17,8 +23,6 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
     $scope.liveLearningsPromos = $localStorage['staticcontent.livelearningpromos'];
     $scope.promoBgImage = '';
     $scope.fetchEvents = function() {
-
-
         $scope.liveLearningEvents = $scope.events.liveLearnings[0];
         $scope.liveLearningEvents.title = $scope.liveLearningEvents.title.replace("LiveLearning: ", "");
         var dateFormat = $scope.liveLearningEvents.formattedBeginDate;
@@ -68,14 +72,30 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
             }
         }
         if (i == $scope.aliases.length) {
+            $scope.gamDesc = '';
             return gamTitle;
         }
+        $scope.gamDesc = $scope.aliases[i]["item1"];
         return $scope.aliases[i]["usethis"];
     };
 
     $scope.$watch('activeTab', function() {
         var a = ['/tab/mylearning/inprogress', '/tab/mylearning/completed', '/tab/mylearning/all'];
         $window.ga('send', 'pageview', a[$scope.activeTab]);
+        switch ($scope.activeTab) {
+    case 0:
+        $scope.mylearningCourseLength = $scope.inprogressCoursesLength;
+        $scope.noCourseErrorMsg="You don't have any courses in progress. Check out all the learning opportunities available to you in the SCTE / ISBE Course Catalog!";
+        break;
+    case 1:
+        $scope.mylearningCourseLength = $scope.completedCoursesLength;
+        $scope.noCourseErrorMsg="You haven't completed any courses yet.";
+        break;
+    case 2:
+        $scope.mylearningCourseLength = $scope.allCoursesLength;
+        $scope.noCourseErrorMsg="You haven't enrolled in any courses. Check out all the learning opportunities available to you in the SCTE / ISBE Course Catalog!";
+       
+}
     });
 
     $scope.renderMyLearnings = function() {
@@ -89,6 +109,14 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
 
     };
 
+      $scope.doFocus = function() {
+     //    alert("hii");
+     //   document.getElementById('focus').focus();
+     // // document.documentElement.scrollTop = 0;
+     $ionicScrollDelegate.scrollTop();
+
+    };
+
     // Mylearning API call and integration.
 
     if ($localStorage["myLearning"] != null) {
@@ -97,54 +125,7 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
         $scope.showLoader();
     }
 
-    // Utils.doHttpRequest(Utils.getApiDetails().myLearningAPI.httpMethod,Utils.getApiDetails().myLearningAPI.URL,$headerParamArr,$requestParamArr).then(function(response) {
-    //     console.log(response);
-    //     //console.log(response['data']);
-
-    //     if(response != null) {
-    //         //data available from live API
-    //         $message = response['message'];
-    //         data = response['data'];
-    //         console.log("statusCode.." + $message['statusCode']);
-    //         $scope.hideLoader();
-
-    //         if($message['statusCode'] == 200) {
-    //             console.log("authToken.." +  $rootScope.authToken);
-
-    //                 if( data != null) {
-    //                     $localStorage["myLearning"]=data;
-    //                     $scope.myLearning = data;
-    //                     $scope.renderMyLearnings();
-    //                 }   
-    //         } else {
-    //                 // $scope.displayAlert("Wrong username or password !");
-    //                 console.log($message['statusMessage'])
-    //             }
-    //         }
-    //         else{
-    //             //No API access
-    //             $scope.hideLoader();
-    //             //display data from stub
-    //             $localStorage["myLearning"]=$scope.MyLearningStub;
-    //         }
-    // }); 
-
-    // $scope.inprogressCourses = [{
-    //     "courseName": "Network Overview"
-    // }, {
-    //     "courseName": "Signal Theory"
-    // }, {
-    //     "courseName": "Health & Safety"
-    // }];
-
-    // $scope.completedCourses = [{
-    //     "courseName": "Introduction to Structured Cabling"
-    // }, {
-    //     "courseName": "LAN Hardware"
-    // }, {
-    //     "courseName": "Installing Structured Cabling"
-    // }];
-
+   
     $scope.renderMyLearnings();
 
     $scope.redirectDisover = function() {
@@ -152,20 +133,7 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
         Utils.redirectDiscover();
     };
 
-    // $scope.allCourses = [{
-    //     "courseName": "Introduction to Structured Cabling"
-    // }, {
-    //     "courseName": "LAN Hardware"
-    // }, {
-    //     "courseName": "Installing Structured Cabling"
-    // }, {
-    //     "courseName": "Network Overview"
-    // }, {
-    //     "courseName": "Signal Theory"
-    // }, {
-    //     "courseName": "Health & Safety"
-    // }];
-
+    
     $scope.inprogressModules = [{
         "id": 1,
         "moduleName": "Characteristics of a Network"
@@ -188,12 +156,6 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
         $scope.items = data;
     });
 
-    /*$scope.completedModules = [{
-        "moduleName": "Cable media types"
-    }, {
-        "moduleName": "Network topologies"
-    }];*/
-
     $scope.toggleInprogressCourse = function(inprogressCourse) {
         if ($scope.isInprogressCourseShown(inprogressCourse)) {
             $scope.shownInprogressCourse = null;
@@ -204,13 +166,21 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
 
     $scope.chkMyLearning = function(val) {
         var displayCourse = false;
+        $scope.displayWcwCourse = false;
+        if(val.ComputedModuleList.length == 0 ){
+            $scope.displayWcwCourse = true;
+            displayCourse = true;
+        }
         angular.forEach(val.ComputedModuleList, function(key, value) {
             if (key.Mod == "scorm") {
                 displayCourse = true;
             }
         });
 
-        return displayCourse;
+        return {
+            displayCourse : displayCourse,
+            displayWcwCourse : $scope.displayWcwCourse
+        };
     };
 
     $scope.isInprogressCourseShown = function(inprogressCourse) {
@@ -242,23 +212,23 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
     };
 
     $scope.mylearningGames = [{
-        "image": "img/batman_applibrary.jpg",
+        "image": "img/SCTE-ISBE_LogoBugs_Black.png",
         "image_title": "TV Lingo Game",
         "image_description": "Lorem ipsum dolo sitamt, consectetur adipiscing elit."
     }, {
-        "image": "img/batman_applibrary.jpg",
+        "image": "img/SCTE-ISBE_LogoBugs_Black.png",
         "image_title": "Game 2",
         "image_description": "Lorem ipsum dolo sitamt, consectetur adipiscing elit."
     }, {
-        "image": "img/batman_applibrary.jpg",
+        "image": "img/SCTE-ISBE_LogoBugs_Black.png",
         "image_title": "Game 3",
         "image_description": "Lorem ipsum dolo sitamt, consectetur adipiscing elit."
     }, {
-        "image": "img/batman_applibrary.jpg",
+        "image": "img/SCTE-ISBE_LogoBugs_Black.png",
         "image_title": "Game 4",
         "image_description": "Lorem ipsum dolo sitamt, consectetur adipiscing elit."
     }, {
-        "image": "img/batman_applibrary.jpg",
+        "image": "img/SCTE-ISBE_LogoBugs_Black.png",
         "image_title": "Game 5",
         "image_description": "Lorem ipsum dolo sitamt, consectetur adipiscing elit."
     }];
@@ -278,17 +248,10 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
 
     $scope.openSCTEModule = function(url) {
         window.open(url, '_blank', 'location=yes');
-        //Utils.scteSSO(url);
     };
 
     $scope.openLiveLearning = function(url) {
 
         window.open(url, '_system');
-        //Utils.scteSSO(url);
     };
-
-    // $http.get('json/games-list.json').success(function(data) {
-    //     $scope.gameItems = data;
-    // });
-
 }];

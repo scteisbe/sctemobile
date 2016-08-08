@@ -3,7 +3,7 @@
         <div class="full-width">
             <div class="header">
                 <div class="img-box">
-                    <img src="img/SCTE-ISBE_Cortex_logos.png" class="img-responsive">
+                    <img src="img/cortex-logo.png" class="img-responsive">
                 </div>
             </div>
             <div class="contents">
@@ -14,7 +14,7 @@
                                 <h4>{{card.title}}</h4>
                             </div>
                             <div class="box-content text-center">
-                                <img ng-src="{{card.img}}" class="img-responsive">
+                                <img ng-src="{{card.img}}" ng-if="card.img">
                                 <p>{{card.desc}}</p>
                             </div>
                             <div class="box-footer text-center">
@@ -25,7 +25,10 @@
                 </td-cards>
             </div>
             <div class="footer">
-                <button class="button button-energized button-block" ng-click="skipIntro()">{{buttonName}}</button>
+                <div class="scte-logo text-center">
+                    <img src="img/SCTE-ISBE-logo.png" />
+                </div>
+                <button class="button button-energized button-full" ng-click="skipIntro()">{{buttonName}}</button>
             </div>
         </div>
     </ion-content>

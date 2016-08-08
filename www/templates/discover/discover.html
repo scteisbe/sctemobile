@@ -1,11 +1,10 @@
 <ion-view view-title="Discover" ng-init="init()">
     <ion-nav-title class="discover-wrapper">
-        <div class="top-header">
+        <!-- <div class="top-header">
             <div class="left">
                 <table>
                     <tr>
                         <td><img ng-src="{{logoURL}}" class="scte-isbe-cortex-logo"></td>
-                        <!-- <td><img src="img/SCTE-ISBE_Cortex_logos.png" class="scte-isbe-cortex-logo"></td> -->
                     </tr>
                 </table>
             </div>
@@ -17,34 +16,45 @@
                     <div>{{username}}!</div>
                 </div>
             </div>
+        </div> -->
+        <div class="top-header">
+            <div class="center" ng-if="logoURL" style="margin-top: 6px;">
+                <div class="left" ng-click="fetchIonicDeployInfo()">
+                    <img src="img/cortex_logo.png">
+                </div>
+                <img ng-src="{{logoURL}}" class="scte-isbe-cortex-logo">
+            </div>
+            <div ng-if="!logoURL" ng-click="fetchIonicDeployInfo()">
+                <img src="img/cortex_logo.png" class="header-cortex-logo">
+            </div>
         </div>
     </ion-nav-title>
     <ion-header-bar class="bar-subheader search-box-wrapper" style="position: relative">
-        <label class="item-input-wrapper">
+        <label class="item-input-wrapper" ng-show="!initialFocus">
             <i class="all-icon-icon_search_white search-icn"></i>
             <input type="search" placeholder="Enter keyword here" ng-model="query" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults(query)">
         </label>
-        <button class="button button-clear button-stable" ng-click="voiceRecog()" style="    position: absolute; top: 16px; right: 19px" ng-show="query == ''">
+        <label class="item-input-wrapper" ng-show="initialFocus">
+            <i class="all-icon-icon_search_white search-icn"></i>
+            <input type="search" placeholder="Enter keyword here" ng-model="query" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults(query)" autofocus="true">
+        </label>
+        <button ng-if="isAndroid" class="button button-clear button-stable" ng-click="voiceRecog()" style="    position: absolute; top: 16px; right: 19px" ng-show="query == ''">
             <i class="all-icon-icon_mic mic-icn"></i>
         </button>
         <button class="button button-clear button-stable" ng-click="clearSearchField()" style="    position: absolute; top: 16px; right: 19px" ng-show="query != ''"><i class="ion-close-circled mic-icn"></i></button>
     </ion-header-bar>
     <ion-content class="discover-wrapper">
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="activeIndex" ng-init="activeIndex = 0" class="slide-wrapper" does-continue="true">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" active-slide="activeIndex" ng-init="activeIndex = 0" class="slide-box" does-continue="true">
             <ion-slide ng-repeat="item in staticContent.announcements" ng-if="item.template == 'imagewithlink' && withinDates(item.datestart,item.dateend)">
                 <div class="slide-image"><img ng-src="{{item.fullwidthimageurl}}" ng-click="openPromo(item.url)" /></div>
             </ion-slide>
         </ion-slide-box>
-        <div class="resources-wrapper">
+        <div class="toolkit-box">
             <h5 class="heading">Toolkit</h5>
             <a class="see-all" href="#/tab/applibrary">See All &gt;</a>
             <div class="app-box">
                 <table>
                     <tr>
-                        <!--<td  ng-repeat="item in staticContent.featuredresources" ng-click="openPage(item.url)" ng-if="item.os==platform">
-                            <img class="app-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type=='app'" alt="{{item.title}}">
-                            <img class="pdf-icon" ng-src="{{item.coverimageurl}}" ng-if="item.type!='app'" alt="{{item.title}}">
-                        </td>-->
                         <td ng-repeat="item in staticContent.featuredresources" ng-if="item.os==platform">
                             <img ng-src="{{item.coverimageurl}}" ng-click="openURL(item)">
                             <p>{{item.title}}</p>
@@ -53,49 +63,85 @@
                 </table>
             </div>
         </div>
-        <div class="events" ng-controller="DiscoverEventCtrl">
-            <div>
+        <div class="events-box" ng-controller="DiscoverEventCtrl">
+            <div ng-show="eventErrorMsg==''">
                 <h5 class="heading">Events</h5>
                 <a class="see-all" ng-click="myEventsList()">See All &gt;</a>
                 <div class="event-box">
                     <div class="card eventindiv" ng-repeat="event in eventType |limitTo:3">
                         <div class="row" ng-click="eventDetail(event.eventId,eventTabName,event.webDescription)">
-                            <div class="col-30">
-                                <div class="date-box">
-                                    <img src="svg/img_calendar.svg" />
-                                    <div class="date">{{event.formattedBeginDate | date: 'dd'}}</div>
-                                    <div class="month">{{event.formattedBeginDate | date: 'MMM'}} '{{event.formattedBeginDate | date: 'yy'}}</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div class="date-box">
+                                            <img src="img/svg/img_calendar.svg" />
+                                            <div class="date">{{event.formattedBeginDate | date: 'dd'}}</div>
+                                            <div class="month">{{event.formattedBeginDate | date: 'MMM'}} '{{event.formattedBeginDate | date: 'yy'}}</div>
+                                        </div>
+                                    </td>
+                                    <td class="table-content">
+                                        <div class="text-box">
+                                            <div class="row-top"><a href="">{{event.title}}</a></div>
+                                            <div class="row-bottom"><b>Location: </b> {{event.address1}} {{event.address2}} {{event.address3}} {{event.city}} {{event.stateProvince}} {{event.postal}}
+                                                <br>
+                                                <b>When: </b>{{event.formattedBeginDate | date: 'shortTime'}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--  <div class="col-30" style="margin-left: 10px;">
+                            <div class="date-box">
+                                <img src="img/svg/img_calendar.svg" />
+                                <div class="date">{{event.formattedBeginDate | date: 'dd'}}</div>
+                                <div class="month">{{event.formattedBeginDate | date: 'MMM'}} '{{event.formattedBeginDate | date: 'yy'}}</div>
+                            </div>
+                        </div>
+                        <div class="col-70" style="margin-left: -10px;">
+                            <div class="text-box">
+                                <div class="row-top"><a href="">{{event.title}}</a></div>
+                                <div class="row-bottom"><b>Location: </b> {{event.address1}} {{event.address2}} {{event.address3}} {{event.city}} {{event.stateProvince}} {{event.postal}}
+                                    <br>
+                                    <b>When: </b>{{event.formattedBeginDate | date: 'shortTime'}}
                                 </div>
                             </div>
-                            <div class="col-70">
-                                <div class="text-box">
-                                    <div class="row-top"><a href="">{{event.title}}</a></div>
-                                    <div class="row-bottom"><b>Location: </b> {{event.address1}} {{event.address2}} {{event.address3}} {{event.city}} {{event.stateProvince}} {{event.postal}}
-                                        <br>
-                                        <b>When: </b>{{event.formattedBeginDate | date: 'shortTime'}}
-                                    </div>
-                                </div>
-                            </div>
+                        </div> -->
                         </div>
                     </div>
                 </div>
             </div>
+            <div ng-show="eventErrorMsg!=''">
+                <h5 class="heading">Events</h5>
+                <div class="card item item-text-wrap">{{eventErrorMsg}}</div>
+            </div>
         </div>
-        <div class="rss-feeds discover-rss">
-            <h5 class="heading">RSS Feed</h5>
-            <!-- <a class="see-all">See All &gt;</a> -->
-            <!-- <div ng-bind-html="http://www.cablelabs.com/feed"></div> -->
-            <a class="see-all" ng-click="rssFeedDetailScreen()">See All &gt;</a>
+        <div class="rss-feeds-box">
+            <div>
+                <img src="img/CAB_logo_red.png" class="informed-logo" ng-click="openInformedURL()">
+                <a class="see-all" ng-click="rssFeedDetailScreen()">See All &gt;</a>
+            </div>
             <ion-list class="list">
-                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="rssFeed in rssFeeds | limitTo:3" ng-click="openPage(rssFeed.link)">
-                    <img ng-src="img/u214.png" />
+                <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="rssFeed in rssFeeds | limitTo:3" ng-click="openPage(rssFeed.link)">
+                    <img src="{{rssFeed.thumbnail}}" style="width:auto;height:auto" />
                     <h2>{{rssFeed.title}}</h2>
-                    <!-- <p>{{rssFeed.publishedDate}}</p> -->
                     <p class="rss-description" ng-bind-html="rssFeed.description"></p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </ion-item>
             </ion-list>
         </div>
+        <div class="rss-feeds-box">
+            <div>
+                <img src="img/NCTA-Horizontal.png" class="informed-logo">
+                <a class="see-all" ng-click="nctaDetailScreen()" style="top: 20px">See All &gt;</a>
+            </div>
+            <ion-list class="list">
+                <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="nctaData in nctaDatas | limitTo:3" ng-click="openPage(nctaData.link)">
+                    <img src="{{nctaData.thumbnail}}" style="width:auto;height:auto" />
+                    <h2>{{nctaData.title}}</h2>
+                    <p class="rss-description" ng-bind-html="nctaData.description"></p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+            </ion-list>
         </div>
     </ion-content>
 </ion-view>

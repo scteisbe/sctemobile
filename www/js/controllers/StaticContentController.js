@@ -1,6 +1,6 @@
 (function() {
 angular.module('cortexConfig')
-.controller('StaticContentController', ['$scope', '$localStorage', 'ConfigService', StaticContentController])
+.controller('StaticContentController','AppConstants', ['$scope', '$localStorage', 'ConfigService', StaticContentController,AppConstants])
 
 
 function StaticContentController($scope, $localStorage, ConfigService) {
@@ -45,26 +45,20 @@ function StaticContentController($scope, $localStorage, ConfigService) {
   sheetnames.forEach(function(sheet, i){
     $scope.staticcontent[sheet] = $localStorage['staticcontent.' + sheet] || sheet;
   });
-  console.log("Loaded static content from local cache.");
-
   ConfigService.then(function(x) {
     sheetnames.forEach(function(sheet, i){
       try {
           // try to update from feed
           $scope.staticcontent[sheet] = x.allSheets()[sheet].elements;
           if (!$scope.staticcontent[sheet].length) {
-            throw "No entries found. Are there empty rows in the sheet?";
+            throw AppConstants.staticNoentriesFound;
           }
           // store result in localstorage for fast access next time
           $localStorage['staticcontent.' + sheet] = $scope.staticcontent[sheet];
-          
-          //console.log(sheet + "..." + JSON.stringify($scope.staticcontent[sheet]));
       } catch (error) {
         console.log("Can't read sheet '" + sheet + "'. Using local client cache. " + error);
       }     
     });
-    console.log("Replaced static content from Google Sheet.");
-//     console.log(JSON.stringify($scope.staticcontent['meetings']));
   });
 
 

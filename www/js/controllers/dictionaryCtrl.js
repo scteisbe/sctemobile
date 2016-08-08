@@ -1,4 +1,4 @@
-var dictionaryCtrl = ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionicPopover', '$stateParams', 'Utils', '$localStorage', function($scope, $state, $rootScope, $ionicLoading, $ionicPopover, $stateParams, Utils, $localStorage) {
+var dictionaryCtrl = ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionicPopover', '$stateParams', 'Utils', '$localStorage','AppConstants', function($scope, $state, $rootScope, $ionicLoading, $ionicPopover, $stateParams, Utils, $localStorage,AppConstants) {
     $scope.dictionarywords = [];
     $scope.filteredItems = [];
     $scope.dictionarywords = $localStorage['dictionarywords'];
@@ -29,9 +29,8 @@ var dictionaryCtrl = ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionic
        
         var template_footer =    '</ion-content>' + '</ion-popover-view>';
         
-        $scope.popupitem = $scope.dictionarywords[index];
-        console.log("category..." + $scope.popupitem.Category);
-        if($scope.popupitem.Category != null) {
+        $scope.popupitem = $scope.filteredItems[index];
+            if($scope.popupitem.Category != null) {
             template = template + template_category;
         }
      
@@ -74,16 +73,7 @@ var dictionaryCtrl = ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionic
         return anyNameStartsWith(item, $scope.searchString);
     };
 
-    function anyNameStartsWith(item, searchword) {
-        if (searchword === "")
-            return true;
-
-        var _word = item.Abbreviation.toLowerCase();
-        var _description = item.Description.toLowerCase();
-        var _searchword = searchword.toLowerCase();
-        if (_word.indexOf(_searchword) != -1 || _description.indexOf(_searchword) != -1)
-            return item;
-    };
+   
 
     $scope.searchTextDidChange = function() {
 
@@ -107,7 +97,7 @@ var dictionaryCtrl = ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionic
 
     $scope.$on('$stateChangeSuccess',
         function onStateSuccess(event, toState, toParams, fromState) {
-            if ($state.params.focusAlpha != 'all') {
+            if ($state.params.focusAlpha != AppConstants.all) {
                 var items = $scope.dictionarywords;
                 $scope.searchString = $state.params.focusAlpha;
                 var searchText = $state.params.focusAlpha;

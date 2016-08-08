@@ -1,7 +1,7 @@
 var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$localStorage', '$sce', 
-                            '$ionicPopup', '$q', '$window' ,
+                            '$ionicPopup', '$q', '$window' ,'AppConstants',
                             function ($scope, $state, $rootScope, $ionicModal, Utils, $localStorage, $sce, 
-                            $ionicPopup, $q , $window) {
+                            $ionicPopup, $q , $window, AppConstants) {
 
     //This is for the local storage.
     $scope.staticContent = [];
@@ -12,11 +12,28 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
     //$scope.staticcontent['primers'] = $localStorage['staticcontent.primers'];
     //Primes to be added in the techtip section after the techtips section.
     $scope.primersContents = $localStorage['staticcontent.primers'];
+    $scope.primersErrorMsg='';
+    tempPrimers= $scope.primersContents;
+                        if(tempPrimers==null || tempPrimers.length==0){
+                              $scope.primersErrorMsg=AppConstants.noData;
+                        }
     //console.log("primers..................");
     //console.log($scope.primersContents);
     //Email to address has to be read from the spread sheet.
-    $scope.emailToAdd = $localStorage['staticcontent.configs'][2];
+    var config = $localStorage['staticcontent.configs'];
+    
+    
+    console.log("emailToAdd.......................");
+    
+    
+    config.forEach(function(element) {
+        if(element['key'] == 'submit_tech_tip_email_address')
+            $scope.emailToAdd = element['value'];
+        if(element['key'] == 'submit_tech_tip_description')
+            $scope.submitDesc = element['value'];
+    }, this);
    
+   console.log($scope.emailToAdd);
     
      $scope.stopPropagation = function ($event) {
         console.log('event bubbling');
@@ -157,7 +174,7 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
             
             var subject = "SCTE Techtip";
             //var to = "techtips@scte.org";
-            var to = $scope.emailToAdd["value"];
+            var to = $scope.emailToAdd;
             
             var body = "Message: "+tip + "%0D%0A %0D%0A" + "URL: "+url;
             

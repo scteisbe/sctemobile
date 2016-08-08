@@ -1,14 +1,11 @@
-var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop', '$localStorage', '$rootScope', function($ionicLoading,$ionicPopup,$http,$state,$q,Tabletop,$localStorage,$rootScope) {
+var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop', '$localStorage', '$rootScope','AppConstants',
+ function($ionicLoading,$ionicPopup,$http,$state,$q,Tabletop,$localStorage,$rootScope,AppConstants) {
 
   // Might use a resource here that returns a JSON array
 
   var Utils = {
 
-    appConstants : function(){
-
-        return 'app constant should reside here';
-    },
-
+    
     getHttpHeader : function(){
         $headerParamArr = [];
         $headerParamArr.push({"authToken":$rootScope.authToken});
@@ -47,9 +44,9 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
                 "contexPath" : "/MobileAppUI/api/Individual/GetIndividual"
             },
             "searchEngineAPI":{
-                "URL":"http://vmdimisapp01:1322/api",
+                "URL":"http://devapi.scte.org/MobileAppUI/api",
                 "httpMethod": "post",
-                "contexPath" : "/Search/PostResult?searchText="
+                "contexPath" : "/Search/PostResult"
             },
             "getCableLabAPI":{
                 "URL":"https://devapi.scte.org/mobileappui/api/Scraper/GetResult",
@@ -59,15 +56,24 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         };
     },
 
-    doHttpRequest : function ($method,$url,$header,requestParamArr) {
+    doHttpRequest : function ($method,$url,$header,requestParamArr,isJsonPost) {
        
 //        console.log("$url................" + $url);
+       var dataObj = null;
+       var headerObj = null;
+       if(isJsonPost) {
+           dataObj = requestParamArr;
+           headerObj = {"Content-Type":"application/json"};
+       } else {
+           dataObj = Utils.getStringFromArray(requestParamArr);
+           headerObj = Utils.getJsonFromArray($header);
+       }
        return  $http({
 			method:$method,
 			url:$url,
 			//data: {Email:'MAGGIE', password: 'testrecord', grant_type:'password'},
-			data: Utils.getStringFromArray(requestParamArr),
-			headers: Utils.getJsonFromArray($header) ,
+			data: dataObj,
+			headers: headerObj,
 		}).then( 
 			function successCallback(response){
 				$content = response.data;
@@ -101,7 +107,7 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         
         $requestParamArr = [];
         $requestParamArr.push({ "UID": $localStorage['username'] });
-        $requestParamArr.push({ "password": $localStorage['password'] });
+        $requestParamArr.push({ "password": $localStorage['password']});
         $requestParamArr.push({ "GrantType": "password" });
 
 	    $headerParamArr = [];
@@ -114,11 +120,26 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
 			headers: Utils.getJsonFromArray($headerParamArr) ,
 		}).then( 
 			function successCallback(response) {
-				$content = response.data;
-                $data = $content['data'];
-                $localStorage['authToken'] = $data['access_token'];
-                console.log("in autoLogin completed................");
-                return $content
+                
+                if (response != null) {
+                    
+                                                         
+                    $content = response.data;
+                    $data = $content['data'];
+                    $message = $content['message'];
+                    console.log(response);
+                   
+                    if ($message['statusCode'] == 200) {
+                        $localStorage['authToken'] = $data['access_token'];
+                        console.log("in autoLogin completed................");
+                    } else {
+                        $state.go('login');
+                        Utils.displayAlert(AppConstants.wrongUserNamePassword);
+                    }
+                    return $content
+                }
+                
+				
 			},
 			
 			function errorCallback(response) {
@@ -188,6 +209,7 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
     },
     
     redirectDiscover : function() {
+        $rootScope.initialFocus=true;
         $state.go('tab.discover');
     },
 
@@ -241,9 +263,17 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
 			function successCallback(response) {
 				console.log("in scteSSO completed................");
                 console.log(response);
+                
                 // A hack to prevent first time opening issue : Surojit
-                Utils.doHttpRequest('GET','http://scte.staging.coursestage.com/mod/scorm/player.php?scoid=938&cm=2495&currentorg=Overview_of_IPv6_and_DOCSIS_3.0_organization&a=367', [], []);
-                return response;
+                
+                if(!$rootScope.ssoCompleted) {
+                    Utils.doHttpRequest('GET','http://scte.staging.coursestage.com/mod/scorm/player.php?scoid=938&cm=2495&currentorg=Overview_of_IPv6_and_DOCSIS_3.0_organization&a=367', [], []).then(function(response) {
+                        if (response != null) {
+                            $rootScope.ssoCompleted = true;
+                            return response;
+                        }
+                    });
+                }
 			},
 			
 			function errorCallback(response) {

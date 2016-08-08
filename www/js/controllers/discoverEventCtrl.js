@@ -1,33 +1,32 @@
-var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '$sce', 'Utils', '$localStorage', function($scope, $rootScope, $http, $state, $filter, $sce, Utils, $localStorage) {
-
-
-
+var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '$sce', 'Utils', '$localStorage', 'AppConstants', function($scope, $rootScope, $http, $state, $filter, $sce, Utils, $localStorage, AppConstants) {
+    Utils.scteSSO();
+    $scope.eventErrorMsg = '';
     $scope.fetchEvents = function() {
         if ($rootScope.online) {
-            Utils.doHttpRequest('GET', 'https://devapi.scte.org/mobileappui/api/Events/GetEvents', $scope.getRequestHeader(), $requestParamArr).then(function(response) {
+            Utils.doHttpRequest(AppConstants.GET, AppConstants.eventAPI, $scope.getRequestHeader(), $requestParamArr).then(function(response) {
 
-                //console.log(response);
                 if (response != null) {
                     $message = response['message'];
                     $eventsData = response['data'];
-                    console.log("response['message'] : " + response['message']);
-                    console.log("response['data'] : " + response['data']);
-                    console.log("in fetchEvents()..GetEvents statusCode.." + $message['statusCode']);
                     $scope.hideLoader();
 
-                    if ($message['statusCode'] == 200) {
+                    if ($message['statusCode'] == AppConstants.status200) {
 
                         $localStorage['eventsdata'] = $eventsData;
                         $scope.discoverEvents();
+                        tempevents = $localStorage['eventsdata'];
 
-                    } else {
-                        // $scope.displayAlert("Wrong username or password !");
-                        console.log("$message['statusMessage'] " + $message['statusMessage'])
+                        if (tempevents == null || tempevents.length == 0) {
+                            $scope.eventErrorMsg = AppConstants.noData;
+                        }
+
                     }
+
+
                 }
             });
         } else {
-             $scope.displayAlert("Internet not available. Please check network connectivity.");
+            $scope.displayAlert(AppConstants.discoverNoInternet);
         }
     };
 
@@ -49,7 +48,7 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
 
     $scope.discoverEvents = function() {
         $eventsData = $localStorage['eventsdata'];
-        $rootScope.eventTabName = 'relevantEvents';
+        $rootScope.eventTabName = AppConstants.relevantEvents;
         $rootScope.eventTyperelevantEvents = $eventsData['relevantEvents'];
         $scope.eventType = $rootScope.eventTyperelevantEvents;
         $scope.dateFormatType();
@@ -67,7 +66,7 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
 
     $scope.liveLearningEvents = function() {
         $eventsData = $localStorage['eventsdata'];
-        $rootScope.eventTabName = 'liveLearnings';
+        $rootScope.eventTabName = AppConstants.liveLearnings;
         $rootScope.eventTypeliveLearnings = $eventsData['liveLearnings'];
         $scope.eventType = $rootScope.eventTypeliveLearnings;
         $scope.dateFormatType();
@@ -77,7 +76,7 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
 
 
     $scope.nationwideEvents = function() {
-        $rootScope.eventTabName = 'nationalEvents';
+        $rootScope.eventTabName = AppConstants.nationalEvents;
         $rootScope.eventTypenationalEvents = $eventsData['nationalEvents'];
         $scope.eventType = $rootScope.eventTypenationalEvents;
         $scope.dateFormatType();
@@ -87,7 +86,7 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
 
 
     $scope.myEventsList = function() {
-        $state.go('tab.discoversmyevents');
+        $state.go(AppConstants.tabdiscoversmyEvents);
     };
 
 
@@ -97,117 +96,125 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
         $rootScope.eventTabName = eventTabName;
         if (htmlDescription != "" && htmlDescription != null) {
 
-            $state.go('tab.eventsdetails');
+            $state.go(AppConstants.tabeventsdetailsName);
         }
 
     };
 
     $scope.addEvent = function(title, location, notes, startDate, endDate) {
-        //var WPstartDate = new Date(eventYear,eventMonth,startDate,startTime,0,0,0,0); // beware: month 0 = january, 11 = december
+        event.stopPropagation();
         var defaultEndDate = new Date(endDate);
         var defaultStartDate = new Date(startDate);
-        var starttime = $filter('date')(defaultStartDate, 'HH:mm:ss');
-        var endtime = $filter('date')(defaultEndDate, 'HH:mm:ss');
-        if (starttime === "00:00:00") {
+        var starttime = $filter('date')(defaultStartDate, AppConstants.datePattern);
+        var endtime = $filter('date')(defaultEndDate, AppConstants.datePattern);
+        if (starttime === AppConstants.startTime) {
             defaultStartDate.setHours(08);
             defaultStartDate.setMinutes(00);
             defaultStartDate.setSeconds(00);
         }
-        var newstarttime = $filter('date')(defaultStartDate, 'HH:mm:ss');
-        var newendtime = $filter('date')(defaultEndDate, 'HH:mm:ss');
-        if (starttime === "00:00:00" && endtime === "00:00:00") {
+        var newstarttime = $filter('date')(defaultStartDate, AppConstants.datePattern);
+        var newendtime = $filter('date')(defaultEndDate, AppConstants.datePattern);
+        if (starttime === AppConstants.startTime && endtime === AppConstants.startTime) {
             defaultEndDate.setHours(17);
             defaultEndDate.setMinutes(00);
             defaultEndDate.setSeconds(00);
-        } else if (newstarttime >= newendtime || newendtime === "00:00:00") {
+        } else if (newstarttime >= newendtime || newendtime === AppConstants.startTime) {
             defaultEndDate.setHours(defaultStartDate.getHours() + 1);
         }
 
-        var success = function(message) { Utils.displayAlert("Event added Successfully"); };
-        var error = function(message) { Utils.displayAlert("Event Couldnot be added: " + message); };
+        var success = function(message) { Utils.displayAlert(AppConstants.discoverEventAddSuccess); };
+        var error = function(message) { Utils.displayAlert(AppConstants.discoverEventAddFail + message); };
         var eventFound = function(message) {
             if (message == "") {
                 window.plugins.calendar.createEvent(title, location, notes, defaultStartDate, defaultEndDate, success, error);
             } else {
-                Utils.displayAlert('Event is already added in your calendar.');
+                Utils.displayAlert(AppConstants.discoverEventsAlreadyAvailable);
             }
         };
         var errorEvent = function(message) {
-            Utils.displayAlert('Error in calendar.');
+            Utils.displayAlert(AppConstants.discoverErrorInCalendar);
         };
         window.plugins.calendar.findEvent(title, location, notes, defaultStartDate, defaultEndDate, eventFound, errorEvent);
+    };
 
-        //window.plugins.calendar.createEvent(title, location, notes, startDate, endDatee, success, error);
+    $scope.eventUrl = function(url) {
+        if (url.indexOf("http") == -1) {
+            if (url.indexOf("www") == -1) {
+                url = "http://" + url;
+            } else {
+                url = "http://www." + url;
+            }
+        }
+        window.open(url, '_system');
     };
 
 }];
 
 
-var DiscoverEventsDetailCtrl = ['$scope', '$rootScope', '$state', '$http', '$stateParams', '$filter', 'Utils', function($scope, $rootScope, $state, $http, $stateParams, $filter, Utils) {
+var DiscoverEventsDetailCtrl = ['$scope', '$rootScope', '$state', '$http', '$stateParams', '$filter', 'Utils', 'AppConstants', function($scope, $rootScope, $state, $http, $stateParams, $filter, Utils, AppConstants) {
 
     $scope.eventFullDescription = function() {
-        if ($rootScope.eventTabName === "liveLearnings") {
+        if ($rootScope.eventTabName === AppConstants.liveLearnings) {
             $scope.overallevents = $rootScope.eventTypeliveLearnings;
-            console.log("liveLearning Events : " + $scope.overallevents);
         }
-        /*if ($rootScope.eventTabName == 'myChapter') {
-            $scope.overallevents = $rootScope.eventTypemyChapter;
-        }*/
-
-        if ($rootScope.eventTabName === "relevantEvents") {
+        if ($rootScope.eventTabName === AppConstants.relevantEvents) {
             $scope.overallevents = $rootScope.eventTyperelevantEvents;
-            console.log("relevant Events : " + $scope.overallevents);
-            console.log("relevant Events main value: " + $rootScope.eventTyperelevantEvents);
         }
-        if ($rootScope.eventTabName === "nationalEvents") {
+        if ($rootScope.eventTabName === AppConstants.nationalEvents) {
             $scope.overallevents = $rootScope.eventTypenationalEvents;
-            console.log("national Events : " + $scope.overallevents);
         }
 
         for (var event = 0; event < $scope.overallevents.length; event++) {
             if ($rootScope.eventDetailId == $scope.overallevents[event].eventId) {
                 $scope.events = $scope.overallevents[event];
-                console.log("full web description : " + $scope.events);
             }
         }
     };
 
     $scope.addEvent = function(title, location, notes, startDate, endDate) {
-        //var WPstartDate = new Date(eventYear,eventMonth,startDate,startTime,0,0,0,0); // beware: month 0 = january, 11 = december
         var defaultEndDate = new Date(endDate);
         var defaultStartDate = new Date(startDate);
-        var starttime = $filter('date')(defaultStartDate, 'HH:mm:ss');
-        var endtime = $filter('date')(defaultEndDate, 'HH:mm:ss');
-        if (starttime === "00:00:00") {
+        var starttime = $filter('date')(defaultStartDate, AppConstants.datePattern);
+        var endtime = $filter('date')(defaultEndDate, AppConstants.datePattern);
+        if (starttime === AppConstants.startTime) {
             defaultStartDate.setHours(08);
             defaultStartDate.setMinutes(00);
             defaultStartDate.setSeconds(00);
         }
-        var newstarttime = $filter('date')(defaultStartDate, 'HH:mm:ss');
-        var newendtime = $filter('date')(defaultEndDate, 'HH:mm:ss');
-        if (starttime === "00:00:00" && endtime === "00:00:00") {
+        var newstarttime = $filter('date')(defaultStartDate, AppConstants.datePattern);
+        var newendtime = $filter('date')(defaultEndDate, AppConstants.datePattern);
+        if (starttime === AppConstants.startTime && endtime === AppConstants.startTime) {
             defaultEndDate.setHours(17);
             defaultEndDate.setMinutes(00);
             defaultEndDate.setSeconds(00);
-        } else if (newstarttime >= newendtime || newendtime === "00:00:00") {
+        } else if (newstarttime >= newendtime || newendtime === AppConstants.startTime) {
             defaultEndDate.setHours(defaultStartDate.getHours() + 1);
         }
 
-        var success = function(message) { Utils.displayAlert("Event added Successfully"); };
-        var error = function(message) { Utils.displayAlert("Event Couldnot be added: " + message); };
+        var success = function(message) { Utils.displayAlert(AppConstants.discoverEventAddSuccess); };
+        var error = function(message) { Utils.displayAlert(AppConstants.discoverEventAddFail + message); };
         var eventFound = function(message) {
             if (message == "") {
                 window.plugins.calendar.createEvent(title, location, notes, defaultStartDate, defaultEndDate, success, error);
             } else {
-                Utils.displayAlert('Event is already added in your calendar.');
+                Utils.displayAlert(AppConstants.discoverEventsAlreadyAvailable);
             }
         };
         var errorEvent = function(message) {
-            Utils.displayAlert('Error in calendar.');
+            Utils.displayAlert(AppConstants.discoverErrorInCalendar);
         };
         window.plugins.calendar.findEvent(title, location, notes, defaultStartDate, defaultEndDate, eventFound, errorEvent);
+    };
 
-        //window.plugins.calendar.createEvent(title, location, notes, startDate, endDatee, success, error);
+    $scope.eventUrl = function(url) {
+        if (url.indexOf("http") == -1) {
+            if (url.indexOf("www") == -1) {
+                url = "http://" + url;
+            } else {
+                url = "http://www." + url;
+            }
+        }
+        window.open(url, '_system');
     };
 
 }];

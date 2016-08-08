@@ -1,38 +1,25 @@
-var introCtrl = ['$scope', '$http', '$state', function($scope, $http, $state) {
-    // $scope.showLoader();
-
-    // $http.get('json/intro.json').success(function(res) {
-    //     $scope.cards = res;
-    // }).catch(function(err) {
-    //     console.log("Error introCtrl: " + err);
-    // }).finally(function() {
-    //     $scope.hideLoader();
-    // });
-    $scope.buttonName = 'SKIP INTRO';
+var introCtrl = ['$scope', '$state', 'AppConstants', function($scope, $state, AppConstants) {
+    $scope.buttonName = AppConstants.introSkipIntro;
     $scope.cards = [{
         "id": 1,
-        "title": "Welcome to Cortex",
-        "img": "img/ph.jpg",
-        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada vitae ipsum vel gravida. Etiam ultrices turpis neque, at blandit sem condimentum vitae.",
-        "status": "Swipe to continue"
+        "title": "Connect to technology with CORTEX Mobile.",
+        "desc": "The SCTE/ISBE CORTEX Expert Development System enhances your learning by providing 24/7 access to technical information in the palm of your hand.",
+        "status": "Swipe to learn more"
     }, {
         "id": 2,
-        "title": "Cortex mobile provides technical resources and support to SCTE members on the move",
-        "img": "img/ph.jpg",
-        "desc": "Latest SCTE learning, reference and technical materials",
-        "status": "Swipe to continue"
+        "img": "img/CORTEX_App_Icon_Group1.png",
+        "desc": "CORTEX delivers tech resources, industry apps and the latest content from SCTE/ISBE’s extensive course catalog at the moment of need on the job site.",
+        "status": "Swipe to learn more"
     }, {
         "id": 3,
-        "title": "Cortex mobile provides technical resources and support to SCTE members on the move",
-        "img": "img/ph.jpg",
-        "desc": "Product-specific information from industry partners",
-        "status": "Swipe to continue"
+        "img": "img/CORTEX_App_Icon_Group2.png",
+        "desc": "Search for product docs and tech specs, access SCTE/ISBE’s resource library, and explore our on-the-job toolkit to improve your job performance.",
+        "status": "Swipe to learn more"
     }, {
         "id": 4,
-        "title": "Cortex mobile provides technical resources and support to SCTE members on the move",
-        "img": "img/ph.jpg",
-        "desc": "Digital library of apps, tools, pocket guides and tech tips",
-        "status": "Swipe or Tab Done"
+        "img": "img/CORTEX_App_Icon_Group3.png",
+        "desc": "The SCTE/ISBE CORTEX Expert Development System follows your learning plans and tracks progress to guide you to become an expert and advance your career.",
+        "status": "Swipe to get started"
     }];
 
     $scope.addCard = function(i) {
@@ -40,44 +27,42 @@ var introCtrl = ['$scope', '$http', '$state', function($scope, $http, $state) {
         $scope.cards.push(newCard);
     };
 
-    // for (var i = 0; i < 4; i++) $scope.addCard();
-
     $scope.cardSwipedLeft = function(index) {
         console.log('Left swipe');
         console.log(index);
-        var arrCount= $scope.cards.length;
-        if(arrCount <= 1)
-        {
-           $state.go('tab.discover');
+        var arrCount = $scope.cards.length;
+        if (arrCount <= 1) {
+            localStorage['ngStorage-noIntro'] = 'true';
+            $state.go('tab.discover');
         }
     };
 
     $scope.cardSwipedRight = function(index) {
         console.log('Right swipe');
-        var arrCount= $scope.cards.length;
-        if(arrCount <= 1)
-        {
-           $state.go('tab.discover');
+        var arrCount = $scope.cards.length;
+        if (arrCount <= 1) {
+            localStorage['ngStorage-noIntro'] = 'true';
+            $state.go('tab.discover');
         }
     };
 
     $scope.cardDestroyed = function(index) {
-        var arrCount= $scope.cards.length;
-        if(arrCount <= 2)
-        {
-            $scope.buttonName = 'DONE';
+        var arrCount = $scope.cards.length;
+        if (arrCount <= 2) {
+            $scope.buttonName = AppConstants.done;
+
         }
-        
         $scope.cards.splice(index, 1);
         console.log('Card removed' + arrCount);
-        
     };
 
-    $scope.cardPartialSwipe = function(amt)
-    {
-    }
+    $scope.cardPartialSwipe = function(amt) {
+        //...
+    };
 
+    /* redirection to discover page */
     $scope.skipIntro = function() {
+        localStorage['ngStorage-noIntro'] = 'true';
         $state.go('tab.discover');
     };
 

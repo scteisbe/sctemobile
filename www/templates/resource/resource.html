@@ -1,6 +1,6 @@
 <ion-view view-title="Resources" class="resource">
     <ion-nav-title>
-        <img src="img/cortex_logo.png" class="header-corter-logo">
+        <img src="img/cortex_logo.png" class="header-cortex-logo">
     </ion-nav-title>
     <ion-nav-buttons side="secondary">
         <i ng-click="redirectDisover()" class="all-icon-icon_search_white header-search-icon"></i>
@@ -23,16 +23,14 @@
             <h5 class="heading">STANDARDS AND SPECIFICATIONS</h5>
             <a class="see-all" ng-click="SCTEstd()">See All &gt;</a>
             <ion-list class="list">
-                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="cableLabDoc in cableLabDocs | orderBy: '-publishedDate' | limitTo:1" ng-click="openStdURL(cableLabDoc.url)">
-                    <img ng-src="img/CableLabs_logo.png">
-                    <!-- <h2>{{cableLabDoc[index].identifier}}</h2> -->
+                <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="cableLabDoc in cableLabDocs | orderBy: '-publishedDate' | limitTo:1" ng-click="openStdURL(cableLabDoc.url)">
+                    <img ng-src="img/CAB_logo_BW.png" style="width:100%;height:auto">
                     <h2>{{cableLabDoc.title}}</h2>
                     <p>{{cableLabDoc.title}}</p>
-                    <!-- <p>{{cableLabDoc.publishedDate | date: 'dd MMM yyyy'}}</p> -->
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </ion-item>
-                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="standard in standards | orderBy: '-identifier' | limitTo:2" ng-click="openStdURL(standard.url)">
-                    <img ng-src="img/SCTE_logo.jpg">
+                <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="standard in standards | orderBy: sortid:orderByFunction:orderReverse | limitTo:2" ng-click="openStdURL(standard.url)">
+                    <img ng-src="img/SCTE-ISBE_LogoBugs_Black.png" style="width:100%;height:auto">
                     <h2>{{standard.identifier}}</h2>
                     <p>{{standard.title}}</p>
                     <i class="icon ion-chevron-right icon-accessory"></i>
@@ -40,23 +38,29 @@
             </ion-list>
         </div>
         <div class="whitepaper">
-            <h5 class="heading">WHITE PAPERS</h5>
-            <a class="see-all" ng-click="whitepaperOpen()">See All &gt;</a>
-            <ion-list class="list">
-                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="index in [0,1,2]" ng-click="openURL(whitePapers[index].fileName)">
-                    <img ng-src="img/u214.png">
-                    <h2>{{whitePapers[index].title}}</h2>
-                    <p>{{whitePapers[index].title}}</p>
-                    <i class="icon ion-chevron-right icon-accessory"></i>
-                </ion-item>
-            </ion-list>
+            <div ng-show="whitePapersErrorMsg==''">
+                <h5 class="heading">WHITE PAPERS</h5>
+                <a class="see-all" ng-click="whitepaperOpen()">See All &gt;</a>
+                <ion-list class="list">
+                    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="index in [0,1,2]" ng-click="openURL(whitePapers[index].fileName)">
+                        <img ng-src="img/u214.png" style="width:auto;height:auto">
+                        <h2>{{whitePapers[index].title}}</h2>
+                        <p>{{whitePapers[index].title}}</p>
+                        <i class="icon ion-chevron-right icon-accessory"></i>
+                    </ion-item>
+                </ion-list>
+            </div>
+            <div ng-show="whitePapersErrorMsg!=''">
+                <h5 class="heading">WHITE PAPERS</h5>
+                <div class="card item item-text-wrap">{{whitePapersErrorMsg}}</div>
+            </div>
         </div>
         <div class="archivedwebinars">
             <h5 class="heading">PREVIOUS WEBINARS</h5>
             <a class="see-all" ng-click="archivedwebinarsOpen()">See All &gt;</a>
             <ion-list class="list">
-                    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="index in [0,1,2]" ng-click="openURL(archivedwebinars[index].url)">
-                    <img ng-src="img/archivedplay.png">
+                <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="index in [0,1,2]" ng-click="openURL(archivedwebinars[index].url)">
+                    <img ng-src="img/archivedplay.png" style="width:auto;height:auto">
                     <h2>{{archivedwebinars[index].title}}</h2>
                     <p>{{archivedwebinars[index].title}}</p>
                     <i class="icon ion-chevron-right icon-accessory"></i>

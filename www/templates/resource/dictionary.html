@@ -1,12 +1,12 @@
 <ion-view view-title="Dictionary" ng-controller="dictionaryCtrl" class="dictionary-wrapper">
     <ion-nav-title>
-        <img src="img/cortex_logo.png" class="header-corter-logo">
+        <img src="img/cortex_logo.png" class="header-cortex-logo">
     </ion-nav-title>
     <ion-nav-buttons side="secondary">
         <i ng-click="redirectDisover()" class="all-icon-icon_search_white header-search-icon"></i>
     </ion-nav-buttons>
-    <ion-header-bar class="bar-subheader searchinput">
-        <label class="item item-input searchbox">
+    <ion-header-bar class="bar-subheader search-box">
+        <label class="item item-input search-input">
             <i class="icon ion-ios-search placeholder-icon"></i>
             <input type="search" placeholder="Search for a keyword" ng-model="searchString" ng-change="searchTextDidChange()">
         </label>
@@ -24,6 +24,11 @@
                     </div>
                 </div>
             </ion-item>
+            <div ng-show="filteredItems.length == 0">
+                <div class="alphabet-data-not-found">
+                    No Data Found
+                </div>
+            </div>
         </ion-list>
     </ion-content>
 </ion-view>
