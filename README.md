@@ -45,5 +45,13 @@ See https://github.com/cnring18/cordova-build-increment for more info.
 
 ####Run it on physical device connected via USB (does not bump the version numbers)
 `ionic run android`
+
 `ionic run ios`
+
+####Deploy just the HTML5 parts immediately (or on app launch) to all users
+
+`ionic upload --note "Your comment here" --deploy=production`
+
+Note that this only works if you are changing JS, CSS, or HTML. Updates involving the Cordova plugins require that a new binary be uploaded to Google Play Store or the App Store.
+
 
