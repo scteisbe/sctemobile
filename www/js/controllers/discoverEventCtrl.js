@@ -49,38 +49,40 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
     
     $scope.fetchLiveEvents = function() {
         $scope.events = $localStorage['eventsdata'];
-        $scope.liveLearningsPromos = $localStorage['staticcontent.livelearningpromos'];
+        $rootScope.liveLearningsPromos = $localStorage['staticcontent.livelearningpromos'];
         
-        $scope.liveLearningEvents = $scope.events.liveLearnings[0];
-        $scope.liveLearningEvents.title = $scope.liveLearningEvents.title.replace(AppConstants.replaceliveLearnings, "");
-        var dateFormat = $scope.liveLearningEvents.formattedBeginDate;
+        $rootScope.liveLearningEvents = $scope.events.liveLearnings[0];
+        $rootScope.liveLearningEvents.title = $rootScope.liveLearningEvents.title.replace(AppConstants.replaceliveLearnings, "");
+        var dateFormat = $rootScope.liveLearningEvents.formattedBeginDate;
         var dateEvent = new Date(dateFormat);
-        $scope.liveLearningEvents.formattedBeginDate = dateEvent;
-        $scope.promoflag = AppConstants.false;
-        $scope.promoflagType = '';
-        for (var i = 0; i < $scope.liveLearningsPromos.length; i++) {
+        $rootScope.liveLearningEvents.formattedBeginDate = dateEvent;
+        $rootScope.promoflag = AppConstants.false;
+        $rootScope.promoflagType = '';
+        for (var i = 0; i < $rootScope.liveLearningsPromos.length; i++) {
 
-            if ($scope.liveLearningsPromos[i].type == AppConstants.nooverlay) {
+            if ($rootScope.liveLearningsPromos[i].type == AppConstants.nooverlay) {
                 var currentDate = new Date();
                 //check if current date is within given dates
-                if (currentDate >= new Date($scope.liveLearningsPromos[i].datestart) && currentDate <= new Date($scope.liveLearningsPromos[i].dateend)) {
+                if (currentDate >= new Date($rootScope.liveLearningsPromos[i].datestart) && 
+                            currentDate <= new Date($rootScope.liveLearningsPromos[i].dateend)) {
                     $rootScope.promoflag = AppConstants.true;
                     $rootScope.promoflagType = AppConstants.nooverlay;
-                    $rootScope.promoBgImage = $scope.liveLearningsPromos[i].imageurl;
+                    $rootScope.promoBgImage = $rootScope.liveLearningsPromos[i].imageurl;
                     break;
                 }
             }
 
         }
 
-        if ($scope.promoflag == AppConstants.false) {
+        if ($rootScope.promoflag == AppConstants.false) {
 
-            for (var i = 0; i < $scope.liveLearningsPromos.length; i++) {
+            for (var i = 0; i < $rootScope.liveLearningsPromos.length; i++) {
 
-                if ($scope.liveLearningsPromos[i].type == AppConstants.overlayme) {
+                if ($rootScope.liveLearningsPromos[i].type == AppConstants.overlayme) {
                     var currentDate = new Date();
                     //check if current date is within given dates
-                    if (currentDate >= new Date($scope.liveLearningsPromos[i].datestart) && currentDate <= new Date($scope.liveLearningsPromos[i].dateend)) {
+                    if (currentDate >= new Date($rootScope.liveLearningsPromos[i].datestart) && 
+                                currentDate <= new Date($rootScope.liveLearningsPromos[i].dateend)) {
 
                         $rootScope.promoflag = AppConstants.true;
                         $rootScope.promoflagType = AppConstants.overlayme;
