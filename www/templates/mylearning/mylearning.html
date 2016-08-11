@@ -1,4 +1,4 @@
-<ion-view view-title="My Learning" class="my-learning" ng-init="fetchEvents()">
+<ion-view view-title="My Learning" class="my-learning">
     <ion-nav-title>
         <img src="img/cortex_logo.png" class="header-cortex-logo">
     </ion-nav-title>
@@ -8,19 +8,16 @@
     <ion-header-bar class="bar-subheader">
         <div class="tabs tabs-secondary subheader-tabs">
             <a class="tab-item tab-allcourses" ng-class="{active: activeTab == 2}" ng-click="activeTab = 2;doFocus()">
-                <!-- <img src="img/svg/tab_my-learning_all-courses.svg" width="20%" /> -->
                 <div><i class="all-icon-tab_my-learning_all-courses"></i></div>
                 <div class="tab-title">All Courses</div>
             </a>
             <div class="border"></div>
             <a class="tab-item tab-inprogress" ng-class="{active: activeTab == 0}" ng-click="activeTab = 0;doFocus()" ui-sref="tab.mylearning">
-                <!-- <img src="img/svg/tab_my-learning_in-progress.svg" width="24%" /> -->
                 <div><i class="all-icon-tab_my-learning_in-progress"></i></div>
                 <div class="tab-title">In Progress</div>
             </a>
             <div class="border"></div>
             <a class="tab-item tab-completed" ng-class="{active: activeTab == 1}" ng-click="activeTab = 1;doFocus()">
-                <!-- <img src="img/svg/tab_my-learning_completed.svg" width="20%" /> -->
                 <div><i class="all-icon-tab_my-learning_completed"></i></div>
                 <div class="tab-title">Completed</div>
             </a>
@@ -35,14 +32,14 @@
             <button class="button button-outline button-positive button-block" ng-click="openURL()">{{btnCourseData.value}}</button>
         </div>
         <div class="inprogress-course" ng-show="activeTab == 0">
-            <ion-list ng-repeat="inprogressCourse in inprogressCourses" ng-show="chkMyLearning(inprogressCourse).displayCourse" class="course-module-content">
+            <ion-list ng-repeat="inprogressCourse in inprogressCourses" class="course-module-content">
                 <ion-item class="item-stable course-list item-icon-right" ng-click="toggleInprogressCourse(inprogressCourse)" ng-class="{active: isInprogressCourseShown(inprogressCourse)}">
-                    <b>{{inprogressCourse.FullName}}</b>
+                    <b>{{inprogressCourse.ProfileName}}</b>
                     <i class="icon" ng-class="isInprogressCourseShown(inprogressCourse) ? 'ion-minus' : 'ion-plus'"></i>
                 </ion-item>
-                <div class="item-accordion" ng-repeat="inprogressModule in inprogressCourse.ComputedModuleList" ng-show="isInprogressCourseShown(inprogressCourse)" ng-click="openSCTEModule(inprogressModule.Url)">
-                    <div ng-show="inprogressModule.Mod == 'scorm'">
-                        <i class="icon ion-chevron-right"></i> <b>{{inprogressModule.Name}}</b>
+                <div class="item-accordion" ng-repeat="inprogressModule in inprogressCourse.userCourseList" ng-show="isInprogressCourseShown(inprogressCourse)" ng-click="openSCTEModule(inprogressModule.Url)">
+                    <div class="item item-icon-right">
+                        <i class="icon ion-chevron-right"></i> <b>{{inprogressModule.FullName}}</b>
                     </div>
                     <div ng-show="displayWcwCourse && isInprogressCourseShown(inprogressCourse)">
                         Materials for this course is not yet available in the SCTE mobile app
@@ -51,14 +48,14 @@
             </ion-list>
         </div>
         <div class="inprogress-course" ng-show="activeTab == 2">
-            <ion-list ng-repeat="allCourse in allCourses" ng-show="chkMyLearning(allCourse).displayCourse" class="course-module-content">
+            <ion-list ng-repeat="allCourse in allCourses" class="course-module-content">
                 <ion-item class="item-stable course-list item-icon-right" ng-click="toggleAllCourse(allCourse)" ng-class="{active: isAllCourseShown(allCourse)}">
-                    <b>{{allCourse.FullName}}</b>
+                    <b>{{allCourse.ProfileName}}</b>
                     <i class="icon" ng-class="isAllCourseShown(allCourse) ? 'ion-minus' : 'ion-plus'"></i>
                 </ion-item>
-                <div class="item-accordion" ng-repeat="allCourseModule in allCourse.ComputedModuleList" ng-show="isAllCourseShown(allCourse)" ng-click="openSCTEModule(allCourseModule.Url)">
-                    <div ng-show="allCourseModule.Mod == 'scorm'" class="item item-icon-right">
-                        <i class="icon ion-chevron-right"></i> <b>{{allCourseModule.Name}}</b>
+                <div class="item-accordion" ng-repeat="allCourseModule in allCourse.userCourseList" ng-show="isAllCourseShown(allCourse)" ng-click="openSCTEModule(allCourseModule.URL)">
+                    <div class="item item-icon-right">
+                        <i class="icon ion-chevron-right"></i> <b>{{allCourseModule.FullName}}</b>
                     </div>
                     <div ng-show="displayWcwCourse && isAllCourseShown(allCourse)">
                         Materials for this course is not yet available in the SCTE mobile app
@@ -67,14 +64,14 @@
             </ion-list>
         </div>
         <div class="inprogress-course" ng-show="activeTab == 1">
-            <ion-list ng-repeat="completedCourse in completedCourses" ng-show="chkMyLearning(completedCourse).displayCourse" class="course-module-content">
+            <ion-list ng-repeat="completedCourse in completedCourses" class="course-module-content">
                 <ion-item class="item-stable course-list item-icon-right" ng-click="toggleCompletedCourse(completedCourse)" ng-class="{active: isCompletedCourseShown(completedCourse)}">
-                    <b>{{completedCourse.FullName}}</b>
+                    <b>{{completedCourse.ProfileName}}</b>
                     <i class="icon" ng-class="isCompletedCourseShown(completedCourse) ? 'ion-minus' : 'ion-plus'"></i>
                 </ion-item>
-                <div class="item-accordion" ng-repeat="completedCourseModule in completedCourse.ComputedModuleList" ng-show="isCompletedCourseShown(completedCourse)" ng-click="openSCTEModule(completedCourseModule.Url)">
-                    <div ng-show="completedCourseModule.Mod == 'scorm'" class="item item-icon-right">
-                        <i class="icon ion-chevron-right"></i> <b>{{completedCourseModule.Name}}</b>
+                <div class="item-accordion" ng-repeat="completedCourseModule in completedCourse.userCourseList" ng-show="isCompletedCourseShown(completedCourse)" ng-click="openSCTEModule(completedCourseModule.Url)">
+                    <div class="item item-icon-right">
+                        <i class="icon ion-chevron-right"></i> <b>{{completedCourseModule.FullName}}</b>
                     </div>
                     <div ng-show="displayWcwCourse && isCompletedCourseShown(completedCourse)">
                         Materials for this course is not yet available in the SCTE mobile app
@@ -95,11 +92,10 @@
                 </div>
             </div>
         </div>
-        <!--<div class="mylearning-game-header">
+        <div class="mylearning-game-header" style="display: none">
             <h5 class="mylearning-games">Games</h5>
-           
         </div>
-        <div  class="list games" ng-show="gamesErrorMsg==''">
+        <div class="list games" ng-show="gamesErrorMsg==''" style="display: none">
             <div class="item item-thumbnail-left" ng-repeat="mylearningGame in gameItems" ng-click="openSCTEModule(mylearningGame.url)" ng-hide="mylearningGame.template == 'hidden'">
                 <img ng-src="{{mylearningGame.coverimageurl}}" style="width:100%;height:auto">
                 <h2>{{mylearningGame.title}}</h2>
@@ -121,7 +117,7 @@
             </div>
         </div>
         <div ng-show="gamesErrorMsg!=''">
-             <div class="card item item-text-wrap">{{gamesErrorMsg}}</div>
-            </div>-->
+            <div class="card item item-text-wrap">{{gamesErrorMsg}}</div>
+        </div>
     </ion-content>
 </ion-view>

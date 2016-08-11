@@ -17,48 +17,46 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
     
     getApiDetails : function(){
         return {
-            "BaseURL":"https://devapi.scte.org",
+            //"BaseURL":"http://vmdimisapp01:1322/api/",
+            
+            "BaseURL":"https://devapi.scte.org/mobileappui/api/",
+            
             "loginAPI" : {
-                "URL": "https://devapi.scte.org",
                 "httpMethod": "post",
-                "contexPath": "/MobileAppUI/api/Token/PostToken"
+                "contexPath": "/Token/PostToken"
             },
             "whitepaperAPI":{
-                "URL":"https://devapi.scte.org/MobileAppUI/api/Documents/GetDocuments",
                 "httpMethod": "get",
-                "contexPath" : "/MobileAppUI/api/Documents/GetDocuments"
+                "contexPath" : "/Documents/GetDocuments"
             },
             "getGlossaryAPI":{
-                "URL":"https://devapi.scte.org/MobileAppUI/api/Glossary/GetGlossary",
                 "httpMethod": "get",
-                "contexPath" : "/MobileAppUI/api/Glossary/GetGlossary"
+                "contexPath" : "/Glossary/GetGlossary"
             },
             "myLearningAPI":{
-                "URL":"https://devapi.scte.org/MobileAppUI/api/Individual/GetIndividual",
                 "httpMethod": "get",
-                "contexPath" : "/MobileAppUI/api/Individual/GetIndividual"
+                "contexPath" : "/Individual/GetIndividual"
             },
             "getIndividualAPI":{
-                "URL":"https://devapi.scte.org/MobileAppUI/api/Individual/GetIndividual",
                 "httpMethod": "get",
-                "contexPath" : "/MobileAppUI/api/Individual/GetIndividual"
+                "contexPath" : "/Individual/GetIndividual"
             },
             "searchEngineAPI":{
-                "URL":"http://devapi.scte.org/MobileAppUI/api",
                 "httpMethod": "post",
                 "contexPath" : "/Search/PostResult"
             },
             "getCableLabAPI":{
-                "URL":"https://devapi.scte.org/mobileappui/api/Scraper/GetResult",
                 "httpMethod": "get",
-                "contexPath" : "/mobileappui/api/Scraper/GetResult"
-            }
+                "contexPath" : "/Scraper/GetResult"
+            },
+             "eventsAPI":{
+                "httpMethod": "get",
+                "contexPath" : "/Events/GetEvents"
+            },
         };
     },
 
     doHttpRequest : function ($method,$url,$header,requestParamArr,isJsonPost) {
-       
-//        console.log("$url................" + $url);
        var dataObj = null;
        var headerObj = null;
        if(isJsonPost) {
@@ -79,8 +77,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
 				$content = response.data;
                 
                 $message = $content['message'];
-//                 console.log("Printing message..");
-//                 console.log($message);
                 return $content
 			},
 			
@@ -88,12 +84,9 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
 			
 				$ionicLoading.hide();
 				if(response.data == null) {
-					console.log("failed response.." + response.data);
 					//Utils.displayAlert("Network Error !");
                     return null;
 				} else {
-                    console.log(JSON.stringify(response));
-					console.log("failed response.." + response.data["message"]);
 					//Utils.displayAlert("Wrong username or password !");
                     return null;
 				}
@@ -110,12 +103,10 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         $requestParamArr.push({ "password": $localStorage['password']});
         $requestParamArr.push({ "GrantType": "password" });
 
-	    $headerParamArr = [];
-        console.log("in autoLogin ................");           
+	    $headerParamArr = [];     
         return  $http({
 			method: 'POST',
-			url: 'https://devapi.scte.org/mobileappui/api/Token/PostToken',
-			//data: {Email:'MAGGIE', password: 'testrecord', grant_type:'password'},
+			url: Utils.getApiDetails().BaseURL + Utils.getApiDetails().loginAPI.contexPath,
 			data: Utils.getStringFromArray($requestParamArr),
 			headers: Utils.getJsonFromArray($headerParamArr) ,
 		}).then( 
@@ -127,11 +118,9 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
                     $content = response.data;
                     $data = $content['data'];
                     $message = $content['message'];
-                    console.log(response);
                    
                     if ($message['statusCode'] == 200) {
                         $localStorage['authToken'] = $data['access_token'];
-                        console.log("in autoLogin completed................");
                     } else {
                         $state.go('login');
                         Utils.displayAlert(AppConstants.wrongUserNamePassword);
@@ -146,10 +135,8 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
 			
 				$ionicLoading.hide();
 				if(response.data == null) {
-					console.log("failed response.." + response.data);
 					//Utils.displayAlert("Network Error !");
 				} else {
-					console.log("failed response.." + response.data["message"]);
 					//Utils.displayAlert("Wrong username or password !");
 				}
 			} 
@@ -164,27 +151,20 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
             });
             
         });
-//         console.log("body..");
-//         console.log(output);
         return output;
     },
     
      getJsonFromArray : function (array) {
-         //console.log(JSON.stringify(object));
          $headerMap = {"Content-Type":"application/x-www-form-urlencoded"};
          angular.forEach(array, function (object) {
             angular.forEach(object, function (value, key) {
                 $headerMap[key] = value;
             });
          });
-         //
-//         console.log("header..");
-//         console.log(JSON.stringify($headerMap));
         return $headerMap;
      },
      
      displayAlert : function($message) {
-//         console.log("into Service.. displayAlert.." + $message);
         $ionicLoading.hide();
         
         if(navigator != null && navigator.notification != null ) {
@@ -205,7 +185,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
     
     alertDismissed : function() {
     // do something
-        console.log(" alert dismissed..");
     },
     
     redirectDiscover : function() {
@@ -230,20 +209,14 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         var applicationGo = "no";
         
         angular.forEach(userCred, function(storedUser){
-            console.log("storedUser..");
-            console.log(storedUser);
             if(storedUser.username.toUpperCase() == username.toUpperCase() && storedUser.password == password){
-                console.log("username and password matched");
                 applicationGo = "yes";
             }
-            console.log(JSON.stringify(storedUser));
         });
         return applicationGo;
     },
   
   scteSSO : function () {
-        
-        console.log("in scteSSO ................");  
         $requestParamArr = [];
 	    $requestParamArr.push({ "__EVENTTARGET": "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$SubmitButton" });
         $requestParamArr.push({ "__ASYNCPOST": "true" });
@@ -261,8 +234,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
             crossDomain: true,
 		}).then( 
 			function successCallback(response) {
-				console.log("in scteSSO completed................");
-                console.log(response);
                 
                 // A hack to prevent first time opening issue : Surojit
                 
@@ -277,8 +248,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
 			},
 			
 			function errorCallback(response) {
-		        console.log("failed response from scteSSO");
-                console.log(response);
 			} 
 		);
     },

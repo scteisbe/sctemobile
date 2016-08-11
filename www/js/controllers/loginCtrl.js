@@ -2,12 +2,13 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
  '$ionicHistory', 'AppConstants', function($scope, $state, $rootScope, $localStorage, Utils, StaticService, $timeout, $location, $ionicHistory, AppConstants) {
 
     $scope.fetchCableLabData = function() {
-        console.log("In fetchCableLabData()..");
-        Utils.doHttpRequest(Utils.getApiDetails().getCableLabAPI.httpMethod, Utils.getApiDetails().BaseURL + Utils.getApiDetails().getCableLabAPI.contexPath, Utils.getHttpHeader(), []).then(function(response) {
+        Utils.doHttpRequest(Utils.getApiDetails().getCableLabAPI.httpMethod, Utils.getApiDetails().BaseURL + 
+                            Utils.getApiDetails().getCableLabAPI.contexPath, Utils.getHttpHeader(), [])
+                            .then(function(response) {
             if (response != null) {
                 $message = response['message'];
                 var res = response['data'];
-                if ($message['statusCode'] == 200) {
+                if ($message['statusCode'] == AppConstants.status200) {
                     angular.forEach(res, function(data) {
                         $scope.rssFeeds = data.rssFeedData.item;
                         $scope.nctaDatas = data.nctaData;
@@ -23,45 +24,25 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
 
     $scope.fetchResources = function() {
 
-        // This is for getGlossary.
+        
         $headerParamArr.push({ "authToken": $localStorage['authToken'] });
         $headerParamArr.push({ "authType": "Bearer" });
         $headerParamArr.push({ "Content-Type": "application/json" });
         if ($rootScope.online) {
-            Utils.doHttpRequest(Utils.getApiDetails().getGlossaryAPI.httpMethod, Utils.getApiDetails().getGlossaryAPI.URL, $headerParamArr, []).then(function(response) {
-
-                if (response != null) {
-                    //data available from live API
-                    $message = response['message'];
-                    data = response['data'];
-                    $scope.hideLoader();
-
-                    if ($message['statusCode'] == 200) {
-                        if (data != null) {
-                            $localStorage["dictionarywords"] = data;
-                        }
-                    }
-                } else {
-                    //No API access
-                    $scope.hideLoader();
-                    //display data from stub
-                    $localStorage["dictionarywords"] = $scope.dictionarywordsStub;
-                }
-            });
-
-
+            
             // This call is for whitepapers. If else is placed here to stop it from calling the API again and again.
             // Test to see if data persist.
 
-
-            Utils.doHttpRequest(Utils.getApiDetails().whitepaperAPI.httpMethod, Utils.getApiDetails().whitepaperAPI.URL, $headerParamArr, []).then(function(response) {
+            Utils.doHttpRequest(Utils.getApiDetails().whitepaperAPI.httpMethod, 
+                                Utils.getApiDetails().BaseURL + Utils.getApiDetails().whitepaperAPI.contexPath, 
+                                $headerParamArr, []).then(function(response) {
                 if (response != null) {
                     //data available from live API
                     $message = response['message'];
                     data = response['data'];
                     $scope.hideLoader();
 
-                    if ($message['statusCode'] == 200) {
+                    if ($message['statusCode'] == AppConstants.status200) {
 
                         if (data != null) {
                             $localStorage["whitePapers"] = data;
@@ -74,6 +55,31 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
                     //display data from stub
                     $localStorage["whitePapers"] = $scope.whitePapersStub;
                 }
+                
+                // This is for getGlossary.
+                
+                Utils.doHttpRequest(Utils.getApiDetails().getGlossaryAPI.httpMethod, 
+                                Utils.getApiDetails().BaseURL + Utils.getApiDetails().getGlossaryAPI.contexPath, 
+                                $headerParamArr, []).then(function(response) {
+                                        
+                    if (response != null) {
+                        //data available from live API
+                        $message = response['message'];
+                        data = response['data'];
+                        $scope.hideLoader();
+
+                        if ($message['statusCode'] == AppConstants.status200) {
+                            if (data != null) {
+                                $localStorage["dictionarywords"] = data;
+                            }
+                        }
+                    } else {
+                        //No API access
+                        $scope.hideLoader();
+                        //display data from stub
+                        $localStorage["dictionarywords"] = $scope.dictionarywordsStub;
+                    }
+                });
             });
 
         } else {
@@ -93,14 +99,14 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
             $rootScope.scraperData = $localStorage["scraperData"];
 
         $scope.fetchCableLabData();
-        $scope.fetchResources();
+        //$scope.fetchResources();
 
         if ($localStorage['authToken'] != null) {
             Utils.scteSSO();
             $ionicHistory.nextViewOptions({
                 disableBack: true
             });
-            $state.go('tab.discover');
+            $state.go(AppConstants.tabdiscoverName);
             $rootScope.authToken = $localStorage['authToken'];
         }
     }
@@ -121,8 +127,6 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
     $scope.login = function(username, password) {
         $scope.username = username;
         $scope.password = password;
-        console.log("Username.." + $scope.username);
-        console.log("Password.." + $scope.password);
         if ($scope.username == '' || $scope.password == '') {
             $scope.displayAlert(AppConstants.loginMissingInputData);
         } else {
@@ -133,20 +137,21 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
                 $requestParamArr.push({ "GrantType": "password" });
                 $headerParamArr = [];
                 $scope.showLoader();
-                Utils.doHttpRequest('POST', 'https://devapi.scte.org/mobileappui/api/Token/PostToken', $headerParamArr, $requestParamArr).then(function(response) {
-                    console.log("Response from the API ..." + response);
+                Utils.doHttpRequest(Utils.getApiDetails().loginAPI.httpMethod, 
+                                    Utils.getApiDetails().BaseURL + Utils.getApiDetails().loginAPI.contexPath, 
+                                    $headerParamArr, $requestParamArr).then(function(response) {
                     if (response != null) {
                         $message = response['message'];
                         $data = response['data'];
                         $scope.hideLoader();
-                        if ($message['statusCode'] == 200) {
+                        if ($message['statusCode'] == AppConstants.status200) {
                             $rootScope.authToken = $data['access_token'];
                             $localStorage['username'] = $scope.username;
                             $localStorage['password'] = $scope.password;
                             $localStorage['authToken'] = $rootScope.authToken;
 
-                            $scope.fetchResources();
-                            $state.go('intro');
+                            //$scope.fetchResources();
+                            $state.go(AppConstants.introName);
                         } else {
                             $scope.displayAlert(AppConstants.wrongUserNamePassword);
                         }
@@ -154,7 +159,7 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
                         $scope.displayAlert(AppConstants.cantReachServer);
                         $scope.applicationGo = Utils.verifyUser($scope.username, $scope.password, $scope.userCred);
                         if ($scope.applicationGo == "yes") {
-                            $state.go('intro');
+                            $state.go(AppConstants.introName);
                         }
                     }
                 });
@@ -165,32 +170,32 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
     };
 
     $scope.joinSCTE = function() {
-        var myURL = encodeURI('http://www.scte.org/SCTE/Join/FastForms/CreateAccount.aspx');
-        window.open(myURL, '_system');
+        var myURL = encodeURI(AppConstants.joinScteLink);
+        window.open(myURL, AppConstants.system);
     };
 
     $scope.forgotpassword = function() {
-        var myURL = encodeURI('https://www.scte.org/SCTE/Sign_In.aspx');
-        window.open(myURL, '_system');
+        var myURL = encodeURI(AppConstants.forgotPasswordLink);
+        window.open(myURL, AppConstants.system);
     };
 
     $scope.redirect = function(pageName) {
         $rootScope.initialFocus = false;
         switch (pageName) {
-            case 'discover':
-                $location.path('tab/discover');
+            case AppConstants.discoverTitle:
+                $location.path(AppConstants.tabDiscoverURLSub);
                 break;
-            case 'mylearning':
-                $location.path('tab/mylearning');
+            case AppConstants.myLearningTitle:
+                $location.path(AppConstants.tabmylearningURLSub);
                 break;
-            case 'techtips':
-                $location.path('tab/techtips');
+            case AppConstants.techTipTitle:
+                $location.path(AppConstants.tabtechtipsURLSub);
                 break;
-            case 'applibrary':
-                $location.path('tab/applibrary');
+            case AppConstants.appLibraryTitle:
+                $location.path(AppConstants.tabapplibraryURLSub);
                 break;
-            case 'resource':
-                $location.path('tab/resource');
+            case AppConstants.resourcesTitle:
+                $location.path(AppConstants.tabresourceURLSub);
                 break;
         }
     };

@@ -28,21 +28,18 @@ var introCtrl = ['$scope', '$state', 'AppConstants', function($scope, $state, Ap
     };
 
     $scope.cardSwipedLeft = function(index) {
-        console.log('Left swipe');
-        console.log(index);
         var arrCount = $scope.cards.length;
         if (arrCount <= 1) {
-            localStorage['ngStorage-noIntro'] = 'true';
-            $state.go('tab.discover');
+            localStorage['ngStorage-noIntro'] = AppConstants.true;
+            $state.go(AppConstants.tabdiscoverName);
         }
     };
 
     $scope.cardSwipedRight = function(index) {
-        console.log('Right swipe');
         var arrCount = $scope.cards.length;
         if (arrCount <= 1) {
-            localStorage['ngStorage-noIntro'] = 'true';
-            $state.go('tab.discover');
+            localStorage['ngStorage-noIntro'] = AppConstants.true;
+            $state.go(AppConstants.tabdiscoverName);
         }
     };
 
@@ -53,7 +50,6 @@ var introCtrl = ['$scope', '$state', 'AppConstants', function($scope, $state, Ap
 
         }
         $scope.cards.splice(index, 1);
-        console.log('Card removed' + arrCount);
     };
 
     $scope.cardPartialSwipe = function(amt) {
@@ -63,7 +59,7 @@ var introCtrl = ['$scope', '$state', 'AppConstants', function($scope, $state, Ap
     /* redirection to discover page */
     $scope.skipIntro = function() {
         localStorage['ngStorage-noIntro'] = 'true';
-        $state.go('tab.discover');
+        $state.go(AppConstants.tabdiscoverName);
     };
 
 }];

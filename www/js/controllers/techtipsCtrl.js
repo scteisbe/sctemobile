@@ -17,14 +17,8 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
                         if(tempPrimers==null || tempPrimers.length==0){
                               $scope.primersErrorMsg=AppConstants.noData;
                         }
-    //console.log("primers..................");
-    //console.log($scope.primersContents);
     //Email to address has to be read from the spread sheet.
     var config = $localStorage['staticcontent.configs'];
-    
-    
-    console.log("emailToAdd.......................");
-    
     
     config.forEach(function(element) {
         if(element['key'] == 'submit_tech_tip_email_address')
@@ -33,7 +27,6 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
             $scope.submitDesc = element['value'];
     }, this);
    
-   console.log($scope.emailToAdd);
     
      $scope.stopPropagation = function ($event) {
         console.log('event bubbling');
@@ -48,7 +41,6 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
 
     $scope.primersContents.forEach(function (primer) {
         primer.rating=Math.round(primer.rating);
-        console.log(primer.rating);
         primer.ratingsObject = {
         iconOn: 'ion-ios-star', //Optional
         iconOff: 'ion-ios-star-outline',  //Optional
@@ -66,7 +58,6 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
 
     $scope.techTipsContents.forEach(function (techTip) {
         techTip.rating=Math.round(techTip.rating);
-        //console.log(techTip.rating);
         techTip.ratingsObject = {
             iconOn: 'ion-ios-star', //Optional
             iconOff: 'ion-ios-star-outline',  //Optional
@@ -81,13 +72,11 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
 
 
         if (techTip['videourl']) {
-            //console.log("url.." + techTip['videourl']);
             var re = /^(https:\/\/www.youtube.com\/)(watch\?.*v=)(.*)$/;
             var subst = '$1embed/$3?enablejsapi=1';
             techTip['videourl'] = techTip['videourl'].replace(re, subst);
             console.log("url1111.." + techTip['videourl']);
             techTip['videourl'] = techTip['videourl'].replace("watch?time_continue=3&v=", "v/");
-            //techTip['videourl'] = $sce.trustAsResourceUrl(techTip['videourl']);
 
         }
     }, this);
@@ -95,7 +84,6 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
 
     $scope.primersContents.forEach(function (primer) {
             primer.rating=Math.round(primer.rating);
-            //console.log(primer.rating);
             primer.ratingsObject = {
                 iconOn: 'ion-ios-star', //Optional
                 iconOff: 'ion-ios-star-outline',  //Optional
@@ -107,26 +95,9 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
     }, this);
     
 
-    // $scope.techTipsContents = [{
-    //     "type" : "video",
-    //     "techtips_image" : "img/video-placeholder.jpg",
-    //     "techtips_title" : "Understanding Cable Technology: Digital Video"
-    // }, {
-    //     "type" : "pdf",
-    //     "techtips_image" : "img/pdf-placeholder.png",
-    //     "techtips_title" : "Remote Power Outage",
-    //     "techtips_description" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    // }];
-
-    /*    $scope.techTipsContentIteration = function() {
-            if()
-        };*/
-
     $scope.flag=[];
-   // $scope.globalFlag=$rootScope.globalVideoflag;
       $scope.toggleImageAndVideo = function (index) {
       if($scope.flag[index]!='true'){
-        //$rootScope.globalVideoflag='true';
       $scope.flag[index]='true';
         }
 
@@ -148,14 +119,6 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
     $scope.redirectDisover = function () {
         Utils.redirectDiscover();
     };
-
-     $scope.relod = function () {
-        alert("hiii");
-    };
-
-
-   
-
     
      $scope.techTipSubmitPage = function () {
             $state.go('tab.techtipsubmit');
@@ -170,7 +133,6 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
         $scope.techtipURL = "";
 
         $scope.techtipSubmit = function (tip, url) {
-            console.log("inside submit techtip.." + tip);
             
             var subject = "SCTE Techtip";
             //var to = "techtips@scte.org";

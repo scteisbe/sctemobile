@@ -38,8 +38,7 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
 
     $scope.whitePapers = $localStorage["whitePapers"];
     $scope.whitePapersErrorMsg = '';
-    tempwhitePapers = $scope.whitePapers;
-    if (tempwhitePapers == null || tempwhitePapers.length == 0) {
+    if ($localStorage["whitePapers"] == null || $localStorage["whitePapers"].length == 0) {
         $scope.whitePapersErrorMsg = AppConstants.noData;
     }
 
@@ -60,26 +59,31 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
         "publishedOn": "Published On: 01 May 2016"
     }];
 
-    if ($localStorage["whitePapers"] == undefined || $localStorage["whitePapers"].length == 0) {
+    if ($localStorage["whitePapers"] == undefined || $localStorage["whitePapers"] == null || $localStorage["whitePapers"].length == 0) {
+        console.log("whitepaper data...1");
         if ($rootScope.online) {
-            Utils.doHttpRequest(Utils.getApiDetails().whitepaperAPI.httpMethod, Utils.getApiDetails().whitepaperAPI.URL, Utils.getHttpHeader(), []).then(function(response) {
+            Utils.doHttpRequest(Utils.getApiDetails().whitepaperAPI.httpMethod, 
+            Utils.getApiDetails().BaseURL + Utils.getApiDetails().whitepaperAPI.contexPath, 
+            Utils.getHttpHeader(), []).then(function(response) {
                 if (response != null) {
                     //data available from live API
+                    console.log("whitepaper data...2");
                     $message = response['message'];
                     data = response['data'];
                     $scope.hideLoader();
-
+                    console.log("whitepaper data...3");
                     if ($message['statusCode'] == 200) {
                         if (data != null) {
                             $localStorage["whitePapers"] = data;
                             $scope.whitePapers = data;
+                            $scope.whitePapersErrorMsg = '';
                         }
                     }
                 } else {
                     //No API access
                     $scope.hideLoader();
                     //display data from stub
-                    $localStorage["whitePapers"] = $scope.whitePapersStub;
+                    //$localStorage["whitePapers"] = $scope.whitePapersStub;
                 }
             });
         } else {
@@ -90,7 +94,9 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
 
     if ($localStorage["dictionarywords"] == undefined || $localStorage["dictionarywords"].length == 0) {
         if ($rootScope.online) {
-            Utils.doHttpRequest(Utils.getApiDetails().getGlossaryAPI.httpMethod, Utils.getApiDetails().getGlossaryAPI.URL, Utils.getHttpHeader(), []).then(function(response) {
+            Utils.doHttpRequest(Utils.getApiDetails().getGlossaryAPI.httpMethod, 
+            Utils.getApiDetails().BaseURL + Utils.getApiDetails().getGlossaryAPI.contexPath,
+            Utils.getHttpHeader(), []).then(function(response) {
                 if (response != null) {
                     //data available from live API
                     $message = response['message'];
@@ -105,7 +111,7 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
                     //No API access
                     $scope.hideLoader();
                     //display data from stub
-                    $localStorage["dictionarywords"] = $scope.dictionarywordsStub;
+                    //$localStorage["dictionarywords"] = $scope.dictionarywordsStub;
                 }
             });
         } else {

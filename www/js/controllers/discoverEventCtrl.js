@@ -3,8 +3,9 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
     $scope.eventErrorMsg = '';
     $scope.fetchEvents = function() {
         if ($rootScope.online) {
-            Utils.doHttpRequest(AppConstants.GET, AppConstants.eventAPI, $scope.getRequestHeader(), $requestParamArr).then(function(response) {
-
+            Utils.doHttpRequest(Utils.getApiDetails().eventsAPI.httpMethod, 
+                                    Utils.getApiDetails().BaseURL + Utils.getApiDetails().eventsAPI.contexPath, 
+                                    $scope.getRequestHeader(), $requestParamArr).then(function(response) {
                 if (response != null) {
                     $message = response['message'];
                     $eventsData = response['data'];
@@ -45,6 +46,51 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
             }
         }
     };
+    
+    $scope.fetchLiveEvents = function() {
+        $scope.events = $localStorage['eventsdata'];
+        $scope.liveLearningsPromos = $localStorage['staticcontent.livelearningpromos'];
+        
+        $scope.liveLearningEvents = $scope.events.liveLearnings[0];
+        $scope.liveLearningEvents.title = $scope.liveLearningEvents.title.replace(AppConstants.replaceliveLearnings, "");
+        var dateFormat = $scope.liveLearningEvents.formattedBeginDate;
+        var dateEvent = new Date(dateFormat);
+        $scope.liveLearningEvents.formattedBeginDate = dateEvent;
+        $scope.promoflag = AppConstants.false;
+        $scope.promoflagType = '';
+        for (var i = 0; i < $scope.liveLearningsPromos.length; i++) {
+
+            if ($scope.liveLearningsPromos[i].type == AppConstants.nooverlay) {
+                var currentDate = new Date();
+                //check if current date is within given dates
+                if (currentDate >= new Date($scope.liveLearningsPromos[i].datestart) && currentDate <= new Date($scope.liveLearningsPromos[i].dateend)) {
+                    $rootScope.promoflag = AppConstants.true;
+                    $rootScope.promoflagType = AppConstants.nooverlay;
+                    $rootScope.promoBgImage = $scope.liveLearningsPromos[i].imageurl;
+                    break;
+                }
+            }
+
+        }
+
+        if ($scope.promoflag == AppConstants.false) {
+
+            for (var i = 0; i < $scope.liveLearningsPromos.length; i++) {
+
+                if ($scope.liveLearningsPromos[i].type == AppConstants.overlayme) {
+                    var currentDate = new Date();
+                    //check if current date is within given dates
+                    if (currentDate >= new Date($scope.liveLearningsPromos[i].datestart) && currentDate <= new Date($scope.liveLearningsPromos[i].dateend)) {
+
+                        $rootScope.promoflag = AppConstants.true;
+                        $rootScope.promoflagType = AppConstants.overlayme;
+                        $rootScope.promoBgImage = $scope.liveLearningsPromos[i].imageurl;
+                        break;
+                    }
+                }
+            }
+        }
+    };
 
     $scope.discoverEvents = function() {
         $eventsData = $localStorage['eventsdata'];
@@ -53,9 +99,12 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
         $scope.eventType = $rootScope.eventTyperelevantEvents;
         $scope.dateFormatType();
         $scope.eventWebDescription();
+        $scope.fetchLiveEvents();
     };
 
     $scope.fetchEvents();
+    
+    
 
     if ($localStorage['eventsdata'] != null) {
         $scope.discoverEvents();
@@ -64,7 +113,7 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
     }
 
 
-    $scope.liveLearningEvents = function() {
+    $scope.fetchLiveLearningEvents = function() {
         $eventsData = $localStorage['eventsdata'];
         $rootScope.eventTabName = AppConstants.liveLearnings;
         $rootScope.eventTypeliveLearnings = $eventsData['liveLearnings'];
@@ -138,14 +187,14 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
     };
 
     $scope.eventUrl = function(url) {
-        if (url.indexOf("http") == -1) {
-            if (url.indexOf("www") == -1) {
-                url = "http://" + url;
+        if (url.indexOf(AppConstants.eventhttp) == -1) {
+            if (url.indexOf(AppConstants.www) == -1) {
+                url = AppConstants.eventhttpslash + url;
             } else {
-                url = "http://www." + url;
+                url = AppConstants.eventhttpwww + url;
             }
         }
-        window.open(url, '_system');
+        window.open(url, AppConstants.system);
     };
 
 }];
@@ -207,14 +256,14 @@ var DiscoverEventsDetailCtrl = ['$scope', '$rootScope', '$state', '$http', '$sta
     };
 
     $scope.eventUrl = function(url) {
-        if (url.indexOf("http") == -1) {
-            if (url.indexOf("www") == -1) {
-                url = "http://" + url;
+        if (url.indexOf(AppConstants.eventhttp) == -1) {
+            if (url.indexOf(AppConstants.www) == -1) {
+                url = AppConstants.eventhttpslash + url;
             } else {
-                url = "http://www." + url;
+                url = AppConstants.eventhttpwww + url;
             }
         }
-        window.open(url, '_system');
+        window.open(url, AppConstants.system);
     };
 
 }];

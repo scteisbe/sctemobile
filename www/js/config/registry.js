@@ -147,7 +147,8 @@
       "inkLingMessage": "This course material is available in the Inkling Axis app. Once you have it installed, you'll be able to read it there.",
       "inkLingtitle": " Inkling Axis :",
       /*** General Constatnts  ***/
-
+      "true":"true",
+      "false":"false",
       "done": "Get Started",
       "cantReachServer": "Can't reach server !",
       "noInternet": "Internet not available. Please check network connectivity.",
@@ -233,6 +234,11 @@
       "tabarchivedwebinarsURL": "/archivedwebinars",
       "tabeventsdetailsURL": "/events/eventsdetails/:id",
       "tabDiscoverURLSub": "tab/discover",
+      "tabmylearningURLSub": "tab/mylearning",
+      "tabapplibraryURLSub": "tab/applibrary",
+      "tabtechtipsURLSub": "tab/techtips",
+      "tabresourceURLSub": "tab/resource",
+
 
       /*** Controller Names ***/
       "loginCtrl": "loginCtrl",
@@ -272,10 +278,7 @@
       "fromDiscoverTab": 'Opened from discover tab',
       "fromFeaturedResourcesTab": 'Opened from featured resources',
 
-      /*** API URL Constatnts  ***/
-      "GET": 'GET',
-      "eventAPI": 'https://devapi.scte.org/mobileappui/api/Events/GetEvents',
-
+     
       /*** SearchCtrl Constatnts  ***/
       "searchErrorMsg": "No Results Found!!!",
       "searchFilterMessage": "No results available for the selection!!!",
@@ -298,11 +301,20 @@
       "relevantEvents": "relevantEvents",
       "liveLearnings": "liveLearnings",
       "nationalEvents": "nationalEvents",
+      "nooverlay":"nooverlay",
+      "overlayme":"overlayme",
+      "eventhttp":"http",
+      "eventhttpslash":"http://",
+      "eventwww":"www",
+      "eventhttpwww":"http://www.",
+      "replaceliveLearnings":"LiveLearning: ",
       /*** IntroCtrl Constatnts  ***/
       "introSkipIntro": "Get Started",
       /*** LoginCtrl Constatnts  ***/
       "loginMissingInputData": "Missing input data !",
       "wrongUserNamePassword": "Wrong username or password !",
+      "joinScteLink":'http://www.scte.org/SCTE/Join/FastForms/CreateAccount.aspx',
+      "forgotPasswordLink":'https://www.scte.org/SCTE/Sign_In.aspx',
       /*** DictionaryCtrl Constatnts  ***/
       "dictionarySearchAcronym": "You can search for acronym definitions from the main search. Use the letters below to browse.",
       "all": 'all',

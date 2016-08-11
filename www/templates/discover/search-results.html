@@ -20,8 +20,7 @@
         <button class="button button-clear button-stable" ng-click="clearSearchField()" style="    position: absolute; top: 16px; right: 19px" ng-show="query != ''"><i class="ion-close-circled mic-icn"></i></button>
     </ion-header-bar>
     <ion-content class="padding search-results-wrapper">
-        <div ng-repeat="item in items | limitTo: limit" ng-show="filterFlag == 'false' && errorMsg==''" 
-            class="search-results-box" ng-click="openUrl(item)">
+        <div ng-repeat="item in items | limitTo: limit" ng-show="filterFlag == 'false' && errorMsg==''" class="search-results-box" ng-click="openUrl(item)">
             <div class="card" ng-if="item.format == 'video'">
                 <div class="item item-text-wrap title">
                     <h2>{{item.title}}</h2>
@@ -44,7 +43,8 @@
                 <div class="item item-text-wrap">
                     <p ng-bind-html="item.description"></p>
                     <div ng-show="item.hasAccess.toLowerCase() == 'false'">
-                        <p style="color:red;"> <br/>{{noAccessMsg}}</p>
+                        <p style="color:red;">
+                            <br/>{{noAccessMsg}}</p>
                     </div>
                 </div>
                 <div class="item item-text-wrap footer">
@@ -53,8 +53,7 @@
                 </div>
             </div>
         </div>
-        <div ng-repeat="item in filteredItems | limitTo: filteredLimit" ng-show="filterFlag == 'true' && filterMessage==''" 
-            class="search-results-box" ng-click="openUrl(item)">
+        <div ng-repeat="item in filteredItems | limitTo: filteredLimit" ng-show="filterFlag == 'true' && filterMessage==''" class="search-results-box" ng-click="openUrl(item)">
             <div class="card" ng-if="item.format == 'video'">
                 <div class="item item-text-wrap title">
                     <h2>{{item.title}}</h2>
@@ -77,7 +76,8 @@
                 <div class="item item-text-wrap">
                     <p ng-bind-html="item.description"></p>
                     <div ng-show="item.hasAccess.toLowerCase() == 'false'">
-                        <p style="color:red;"> <br/>{{noAccessMsg}}</p>
+                        <p style="color:red;">
+                            <br/>{{noAccessMsg}}</p>
                     </div>
                 </div>
                 <div class="item item-text-wrap footer" ng-hide="item.format == 'html'">

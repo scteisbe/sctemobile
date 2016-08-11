@@ -6,23 +6,19 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     $scope.recognitionStopped = false;
     $scope.previousSearches = $localStorage["PreviousSearch"];
     $scope.isAndroid = ionic.Platform.isAndroid();
-    
+
     $scope.ionicUpdate = function() {
-        console.log("into ionicUpdate..");
         var deploy = new Ionic.Deploy();
-        console.log("deploy..");
-        console.log(deploy);
         deploy.watch().then(function() {}, function() {}, function(updateAvailable) {
-          console.log("updateAvailable.." + updateAvailable);
-          if (updateAvailable) {
-              deploy.download().then(function() {
-                  deploy.extract().then(function() {
-                      deploy.unwatch();
-                      deploy.load();
-                  });
-              });
-          }
-      });
+            if (updateAvailable) {
+                deploy.download().then(function() {
+                    deploy.extract().then(function() {
+                        deploy.unwatch();
+                        deploy.load();
+                    });
+                });
+            }
+        });
     }
 
     $scope.ionicUpdate();
@@ -98,7 +94,9 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
 
     $scope.fetchProfile = function() {
         if ($rootScope.online) {
-            Utils.doHttpRequest(Utils.getApiDetails().getIndividualAPI.httpMethod, Utils.getApiDetails().BaseURL + Utils.getApiDetails().getIndividualAPI.contexPath, Utils.getHttpHeader(), $requestParamArr).then(function(response) {
+            Utils.doHttpRequest(Utils.getApiDetails().getIndividualAPI.httpMethod, 
+                                Utils.getApiDetails().BaseURL + Utils.getApiDetails().getIndividualAPI.contexPath, 
+                                Utils.getHttpHeader(), $requestParamArr).then(function(response) {
                 if (response != null) {
                     $message = response['message'];
                     $data = response['data'];
@@ -131,6 +129,7 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
                         $rootScope.logoURL = $scope.getCobrandingURL($profileData['CompanyId']);
                         $window.ga(AppConstants.set, AppConstants.userId, $profileData['Id']);
                         $localStorage['games'] = $profileData.Games;
+                        $localStorage['searchEntitlements'] = $profileData.SearchEntitlements;
                         $scope.prepareSearchRequestBody();
                     }
                 }
@@ -142,45 +141,10 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     };
 
     $scope.prepareSearchRequestBody = function() {
-        var courses = [];
-        var modules = [];
-        var myLearning = $localStorage["myLearning"];
-
-        var inprogressCourses = myLearning["In Progress"];
-        var completedCourses = myLearning["Completed"];
-        var allCourses = myLearning["All Courses"];
-
-        inprogressCourses.forEach(function(element) {
-            courses.push(element["Id"]);
-            var computedModuleList = element["ComputedModuleList"];
-            computedModuleList.forEach(function(item) {
-                modules.push(item["Id"]);
-            }, this);
-        }, this);
-
-        completedCourses.forEach(function(element) {
-            courses.push(element["Id"]);
-            var computedModuleList = element["ComputedModuleList"];
-            computedModuleList.forEach(function(item) {
-                modules.push(item["Id"]);
-            }, this);
-        }, this);
-
-        allCourses.forEach(function(element) {
-            courses.push(element["Id"]);
-            var computedModuleList = element["ComputedModuleList"];
-            computedModuleList.forEach(function(item) {
-                modules.push(item["Id"]);
-            }, this);
-        }, this);
-
-        $rootScope.courses = courses;
-        $rootScope.modules = modules;
+        var searchEntitlements = $localStorage['searchEntitlements'];
+        $rootScope.courses = searchEntitlements.Courses;
+        $rootScope.modules = searchEntitlements.Modules;
     }
-
-    console.log("user name stored is :--" + $localStorage['username']);
-    console.log("Loaded static content from local cache.");
-
 
     $profileData = $localStorage['profiledata'];
     $eventsData = $localStorage['eventsdata'];
@@ -196,14 +160,12 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
         }
     }
 
-
     $scope.query = '';
 
-     $scope.redirectDiscover = function() {
-        alert("hii");
-       $location.path('tab/discover');
+    $scope.redirectDiscover = function() {
+        $location.path('tab/discover');
     };
-    
+
 
     $scope.searchResults = function(query) {
         $scope.showLoaderSearch();
@@ -272,14 +234,15 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
         $scope.modalRecentSearches = modal;
     });
     $scope.showRecentSearches = function() {
-        if ($scope.previousSearches) {
+        if ($scope.previousSearches && $scope.query.length == '') {
             $scope.modalRecentSearches.show();
-        } else {
-            $scope.modalRecentSearches.hide();
         }
     };
     $scope.hideRecentSearches = function() {
         $scope.modalRecentSearches.hide();
+    };
+    $scope.showRecentSearchesFromSearchPage = function() {
+        $scope.modalRecentSearches.show();
     };
     $scope.searchChange = function() {
         if ($scope.query && $scope.query.length) {

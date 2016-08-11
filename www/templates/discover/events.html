@@ -9,7 +9,7 @@
                 <div class="tab-title">My Events</div>
             </a>
             <div class="border"></div>
-            <a class="tab-item my-events-livelearning" ng-click="liveLearningEvents(); activeTab = 1" ng-class="{active: activeTab == 1}">
+            <a class="tab-item my-events-livelearning" ng-click="fetchLiveLearningEvents(); activeTab = 1" ng-class="{active: activeTab == 1}">
                 <div><i class="all-icon-tab_events_livelearning"></i></div>
                 <div class="tab-title">Live Learning</div>
             </a>
@@ -21,7 +21,7 @@
         </div>
     </ion-header-bar>
     <ion-content class="has-subheader scroll-content padding">
-        <div class="event-box" style="padding-bottom:10px;">
+        <div class="event-box" style="padding-bottom:10px">
             <div class="card eventindiv" ng-repeat="event in eventType">
                 <div class="row" ng-click="eventDetail(event.eventId,eventTabName,event.webDescription)">
                     <table>
@@ -45,23 +45,6 @@
                             </td>
                         </tr>
                     </table>
-                    <!--    <div class="col-30" style="margin-left: 10px;">
-                        <div class="date-box">
-                            <img src="img/svg/img_calendar.svg" />
-                            <div class="date"><b>{{event.formattedBeginDate | date: 'dd'}}</b></div>
-                            <div class="month"><b>{{event.formattedBeginDate | date: 'MMM'}} '{{event.formattedBeginDate | date: 'yy'}}</b></div>
-                        </div>
-                    </div>
-                    <div class="col-70" style="margin-left: -10px;">
-                        <div class="text-box">
-                            <div class="row-top" ng-click="eventDetail(event.eventId,eventTabName,event.webDescription)"><a href="">{{event.title}}</a></div>
-                            <div class="row-bottom" ng-hide="!event.address1 && !event.address2 && !event.address3 && !event.city && !event.stateProvince && !event.postal"><b>Location: </b>{{event.address1}} {{event.address2}} {{event.address3}} {{event.city}} {{event.stateProvince}} {{event.postal}}
-                                <br>
-                            </div>
-                            <b>When: </b>{{event.formattedBeginDate | date: 'shortTime'}}
-                            <br><a ng-click="addEvent(event.title,event.city,event.title,event.formattedBeginDate, event.formattedEndDate)" href="#"><u>Add To Calendar</u></a>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="event-description">
                     <div class="description-button" ng-show="event.webDescription">
@@ -70,9 +53,9 @@
                     <div ng-show="event.meetingUrl" class="event-url">
                         <a ng-click="eventUrl(event.meetingUrl)">
                             <div class="row">
-                                <div class="col-15" style="padding-top: 5px"><img src="img/svg/icon_web-link.svg" />
+                                <div class="col-15" style="padding-top:5px"><img src="img/svg/icon_web-link.svg" />
                                 </div>
-                                <div class="col" style="padding-right: 15px"> {{event.meetingUrl}}
+                                <div class="col" style="padding-right:15px"> {{event.meetingUrl}}
                                 </div>
                             </div>
                         </a>

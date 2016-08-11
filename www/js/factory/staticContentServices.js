@@ -13,7 +13,6 @@ var StaticService = ['$ionicLoading', '$state', '$q', 'Tabletop', '$localStorage
                     //$ionicLoading.hide();
                     var allSheets = tableData[0];
                     deferred.resolve(allSheets);
-//                     console.log("in fetchStaticData..");
 
                     var sheetnames = [ 
 					'announcements',
@@ -43,17 +42,13 @@ var StaticService = ['$ionicLoading', '$state', '$q', 'Tabletop', '$localStorage
                             }
                             // store result in localstorage for fast access next time
                             $localStorage['staticcontent.' + sheet] = staticContent[sheet];
-//                             console.log(sheet + "..." + JSON.stringify(staticContent[sheet]));
                         } catch (error) {
-                            console.log("Can't read sheet '" + sheet + "'. Using local client cache. " + error);
                         }
                     });
 
 
                 }, function (error) {
 					//$ionicLoading.hide();
-                    console.error("Error reading from spreadsheet: ..." + error);
-					alert("Error reading from spreadsheet: ..." + error);
                     //return $q.reject(error);
 
                 });

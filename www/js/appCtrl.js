@@ -29,7 +29,6 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
     };
 
     $scope.displayAlert = function($message) {
-        console.log("into displayAlert.." + $message);
         $ionicLoading.hide();
 
         if (navigator != null && navigator.notification != null) {
@@ -49,7 +48,7 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
     };
 
     function alertDismissed() {
-        colsole.log("in alertDismissed..");
+        
     }
 
     $scope.getRequestHeader = function() {
@@ -64,7 +63,6 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
             url = 'http://' + url;
         }
         window.open(url, '_system');
-        console.log("meeting url: " + url);
     };
 
     $scope.cortexLogo = '<img src="img/cortex_logo.png" class="header-cortex-logo">';
@@ -88,17 +86,13 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
     //         scheme = 'me.lyft.android';
     //     }
         
-    //     console.log("scheme: " + scheme);
-        
     //     appAvailability.check(
     //         scheme, // URI Scheme
     //         function() {  // Success callback
     //             window.open('lyft-taxi-app-alternative://', '_system', 'location=no');
-    //             console.log('Lyft is available');
     //         },
     //         function() {  // Error callback
     //             window.open('https://www.lyft.com', '_system', 'location=no');
-    //             console.log('Lyft is not available');
     //         }
     //     ); 
     // }
