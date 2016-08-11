@@ -2,7 +2,7 @@
     <ion-nav-title class="discover-wrapper">
         <div class="top-header">
             <div class="center" ng-if="logoURL" style="margin-top: 6px;">
-                <div class="left" ng-click="fetchIonicDeployInfo()">
+                <div class="left" <!-- ng-click="fetchIonicDeployInfo()" --> >
                     <img src="img/cortex_logo.png">
                 </div>
                 <img ng-src="{{logoURL}}" class="scte-isbe-cortex-logo">
@@ -15,11 +15,11 @@
     <ion-header-bar class="bar-subheader search-box-wrapper">
         <label class="item-input-wrapper" ng-show="!initialFocus">
             <i class="all-icon-icon_search_white search-icn"></i>
-            <input type="search" placeholder="Enter keyword here" ng-model="query" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults(query)">
+            <input type="search" placeholder="Search courses and tech resources" ng-model="query" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults(query)">
         </label>
         <label class="item-input-wrapper" ng-show="initialFocus">
             <i class="all-icon-icon_search_white search-icn"></i>
-            <input type="search" placeholder="Enter keyword here" ng-model="query" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults(query)" autofocus="true">
+            <input type="search" placeholder="Search courses and tech resources" ng-model="query" ng-focus="showRecentSearches()" ng-blur="hideRecentSearches()" ng-change="searchChange()" ng-keyup="$event.keyCode == 13 && searchResults(query)" autofocus="true">
         </label>
         <button ng-if="isAndroid" class="button button-clear button-stable" ng-click="voiceRecog()" style="position:absolute;top:16px;right:19px" ng-show="query == ''">
             <i class="all-icon-icon_mic mic-icn"></i>
