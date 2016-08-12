@@ -1,6 +1,8 @@
 var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localStorage', '$window','$ionicScrollDelegate','AppConstants', function($scope, $state, $rootScope, $http, Utils, $localStorage, $window,$ionicScrollDelegate,AppConstants) {
 
-    Utils.scteSSO();
+    if($localStorage["myLearning"] != null) {
+        //Utils.scteSSO();
+    }
     $scope.staticContent = [];
     $scope.Config = [];
     $scope.platform = ionic.Platform.platform();
@@ -54,13 +56,31 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
     });
 
     $scope.renderMyLearnings = function() {
-        $scope.myLearning = $localStorage["myLearning"];
-        $scope.inprogressCourses = $scope.myLearning["In Progress"];
-        $scope.completedCourses = $scope.myLearning["Completed"];
-        $scope.allCourses = $scope.myLearning["All Courses"];
-        $scope.inprogressCoursesLength = $scope.inprogressCourses.length;
-        $scope.completedCoursesLength = $scope.completedCourses.length;
-        $scope.allCoursesLength = $scope.allCourses.length;
+        
+        $scope.myLearning = []
+        $scope.inprogressCourses = [];
+        $scope.completedCourses = [];
+        $scope.allCourses = [];
+        $scope.inprogressCoursesLength = 0;
+        $scope.completedCoursesLength = 0;
+        $scope.allCoursesLength = 0;
+            
+        if($localStorage["myLearning"] != null) {
+            $scope.myLearning = $localStorage["myLearning"];
+            $scope.inprogressCourses = $scope.myLearning["In Progress"];
+            $scope.completedCourses = $scope.myLearning["Completed"];
+            $scope.allCourses = $scope.myLearning["All Courses"];
+            
+            if($scope.inprogressCourses != null)
+                $scope.inprogressCoursesLength = $scope.inprogressCourses.length;
+            
+            if($scope.completedCourses != null)
+                $scope.completedCoursesLength = $scope.completedCourses.length;
+            
+            if($scope.allCourses != null)
+                $scope.allCoursesLength = $scope.allCourses.length;
+        } 
+       
 
     };
 
@@ -72,10 +92,7 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
 
     if ($localStorage["myLearning"] != null) {
         $scope.renderMyLearnings();
-    } else {
-        $scope.showLoader();
-    }
-
+    } 
    
     $scope.renderMyLearnings();
 

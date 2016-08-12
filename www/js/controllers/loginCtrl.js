@@ -2,6 +2,8 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
  '$ionicHistory', 'AppConstants', function($scope, $state, $rootScope, $localStorage, Utils, StaticService, $timeout, $location, $ionicHistory, AppConstants) {
 
     $scope.fetchCableLabData = function() {
+        
+        console.log("in fetchCableLabData :: Login Controller..");
         Utils.doHttpRequest(Utils.getApiDetails().getCableLabAPI.httpMethod, Utils.getApiDetails().BaseURL + 
                             Utils.getApiDetails().getCableLabAPI.contexPath, Utils.getHttpHeader(), [])
                             .then(function(response) {
@@ -10,11 +12,11 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
                 var res = response['data'];
                 if ($message['statusCode'] == AppConstants.status200) {
                     angular.forEach(res, function(data) {
-                        $scope.rssFeeds = data.rssFeedData.item;
-                        $scope.nctaDatas = data.nctaData;
+                        $rootScope.rssFeeds = data.rssFeedData.item;
+                        $rootScope.nctaDatas = data.nctaData;
                         $rootScope.scraperData = data.scraperData;
-                        $localStorage["rssFeeds"] = $scope.rssFeeds;
-                        $localStorage["nctaDatas"] = $scope.nctaDatas;
+                        $localStorage["rssFeeds"] = $rootScope.rssFeeds;
+                        $localStorage["nctaDatas"] = $rootScope.nctaDatas;
                         $localStorage["scraperData"] = $rootScope.scraperData;
                     })
                 }
@@ -24,7 +26,7 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
 
     $scope.fetchResources = function() {
 
-        
+        console.log("in fetchResources :: Login Controller..");
         $headerParamArr.push({ "authToken": $localStorage['authToken'] });
         $headerParamArr.push({ "authType": "Bearer" });
         $headerParamArr.push({ "Content-Type": "application/json" });
@@ -91,29 +93,32 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
 
     /* Auto login code */
     $scope.init = function() {
+        console.log("in init :: Login Controller..");
         if ($localStorage["rssFeeds"] != null)
-            $scope.rssFeeds = $localStorage["rssFeeds"];
+            $rootScope.rssFeeds = $localStorage["rssFeeds"];
         if ($localStorage["nctaDatas"] != null)
-            $scope.nctaDatas = $localStorage["nctaDatas"];
+            $rootScope.nctaDatas = $localStorage["nctaDatas"];
         if ($localStorage["scraperData"] != null)
             $rootScope.scraperData = $localStorage["scraperData"];
 
         $scope.fetchCableLabData();
-        //$scope.fetchResources();
 
         if ($localStorage['authToken'] != null) {
+            
+            console.log("in init :: Login Controller..authToken.." + $localStorage['authToken']);
             Utils.scteSSO();
+            $scope.fetchResources();
             $ionicHistory.nextViewOptions({
                 disableBack: true
             });
-            $state.go(AppConstants.tabdiscoverName);
+            //$state.go(AppConstants.tabdiscoverName);
             $rootScope.authToken = $localStorage['authToken'];
         }
     }
-    $scope.init();
+    
 
     // Just for developmet, need to remove before production release    
-    $scope.username = 'tester@scte.org';
+    $scope.username = 'jokertest@scte.org';
     $scope.password = 'scte1234';
 
     $scope.goLogin = 'no';
@@ -150,7 +155,6 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
                             $localStorage['password'] = $scope.password;
                             $localStorage['authToken'] = $rootScope.authToken;
 
-                            //$scope.fetchResources();
                             $state.go(AppConstants.introName);
                         } else {
                             $scope.displayAlert(AppConstants.wrongUserNamePassword);
