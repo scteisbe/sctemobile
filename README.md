@@ -52,7 +52,7 @@ See https://github.com/cnring18/cordova-build-increment for more info.
 
 `ionic upload --note "Your comment here" --deploy=production`
 
-Note that this only works if you are changing JS, CSS, or HTML. Updates involving the Cordova plugins require that a new binary be uploaded to Google Play Store or the App Store.
+Note that this only works if you are changing JS, CSS, or HTML. Updates involving the Cordova plugins require that a new binary be uploaded to Google Play Store or the App Store. -
 
 Kevtest2
 
