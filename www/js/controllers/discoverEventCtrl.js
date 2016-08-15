@@ -1,5 +1,5 @@
 var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '$sce', 'Utils', '$localStorage', 'AppConstants', function($scope, $rootScope, $http, $state, $filter, $sce, Utils, $localStorage, AppConstants) {
-    Utils.scteSSO();
+    // Utils.scteSSO();
     $scope.eventErrorMsg = '';
     $scope.fetchEvents = function() {
         if ($rootScope.online) {

@@ -195,7 +195,7 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
     if ($localStorage['authToken'] != null) {
         
         console.log("in init :: App Controller ..authToken.." + $localStorage['authToken']);
-        Utils.scteSSO();
+        // Utils.scteSSO();
         $scope.fetchResources();
         
         //$state.go(AppConstants.tabdiscoverName);

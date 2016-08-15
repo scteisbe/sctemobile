@@ -109,7 +109,7 @@
   cortexConfig.run(['$ionicPlatform', '$ionicAnalytics', function($ionicPlatform, $ionicAnalytics) {
       $ionicPlatform.ready(function() {
           $ionicAnalytics.register({
-              silent: false, // By default all analytics events are logged to the console for debugging. The silent flag disables this.
+              silent: true, // By default all analytics events are logged to the console for debugging. The silent flag disables this.
               dryRun: false // dryRun=true won't send any events to the analytics backend. (useful during development)
           });
       });

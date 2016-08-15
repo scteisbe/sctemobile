@@ -216,49 +216,78 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         return applicationGo;
     },
   
-  scteSSO : function () {
-        $requestParamArr = [];
-	    $requestParamArr.push({ "__EVENTTARGET": "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$SubmitButton" });
-        $requestParamArr.push({ "__ASYNCPOST": "true" });
-        $requestParamArr.push({ "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInUserName": $localStorage['username'] });  
-        $requestParamArr.push({ "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInPassword": $localStorage['password'] });         
-        
-        $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-        
-        return  $http({
-			method: 'POST',
-			url: $localStorage['SSOUrl'],
-            //url: 'https://dev.scte.org/SCTE/Sign_In.aspx',
-			data: Utils.getStringFromArray($requestParamArr),
-			headers: '{"cache-control": "no-cache","Content-Type": "application/x-www-form-urlencoded"}' ,
+    scteSSO : function () {
+      // Step 1: get and set an scte.org session cookie
+
+// todo: use the URL from the server once it's in place
+      // var ssourl = $localStorage['SSOUrl'];
+      var ssourl = 'https://dev.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html';
+      $http({
+        method: 'GET',
+        url: ssourl
+      }).then(function successCallback(response){
+        // This trick assumes we get redirected to /mobile/signin-successful.html if already logged in
+        if (!response.data.includes("successful signin")) {
+          // Step 2: POST the scte.org credentials with the fresh session cookie
+          $requestParamArr = [];
+          $requestParamArr.push({ "__EVENTTARGET": "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$SubmitButton" });
+          $requestParamArr.push({ "__ASYNCPOST": "false" });
+          $requestParamArr.push({ "_ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInUserName": $localStorage['username'] });  
+          $requestParamArr.push({ "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInPassword": $localStorage['password'] });  
+
+          $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+          $http.defaults.crossDomain = true;
+          
+          $http({
+            method: 'POST',
+            url: ssourl,
+            data: Utils.getStringFromArray($requestParamArr),
+            withCredentials: true,
+            headers: '{"cache-control": "no-cache","Content-Type": "application/x-www-form-urlencoded"}' ,
             crossDomain: true,
-		}).then( 
-			function successCallback(response) {
-                
-                // A hack to prevent first time opening issue : Surojit
-                
-                if(!$rootScope.ssoCompleted) {
-                    $http({
-                        method: 'GET',
-			            url: 'http://scte.staging.coursestage.com/mod/scorm/player.php?scoid=938&cm=2495&currentorg=Overview_of_IPv6_and_DOCSIS_3.0_organization&a=367', 
-                        headers: '{"cache-control": "no-cache","Content-Type": "application/x-www-form-urlencoded"}' ,
-                        crossDomain: true,
-                    }).then(function(response) {
-                        if (response != null) {
-                            console.log("SSO response..");
-                            console.log(response);
-                            $rootScope.ssoCompleted = false;
-                            return response;
-                        }
-                    });
-                }
-			},
-			
-			function errorCallback(response) {
-			} 
-		);
+          })
+          .then(function successCallback(response) {
+            // if it worked, we should be redirected to /mobile/signin-successful.html
+            if (response.data.includes("successful signin")) {
+              console.log("Now signed in on scte.org");
+              Utils.doWcwSso();
+            } else {
+              // we got a 20x response status code, but it wasn't the "successful redirect" page
+              console.log("Failed to sign in on scte.org");
+              console.log(response);
+            }
+          },
+          function errorCallback(response) {
+            console.log("Something unexpected happened during scte.org sign in");
+            console.log(response);
+          });
+        } else {
+          console.log("Already signed in on scte.org");
+          Utils.doWcwSso();
+        }
+      },function errorCallback(response){
+          console.log("Something unexpected happened before scte.org sign in");
+          console.log(response);
+      })
     },
-    
+	
+  	doWcwSso : function () {
+  		// Step 3: tell WCW to do the SSO dance
+  		console.log("Starting WCW SSO");
+  		$http({
+  		  method: 'GET',
+  		  url: 'http://scte.staging.coursestage.com'
+  		}).then(function successCallback(response){
+  		  // assuming that response status 200 means success, then we made it
+  		  console.log("WCW SSO successful");
+  		},function errorCallback(response){
+        console.log("Something unexpected happened during WCW SSO");
+  		  console.log(response);
+  		});
+  	}
   };
   return Utils;
 }];
+
+
+
