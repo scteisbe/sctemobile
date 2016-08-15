@@ -238,9 +238,16 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
                 // A hack to prevent first time opening issue : Surojit
                 
                 if(!$rootScope.ssoCompleted) {
-                    Utils.doHttpRequest('GET','http://scte.staging.coursestage.com/mod/scorm/player.php?scoid=938&cm=2495&currentorg=Overview_of_IPv6_and_DOCSIS_3.0_organization&a=367', [], []).then(function(response) {
+                    $http({
+                        method: 'GET',
+			            url: 'http://scte.staging.coursestage.com/mod/scorm/player.php?scoid=938&cm=2495&currentorg=Overview_of_IPv6_and_DOCSIS_3.0_organization&a=367', 
+                        headers: '{"cache-control": "no-cache","Content-Type": "application/x-www-form-urlencoded"}' ,
+                        crossDomain: true,
+                    }).then(function(response) {
                         if (response != null) {
-                            $rootScope.ssoCompleted = true;
+                            console.log("SSO response..");
+                            console.log(response);
+                            $rootScope.ssoCompleted = false;
                             return response;
                         }
                     });

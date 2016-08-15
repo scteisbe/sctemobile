@@ -1,8 +1,10 @@
 var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicLoading', 
-                '$ionicPopup', 'Utils', '$window',
-    function($state, $rootScope, $scope, $compile, $filter, $ionicLoading, $ionicPopup, Utils, $window) {
+                '$ionicPopup', 'Utils', '$window', '$localStorage','AppConstants',
+    function($state, $rootScope, $scope, $compile, $filter, $ionicLoading, $ionicPopup, 
+                Utils, $window,$localStorage,AppConstants) {
 
     $rootScope.initialFocus=false;
+    console.log("in appCtrl Controller..");
 
     /*-----------Ionic Loader----------------*/
     $scope.showLoader = function() {
@@ -96,4 +98,107 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
     //         }
     //     ); 
     // }
+
+    $scope.fetchCableLabData = function() {
+        
+        console.log("in fetchCableLabData :: Login Controller..");
+        Utils.doHttpRequest(Utils.getApiDetails().getCableLabAPI.httpMethod, Utils.getApiDetails().BaseURL + 
+                            Utils.getApiDetails().getCableLabAPI.contexPath, Utils.getHttpHeader(), [])
+                            .then(function(response) {
+            if (response != null) {
+                $message = response['message'];
+                var res = response['data'];
+                if ($message['statusCode'] == AppConstants.status200) {
+                    angular.forEach(res, function(data) {
+                        $rootScope.rssFeeds = data.rssFeedData.item;
+                        $rootScope.nctaDatas = data.nctaData;
+                        $rootScope.scraperData = data.scraperData;
+                        $localStorage["rssFeeds"] = $rootScope.rssFeeds;
+                        $localStorage["nctaDatas"] = $rootScope.nctaDatas;
+                        $localStorage["scraperData"] = $rootScope.scraperData;
+                    })
+                }
+            }
+        });
+    };
+
+    $scope.fetchResources = function() {
+
+        console.log("in fetchResources :: Login Controller..");
+        $headerParamArr.push({ "authToken": $localStorage['authToken'] });
+        $headerParamArr.push({ "authType": "Bearer" });
+        $headerParamArr.push({ "Content-Type": "application/json" });
+        if ($rootScope.online) {
+            
+            // This call is for whitepapers. If else is placed here to stop it from calling the API again and again.
+            // Test to see if data persist.
+
+            Utils.doHttpRequest(Utils.getApiDetails().whitepaperAPI.httpMethod, 
+                                Utils.getApiDetails().BaseURL + Utils.getApiDetails().whitepaperAPI.contexPath, 
+                                $headerParamArr, []).then(function(response) {
+                if (response != null) {
+                    //data available from live API
+                    $message = response['message'];
+                    data = response['data'];
+                    //$scope.hideLoader();
+
+                    if ($message['statusCode'] == AppConstants.status200) {
+
+                        if (data != null) {
+                            $localStorage["whitePapers"] = data;
+                            $scope.whitePapers = data;
+                        }
+
+                         // This is for getGlossary.
+                
+                         Utils.doHttpRequest(Utils.getApiDetails().getGlossaryAPI.httpMethod, 
+                                Utils.getApiDetails().BaseURL + Utils.getApiDetails().getGlossaryAPI.contexPath, 
+                                $headerParamArr, []).then(function(response) {
+                                        
+                            if (response != null) {
+                                //data available from live API
+                                $message = response['message'];
+                                data = response['data'];
+                                $scope.hideLoader();
+
+                                if ($message['statusCode'] == AppConstants.status200) {
+                                    if (data != null) {
+                                        $localStorage["dictionarywords"] = data;
+                                    }
+                                }
+                            } else {
+                                //No API access
+                                $scope.hideLoader();
+                                //display data from stub
+                                $localStorage["dictionarywords"] = $scope.dictionarywordsStub;
+                            }
+                        });
+                    }
+                } else {
+                    //No API access
+                    $scope.hideLoader();
+                    //display data from stub
+                    $localStorage["whitePapers"] = $scope.whitePapersStub;
+                }
+            });
+
+        } else {
+            $scope.hideLoader();
+            $scope.displayAlert(AppConstants.noInternet);
+
+        }
+    };
+
+
+    $scope.fetchCableLabData();
+
+    if ($localStorage['authToken'] != null) {
+        
+        console.log("in init :: App Controller ..authToken.." + $localStorage['authToken']);
+        Utils.scteSSO();
+        $scope.fetchResources();
+        
+        //$state.go(AppConstants.tabdiscoverName);
+        $rootScope.authToken = $localStorage['authToken'];
+    }
 }];

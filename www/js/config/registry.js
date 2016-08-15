@@ -150,10 +150,10 @@
       "true":"true",
       "false":"false",
       "done": "Get Started",
-      "cantReachServer": "Can't reach server !",
+      "cantReachServer": "Can't reach server",
       "noInternet": "Internet not available. Please check network connectivity.",
       "system": '_system',
-      "searchServerErrorMsg": "Search request failed ! Please try after sometime !",
+      "searchServerErrorMsg": "Search request failed",
       "noData": "NO DATA AVAILABLE",
       /*** StatusCode Constatnts  ***/
       "status105": 105,
@@ -242,6 +242,7 @@
 
       /*** Controller Names ***/
       "loginCtrl": "loginCtrl",
+      "appCtrl": "appCtrl",
       "introCtrl": "introCtrl",
       "tabdictionaryviewCtrl": "dictionaryCtrl",
       "tabdiscoverCtrl": "DiscoverCtrl",
@@ -280,15 +281,15 @@
 
      
       /*** SearchCtrl Constatnts  ***/
-      "searchErrorMsg": "No Results Found!!!",
-      "searchFilterMessage": "No results available for the selection!!!",
+      "searchErrorMsg": "No Results Found",
+      "searchFilterMessage": "No results available for the selection",
       /*** DiscoverCtrl Constatnts  ***/
       "discoverNoInternet": "Internet not available. Please check network connectivity.",
       "discoverEventAddSuccess": "Event added Successfully",
-      "discoverEventAddFail": "Event Couldnot be added: ",
+      "discoverEventAddFail": "Event could not be added: ",
       "discoverEventsAlreadyAvailable": "Event is already added in your calendar.",
       "discoverErrorInCalendar": "Error in calendar.",
-      "speakNow": "Please Speak now",
+      "speakNow": "Please speak now",
       "enUS": "en-US",
       "informedURL": "http://www.cablelabs.com/news-events/blog",
       "nctaURL": "https://www.ncta.com/platform/feed/",
@@ -311,12 +312,12 @@
       /*** IntroCtrl Constatnts  ***/
       "introSkipIntro": "Get Started",
       /*** LoginCtrl Constatnts  ***/
-      "loginMissingInputData": "Missing input data !",
-      "wrongUserNamePassword": "Wrong username or password !",
+      "loginMissingInputData": "Wrong username or password",
+      "wrongUserNamePassword": "Wrong username or password",
       "joinScteLink":'http://www.scte.org/SCTE/Join/FastForms/CreateAccount.aspx',
       "forgotPasswordLink":'https://www.scte.org/SCTE/Sign_In.aspx',
       /*** DictionaryCtrl Constatnts  ***/
-      "dictionarySearchAcronym": "You can search for acronym definitions from the main search. Use the letters below to browse.",
+      "dictionarySearchAcronym": "Browse cable industry abbreviations and terms.",
       "all": 'all',
       /*** StaticCtrl Constatnts  ***/
       "staticNoentriesFound": "No entries found. Are there empty rows in the sheet?"

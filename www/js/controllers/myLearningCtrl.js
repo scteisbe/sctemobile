@@ -1,7 +1,7 @@
 var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localStorage', '$window','$ionicScrollDelegate','AppConstants', function($scope, $state, $rootScope, $http, Utils, $localStorage, $window,$ionicScrollDelegate,AppConstants) {
 
     if($localStorage["myLearning"] != null) {
-        //Utils.scteSSO();
+        Utils.scteSSO();
     }
     $scope.staticContent = [];
     $scope.Config = [];

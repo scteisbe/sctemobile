@@ -1,4 +1,6 @@
 var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage', '$sce', '$window', '$ionicHistory', 'AppConstants', function($scope, $state, $rootScope, $http, $ionicModal, $ionicLoading, Utils, $localStorage, $sce, $window, $ionicHistory, AppConstants) {
+
+    console.log("in Discover Controller..");
     $scope.staticContent = [];
     $scope.platform = ionic.Platform.platform();
     $scope.username = $localStorage['username'];
@@ -29,10 +31,6 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     ];
 
     $requestParamArr = [];
-
-    $scope.init = function() {
-        $scope.fetchProfile();
-    }
 
     $scope.voiceRecog = function() {
         $scope.voiceFlag = true;
@@ -93,6 +91,7 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     };
 
     $scope.fetchProfile = function() {
+        console.log("in Discover Controller :: fetchProfile..");
         if ($rootScope.online) {
             Utils.doHttpRequest(Utils.getApiDetails().getIndividualAPI.httpMethod, 
                                 Utils.getApiDetails().BaseURL + Utils.getApiDetails().getIndividualAPI.contexPath, 
@@ -140,12 +139,15 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
 
     };
 
+    
+
     $scope.prepareSearchRequestBody = function() {
         var searchEntitlements = $localStorage['searchEntitlements'];
         $rootScope.courses = searchEntitlements.Courses;
         $rootScope.modules = searchEntitlements.Modules;
     }
 
+    $scope.fetchProfile();
     $profileData = $localStorage['profiledata'];
     $eventsData = $localStorage['eventsdata'];
 
@@ -277,4 +279,5 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
         window.open(url, AppConstants.system);
     };
 
+    
 }];

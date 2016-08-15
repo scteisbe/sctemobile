@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar="true" class="login-wrapper" ng-init="init()">
+<ion-view hide-nav-bar="true" class="login-wrapper">
     <ion-content>
         <div class='full-size'>
             <div class='logintop'>
@@ -9,12 +9,12 @@
                 </div>
                 <div class="usernamediv">
                     <label class="item item-input">
-                        <input ng-model="username" type="text" placeholder="Enter Username" />
+                        <input ng-model="username" type="text" placeholder="Your scte.org username" autocapitalize="none" />
                     </label>
                 </div>
                 <div class="passworddiv">
                     <label class="item item-input">
-                        <input ng-model="password" type="password" placeholder="Enter Password" />
+                        <input ng-model="password" type="password" placeholder="Password" />
                     </label>
                 </div>
                 <div class="forgot-password">

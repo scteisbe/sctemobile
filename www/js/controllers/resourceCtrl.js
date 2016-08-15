@@ -61,7 +61,9 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
 
     if ($localStorage["whitePapers"] == undefined || $localStorage["whitePapers"] == null || $localStorage["whitePapers"].length == 0) {
         console.log("whitepaper data...1");
+        
         if ($rootScope.online) {
+            $scope.showLoader();
             Utils.doHttpRequest(Utils.getApiDetails().whitepaperAPI.httpMethod, 
             Utils.getApiDetails().BaseURL + Utils.getApiDetails().whitepaperAPI.contexPath, 
             Utils.getHttpHeader(), []).then(function(response) {
@@ -94,6 +96,7 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
 
     if ($localStorage["dictionarywords"] == undefined || $localStorage["dictionarywords"].length == 0) {
         if ($rootScope.online) {
+            $scope.showLoader();
             Utils.doHttpRequest(Utils.getApiDetails().getGlossaryAPI.httpMethod, 
             Utils.getApiDetails().BaseURL + Utils.getApiDetails().getGlossaryAPI.contexPath,
             Utils.getHttpHeader(), []).then(function(response) {
