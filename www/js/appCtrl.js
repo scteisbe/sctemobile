@@ -4,6 +4,7 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
                 Utils, $window,$localStorage,AppConstants) {
 
     $rootScope.initialFocus=false;
+    $rootScope.ssoCompleted = false;
     console.log("in appCtrl Controller..");
 
     /*-----------Ionic Loader----------------*/
@@ -195,9 +196,10 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
     if ($localStorage['authToken'] != null) {
         
         console.log("in init :: App Controller ..authToken.." + $localStorage['authToken']);
-        Utils.scteSSO();
+        if ($localStorage['SSOUrl'] != null) {
+            Utils.scteSSO();
+        }
         $scope.fetchResources();
-        
         //$state.go(AppConstants.tabdiscoverName);
         $rootScope.authToken = $localStorage['authToken'];
     }

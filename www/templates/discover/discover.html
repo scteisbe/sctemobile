@@ -1,17 +1,28 @@
-<ion-view view-title="Discover">
+<ion-view view-title="Discover">  
     <ion-nav-title class="discover-wrapper">
         <div class="top-header">
-            <div class="center" ng-if="logoURL" style="margin-top: 6px;">
-                <div class="left" >
-                    <img src="img/cortex_logo.png">
-                </div>
-                <img ng-src="{{logoURL}}" class="scte-isbe-cortex-logo">
+            <div  ng-if="logoURL" style="margin-top: 6px;">
+                <img ng-src="{logoURL}" class="scte-isbe-cortex-logo">
             </div>
             <div ng-if="!logoURL"">
                 <img src="img/cortex_logo.png" class="header-cortex-logo">
-            </div>
-        </div>
+            </div>     
+        </div>  
     </ion-nav-title>
+
+    <ion-nav-buttons side="left">
+        <div ng-if="logoURL" class="left-logo" style="margin-top: 6px;">
+            <img src="img/cortex_logo.png">
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <div class="user-name">Hello <br/>{{displayName}}
+            
+        </div>
+    </ion-nav-buttons>
+
+    
+    
     <ion-header-bar class="bar-subheader search-box-wrapper">
         <label class="item-input-wrapper" ng-show="!initialFocus">
             <i class="all-icon-icon_search_white search-icn"></i>

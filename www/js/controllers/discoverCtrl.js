@@ -3,7 +3,7 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     console.log("in Discover Controller..");
     $scope.staticContent = [];
     $scope.platform = ionic.Platform.platform();
-    $scope.username = $localStorage['username'];
+    $scope.displayName = $localStorage['displayName'];
     $scope.voiceFlag = false;
     $scope.recognitionStopped = false;
     $scope.previousSearches = $localStorage["PreviousSearch"];
@@ -117,13 +117,14 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
                         $profileData = $data[0];
                         $localStorage['profiledata'] = $profileData;
 
-                        if ($localStorage['SSOUrl'] == null) {
-                            $localStorage['SSOUrl'] = $profileData['SSOUrl'];
-                            Utils.scteSSO();
-                        }
                         $localStorage['SSOUrl'] = $profileData['SSOUrl'];
                         $localStorage["myLearning"] = $profileData.LearningPlan;
-                        $scope.username = $profileData['FirstName'];
+
+                        console.log("in discover..." + $localStorage['SSOUrl']);
+                        Utils.scteSSO();
+                        
+                        $scope.displayName = $profileData['FirstName'];
+                        $localStorage['displayName'] = $profileData['FirstName'];
                         $scope.cobrandingRecords = $localStorage['staticcontent.cobranding'];
                         $rootScope.logoURL = $scope.getCobrandingURL($profileData['CompanyId']);
                         $window.ga(AppConstants.set, AppConstants.userId, $profileData['Id']);
@@ -155,7 +156,7 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
         $scope.showLoader();
     } else {
         if ($profileData != null) {
-            $scope.username = $profileData['FirstName'];
+            $scope.displayName = $profileData['FirstName'];
         }
         if ($eventsData != null) {
             $scope.events = $eventsData['liveLearnings'];

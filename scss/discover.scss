@@ -36,20 +36,10 @@
             float: right;
             margin-left: 10px;
         }
-        .user-name {
-            margin-top: 4px;
-            vertical-align: text-top;
-            text-align: right;
-            text-transform: capitalize;
-            font-size: 13px;
-            color: $color-light;
-            font-weight: 300;
-            line-height: 17px;
-        }
         .scte-isbe-cortex-logo {
-            width: 175px;
-            padding-right: 33px;
-            padding-top: 3px;
+            width: auto;
+            height: 40px;
+            padding: 3px;
         }
     }
     .slide-box {
@@ -185,6 +175,23 @@
     }
 }
 
+.user-name {
+            margin-top: 4px;
+            vertical-align: text-top;
+            text-align: right;
+            text-transform: capitalize;
+            font-size: 15px;
+            color: $color-primary;
+            font-weight: 300;
+            float: right;
+}
+
+ .left-logo {
+            
+            img {
+                height: 35px;
+            }
+    }
 
 /* search box in sub header */
 
