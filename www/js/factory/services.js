@@ -232,7 +232,7 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
           $requestParamArr = [];
           $requestParamArr.push({ "__EVENTTARGET": "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$SubmitButton" });
           $requestParamArr.push({ "__ASYNCPOST": "false" });
-          $requestParamArr.push({ "_ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInUserName": $localStorage['username'] });  
+          $requestParamArr.push({ "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInUserName": $localStorage['username'] });  
           $requestParamArr.push({ "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInPassword": $localStorage['password'] });  
 
           $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
