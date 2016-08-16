@@ -20,6 +20,7 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
             //"BaseURL":"http://vmdimisapp01:1322/api/",
             
             "BaseURL":"https://devapi.scte.org/mobileappui/api/",
+            "ssourl":"https://dev.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html",
             
             "loginAPI" : {
                 "httpMethod": "post",
@@ -218,29 +219,31 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
   
     scteSSO : function () {
       // Step 1: get and set an scte.org session cookie
-
-// todo: use the URL from the server once it's in place
-      // var ssourl = $localStorage['SSOUrl'];
-      var ssourl = 'https://dev.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html';
       $http({
         method: 'GET',
-        url: ssourl
+        url: Utils.getApiDetails().ssourl
       }).then(function successCallback(response){
         // This trick assumes we get redirected to /mobile/signin-successful.html if already logged in
-        if (!response.data.includes("successful signin")) {
+        if (!response.data.match(/successful signin/i)) {
           // Step 2: POST the scte.org credentials with the fresh session cookie
           $requestParamArr = [];
           $requestParamArr.push({ "__EVENTTARGET": "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$SubmitButton" });
           $requestParamArr.push({ "__ASYNCPOST": "false" });
-          $requestParamArr.push({ "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInUserName": $localStorage['username'] });  
-          $requestParamArr.push({ "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInPassword": $localStorage['password'] });  
+          $requestParamArr.push({
+            "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInUserName":
+            $localStorage['username']
+          });
+          $requestParamArr.push({
+            "ctl01$TemplateBody$WebPartManager1$gwpciNewContactSignInCommon$ciNewContactSignInCommon$signInPassword":
+            $localStorage['password']
+          });
 
           $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
           $http.defaults.crossDomain = true;
           
           $http({
             method: 'POST',
-            url: ssourl,
+            url: Utils.getApiDetails().ssourl,
             data: Utils.getStringFromArray($requestParamArr),
             withCredentials: true,
             headers: '{"cache-control": "no-cache","Content-Type": "application/x-www-form-urlencoded"}' ,
@@ -274,20 +277,33 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
   	doWcwSso : function () {
   		// Step 3: tell WCW to do the SSO dance
   		console.log("Starting WCW SSO");
+      var ssourl = '';
+      _.each($localStorage["myLearning"]["All Courses"], function(o){
+        _.each(o.userCourseList, function(i) {
+          ssourl = ssourl || i.URL;
+          return (ssourl == '');
+        });
+        return (ssourl == '');
+      });
+
   		$http({
   		  method: 'GET',
-  		  url: 'http://scte.staging.coursestage.com'
+        url: ssourl
   		}).then(function successCallback(response){
-  		  // assuming that response status 200 means success, then we made it
-  		  console.log("WCW SSO successful");
+        // $http is following redirects, so we get 200 on success _and_ when we end up at the scte.org login page
+        if (response.data.match(/Sign In/i) || response.data.match(/iMIS-WebPart/i) || response.data.match(/info@scte.org/i)) {
+        // these phrases appear on the scte.org login page
+        // if the login page changes, this will probably break
+          console.log("WCW SSO failed - scte.org is prompting for a password");
+          console.log(response);
+        } else {
+    		  console.log("WCW SSO successful");
+        }
   		},function errorCallback(response){
         console.log("Something unexpected happened during WCW SSO");
-  		  console.log(response);
+        console.log(response);
   		});
   	}
   };
   return Utils;
 }];
-
-
-
