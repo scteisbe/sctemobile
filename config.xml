@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget android-versionCode="23" id="org.scte.mobile" ios-CFBundleVersion="1.23" version="1.20.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="25" ios-CFBundleVersion="1.24" version="1.24.1" id="org.scte.mobile" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 	<name>SCTE Mobile</name>
 	<description>SCTE / ISBE mobile app</description>
 	<author email="info@scte.org" href="http://scte.org/">SCTE</author>
@@ -96,4 +96,4 @@
 	<plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
 	<plugin name="cordova-plugin-speechrecognizer" spec="https://github.com/poiuytrez/SpeechRecognizer"/>
 	<plugin name="cordova-plugin-network-information" spec="https://github.com/apache/cordova-plugin-network-information"/>
-</widget> 
+</widget>
