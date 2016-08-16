@@ -194,13 +194,11 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
     $scope.fetchCableLabData();
 
     if ($localStorage['authToken'] != null) {
-        
-        console.log("in init :: App Controller ..authToken.." + $localStorage['authToken']);
+        $rootScope.authToken = $localStorage['authToken'];
+        $scope.fetchResources();
         if ($localStorage['SSOUrl'] != null) {
             Utils.scteSSO();
         }
-        $scope.fetchResources();
         //$state.go(AppConstants.tabdiscoverName);
-        $rootScope.authToken = $localStorage['authToken'];
     }
 }];
