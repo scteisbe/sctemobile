@@ -116,13 +116,8 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
                         $rootScope.profileData = $data[0];
                         $profileData = $data[0];
                         $localStorage['profiledata'] = $profileData;
-
-                        if ($localStorage['SSOUrl'] == null) {
-                            $localStorage['SSOUrl'] = $profileData['SSOUrl'];
-                            Utils.scteSSO();
-                        }
-                        $localStorage['SSOUrl'] = $profileData['SSOUrl'];
                         $localStorage["myLearning"] = $profileData.LearningPlan;
+                        Utils.scteSSO();
                         $scope.username = $profileData['FirstName'];
                         $scope.cobrandingRecords = $localStorage['staticcontent.cobranding'];
                         $rootScope.logoURL = $scope.getCobrandingURL($profileData['CompanyId']);

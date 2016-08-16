@@ -13,8 +13,8 @@
 
   cortexConfig.config(appRoute)
 
-  cortexConfig.run(['$rootScope', '$location', '$window', '$ionicPlatform', '$state', '$ionicPopup', '$localStorage', '$ionicHistory',
-      function($rootScope, $location, $window, $ionicPlatform, $state, $ionicPopup, $localStorage, $ionicHistory) {
+  cortexConfig.run(['$rootScope', '$location', '$window', '$ionicPlatform', '$state', '$ionicPopup', '$localStorage', '$ionicHistory', 'Utils',
+      function($rootScope, $location, $window, $ionicPlatform, $state, $ionicPopup, $localStorage, $ionicHistory, Utils) {
           $rootScope.$on("$locationChangeStart", function(event, next, current) {
               // if ($rootScope.globalVideoflag + "flag") {
               //     var state = 'pause';
@@ -80,6 +80,10 @@
               return false;
           }, 101);
 
+          $ionicPlatform.on('resume', function() {
+            Utils.scteSSO();
+          });
+
 
       }
   ]);
@@ -109,7 +113,7 @@
   cortexConfig.run(['$ionicPlatform', '$ionicAnalytics', function($ionicPlatform, $ionicAnalytics) {
       $ionicPlatform.ready(function() {
           $ionicAnalytics.register({
-              silent: false, // By default all analytics events are logged to the console for debugging. The silent flag disables this.
+              silent: true, // By default all analytics events are logged to the console for debugging. The silent flag disables this.
               dryRun: false // dryRun=true won't send any events to the analytics backend. (useful during development)
           });
       });
