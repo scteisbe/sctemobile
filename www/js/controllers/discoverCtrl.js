@@ -11,24 +11,42 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
 
     $scope.ionicUpdate = function() {
         var deploy = new Ionic.Deploy();
-        deploy.watch().then(function() {}, function() {}, function(updateAvailable) {
+        deploy.watch().then(function () { }, function () { }, function (updateAvailable) {
+            console.log("updateAvailable.." + updateAvailable);
             if (updateAvailable) {
-                deploy.download().then(function() {
-                    deploy.extract().then(function() {
+                deploy.download().then(function () {
+                    deploy.extract().then(function () {
                         deploy.unwatch();
-                        deploy.load();
+                        $title = 'New version available!';
+                        $message = 'Ready to use the latest features?';
+                        showConfirm($title,$message);
                     });
                 });
             }
         });
     }
 
-    $scope.ionicUpdate();
+    function showConfirm($title, $message) {
+        navigator.notification.confirm(
+            $message,  // message
+            onConfirm,              // callback to invoke with index of button pressed
+            $title,            // title
+            'Yes,Not now'          // buttonLabels
+        );
+    };
+
+    function onConfirm(buttonIndex) {
+        if(buttonIndex == 1) {
+            deploy.load();
+        }
+    };
 
     var sheetnames = [
         'announcements',
         'featuredresources',
     ];
+
+    $scope.ionicUpdate();
 
     $requestParamArr = [];
 

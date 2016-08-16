@@ -1,3 +1,5 @@
+// https://www.npmjs.com/package/cordova-build-increment
+
 module.exports = function(context) {
     var util = require('util'),
     	fs = require('fs'),
