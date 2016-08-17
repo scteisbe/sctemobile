@@ -1,4 +1,7 @@
-# Ionic baseline for SCTE mobile app
+# CORTEX Mobile
+
+## Background
+This is a hybrid app developed using the Ionic 1 framework.
 
 ## Installation
 
@@ -7,9 +10,9 @@ Install node and npm from here https://nodejs.org/en/
 
 Install git here https://git-scm.com/download
 
-Windows: `npm install -g bower  cordova  ionic  gulp  ios-sim`
+Windows: `npm install -g bower  cordova  ionic@1.7.16  gulp  ios-sim`
 
-Mac: `sudo npm install -g bower  cordova  ionic  gulp  ios-sim`
+Mac: `sudo npm install -g bower  cordova  ionic@1.7.16  gulp  ios-sim`
 
 ####Get the code
 `git clone https://github.com/scteisbe/sctemobile.git <YOUR_TARGET_DIRECTORY_HERE>`
@@ -28,6 +31,7 @@ Mac: `sudo npm install -g bower  cordova  ionic  gulp  ios-sim`
 
 ####Prepare to run on device or emulator
 `ionic add platform android`
+
 `ionic add platform ios` (only works if you're on a Mac)
 
 ####Build it (bumps `android-versionCode` and `ios-CFBundleVersion` first)
