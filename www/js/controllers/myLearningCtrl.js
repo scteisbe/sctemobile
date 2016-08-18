@@ -10,10 +10,17 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
     $scope.Config = $scope.staticContent['configs'];
     $scope.btnCourseData = $scope.Config[0];
     $scope.btnCourseDataURL = $scope.Config[1];
-    $scope.activeTab = 2; // initially activated secondary tab
+    $scope.activeTab = 0; // initially activated secondary tab
     $scope.gameItems = $localStorage['staticcontent.games'];
     $scope.gamesErrorMsg='';
     tempgames=$scope.gameItems;
+
+    //Legacy corse message fetch from the spread sheet.
+        
+    $scope.Config.forEach(function(element) {
+        if(element['key'] == 'course_unavailable_message')
+            $scope.courseUnavailableMsg = element['value'];
+    }, this);
                         
     if(tempgames ==null || tempgames.length==0){
         $scope.gamesErrorMsg=AppConstants.noData;
@@ -165,11 +172,15 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
     };
 
     $scope.openSCTEModule = function(url) {
-        window.open(url, '_blank', 'location=yes');
+        console.log("url..." + url);
+         if(url == null || url.length == 0) {
+            $scope.displayAlert($scope.courseUnavailableMsg);
+        } else {
+            window.open(url, '_blank', 'location=yes');
+        }
     };
 
     $scope.openLiveLearning = function(url) {
-
         window.open(url, '_system');
     };
 }];

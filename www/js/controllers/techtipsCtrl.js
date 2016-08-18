@@ -14,9 +14,9 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
     $scope.primersContents = $localStorage['staticcontent.primers'];
     $scope.primersErrorMsg='';
     tempPrimers= $scope.primersContents;
-                        if(tempPrimers==null || tempPrimers.length==0){
-                              $scope.primersErrorMsg=AppConstants.noData;
-                        }
+    if(tempPrimers==null || tempPrimers.length==0){
+            $scope.primersErrorMsg=AppConstants.noData;
+    }
     //Email to address has to be read from the spread sheet.
     var config = $localStorage['staticcontent.configs'];
     
