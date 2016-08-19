@@ -72,7 +72,7 @@ To deploy immediately (on next app launch) to all users (and ignoring binary com
 
 `ionic package build ios --release --profile scte_ios_production`
 
-Check status and download .apk and .ipa from https://apps.ionic.io/app/4d6169d2/package
+Check status and download .apk and .ipa from https://apps.ionic.io/app/4d6169d2/package. Running the `ionic package` command also creates a Deploy (see above) that can be made "active" once you set the equivalent version to the new Package version you just created.
 
 ##Publish it
 
