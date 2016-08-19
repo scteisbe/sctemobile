@@ -72,3 +72,13 @@ To deploy immediately (on next app launch) to all users (and ignoring binary com
 
 `ionic package build ios --release --profile scte_ios_production`
 
+Check status and download .apk and .ipa from https://apps.ionic.io/app/4d6169d2/package
+
+##Publish it
+
+From any computer, upload .apk file via browser to Google Play developer console.
+
+On a Mac with XCode, run an app called Application Loader to upload .ipa to App Store.
+
+Go through the publishing processes as with any other app.
+
