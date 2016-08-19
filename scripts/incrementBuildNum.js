@@ -1,3 +1,7 @@
+// Removed from config.xml...
+// <hook src="scripts/incrementBuildNum.js" type="before_build"/>
+//
+
 module.exports = function(context) {
     var util = require('util'),
     	fs = require('fs'),

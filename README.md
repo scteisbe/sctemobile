@@ -69,11 +69,6 @@ To deploy immediately (on next app launch) to all users (and ignoring binary com
 (requires an authorized Ionic account)
 
 `ionic package build android --release --profile scte_android_production`
+
 `ionic package build ios --release --profile scte_ios_production`
-
-
-
-
-
-
 
