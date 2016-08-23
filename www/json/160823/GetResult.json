@@ -1,0 +1,2456 @@
+{
+  "message": {
+    "statusCode": "200",
+    "statusMessage": "SUCCESS",
+    "statusDescription": null
+  },
+  "data": [
+    {
+      "scraperData": [
+        {
+          "title": "PNM Best Practices: HFC Networks (DOCSIS 3.0)",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-GL-PNMP-V03-160725.pdf",
+          "type": "Guidelines",
+          "version": "V03",
+          "designation": "CM-GL-PNMP",
+          "publishedDate": "07/25/16"
+        },
+        {
+          "title": "Mapping of Address and Port (MAP) Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-TR-MAP-V01-160630.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "CL-TR-MAP",
+          "publishedDate": "06/30/16"
+        },
+        {
+          "title": "Authentication and Authorization Interface 1.0 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-AUTH1.0-C01-160616.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "CL-SP-AUTH1.0",
+          "publishedDate": "06/16/16"
+        },
+        {
+          "title": "Authentication and Authorization Interface 1.1 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-AUTH1.1-I01-160616.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "CL-SP-AUTH1.1",
+          "publishedDate": "06/16/16"
+        },
+        {
+          "title": "Cable Broadband and Wi-Fi Intercept 2.0 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-CBI2.0-I11-160602.pdf",
+          "type": "Specification",
+          "version": "I11",
+          "designation": "CM-SP-CBI2.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "Downstream RF Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-DRFI-I15-160602.pdf",
+          "type": "Specification",
+          "version": "I15",
+          "designation": "CM-SP-DRFI",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DOCSIS 3.0 Security Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-SEC3.0-I16-160602.pdf",
+          "type": "Specification",
+          "version": "I16",
+          "designation": "CM-SP-SECv3.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DPoE Architecture Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-ARCHv2.0-I05-160602.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "DPoE-SP-ARCHv2.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DPoE IP Network Elements Requirements",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-IPNEv2.0-I06-160602.pdf",
+          "type": "Specification",
+          "version": "I06",
+          "designation": "DPoE-SP-IPNEv2.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DPoE Metro Ethernet Forum Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-MEFv2.0-I04-160602.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "DPoE-SP-MEFv2.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DPoE MAC and Upper Layer Protocols Requirements",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-MULPIv1.0-I11-160602.pdf",
+          "type": "Specification",
+          "version": "I11",
+          "designation": "DPoE-SP-MULPIv1.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DPoE MAC and Upper Layer Protocols Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-MULPIv2.0-I10-160602.pdf",
+          "type": "Specification",
+          "version": "I10",
+          "designation": "DPoE-SP-MULPIv2.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DPoE OAM Extensions Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-OAMv2.0-I09-160602.pdf",
+          "type": "Specification",
+          "version": "I09",
+          "designation": "DPoE-SP-OAMv2.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DPoE Operations and Support System Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-OSSIv2.0-I09-160602.pdf",
+          "type": "Specification",
+          "version": "I09",
+          "designation": "DPoE-SP-OSSIv2.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DPoE Physical Layer Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-PHYv2.0-I05-160602.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "DPoE-SP-PHYv2.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DPoE Security Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-SECv2.0-I05-160602.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "DPoE-SP-SECv2.0",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DOCSIS 3.1 Physical Layer Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-PHYv3.1-I09-160602.pdf",
+          "type": "Specification",
+          "version": "I09",
+          "designation": "CM-SP-PHYv3.1",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DOCSIS 3.1 MAC and Upper Layer Protocols Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-MULPIv3.1-I09-160602.pdf",
+          "type": "Specification",
+          "version": "I09",
+          "designation": "CM-SP-MULPIv3.1",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "Cable Modem Operations Support System Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-CM-OSSIv3.1-I07-160602.pdf",
+          "type": "Specification",
+          "version": "I07",
+          "designation": "CM-SP-CM-OSSIv3.1",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "CCAP Operations Support System Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-CCAP-OSSI3.1-I07-160602.pdf",
+          "type": "Specification",
+          "version": "I07",
+          "designation": "CM-SP-CCAP-OSSIv3.1",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "DOCSIS 3.1 Security Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-SECv3.1-I06-160602.pdf",
+          "type": "Specification",
+          "version": "I06",
+          "designation": "CM-SP-SECv3.1",
+          "publishedDate": "06/02/16"
+        },
+        {
+          "title": "Remote DOCSIS Timing Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-R-DTI-I03-160526.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "CM-SP-R-DTI",
+          "publishedDate": "05/26/16"
+        },
+        {
+          "title": "WiFi Provisioning Framework Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/WR-SP-WiFi-MGMT-I07-160512.pdf",
+          "type": "Specification",
+          "version": "I07",
+          "designation": "WR-SP-WiFi-MGMT",
+          "publishedDate": "05/12/16"
+        },
+        {
+          "title": "Generic Control Plane Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-GCP-I02-160512-1.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "CM-SP-GCP",
+          "publishedDate": "05/12/16"
+        },
+        {
+          "title": "Remote Downstream External PHY Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-R-DEPI-I04-160512.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "CM-SP-R-DEPI",
+          "publishedDate": "05/12/16"
+        },
+        {
+          "title": "Remote Out-of-Band Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-R-OOB-I03-160512.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "CM-SP-R-OOB",
+          "publishedDate": "05/12/16"
+        },
+        {
+          "title": "Remote PHY Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-R-PHY-I04-160512.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "CM-SP-R-PHY",
+          "publishedDate": "05/12/16"
+        },
+        {
+          "title": "Remote Upstream External PHY Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-R-UEPI-I03-160512.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "CM-SP-R-UEPI",
+          "publishedDate": "05/12/16"
+        },
+        {
+          "title": "Remote PHY OSS Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-R-OSSI-I03-160512.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "CM-SP-R-OSSI",
+          "publishedDate": "05/12/16"
+        },
+        {
+          "title": "CableLabs Definition MIB Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-MIB-CLABDEF-I12-160325.pdf",
+          "type": "Specification",
+          "version": "I12",
+          "designation": "CL-SP-MIB-CLABDEF",
+          "publishedDate": "03/25/16"
+        },
+        {
+          "title": "CableLabs&#8217; Assigned Names and Numbers",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-CANN-I14-160317.pdf",
+          "type": "Specification",
+          "version": "I14",
+          "designation": "CL-SP-CANN",
+          "publishedDate": "03/17/16"
+        },
+        {
+          "title": "CableLabs&#8217; DHCP Options Registry",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-CANN-DHCP-Reg-I13-160317.pdf",
+          "type": "Specification",
+          "version": "I13",
+          "designation": "CL-SP-CANN-DHCP-Reg",
+          "publishedDate": "03/17/16"
+        },
+        {
+          "title": "IPv4 and IPv6 eRouter Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-eRouter-I18-160317.pdf",
+          "type": "Specification",
+          "version": "I18",
+          "designation": "CM-SP-eRouter",
+          "publishedDate": "03/17/16"
+        },
+        {
+          "title": "Standalone Router Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-sRouter-I01-160317.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "CL-SP-sRouter",
+          "publishedDate": "03/17/16"
+        },
+        {
+          "title": "CCAP OSSI Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-CCAP-OSSI-I08-151210.pdf",
+          "type": "Specification",
+          "version": "I08",
+          "designation": "CM-SP-CCAP-OSSI",
+          "publishedDate": "12/10/15"
+        },
+        {
+          "title": "DOCSIS 3.0 MAC and Upper Layer Protocols Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-MULPIv3.0-I29-151210.pdf",
+          "type": "Specification",
+          "version": "I29",
+          "designation": "CM-SP-MULPIv3.0",
+          "publishedDate": "12/10/15"
+        },
+        {
+          "title": "DOCSIS 3.0 Operations Support System Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-OSSIv3.0-I28-151210.pdf",
+          "type": "Specification",
+          "version": "I28",
+          "designation": "CM-SP-OSSIv3.0",
+          "publishedDate": "12/10/15"
+        },
+        {
+          "title": "PacketCable Multimedia Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MM-I07-151111.pdf",
+          "type": "Specification",
+          "version": "I07",
+          "designation": "PKT-SP-MM",
+          "publishedDate": "11/11/15"
+        },
+        {
+          "title": "Asset Management Interface 3.0 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/MD-SP-AMIv3.0-C01-151104.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "MD-SP-AMIv3.0",
+          "publishedDate": "11/04/15"
+        },
+        {
+          "title": "CableLabs Content 3.0 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/MD-SP-CONTENTv3.0-C01-151104.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "MD-SP-CONTENTv3.0",
+          "publishedDate": "11/04/15"
+        },
+        {
+          "title": "Content Encoding Profiles 3.0 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-CEP3.0-I05-151104.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "OC-SP-CEP3.0",
+          "publishedDate": "11/04/15"
+        },
+        {
+          "title": "Distributed CCAP Architectures Overview Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-DCA-V01-150908.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "CM-TR-DCA",
+          "publishedDate": "09/08/15"
+        },
+        {
+          "title": "Remote MAC-PHY Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-R-MACPHY-V01-150730.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "CM-TR-R-MACPHY",
+          "publishedDate": "07/30/15"
+        },
+        {
+          "title": "Resource Management Interface Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-RMI-V01-150710.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "CM-TR-RMI-V01-150710",
+          "publishedDate": "07/10/15"
+        },
+        {
+          "title": "SDN Architecture for Cable Access Networks Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/VNE-TR-SDN-ARCH-V01-1506253.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "VNE-TR-SDN-ARCH",
+          "publishedDate": "06/25/15"
+        },
+        {
+          "title": "Modular Headend Architecture v2 Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-MHAv2-V01-150615.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "CM-TR-MHAv2",
+          "publishedDate": "06/15/15"
+        },
+        {
+          "title": "Business Services over DOCSIS Layer 2 Virtual Private Networks",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-L2VPN-I15-150528.pdf",
+          "type": "Specification",
+          "version": "I15",
+          "designation": "CM-SP-L2VPN",
+          "publishedDate": "05/28/15"
+        },
+        {
+          "title": "Resource Management Architecture and HTTP Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-RMI-HTTP-I02-150528.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "CM-SP-RMI-HTTP",
+          "publishedDate": "05/28/15"
+        },
+        {
+          "title": "Service Discovery and Registration Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-RMI-SDR-I02-150528.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "CM-SP-RMI-SDR",
+          "publishedDate": "05/28/15"
+        },
+        {
+          "title": "Session Manager – Edge Resource Manager Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-RMI-SM-ERM-I02-150528.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "CM-SP-RMI-SM-ERM",
+          "publishedDate": "05/28/15"
+        },
+        {
+          "title": "Edge Resource Manager &#8211; Edge Device Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-RMI-ERM-EDGE-I02-1505284.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "CM-SP-RMI-ERM-EDGE",
+          "publishedDate": "05/28/15"
+        },
+        {
+          "title": "IP Multicast Server-Client Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-MS-EMCI-I01-1505282.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-MS-EMCI",
+          "publishedDate": "05/28/15"
+        },
+        {
+          "title": "IP Multicast Controller-Server Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-MC-MSI-I01-1505281.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-MC-MSI",
+          "publishedDate": "05/28/15"
+        },
+        {
+          "title": "IP Multicast Controller-Client Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-MC-EMCI-I01-1505281.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-MC-EMCI",
+          "publishedDate": "05/28/15"
+        },
+        {
+          "title": "WiFi Requirements for Cable Modem Gateways",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/WR-SP-WiFi-GW-I05-150515-1.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "WR-SP-WiFi-GW",
+          "publishedDate": "05/15/15"
+        },
+        {
+          "title": "OpenCable CableCARD Interface 2.0 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-CCIF2.0-I27-150330.pdf",
+          "type": "Specification",
+          "version": "I27",
+          "designation": "OC-SP-CCIF2.0",
+          "publishedDate": "03/30/15"
+        },
+        {
+          "title": "DOCSIS Timing Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-DTI-I06-150305.pdf",
+          "type": "Specification",
+          "version": "I06",
+          "designation": "CM-SP-DTI",
+          "publishedDate": "03/05/15"
+        },
+        {
+          "title": "eDOCSIS Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-eDOCSIS-I28-150305.pdf",
+          "type": "Specification",
+          "version": "I28",
+          "designation": "CM-SP-eDOCSIS",
+          "publishedDate": "03/05/15"
+        },
+        {
+          "title": "DOCSIS 3.0 Physical Layer Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-PHYv3.0-I12-150305.pdf",
+          "type": "Specification",
+          "version": "I12",
+          "designation": "CM-SP-PHYv3.0",
+          "publishedDate": "03/05/15"
+        },
+        {
+          "title": "C-DOCSIS System Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-CDOCSIS-I02-150305.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "CM-SP-CDOCSIS",
+          "publishedDate": "03/05/15"
+        },
+        {
+          "title": "Midsplit Migration Implications on the HFC Network Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-MID-SPLIT-V01-150223.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "CM-TR-MID-SPLIT",
+          "publishedDate": "02/23/15"
+        },
+        {
+          "title": "WiFi Roaming Architecture and Interfaces Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/WR-SP-WiFi-ROAM-I04-141201-1.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "WR-SP-WiFi-ROAM",
+          "publishedDate": "12/01/14"
+        },
+        {
+          "title": "IP Multicast Adaptive Bit Rate Architecture Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-TR-IP-MULTI-ARCH-V01-1411121.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "OC-TR-IP-MULTI-ARCH",
+          "publishedDate": "11/12/14"
+        },
+        {
+          "title": "DPoG Architecture Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoG-SP-ARCHv1.0-I01-1410011.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "DPoG-SP-ARCHv1.0",
+          "publishedDate": "10/01/14"
+        },
+        {
+          "title": "DPoG MAC and Upper Layer Protocols Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoG-SP-MULPIv1.0-I01-1410011.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "DPoG-SP-MULPIv1.0",
+          "publishedDate": "10/01/14"
+        },
+        {
+          "title": "DPoG OAM Extensions Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoG-SP-OAMv1.0-I01-141001.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "DPoG-SP-OAMv1.0",
+          "publishedDate": "10/01/14"
+        },
+        {
+          "title": "DPoG Operations Support System Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoG-SP-OSSIv1.0-I01-141001.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "DPoG-SP-OSSIv1.0",
+          "publishedDate": "10/01/14"
+        },
+        {
+          "title": "DPoG Security and Certificate Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoG-SP-SECv1.0-I01-141001.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "DPoG-SP-SECv1.0",
+          "publishedDate": "10/01/14"
+        },
+        {
+          "title": "DPoG Physical Layer Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoG-SP-PHY1.0-I01-141001.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "DPoG-SP-PHYv1.0",
+          "publishedDate": "10/01/14"
+        },
+        {
+          "title": "Wi-Fi Radio Resource Management (RRM)/Self Organizing Networks (SON) Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/WR-TR-RRM-SON-V01-1409261.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "WR-TR-RRM-SON",
+          "publishedDate": "09/26/14"
+        },
+        {
+          "title": "DPoE Architecture Specifications",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-ARCHv1.0-I03-140807.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "DPoE-SP-ARCHv1.0",
+          "publishedDate": "08/07/14"
+        },
+        {
+          "title": "DPoE Demarcation Device Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-DEMARCv1.0-I04-140807.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "DPoE-SP-DEMARCv1.0",
+          "publishedDate": "08/07/14"
+        },
+        {
+          "title": "DPoE IP Network Element Requirements",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-IPNEv1.0-I08-140807.pdf",
+          "type": "Specification",
+          "version": "I08",
+          "designation": "DPoE-SP-IPNEv1.0",
+          "publishedDate": "08/07/14"
+        },
+        {
+          "title": "DPoE Metro Ethernet Forum Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-MEFv1.0-I04-140807.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "DPoE-SP-MEFv1.0",
+          "publishedDate": "08/07/14"
+        },
+        {
+          "title": "DPoE OAM Extensions Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-OAMv1.0-I08-140807.pdf",
+          "type": "Specification",
+          "version": "I08",
+          "designation": "DPoE-SP-OAMv1.0",
+          "publishedDate": "08/07/14"
+        },
+        {
+          "title": "DPoE Operations and Support System Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-OSSIv1.0-I08-140807.pdf",
+          "type": "Specification",
+          "version": "I08",
+          "designation": "DPoE-SP-OSSIv1.0",
+          "publishedDate": "08/07/14"
+        },
+        {
+          "title": "DPoE Physical Layer Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-PHYv1.0-I05-140807.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "DPoE-SP-PHYv1.0",
+          "publishedDate": "08/07/14"
+        },
+        {
+          "title": "DPoE Security and Certificate Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DPoE-SP-SECv1.0-I06-140807.pdf",
+          "type": "Specification",
+          "version": "I06",
+          "designation": "DPoE-SP-SECv1.0",
+          "publishedDate": "08/07/14"
+        },
+        {
+          "title": "DOCSIS Cable Modem to CPE Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-CMCIv3.0-I02-1407291.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "CM-SP-CMCIv3.0",
+          "publishedDate": "07/29/14"
+        },
+        {
+          "title": "Submission of Digital Outputs",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/Submission-of-Digital-Outputs-v1.5.docx",
+          "type": "Guidelines",
+          "version": "1.5",
+          "designation": "GL-Digital-Outputs",
+          "publishedDate": "06/25/14"
+        },
+        {
+          "title": "Mapping from MPEG-2 Transport to HTML5 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-HTML5-MAP-I04-140613.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "CL-SP-HTML5-MAP",
+          "publishedDate": "06/13/14"
+        },
+        {
+          "title": "Time Shift Buffer Hardware Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-TSB-I01-140611.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-TSB",
+          "publishedDate": "06/11/14"
+        },
+        {
+          "title": "Edge Resource Management Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-ERMI-C01-140520.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "CM-SP-ERMI",
+          "publishedDate": "05/20/14"
+        },
+        {
+          "title": "PacketCable Organization of Subscriber Data Specification 3GGP TS 23.008",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-23.008-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-23.008",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable SIP and SDP Stage 3 Specification 3GPP TS 24.229",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-24.229-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-24.229",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Cx and Dx Interfaces Specification 3GPP TS 29.228",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-29.228-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-29.228",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Cx and Dx Interfaces, Diameter Protocol Specification 3GPP TS 29.229",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-29.229-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-29.229",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Access Security for IP-Based Services Specification 3GPP TS 33.203",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-33.203-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-33.203",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Accounting Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-ACCT-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-ACCT",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "Business SIP Services Device Provisioning Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-BSS-PROV-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-BSS-PROV",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Business SIP Services Feature Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-BSSF-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-BSSF",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Cellular Integration Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-CI-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-CI",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Codec-Media Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-CODEC-MEDIA-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-CODEC-MEDIA",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Control Point Discovery Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-CPD-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-CPD",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Electronic Surveillance &#8211; Delivery Function to Collection Function Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-ES-DCI-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-ES-DCI",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Electronic Surveillance &#8211; Intra-Network Functions Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-ES-INF-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-ES-INF",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "E-UE Provisioning Data Model Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-EUE-DATA-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-EUE-DATA",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "E-UE Provisioning Framework Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-EUE-PROV-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-EUE-PROV",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Presence Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-PRS-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-PRS",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Quality of Service Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-QOS-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-QOS",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Residential SIP Telephony Accounting Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-RST-ACCT-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-RST-ACCT",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Residential SIP Telephony E-DVA Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-RST-E-DVA-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-RST-E-DVA",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "RST E-UE Provisioning Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-RST-EUE-PROV-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-RST-EUE-PROV",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable RST UE Provisioning Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-RST-UE-PROV-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-RST-UE-PROV",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Residential SIP Telephony Feature Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-RSTF-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-RSTF",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable 2.0 UE Provisioning Data Model",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-UE-DATA-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-UE-DATA",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable 2.0 UE Provisioning Framework",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-UE-PROV-C01-140314.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-UE-PROV",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Architecture Framework Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-ARCH-FRM-C01-140314.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-ARCH-FRM",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Business SIP Services Feature Description Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-BSS-C01-140314.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-BSS",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "Dual Stack IPv6 Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-DS-IP6-C01-140314.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-DS-IP6",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Home Subscriber Server Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-HSS-C01-140314.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-HSS",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable NAT and Firewall Traversal Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-NFT-C01-140314.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-NFT",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "Residential SIP Telephony Feature Definition Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-RST-C01-140314.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-RST",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable Security Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-SEC-C01-140314.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-SEC",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "PacketCable SIP Signaling Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-SIP-C01-140314.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-SIP",
+          "publishedDate": "03/14/14"
+        },
+        {
+          "title": "Adaptive Transport Stream Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-ATS-I01-140214.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-ATS",
+          "publishedDate": "02/14/14"
+        },
+        {
+          "title": "XML Representation of TV Services Metadata",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-XTSM-I01-131106.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-XTSM",
+          "publishedDate": "11/06/13"
+        },
+        {
+          "title": "Real-time Event Signaling and Management API",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-ESAM-API-I03-131025.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "OC-SP-ESAM-API",
+          "publishedDate": "10/25/13"
+        },
+        {
+          "title": "Mezzanine Encoding Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-MEZZANINE-I01-131021.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-MEZZANINE",
+          "publishedDate": "10/21/13"
+        },
+        {
+          "title": "ENUM Server Provisioning Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-ENUM-PROV-C01-130930.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-ENUM-PROV",
+          "publishedDate": "09/30/13"
+        },
+        {
+          "title": "ENUM Server Address Resolution Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-ENUM-SRV-C01-130930.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-ENUM-SRV",
+          "publishedDate": "09/30/13"
+        },
+        {
+          "title": "PacketCable Interconnect Guidelines Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-IGS-C01-130930.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-IGS",
+          "publishedDate": "09/30/13"
+        },
+        {
+          "title": "DOCSIS Set-top Gateway (DSG) Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-DSG-I24-130808.pdf",
+          "type": "Specification",
+          "version": "I24",
+          "designation": "CM-SP-DSG",
+          "publishedDate": "08/08/13"
+        },
+        {
+          "title": "OpenCable Unidirectional Receiver",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-OCUR-I11-130607.pdf",
+          "type": "Specification",
+          "version": "I11",
+          "designation": "OC-SP-OCUR",
+          "publishedDate": "06/07/13"
+        },
+        {
+          "title": "OpenCable Tuning Resolver Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-TRIF-I05-130607.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "OC-SP-TRIF",
+          "publishedDate": "06/07/13"
+        },
+        {
+          "title": "OpenCable Bundle Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-BUNDLE1.3.1-130530.pdf",
+          "type": "Specification",
+          "version": "1.3.1",
+          "designation": "OC-SP-BUNDLE",
+          "publishedDate": "05/30/13"
+        },
+        {
+          "title": "OpenCable Home Networking Protocol 2.0",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-HNP2.0-I10-130530.pdf",
+          "type": "Specification",
+          "version": "I10",
+          "designation": "OC-SP-HNP2.0",
+          "publishedDate": "05/30/13"
+        },
+        {
+          "title": "OpenCable Host Home Networking  Extension 2.0",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-HOST-HN2.0-I08-130530.pdf",
+          "type": "Specification",
+          "version": "I08",
+          "designation": "OC-SP-HOST-HN2.0",
+          "publishedDate": "05/30/13"
+        },
+        {
+          "title": "OpenCable Home Networking MIB specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-MIB-HN-I08-130530.pdf",
+          "type": "Specification",
+          "version": "I08",
+          "designation": "OC-SP-MIB-HN",
+          "publishedDate": "05/30/13"
+        },
+        {
+          "title": "OpenCable Application Platform (OCAP)",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-OCAP1.3.1-130530.pdf",
+          "type": "Specification",
+          "version": "1.3.1",
+          "designation": "OC-SP-OCAP",
+          "publishedDate": "05/30/13"
+        },
+        {
+          "title": "OCAP Digital Video Recorder (DVR)",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-OCAP-DVR-I09-130530.pdf",
+          "type": "Specification",
+          "version": "I09",
+          "designation": "OC-SP-OCAP-DVR",
+          "publishedDate": "05/30/13"
+        },
+        {
+          "title": "OCAP Home Networking Extension",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-OCAP-HNEXT-I11-130530.pdf",
+          "type": "Specification",
+          "version": "I11",
+          "designation": "OC-SP-OCAP-HNEXT",
+          "publishedDate": "05/30/13"
+        },
+        {
+          "title": "Audience Measurement Data Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-AMD-I01-130502.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-AMD",
+          "publishedDate": "05/02/13"
+        },
+        {
+          "title": "OpenCable CableCARD Copy Protection 2.0 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-CCCP2.0-I13-130418.pdf",
+          "type": "Specification",
+          "version": "I13",
+          "designation": "OC-SP-CCCP2.0",
+          "publishedDate": "04/18/13"
+        },
+        {
+          "title": "OpenCable Home Networking Security Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-HN-SEC-I05-130418.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "OC-SP-HN-SEC",
+          "publishedDate": "04/18/13"
+        },
+        {
+          "title": "OpenCable Host Device 2.1 Core Functional Requirements",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-HOST2.1-CFR-I17-130418.pdf",
+          "type": "Specification",
+          "version": "I17",
+          "designation": "OC-SP-HOST2.1-CFR",
+          "publishedDate": "04/18/13"
+        },
+        {
+          "title": "OpenCable Host Thin Chassis Device Core Functional Requirements",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-HOSTTC-CFR-I08-130418.pdf",
+          "type": "Specification",
+          "version": "I08",
+          "designation": "OC-SP-HOSTTC-CFR",
+          "publishedDate": "04/18/13"
+        },
+        {
+          "title": "PacketCable HDV Provisioning Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-HDV-PROV-I04-130411.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "PKT-SP-HDV-PROV",
+          "publishedDate": "04/11/13"
+        },
+        {
+          "title": "DOCSIS 2.0 + IPv6 Cable Modem Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-DOCSIS2.0-IPv6-I07-130404.pdf",
+          "type": "Specification",
+          "version": "I07",
+          "designation": "CM-SP-DOCSIS2.0-IPv6",
+          "publishedDate": "04/04/13"
+        },
+        {
+          "title": "Operational Guidelines for Energy Management 1&#215;1 Feature",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-GL-EM1x1-V01-130329.pdf",
+          "type": "Guidelines",
+          "version": "V01",
+          "designation": "CM-GL-EM1x1",
+          "publishedDate": "03/29/13"
+        },
+        {
+          "title": "Common Security Requirements for IP-Based MSO-Provided CPE",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-RQ-IP-CPE-SEC-V01-130315-2.pdf",
+          "type": "Requirements",
+          "version": "V01",
+          "designation": "CL-RQ-IP-CPE-SEC",
+          "publishedDate": "03/15/13"
+        },
+        {
+          "title": "Recommendations API",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-REC-API-I01-130306.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-REC-API",
+          "publishedDate": "03/06/13"
+        },
+        {
+          "title": "Placement Decision Monitor Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-PDIv3.0-1303011.pdf",
+          "type": "Specification",
+          "version": "3.0",
+          "designation": "OC-SP-SaFI-PDIv3.0",
+          "publishedDate": "03/01/13"
+        },
+        {
+          "title": "MUX 3.0 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-MUX3.0-I01-130215.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-MUX3.0",
+          "publishedDate": "02/15/13"
+        },
+        {
+          "title": "STB Energy Reduction Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-TR-STB-ENERGY-V01-130201.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "CL-TR-STB-ENERGY",
+          "publishedDate": "02/01/13"
+        },
+        {
+          "title": "Encoder Boundary Point Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-EBP-I01-130118.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-EBP",
+          "publishedDate": "01/18/13"
+        },
+        {
+          "title": "L2VPN Development Guidelines Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-L2VPN-DG-V02-121206.pdf",
+          "type": "Technical Report",
+          "version": "V02",
+          "designation": "CM-TR-L2VPN-DG",
+          "publishedDate": "12/06/12"
+        },
+        {
+          "title": "PacketCable 1.5 Signaling Extension MIB Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MIB-EXSIG1.5-I05-121030.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "PKT-SP-MIB-EXSIG1.5",
+          "publishedDate": "10/30/12"
+        },
+        {
+          "title": "ETV Application Interoperability Guidelines",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-GL-ETV-AIG-V03-121001.pdf",
+          "type": "Guidelines",
+          "version": "V03",
+          "designation": "OC-GL-ETV-AIG",
+          "publishedDate": "10/01/12"
+        },
+        {
+          "title": "Cable Profile for the ZigBee RF4CE Remote Control Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-RF4CE-I01-120924.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-RF4CE",
+          "publishedDate": "09/24/12"
+        },
+        {
+          "title": "IPv6 Roadmap Requirements Document",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-GL-IPv6-REQ-V01-120831.pdf",
+          "type": "Guidelines",
+          "version": "V01",
+          "designation": "CM-GL-IPv6-REQ",
+          "publishedDate": "08/31/12"
+        },
+        {
+          "title": "PacketCable High Definition Voice Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-HDV-I04-120823.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "PKT-SP-HDV",
+          "publishedDate": "08/23/12"
+        },
+        {
+          "title": "PacketCable HDV NCS Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-HDV-NCS-I04-120823.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "PKT-SP-HDV-NCS",
+          "publishedDate": "08/23/12"
+        },
+        {
+          "title": "PacketCable HDV SIP Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-HDV-SIP-I03-120823.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "PKT-SP-HDV-SIP",
+          "publishedDate": "08/23/12"
+        },
+        {
+          "title": "CableLabs Asset Distribution Interface Specification Version 1.1",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/MD-SP-ADI1.1-C01-120803.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "MD-SP-ADI1.1",
+          "publishedDate": "08/03/12"
+        },
+        {
+          "title": "CableLabs Video-On-Demand Content Specification Version 1.1",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/MD-SP-VOD-CONTENT1.1-C01-1208031.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "MD-SP-VOD-CONTENT1.1",
+          "publishedDate": "08/03/12"
+        },
+        {
+          "title": "Integrated WiFi/Picocell Platform Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/WR-SP-IWP-I01-120724-1.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "WR-SP-IWP",
+          "publishedDate": "07/24/12"
+        },
+        {
+          "title": "OpenCable Enhanced TV Application Messaging Protocol Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-ETV-AM1.0.1-120614.pdf",
+          "type": "Specification",
+          "version": "1.0.1",
+          "designation": "OC-SP-ETV-AM1.0.1",
+          "publishedDate": "06/14/12"
+        },
+        {
+          "title": "OpenCable Enhanced TV Binary Interchange Format 1.0 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-ETV-BIF1.0.1-120614.pdf",
+          "type": "Specification",
+          "version": "1.0.1",
+          "designation": "OC-SP-ETV-BIF1.0.1",
+          "publishedDate": "06/14/12"
+        },
+        {
+          "title": "OpenCable Common Download 2.0 Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-CDL2.0-I13-120531.pdf",
+          "type": "Specification",
+          "version": "I13",
+          "designation": "OC-SP-CDL2.0",
+          "publishedDate": "05/31/12"
+        },
+        {
+          "title": "OpenCable Host Device 2.X MIB Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-MIB-HOST2.X-I14-120531.pdf",
+          "type": "Specification",
+          "version": "I14",
+          "designation": "OC-SP-MIB-HOST2.X",
+          "publishedDate": "05/31/12"
+        },
+        {
+          "title": "CCAP Architecture Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-CCAP-V03-120511.pdf",
+          "type": "Technical Report",
+          "version": "V03",
+          "designation": "CM-TR-CCAP",
+          "publishedDate": "05/11/12"
+        },
+        {
+          "title": "PacketCable 1.5 CMS to CMS Signaling Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-CMSS1.5-I07-120412.pdf",
+          "type": "Specification",
+          "version": "I07",
+          "designation": "PKT-SP-CMSS1.5",
+          "publishedDate": "04/12/12"
+        },
+        {
+          "title": "PacketCable 1.5 Audio/Video Codecs Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-CODEC1.5-I04-120412.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "PKT-SP-CODEC1.5",
+          "publishedDate": "04/12/12"
+        },
+        {
+          "title": "PacketCable 1.5 Network-Based Call Signaling Protocol Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-NCS1.5-I04-120412.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "PKT-SP-NCS1.5",
+          "publishedDate": "04/12/12"
+        },
+        {
+          "title": "PacketCable 1.5 PSTN Gateway Call Signaling Protocol Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-TGCP1.5-I04-120412.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "PKT-SP-TGCP1.5",
+          "publishedDate": "04/12/12"
+        },
+        {
+          "title": "Campaign Information Package Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-CIPv3.0-120307.pdf",
+          "type": "Specification",
+          "version": "3.0",
+          "designation": "OC-SP-SaFI-CIPv3.0",
+          "publishedDate": "03/07/12"
+        },
+        {
+          "title": "Common Data Types Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-COMv3.0-120307.pdf",
+          "type": "Specification",
+          "version": "3.0",
+          "designation": "OC-SP-SaFI-COMv3.0",
+          "publishedDate": "03/07/12"
+        },
+        {
+          "title": "Interactive Application Fulfillment Summary Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-IAFv3.0-120307.pdf",
+          "type": "Specification",
+          "version": "3.0",
+          "designation": "OC-SP-SaFI-IAFv3.0",
+          "publishedDate": "03/07/12"
+        },
+        {
+          "title": "Interactive Application Messaging Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-IAMv3.0-120307.pdf",
+          "type": "Specification",
+          "version": "3.0",
+          "designation": "OC-SP-SaFI-IAMv3.0",
+          "publishedDate": "03/07/12"
+        },
+        {
+          "title": "Service Measurement Summary Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-SMSv3.0-120307.pdf",
+          "type": "Specification",
+          "version": "3.0",
+          "designation": "OC-SP-SaFI-SMSv3.0",
+          "publishedDate": "03/07/12"
+        },
+        {
+          "title": "Authentication and Authorization through Client Apps",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-AUTH-APP-I01-120118.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "CL-SP-AUTH-APP",
+          "publishedDate": "01/18/12"
+        },
+        {
+          "title": "OCAP Device Settings Extension",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-OCAP-DS-EXT-I05-120112.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "OC-SP-OCAP-DS-EXT",
+          "publishedDate": "01/12/12"
+        },
+        {
+          "title": "DSG Multicast DSID Forwarding Override Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-DSG-MO-V01-111215.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "CM-TR-DSG-MO",
+          "publishedDate": "12/15/11"
+        },
+        {
+          "title": "Edge QAM Provisioning and Management Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-EQAM-PMI-I02-111117.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "CM-SP-EQAM-PMI",
+          "publishedDate": "11/17/11"
+        },
+        {
+          "title": "Cable Modem Buffer Control",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-GL-Buffer-V01-110915.pdf",
+          "type": "Guidelines",
+          "version": "V01",
+          "designation": "CM-GL-Buffer",
+          "publishedDate": "09/15/11"
+        },
+        {
+          "title": "OpenCable Host 2.X DVR Extension",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-HOST2-DVREXT-I03-110512.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "OC-SP-HOST2-DVREXT",
+          "publishedDate": "05/12/11"
+        },
+        {
+          "title": "OpenCable Host 2.X Multi-FAT Receiver Extension",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-HOST2-MFATEXT-I02-110512.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "OC-SP-HOST2-MFATEXT",
+          "publishedDate": "05/12/11"
+        },
+        {
+          "title": "OCAP Front Panel Extension",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-OCAP-FPEXT-I05-110512.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "OC-SP-OCAP-FPEXT",
+          "publishedDate": "05/12/11"
+        },
+        {
+          "title": "OpenCable Security Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SEC-I08-110512.pdf",
+          "type": "Specification",
+          "version": "I08",
+          "designation": "OC-SP-SEC",
+          "publishedDate": "05/12/11"
+        },
+        {
+          "title": "OpenCable Content Definition Format Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-CoDF-I02-110325.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "OC-SP-CoDF",
+          "publishedDate": "03/25/11"
+        },
+        {
+          "title": "Campaign Information Package Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-CIPv2.0-110131.pdf",
+          "type": "Specification",
+          "version": "2.0",
+          "designation": "OC-SP-SaFI-CIPv2.0",
+          "publishedDate": "01/31/11"
+        },
+        {
+          "title": "Common Data Types Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-COMv2.0-110131.pdf",
+          "type": "Specification",
+          "version": "2.0",
+          "designation": "OC-SP-SaFI-COMv2.0",
+          "publishedDate": "01/31/11"
+        },
+        {
+          "title": "Interactive Application Fulfillment Summary Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-IAFv2.0-110131.pdf",
+          "type": "Specification",
+          "version": "2.0",
+          "designation": "OC-SP-SaFI-IAFv2.0",
+          "publishedDate": "01/31/11"
+        },
+        {
+          "title": "Interactive Application Messaging Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-IAMv2.0-110131.pdf",
+          "type": "Specification",
+          "version": "2.0",
+          "designation": "OC-SP-SaFI-IAMv2.0",
+          "publishedDate": "01/31/11"
+        },
+        {
+          "title": "Service Measurement Summary Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-SaFI-SMSv2.0-110131.pdf",
+          "type": "Specification",
+          "version": "2.0",
+          "designation": "OC-SP-SaFI-SMSv2.0",
+          "publishedDate": "01/31/11"
+        },
+        {
+          "title": "PacketCable SIP Enterprise Gateway Provisioning Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-ESG-I01-101103.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "PKT-SP-ESG",
+          "publishedDate": "11/03/10"
+        },
+        {
+          "title": "PacketCable SIP Enterprise Gateway Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-ESG-V01-101103.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "PKT-TR-ESG",
+          "publishedDate": "11/03/10"
+        },
+        {
+          "title": "OpenCable Digital Receiver Interface Protocol",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-DRI-I04-100910.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "OC-SP-DRI",
+          "publishedDate": "09/10/10"
+        },
+        {
+          "title": "Downstream External PHY Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-DEPI-I08-100611.pdf",
+          "type": "Specification",
+          "version": "I08",
+          "designation": "CM-SP-DEPI",
+          "publishedDate": "06/11/10"
+        },
+        {
+          "title": "Business Services over DOCSIS TDM Emulation Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-TEI-I06-100611.pdf",
+          "type": "Specification",
+          "version": "I06",
+          "designation": "CM-SP-TEI",
+          "publishedDate": "06/11/10"
+        },
+        {
+          "title": "CableLabs Battery Backup MIB Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-MIB-BB-I04-100608.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "CL-SP-MIB-BB",
+          "publishedDate": "06/08/10"
+        },
+        {
+          "title": "PacketCable 1.5 Management Event Mechanism Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MEM1.5-I05-100527.pdf",
+          "type": "Specification",
+          "version": "I05",
+          "designation": "PKT-SP-MEM1.5",
+          "publishedDate": "05/27/10"
+        },
+        {
+          "title": "Cable Application User Experience Guidelines",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-GL-UEG-V02-100510.pdf",
+          "type": "Guidelines",
+          "version": "V02",
+          "designation": "OC-GL-UEG",
+          "publishedDate": "05/10/10"
+        },
+        {
+          "title": "Cable Application Developer Guidelines",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-GL-DG-V01-100205.pdf",
+          "type": "Guidelines",
+          "version": "V01",
+          "designation": "CL-GL-DG",
+          "publishedDate": "02/05/10"
+        },
+        {
+          "title": "OpenCable Enhanced TV Operational Guidelines",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-GL-ETV-OG-V02-091223.pdf",
+          "type": "Guidelines",
+          "version": "V02",
+          "designation": "OC-GL-ETV-OG",
+          "publishedDate": "12/23/09"
+        },
+        {
+          "title": "PacketCable Multimedia Web Services Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MM-WS-I03-091029.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "PKT-SP-MM-WS",
+          "publishedDate": "10/29/09"
+        },
+        {
+          "title": "PacketCable Multimedia Architecture Framework",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-MM-ARCH-V03-091029.pdf",
+          "type": "Technical Report",
+          "version": "V03",
+          "designation": "PKT-TR-MM-ARCH",
+          "publishedDate": "10/29/09"
+        },
+        {
+          "title": "Web Services Recommended Practices Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-WSRP-I01-091023.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "CL-SP-WSRP",
+          "publishedDate": "10/23/09"
+        },
+        {
+          "title": "Security Criteria for Service Delivery Network",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-HLR-Security-Criteria-I01-090710.pdf",
+          "type": "Requirements",
+          "version": "I01",
+          "designation": "CL-HLR-SEC-Criteria",
+          "publishedDate": "07/10/09"
+        },
+        {
+          "title": "PacketCable 1.5 Dynamic Quality of Service Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-DQOS1.5-I04-090624.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "PKT-SP-DQOS1.5",
+          "publishedDate": "06/24/09"
+        },
+        {
+          "title": "PacketCable 1.5 MIBs Framework Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MIBS1.5-I03-090624.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "PKT-SP-MIBS1.5",
+          "publishedDate": "06/24/09"
+        },
+        {
+          "title": "PacketCable 1.5 MTA Device Provisioning Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-PROV1.5-I04-090624.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "PKT-SP-PROV1.5",
+          "publishedDate": "06/24/09"
+        },
+        {
+          "title": "PacketCable 1.5 Security Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-SEC1.5-I03-090624.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "PKT-SP-SEC1.5",
+          "publishedDate": "06/24/09"
+        },
+        {
+          "title": "Radio Frequency Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-RFIv2.0-C02-090422.pdf",
+          "type": "Specification",
+          "version": "C02",
+          "designation": "CM-SP-RFIv2.0",
+          "publishedDate": "04/22/09"
+        },
+        {
+          "title": "M-CMTS Operations Support System Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-M-OSSI-I08-081209.pdf",
+          "type": "Specification",
+          "version": "I08",
+          "designation": "CM-SP-M-OSSI",
+          "publishedDate": "12/09/08"
+        },
+        {
+          "title": "Modular Headend Architecture Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-MHA-V02-081209.pdf",
+          "type": "Technical Report",
+          "version": "V02",
+          "designation": "CM-TR-MHA",
+          "publishedDate": "12/09/08"
+        },
+        {
+          "title": "Edge QAM Video Stream Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-EQAM-VSI-I01-081107.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "CM-SP-EQAM-VSI",
+          "publishedDate": "11/07/08"
+        },
+        {
+          "title": "Baseline Privacy Plus Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-BPI+-C01-081104.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "CM-SP-BPI+",
+          "publishedDate": "11/04/08"
+        },
+        {
+          "title": "Cable Modem to Customer Premise Equipment Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-CMCI-C01-081104.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "CM-SP-CMCI",
+          "publishedDate": "11/04/08"
+        },
+        {
+          "title": "Operations Support System Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-OSSIv2.0-C01-081104.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "CM-SP-OSSIv2.0",
+          "publishedDate": "11/04/08"
+        },
+        {
+          "title": "DOCSIS 3.0 OSSI Configuration Management Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-OSSIv3.0-CM-V01-080926.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "CM-TR-OSSIv3.0-CM",
+          "publishedDate": "09/26/08"
+        },
+        {
+          "title": "OpenCable Reserved Services Domain Protocols Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-RSD-PROT-I01-0808281.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-RSD-PROT",
+          "publishedDate": "08/08/08"
+        },
+        {
+          "title": "CableLabs Software Management Framework Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CL-SP-SM-I01-080708.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "CL-SP-SM",
+          "publishedDate": "07/08/08"
+        },
+        {
+          "title": "OpenCable Reserved Services Domain Technology Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-RSD-TECH-I01-0806301.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-RSD-TECH",
+          "publishedDate": "06/30/08"
+        },
+        {
+          "title": "Reference Power-Load CableCARD Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-RPLCC-I02-080404.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "OC-SP-RPLCC",
+          "publishedDate": "04/04/08"
+        },
+        {
+          "title": "Unidirectional Cable Product Supporting M-Card Conformance Checklist",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/DVC-RQ-M-UDCP-PICS-I04-080225.pdf",
+          "type": "Specification",
+          "version": "I04",
+          "designation": "DVC-RQ-M-UDCP-PICS",
+          "publishedDate": "02/25/08"
+        },
+        {
+          "title": "DOCSIS 3.0 Management Features Differences Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-TR-MGMTv3.0-DIFF-V01-071228.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "CM-TR-MGMTv3.0-DIFF",
+          "publishedDate": "12/28/07"
+        },
+        {
+          "title": "PacketCable Audio/Video Codecs Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-CODEC-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-CODEC",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable Dynamic Quality-of-Service Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-DQOS-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-DQOS",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable Network-Based Call Signaling Protocol Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-EC-MGCP-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-EC-MGCP",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable Event Messages Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-EM-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-EM",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable Internet Signaling Transport Protocol Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-ISTP-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-ISTP",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable MTA MIB Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MIB-MTA-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-MIB-MTA",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable Signaling MIB Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MIB-SIG-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-MIB-SIG",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable MIBs Framework Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MIBS-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-MIBS",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable MTA Device Provisioning Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-PROV-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-PROV",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable Security Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-SEC-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-SEC",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable PSTN Gateway Call Signaling Protocol Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-TGCP-C01-071129.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "PKT-SP-TGCP",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable 1.0 Architecture Framework Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-ARCH-C01-071129.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-ARCH",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "Architecture Call Flows TR &#8211; On-Net MTA to On-Net MTA",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-CF-ON-ON-C01-071129.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-CF-ON-ON",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "Architecture Call Flows On-Net MTA to PSTN Telephone",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-CF-ON-PSTN-C01-071129.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-CF-ON-PSTN",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "Architecture Call Flows &#8211; PSTN Telephone to On-Net MTA",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-CF-PSTN-ON-C01-071129.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-CF-PSTN-ON",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable NCS Basic Packages Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-MGCP-C01-071129.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-MGCP",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable OSS Overview Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-OSS-C01-071129.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-OSS",
+          "publishedDate": "11/29/07"
+        },
+        {
+          "title": "PacketCable Quality of Service Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-QOS-C01-070925.pdf",
+          "type": "Technical Report",
+          "version": "C01",
+          "designation": "PKT-TR-QOS",
+          "publishedDate": "09/25/07"
+        },
+        {
+          "title": "PacketCable 1.5 Embedded MTA Analog Interface and Powering Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-AIP1.5-I03-121030.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "PKT-SP-AIP1.5",
+          "publishedDate": "04/12/07"
+        },
+        {
+          "title": "PacketCable 1.5 Audio Server Protocol Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-ASP1.5-I02-070412.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "PKT-SP-ASP1.5",
+          "publishedDate": "04/12/07"
+        },
+        {
+          "title": "PacketCable 1.5 CMS Subscriber Provisioning Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-CMSPROV1.5-I02-070412.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "PKT-SP-CMSPROV1.5",
+          "publishedDate": "04/12/07"
+        },
+        {
+          "title": "PacketCable 1.5 Event Messages Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-EM1.5-I03-070412.pdf",
+          "type": "Specification",
+          "version": "I03",
+          "designation": "PKT-SP-EM1.5",
+          "publishedDate": "04/12/07"
+        },
+        {
+          "title": "PacketCable 1.5 Electronic Surveillance Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-ESP1.5-I02-070412.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "PKT-SP-ESP1.5",
+          "publishedDate": "04/12/07"
+        },
+        {
+          "title": "PacketCable 1.5 Architecture Framework Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-ARCH1.5-V02-070412.pdf",
+          "type": "Technical Report",
+          "version": "V02",
+          "designation": "PKT-TR-ARCH1.5",
+          "publishedDate": "04/12/07"
+        },
+        {
+          "title": "OpenCable UDCP Best Practices",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-GL-UDCP-BP-V01-070105.pdf",
+          "type": "Guidelines",
+          "version": "V01",
+          "designation": "OC-GL-UDCP-BP",
+          "publishedDate": "01/05/07"
+        },
+        {
+          "title": "OCAP Headend Common Download and Unbound Application Signaling Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/OC-SP-OHI-I01-061208.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "OC-SP-OHI",
+          "publishedDate": "12/08/06"
+        },
+        {
+          "title": "PacketCable 1.5 Analog Trunking for PBX Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-ATPBX1.5-I01-060419.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "PKT-SP-ATPBX1.5",
+          "publishedDate": "04/19/06"
+        },
+        {
+          "title": "Operations Support System Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-OSSIv1.1-C01-050907.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "CM-SP-OSSIv1.1",
+          "publishedDate": "09/07/05"
+        },
+        {
+          "title": "Radio Frequency Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/CM-SP-RFIv1.1-C01-050907.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "CM-SP-RFIv1.1",
+          "publishedDate": "09/07/05"
+        },
+        {
+          "title": "PacketCable 1.5 Management Event MIB Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-EVEMIB1.5-I02-050812.pdf",
+          "type": "Specification",
+          "version": "I02",
+          "designation": "PKT-SP-EVEMIB1.5",
+          "publishedDate": "08/12/05"
+        },
+        {
+          "title": "PacketCable 1.5 MTA Extension MIB Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MIB-EXMTA1.5-I01-050128.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "PKT-SP-MIB-EXMTA1.5",
+          "publishedDate": "01/28/05"
+        },
+        {
+          "title": "PacketCable 1.5 MTA MIB Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MIB-MTA1.5-I01-050128.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "PKT-SP-MIB-MTA1.5",
+          "publishedDate": "01/28/05"
+        },
+        {
+          "title": "PacketCable 1.5 Signaling MIB Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-MIB-SIG1.5-I01-050128.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "PKT-SP-MIB-SIG1.5",
+          "publishedDate": "01/28/05"
+        },
+        {
+          "title": "BroadVoice 16 Speech Codec Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-SP-BV16-Codec1.5-I01-031030.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "PKT-SP-BV16-Codec1.5",
+          "publishedDate": "10/30/03"
+        },
+        {
+          "title": "Baseline Privacy Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/SP-BPI-C01-011119.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "SP-BPI",
+          "publishedDate": "11/19/01"
+        },
+        {
+          "title": "Operations Support System Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/SP-OSSI-C01-011119.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "SP-OSSI",
+          "publishedDate": "11/19/01"
+        },
+        {
+          "title": "Baseline Privacy Interface MIB",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/SP-OSSI-BPI-C01-011119.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "SP-OSSI-BPI",
+          "publishedDate": "11/19/01"
+        },
+        {
+          "title": "Operations Support System Interface Specification: RF Interface",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/SP-OSSI-RFI-C01-011119.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "SP-OSSI-RFI",
+          "publishedDate": "11/19/01"
+        },
+        {
+          "title": "Radio Frequency Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/SP-RFI-C01-011119.pdf",
+          "type": "Specification",
+          "version": "C01",
+          "designation": "SP-RFI",
+          "publishedDate": "11/19/01"
+        },
+        {
+          "title": "PacketCable Line Control Signaling System Architecture Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-ARCH-LCS-V01-0107301.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "PKT-TR-ARCH-LCS",
+          "publishedDate": "07/30/01"
+        },
+        {
+          "title": "PacketCable Management Event Identifiers Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-MEMEVENT-ID-V01-0011281.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "PKT-TR-MEMEVENT-ID",
+          "publishedDate": "11/28/00"
+        },
+        {
+          "title": "VoIP Availability and Reliability Model for the PacketCable Architecture",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-VoIPAR-V01-001128.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "PKT-TR-VoIPAR",
+          "publishedDate": "11/28/00"
+        },
+        {
+          "title": "PacketCable Electronic Surveillance Call Flows Technical Report",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/PKT-TR-ESCF-V01-9912291.pdf",
+          "type": "Technical Report",
+          "version": "V01",
+          "designation": "PKT-TR-ESCF",
+          "publishedDate": "12/29/99"
+        },
+        {
+          "title": "Cable Modem Telephony Return Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/SP-CMTRI-I01-970804.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "SP-CMTRI",
+          "publishedDate": "08/04/97"
+        },
+        {
+          "title": "Cable Modem Termination System &#8211; Network Side Interface Specification",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/SP-CMTS-NSI-I01-960702.pdf",
+          "type": "Specification",
+          "version": "I01",
+          "designation": "SP-CMTS-NSI",
+          "publishedDate": "07/02/96"
+        },
+        {
+          "title": "PacketCable IP Multimedia Call Model Stage 2 Specification 3GPP TS 23.218",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/",
+          "type": "Specification",
+          "version": "Obs",
+          "designation": "PKT-SP-23.218",
+          "publishedDate": "01/01/70"
+        },
+        {
+          "title": "PacketCable IP Multimedia Subsystem Stage 2 Specification 3GPP TS 23.228",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/",
+          "type": "Specification",
+          "version": "Obs",
+          "designation": "PKT-SP-23.228 ",
+          "publishedDate": "01/01/70"
+        },
+        {
+          "title": "PacketCable Generic Authentication Architecture (GAA); Zh and Zn Interfaces Specification 3GPP TS 29.109",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/",
+          "type": "Specification",
+          "version": "Obs",
+          "designation": "PKT-SP-29.109",
+          "publishedDate": "01/01/70"
+        },
+        {
+          "title": "PacketCable Network Domain Security Specification 3GPP TS 33.210",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/",
+          "type": "Specification",
+          "version": "Obs",
+          "designation": "PKT-SP-33.210",
+          "publishedDate": "01/01/70"
+        },
+        {
+          "title": "PacketCable Generic Authentication Architecture Specification 3GPP TS 33.220",
+          "url": "http://www.cablelabs.com/wp-content/uploads/specdocs/",
+          "type": "Specification",
+          "version": "Obs",
+          "designation": "PKT-SP-33.220",
+          "publishedDate": "01/01/70"
+        }
+      ],
+      "rssFeedData": {
+        "feed": {
+          "title": "CableLabs",
+          "link": "http://www.cablelabs.com",
+          "description": "CableLabs Corporate Site",
+          "lastBuildDate": "Mon, 08 Aug 2016 22:26:35 +0000",
+          "docs": "http://backend.userland.com/rss092",
+          "language": "en-US"
+        },
+        "item": [
+          {
+            "title": "2016 Innovation Showcase at CableLabs Summer Conference",
+            "link": "http://www.cablelabs.com/2016-innovation-showcase-cablelabs-summer-conference/",
+            "description": "<p>By Scott Brown, VP of Technology Outreach &#38; Managing Director of UpRamp – The Innovation Showcase presents live demos from some of the most exciting new products and technologies emerging today.  Many of these companies leave the conference with contacts and potential partnerships that would have been difficult to secure on their own.  Some of [&#8230;]</p>\n<p>The post <a rel=\"nofollow\" href=\"/2016-innovation-showcase-cablelabs-summer-conference/\">2016 Innovation Showcase at CableLabs Summer Conference</a> appeared first on <a rel=\"nofollow\" href=\"http://www.cablelabs.com\">CableLabs</a>.</p>\n",
+            "thumbnail": "http://www.cablelabs.com/wp-content/uploads/2016/08/cl_showcase_logo.jpg"
+          },
+          {
+            "title": "Meet the 4 Startups Selected for the First UpRamp™ Fiterator™ Program",
+            "link": "http://www.cablelabs.com/meet-upramps-fiterator-participants/",
+            "description": "<p>By Scott Brown, VP of Technology Outreach &#38; Managing Director of UpRamp– UpRamp’s Fiterator launched earlier this year to offer startups an accelerator that offers actual deals, not just demo days. There are many programs out there that bring advice and introductions to the table… and sometimes even investment capital. But not always. Fiterator is [&#8230;]</p>\n<p>The post <a rel=\"nofollow\" href=\"/meet-upramps-fiterator-participants/\">Meet the 4 Startups Selected for the First UpRamp™ Fiterator™ Program</a> appeared first on <a rel=\"nofollow\" href=\"http://www.cablelabs.com\">CableLabs</a>.</p>\n",
+            "thumbnail": "http://www.cablelabs.com/wp-content/uploads/2016/08/upramp_puzzle-fiterator.png"
+          },
+          {
+            "title": "A Look into the Near Future",
+            "link": "http://www.cablelabs.com/look-near-future/",
+            "description": "<p>By Eric Klassen, Innovation Project Lead, CableLabs &#8211; CableLabs has done something surprising for an Innovation and R&#38;D Lab. They have released a short film that provides a vision of possibilities arising from the high speed low latency networks that will connect our homes, businesses and mobile devices in the not too far distant future. [&#8230;]</p>\n<p>The post <a rel=\"nofollow\" href=\"/look-near-future/\">A Look into the Near Future</a> appeared first on <a rel=\"nofollow\" href=\"http://www.cablelabs.com\">CableLabs</a>.</p>\n",
+            "thumbnail": "http://www.cablelabs.com/wp-content/uploads/2016/08/near-future-home-loop-00_00_17_19.png"
+          },
+          {
+            "title": "A Re-Cap of FTTH Connect 2016",
+            "link": "http://www.cablelabs.com/cablelabs-connects-ftth-connect-2016/",
+            "description": "<p>By Jon Schnoor, Senior Engineer, Network Technologies, CableLabs &#8211; FTTH Connect was held earlier this summer in Nashville. Representing CableLabs and educating the audience about initiatives within the larger cable industry, Steve Burroughs, Curtis Knittle and I spoke at several sessions. In this short video, Steve, Curtis and I will share what we discussed and [&#8230;]</p>\n<p>The post <a rel=\"nofollow\" href=\"/cablelabs-connects-ftth-connect-2016/\">A Re-Cap of FTTH Connect 2016</a> appeared first on <a rel=\"nofollow\" href=\"http://www.cablelabs.com\">CableLabs</a>.</p>\n",
+            "thumbnail": "http://www.cablelabs.com/wp-content/uploads/2016/06/2016-ftth_connect-thumb.jpg"
+          },
+          {
+            "title": "CableLabs Joins the UK 5G Innovation Centre",
+            "link": "http://www.cablelabs.com/cablelabs-joins-uk-5g-innovation-centre/",
+            "description": "<p>By Pete Smyth, VP Core Innovation, CableLabs &#8211; Why is 5G important? 5G, the next generation of mobile communication technology, will redefine communications services and their associated networks over the next five to fifteen years. Whereas the emphasis in the media at the moment focuses very much around the potential for Gbps radio services in [&#8230;]</p>\n<p>The post <a rel=\"nofollow\" href=\"/cablelabs-joins-uk-5g-innovation-centre/\">CableLabs Joins the UK 5G Innovation Centre</a> appeared first on <a rel=\"nofollow\" href=\"http://www.cablelabs.com\">CableLabs</a>.</p>\n",
+            "thumbnail": "http://www.cablelabs.com/wp-content/uploads/2016/07/5G-innovation-centre-uk.jpg"
+          },
+          {
+            "title": "Adversarial Engineering",
+            "link": "http://www.cablelabs.com/adversarial-engineering/",
+            "description": "<p>By Steve Goeringer, Principal Security Architect, CableLabs &#8211; Security engineering is one of few technical endeavors in which you deal with an adversary. There are a few other domains such as electronic warfare or fire prevention. Working against an adversary in this way is like playing a twisted game of chess. As the game begins, [&#8230;]</p>\n<p>The post <a rel=\"nofollow\" href=\"/adversarial-engineering/\">Adversarial Engineering</a> appeared first on <a rel=\"nofollow\" href=\"http://www.cablelabs.com\">CableLabs</a>.</p>\n",
+            "thumbnail": "http://www.cablelabs.com/wp-content/uploads/2016/07/adversarial_engineering_security.jpg"
+          },
+          {
+            "title": "Industry Set-Top Box Voluntary Agreement Initiative Wins Environmental Leader Top Project of the Year Award",
+            "link": "http://www.cablelabs.com/industry-set-top-box-voluntary-agreement-initiative-wins-environmental-leader-top-project-year-award/",
+            "description": "<p>By Debbie Fitzgerald, Principal Architect, CableLabs &#8211; Last week, at the 2016 Environmental Leader Conference, the Set-Top Box Voluntary Agreement (STB VA) received special recognition to reduce energy consumption related to set-top boxes in consumers’ homes.  The Environmental Leader Top Project of the Year Award is a program recognizing excellence in projects that provide companies [&#8230;]</p>\n<p>The post <a rel=\"nofollow\" href=\"/industry-set-top-box-voluntary-agreement-initiative-wins-environmental-leader-top-project-year-award/\">Industry Set-Top Box Voluntary Agreement Initiative Wins Environmental Leader Top Project of the Year Award</a> appeared first on <a rel=\"nofollow\" href=\"http://www.cablelabs.com\">CableLabs</a>.</p>\n",
+            "thumbnail": "http://www.cablelabs.com/wp-content/uploads/2016/06/enivronmental-leader-2016-project-award.jpg"
+          },
+          {
+            "title": "Implementing CableLabs Global Strategy",
+            "link": "http://www.cablelabs.com/implementing-cablelabs-global-strategy/",
+            "description": "<p>By Chris Lammers, Chief Operating Officer, CableLabs — Recently CableLabs held a signing ceremony in its Louisville, Colorado headquarters for Chongqing Cable Networks Co., Ltd. (CCN) its 55th cable operator member. CCN, located in southwest China, is one of China’s leading cable operators providing service to over five million digital subscribers, including HDTV, interactive video [&#8230;]</p>\n<p>The post <a rel=\"nofollow\" href=\"/implementing-cablelabs-global-strategy/\">Implementing CableLabs Global Strategy</a> appeared first on <a rel=\"nofollow\" href=\"http://www.cablelabs.com\">CableLabs</a>.</p>\n",
+            "thumbnail": "http://www.cablelabs.com/wp-content/uploads/2016/06/global_expansion-world_thumb.jpg"
+          },
+          {
+            "title": "AP Coordination in Home Networks",
+            "link": "http://www.cablelabs.com/ap-coordination-home-networks/",
+            "description": "<p>By Neeharika Allanki, Wireless Architect, CableLabs &#8211; Multiple Access Points Can Improve Home Wi-Fi Coverage:  The Secret Sauce is AP Coordination Before we address AP Co-ordination in Home Networks, it is important to note that average home sizes have been increasing at a steady pace in the past four decades as seen from the figure [&#8230;]</p>\n<p>The post <a rel=\"nofollow\" href=\"/ap-coordination-home-networks/\">AP Coordination in Home Networks</a> appeared first on <a rel=\"nofollow\" href=\"http://www.cablelabs.com\">CableLabs</a>.</p>\n",
+            "thumbnail": "http://www.cablelabs.com/wp-content/uploads/2016/06/ap-coordination-thumb.jpg"
+          },
+          {
+            "title": "Cable Makes Its Mark at FTTH Connect",
+            "link": "http://www.cablelabs.com/cable-makes-its-mark-at-ftth-connect/",
+            "description": "<p>By Jon Schnoor, Senior Engineer, CableLabs – Over the past two years, members of the CableLabs Optical Technologies team had the privilege to speak at the Fiber-To-The Home (FTTH) Council’s yearly FTTH Connect event. FTTH Connect annually attracts many thought leaders from both the vendor and service provider communities. One observation we made while attending [&#8230;]</p>\n<p>The post <a rel=\"nofollow\" href=\"/cable-makes-its-mark-at-ftth-connect/\">Cable Makes Its Mark at FTTH Connect</a> appeared first on <a rel=\"nofollow\" href=\"http://www.cablelabs.com\">CableLabs</a>.</p>\n",
+            "thumbnail": "http://www.cablelabs.com/wp-content/uploads/2016/06/2016-ftth_connect-thumb.jpg"
+          }
+        ]
+      },
+      "nctaData": [
+        {
+          "title": "Business Data Services Are a “Textbook Example of What Not to Regulate”",
+          "link": "https://www.ncta.com/platform/public-policy/business-data-services-are-a-textbook-example-of-what-not-to-regulate/",
+          "comments": "https://www.ncta.com/platform/public-policy/business-data-services-are-a-textbook-example-of-what-not-to-regulate/#comments",
+          "pubDate": "Mon, 08 Aug 2016 15:31:09 +0000",
+          "creator": "Steve Morris",
+          "category": "Public Policy",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11685",
+          "description": "In previous posts we have raised a number of concerns regarding the direction of the FCC’s rulemaking proceeding regarding Business Data Services (BDS). Tomorrow NCTA will file further comments demonstrating that there is no failure in the BDS marketplace justifying massive regulatory intervention, that the costs of new rate regulation almost certainly will outweigh the [&#8230;]",
+          "contentEncoded": "<p><a href=\"https://www.ncta.com/platform/public-policy/let-some-fresh-air-inside-the-fccs-smoke-filled-tent/\">In previous posts</a> we have raised a number of concerns regarding the direction of the FCC’s rulemaking proceeding regarding Business Data Services (BDS). Tomorrow NCTA will file further comments demonstrating that there is no failure in the BDS marketplace justifying massive regulatory intervention, that the costs of new rate regulation almost certainly will outweigh the benefits, and that the extensive rate regulation proposed by some parties could seriously undermine competition and investment in this crucial segment of the communications marketplace.</p>\n<blockquote><p>&#8220;Unwarranted regulation &#8216;can create a vicious cycle whereby investment is undermined and facilities-based competition does not develop.'&#8221;</p></blockquote>\n<p>Our filing will include a new report from economists Michael Katz – who served as Chief Economist at the FCC during the Clinton Administration – and Bryan Keating. The Katz/Keating Report finds that “the ability of regulation to improve market performance is highly uncertain in a marketplace as complex as the one for BDS, which involves a wide range of complex, rapidly evolving, and multidimensional products supplied by multiple providers at costs that vary by customer, service provider, and location.” Katz and Keating demonstrate that these features of the BDS marketplace “make it more likely that regulation will have adverse, unintended consequences such as reducing investment, harming innovation, and degrading service quality.” In the end, they conclude that the BDS industry is a “textbook example of what not to regulate.”</p>\n<p>Katz and Keating further explain that rate regulation can harm consumers by “lowering the incentives to enter and invest.” They caution that unwarranted regulation “can create a vicious cycle whereby investment is undermined and facilities-based competition does not develop . . . thus perpetuating the market conditions that triggered regulation.” And as NCTA has noted in previous posts, Katz and Keating warn that “harm to investment and entry incentives would be especially acute if the Commission extended ex ante price regulation to BDS entrants” like cable operators.</p>\n<p>That respected economists like Katz and Keating are alarmed about proposals to regulate the rates charged by competitive providers is hardly surprising in light of the record. While there is a robust debate as to whether, and if so how, to regulate BDS rates of incumbent telephone companies, none of the 16 economists that have filed declarations in this proceeding (including the FCC’s own hired economist) have raised any concern regarding rates charged by cable or other competitive BDS providers or even hinted that such providers possess market power.  Similarly, not a single economist has endorsed the idea that regulating BDS rates of competitive providers is a necessary or beneficial policy choice.</p>\n<p>In the face of this complete and total lack of economic support, the Commission should reaffirm its decades-old policy of not regulating rates charged by competitors and summarily reject any proposal that includes such regulation.</p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/public-policy/business-data-services-are-a-textbook-example-of-what-not-to-regulate/feed/",
+          "slashComments": "1",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/08/BDSHeader.png"
+        },
+        {
+          "title": "Emerging TV Technologies On Display as the 2016 Summer Olympics Kick Off",
+          "link": "https://www.ncta.com/platform/cable-programming/emerging-tv-technologies-on-display-as-the-2016-summer-olympics-kick-off/",
+          "comments": "https://www.ncta.com/platform/cable-programming/emerging-tv-technologies-on-display-as-the-2016-summer-olympics-kick-off/#respond",
+          "pubDate": "Fri, 05 Aug 2016 13:17:26 +0000",
+          "creator": "Francesca Duffy",
+          "category": "Cable Programming",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11671",
+          "description": "Every four years audiences around the globe experience the thrill of watching the summer Olympics, one of the greatest sporting events in the world. As we await the start of the opening ceremony tonight, we wanted to take a peek at how the TV coverage of the event intends to use emerging technology to reach and [&#8230;]",
+          "contentEncoded": "<p>Every four years audiences around the globe experience the thrill of watching the summer Olympics, one of the greatest sporting events in the world. As we await the start of the opening ceremony tonight, we wanted to take a peek at how the TV coverage of the event intends to use emerging technology to reach and engage audiences.</p>\n<p>So what’s new this time around?</p>\n<p>While the U.S. athletes will hopefully break new records this month, NBCUniversal, which will exclusively air <a href=\"http://www.nbcolympics.com\" target=\"_blank\">live TV coverage of the event</a>, will break its own when it comes to streaming. This year, the network plans to stream 4,500 hours of content of all 34 sports for pay TV subscribers via the latest TV Everywhere technology. Compare that to the 3,500 hours that were streamed at the 2012 Olympics in London, when all competition was streamed live for the first time.</p>\n<p>&#8220;Our goal is to provide ready access to every second of every event through our digital platforms,&#8221; <a href=\"http://www.nbcuniversal.com/press-release/nbc-olympics-surrounds-rio-2016-record-setting-digital-coverage\" target=\"_blank\">said Rick Cordella</a>, senior vice president and general manager of digital media at NBC Sport Group. Viewers won&#8217;t have to worry about missing any events as long as they have a mobile device, tablet, desktop or connected TV handy. Or if you&#8217;d rather skip right to the results, the <a href=\"https://itunes.apple.com/us/app/nbc-olympics-rio-news-results/id1123078102?mt=8\" target=\"_blank\">NBC Olympics: Rio News &amp; Results app</a> will feature medal standings, athlete bios and video highlights.</p>\n<p>And on the virtual reality front, <a href=\"http://nbcsportsgrouppressbox.com/2016/06/30/nbc-olympics-to-provide-virtual-reality-coverage-of-rio-2016-exclusively-with-samsung/\" target=\"_blank\">NBCUniversal will offer VR coverage</a> of the games for the first time via Samsung Galaxy smartphones and Samsung GR VR through the NBC Sports app. The VR content will include 85 hours of VR programming, from the opening and closing ceremonies to basketball, gymnastics, diving, boxing, fencing and beach volleyball, with the goal to give viewers one of the most up close and personal Olympics experiences ever.</p>\n<p>“Olympic fans can be transported to iconic venues such as Maracana Stadium for an unprecedented view of the Opening Ceremony, and Copacabana Beach for an immersive beach volleyball experience in the sport’s ultimate setting,” <a href=\"http://www.nbcolympics.com/news/coming-soon-nbc-olympics-virtual-reality-coverage-samsung-exclusive\" target=\"_blank\">said Gary Zenkel, president of NBC Olympics</a>.</p>\n<p>Are you a Snapchat fiend? <a href=\"http://www.nbcolympics.com/news/nbc-olympics-snapchat-team-present-unique-perspectives-2016-olympic-games-and-olympic-trials\" target=\"_blank\">NBCUniversal and Snapchat</a> have partnered to allow audiences to experience &#8220;live stories&#8221; from their phones. The social media mobile platform was in its first year back when the 2012 Olympics took place, but today the platform boasts over 100 million daily active users. Thousands of attendees and people will be contributing to the Snapchat-curated story on the 2016 Olympics in Rio.</p>\n<p>NBCUniversal will also offer 83 hours of <a href=\"http://www.nbcolympics.com/4khdr\" target=\"_blank\">Olympics coverage in 4K Ultra HD</a>, available on a one-day delay. The 4K experience is a huge step, providing imagery with a resolution that&#8217;s four times greater than we see in HD.</p>\n<p>Coverage this year is sure to inspire and delight audiences everywhere as the Olympics always do. But with all of the changes in media, mobile and technology over the past four years, it will be most interesting to see how the games will leverage a new generation of technology, recruit new fans, and give insight into what the future holds for live TV.</p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/cable-programming/emerging-tv-technologies-on-display-as-the-2016-summer-olympics-kick-off/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/08/OlympicsHeader.jpg"
+        },
+        {
+          "title": "TV One’s New Approach to Reaching African-American Audiences: Q+A With TV One SVP D’Angela Proctor",
+          "link": "https://www.ncta.com/platform/cable-programming/tv-ones-new-approach-to-reaching-african-american-audiences-qa-with-tv-one-svp-dangela-proctor/",
+          "comments": "https://www.ncta.com/platform/cable-programming/tv-ones-new-approach-to-reaching-african-american-audiences-qa-with-tv-one-svp-dangela-proctor/#respond",
+          "pubDate": "Thu, 04 Aug 2016 16:56:31 +0000",
+          "creator": "Francesca Duffy",
+          "category": "Cable Programming",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11653",
+          "description": "When D’Angela Proctor was introduced to Alfred Liggins, CEO of Radio One, he wanted to know what she would do if she could change TV One, the network owned by Radio One and which Liggins launched in 2004. So she put together a deck where she detailed how the network would benefit by producing original [&#8230;]",
+          "contentEncoded": "<p>When D’Angela Proctor was introduced to Alfred Liggins, CEO of Radio One, he wanted to know what she would do if she could change <a href=\"http://tvone.tv/\" target=\"_blank\">TV One</a>, the network owned by Radio One and which Liggins launched in 2004. So she put together a deck where she detailed how the network would benefit by producing original films and capitalizing on already working franchises. Since then, Proctor has been TV One’s senior vice president of original programming and production for the past three years, and has pretty much been able to accomplish all of that.</p>\n<p>TV One produces and airs an array of shows, documentaries, news and movies that “show a broad range of the black experience,” Proctor explained at the <a href=\"http://tvcritics.org/\" target=\"_blank\">TCA Tour</a> in Los Angeles earlier this week.</p>\n<p>As an African-American woman, Proctor shared that she started her career by going to law school instead of film school because she “had no idea that TV and filmmaking were accessible to me.” But her desire to enter the business eventually persevered. She went into the music business first because, in her opinion, she saw more successful examples of African-Americans going that route, and that eventually led her to TV programming. And she’s been trying to break the mold for minorities at the executive level and in programming ever since.</p>\n<p>Check out our Q &amp; A below to hear more of her take on TV One’s role in the television world, and how the network is changing the entertainment landscape for African-Americans.</p>\n<p><strong>What has been your vision for TV One since first taking on your role? </strong></p>\n<p>My thought process is always to dig deeper and to scratch underneath the surface of the black experience, and to talk about things that other people aren&#8217;t talking about. Which is why we did a movie on mental illness, called <em>The Secret She Kept</em> [the premiere was screened at NCTA this past June].  We go into areas like the movies<em> Ringside</em> and <em>Media</em> do by talking about the complexities of family, and we want to make sure we show black people with multiple layers and in different lights throughout our programming.</p>\n<p><strong>How is TV One different than other networks that produce programming for African-American audiences?</strong></p>\n<p>I must say there are a lot of people who are getting it right. To say we are the only ones doing it this way would be disingenuous. But I can tell you we endeavor to tell really great stories. And because we are not fully distributed, we make content for a price. Story and quality come first, but of course everyone does that. We also want to elevate new voices, and give opportunities to storytellers that might not have opportunities at other places, but that doesn&#8217;t mean they are any less talented than anyone else.</p>\n<p><strong>Do you have an example of someone who was afforded that kind of opportunity?</strong></p>\n<p>Take Christine Swanson [Swanson is a filmmaker who directed <em>For the Love of Ruth</em>, which made its debut on TV One earlier this year and  won an NAACP Image Award for Outstanding Directing, and the upcoming <em>Love Under New Management: The Miki Howard Story</em>]. Swanson had stopped working for 10 years, became a full-time mom. But I called her up because I remembered meeting her at a film festival in the &#8217;90s, and asked her to work with us. So we do provide opportunities for lots of storytellers. I think we are unique in that way. We give people opportunities and they may not have a vast resume, but we go by the following: Can they tell a good story? Are they creative beings? And are they good to work with?</p>\n<p><strong>What do you hope to accomplish at TV One in the next five years?</strong></p>\n<p>We have to quadruple the amount of original hours. We have to wean ourselves off of the acquired programs and live on our original content five years from now.</p>\n<p><strong>How is TV One leaving its mark in the industry?</strong></p>\n<p>I’ll tell you, the main point of differentiation for us, is there is no other network that has a black daily news program like we do.  We have <a href=\"http://newsone.com/\" target=\"_blank\">NewsOne Now</a>, and it is the highest rated cable news program for African-American adults ages 25-54. And when the Democratic National Committee wanted to do a town hall with Hillary Clinton and Bernie Sanders, Roland Martin was the co-host [Roland Martin is a commentator for TV One and the host of NewsOne Now]. We simulcast between CNN and TV One. There&#8217;s no other network that could have been in that position to do that. As a result of that, BET got Mark Lamont Hill and Melissa Harris Perry [BET news correspondents]. It&#8217;s because we&#8217;re making noise and news.</p>\n<p>I also believe that a rising tide lifts all boats. So competition is good. I watch this speech all the time that reminds me of this, it’s a TED Talk by Malcolm Gladwell about spaghetti sauce. Years ago there was only one type of spaghetti sauce. Then Prego and Ragu and others started coming and they started messing around with chunks of tomatoes and adding mushrooms and garlic. Now you go into the grocery store and there is an aisle full of tomato sauce. There is room for everybody. So we are tomato sauce!</p>\n<p><em>Photo above of TV One&#8217;s Ringside cast at the TCA 2016 Summer Tour. </em></p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/cable-programming/tv-ones-new-approach-to-reaching-african-american-audiences-qa-with-tv-one-svp-dangela-proctor/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/08/TVOne-CastRingside.jpg"
+        },
+        {
+          "title": "What TV Criticism says about TV, Culture, and Changing Audiences",
+          "link": "https://www.ncta.com/platform/cable-programming/what-tv-criticism-says-about-tv-culture-and-changing-audiences/",
+          "comments": "https://www.ncta.com/platform/cable-programming/what-tv-criticism-says-about-tv-culture-and-changing-audiences/#respond",
+          "pubDate": "Tue, 02 Aug 2016 16:28:31 +0000",
+          "creator": "Francesca Duffy",
+          "category": "Cable Programming",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11639",
+          "description": "With the cable portion now wrapped up at the TV Critics Association tour in Los Angeles, it’s safe to say that the critics never run short of questions throughout their eight-hour days stacked with panels of the best producers and casts found on television. For many, the TCA tour is the time to gain access [&#8230;]",
+          "contentEncoded": "<p>With the cable portion now wrapped up at the <a href=\"http://tvcritics.org/\" target=\"_blank\">TV Critics Association</a> tour in Los Angeles, it’s safe to say that the critics never run short of questions throughout their eight-hour days stacked with panels of the best producers and casts found on television. For many, the TCA tour is the time to gain access to the various minds and talent making these shows possible, to get the scoop on what’s coming up next season, to find out the prep work it takes for characters to come to life on screen, or to just get to know a show’s writers, executives and actors on a more personal level. But as we all know, TV has gone through a metamorphosis in the past decade, both with the expansion of programming and the way we consume content. And who better to navigate us through TV’s journey than the critics themselves who spend most of their waking hours immersed in the myriad of programming out there?</p>\n<p>Eric Deggans is a seasoned veteran of the TCA tours since 1997. He previously worked at the <em>Tampa Bay Times</em> before taking on the TV critic and correspondent gig at <a href=\"http://www.npr.org/\" target=\"_blank\">NPR</a> in 2013. “When I first came [to a TCA tour], it was largely newspaper critics,” said Deggans. There were fewer networks and fewer shows, too.</p>\n<p>But with the eventual downturn in the newspaper industry, many critics lost their jobs. Ironically, at the same time, television exploded like never before. “People were attaching a lot of importance to TV in their recreational lives,” said Deggans, along with the adoption of smartphones, tablets and binge watching as tools and ways to consume TV.</p>\n<blockquote><p>&#8220;TV has gone through a metamorphosis in the past decade, both with the expansion of programming and the way we consume content.&#8221;</p></blockquote>\n<p>While NPR always had a film critic, there was never a full-time TV critic at the organization prior to Deggans. It took the media outlet a little awhile to realize that TV had risen to a spot in people&#8217;s lives where it warranted a need for someone to talk about programming and TV news on the air and online. That move, if any, clearly signaled that TV was just getting better and occupying a larger chunk of people&#8217;s lives. “TV morphed into media, and now we’re talking about streaming services, media technology, and more. The beat really grew,” said Deggans.</p>\n<p>Now, half the room at the TCA tour, if not more, come from online-only publications, like <a href=\"http://www.vox.com/\" target=\"_blank\">Vox</a>.</p>\n<p>Todd VanDerWerff, a culture editor for Vox, does a lot of long-form pieces that range from examining the pattern of deaths of characters across television, to an in-depth look at <a href=\"http://www.tbs.com/\" target=\"_blank\">TBS</a>’s <em>Full Frontal With Samantha Bee</em>. And since Vox targets a general interest audience, VanDerWerff writes his pieces with an eye towards convincing readers to watch a particular show rather than assuming they have.</p>\n<p>Looking back, VanDerWerff, who has been critiquing television programming professionally since 2009, commented that TV reporting used to be “a pretty easy gig.” The former A.V. Club writer said that it used to be like this: TV critics got the pilot screen, reviewed it at its debut, checked in later in the season and then at the finale. Then came the rise of episodic recaps, which are still out there but usually aren’t very sustainable outside of a show like <a href=\"http://www.hbo.com/\" target=\"_blank\">HBO</a>&#8216;s <em>Game of Thrones.</em> “Literally, a huge audience will read anything on [<em>Game of Thrones</em>],” said VanDerWerff.</p>\n<p>But there are a lot of different ways to report on TV. In describing his coverage, Deggans said he does a bit of everything. One day he might give a straight up review of HBO’s <em>The Night of</em>, and the next he might write a reflective piece on <em>The Wire</em>, and what it means for a show that wrapped up eight years ago to be available to watch again. Or he might do a piece that delves into controversial issues like race and gender and how they play out in programming. “I think it’s important that critics take a look at how these [social issues] are depicted on TV because it can tell you a bit about how we’re feeling about it as a society,” said Deggans.</p>\n<p>In VanDerWerff’s opinion, this type of TV critiquing, which involves larger essays, fares better with audiences than the entertainment news and recaps. “That’s kind of like saying, &#8216;I’m recommending a show to you when it starts, but also putting it into context in society with politics and other stuff you see on TV,&#8217;” said VanDerWerff.</p>\n<p>As for how changing viewing habits are impacting his work, VanDerWerff admits that he sometimes wonders whether to evaluate a show based on how it runs as a story if watched continuously back to back, or judged by individual episodes. Because sometimes, “the individual episodes are not very good, but the totality of them is very good,” he explained. Nowadays, a lot of writers are looking to evaluate full seasons of shows in their critiques: “I think we are going to move to a place where networks are more comfortable with saying, this show is a weekly show, then this other show we can release an episode every three or four days, and this show is a show to be binged.”</p>\n<p>“Our main job is to be independent and incisive,” said Deggans, referring to his role at NPR. Sometimes, for TV critics, that means digging deeper and exploring challenging topics that aren’t usually brought to the table. And the TCA tour is always a prime opportunity to start that exploration: “When I get the mic, I’m going to ask the tough questions.”</p>\n<p><em>This blog also appeared in CTAM Smartbrief. To sign up, click <a href=\"http://ncta.us4.list-manage.com/track/click?u=5c9cbb7072f1682388e57f94b&amp;id=a54db1bf62&amp;e=f7e4247800\" target=\"_blank\">here</a>.</em></p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/cable-programming/what-tv-criticism-says-about-tv-culture-and-changing-audiences/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/08/TCAHeader1.png"
+        },
+        {
+          "title": "Why We Filed for En Banc Review",
+          "link": "https://www.ncta.com/platform/public-policy/why-we-filed-for-en-banc-review/",
+          "comments": "https://www.ncta.com/platform/public-policy/why-we-filed-for-en-banc-review/#comments",
+          "pubDate": "Fri, 29 Jul 2016 13:42:57 +0000",
+          "creator": "NCTA",
+          "category": "Public Policy",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11631",
+          "description": "Today, NCTA joined the American Cable Association (ACA) in filing a Joint Petition for Rehearing En Banc with the U.S. Court of Appeals for the D.C. Circuit regarding the 2015 FCC order to reclassify broadband internet access service as a common carrier service under Title II of the Communications Act. We don’t celebrate this petition, [&#8230;]",
+          "contentEncoded": "<p>Today, NCTA joined the <a href=\"http://www.americancable.org\">American Cable Association (ACA)</a> in filing a <a href=\"https://www.ncta.com/sites/prod/files/UST%20et%20al%20v%20FCC.CADC_.2016-07-29.NCTA%20%26%20ACA%20Petition%20for%20Rehearing%20En%20Banc%20%28As%20Filed%29.pdf\">Joint Petition for Rehearing En Banc</a> with the U.S. Court of Appeals for the D.C. Circuit regarding the 2015 FCC order to reclassify broadband internet access service as a common carrier service under Title II of the Communications Act.</p>\n<p>We don’t celebrate this petition, but we believe this action is necessary to correct unlawful action by the FCC.  We aren’t challenging the specific net neutrality protections – <a href=\"https://www.ncta.com/platform/public-policy/what-you-need-to-know-before-the-fcc-votes-on-net-neutrality/\">as we’ve explained repeatedly</a>, we have long supported the net neutrality principles embodied in the FCC&#8217;s 2010 order that could be enforceable under the Commission’s traditional light touch approach to internet regulation.  Regrettably, the 2015 Order abruptly and unreasonably abandoned that long-established precedent, reverting to an outdated regulatory framework.  Quite simply, as regulators for decades have acknowledged and consistently determined, dynamic Internet networks do not resemble or deserve to be treated like archaic telephone systems.</p>\n<p>Because the FCC Order was such a monumental departure from the FCC&#8217;s successful tenure of overseeing broadband internet networks that have seen tremendous investment, expansion and innovation, we seek rehearing of these critical issues.</p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/public-policy/why-we-filed-for-en-banc-review/feed/",
+          "slashComments": "3",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/07/EnBancHeader.png"
+        },
+        {
+          "title": "What Makes TV Tick? We’re going behind the scenes at the TCA Press Tour",
+          "link": "https://www.ncta.com/platform/cable-programming/what-makes-tv-tick-were-going-behind-the-scenes-at-the-tca-press-tour/",
+          "comments": "https://www.ncta.com/platform/cable-programming/what-makes-tv-tick-were-going-behind-the-scenes-at-the-tca-press-tour/#respond",
+          "pubDate": "Thu, 28 Jul 2016 15:40:06 +0000",
+          "creator": "Francesca Duffy",
+          "category": "Cable Programming",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11620",
+          "description": "Twice a year, once in the summer and once in the winter, hundreds of TV critics from media outlets across America gather in Los Angeles for the TV Critics Association press tour. There they&#8217;ll get the scoop on all the great shows coming out in the upcoming months. TCA represents over 200 journalists across the [&#8230;]",
+          "contentEncoded": "<p>Twice a year, once in the summer and once in the winter, hundreds of TV critics from media outlets across America gather in Los Angeles for the <a href=\"http://tvcritics.org/\" target=\"_blank\">TV Critics Association</a> press tour. There they&#8217;ll get the scoop on all the great shows coming out in the upcoming months. TCA represents over 200 journalists across the country, who reach over tens of millions of readers and consumers. This weekend, during the cable portion of the tour, which is organized by our friends at <a href=\"https://www.ctam.com/\" target=\"_blank\">CTAM</a>, we’ll be there to explore the state of television in today&#8217;s media culture as well as viewership trends directly from the networks, show producers, directors, writers and the talent themselves.</p>\n<p>From large networks like HBO to emerging and niche networks like TVOne and Ovation, we want to find out what it takes to produce the kind of storytelling that keeps viewers engaged and coming back for more. With <a href=\"http://www.tveverywherenow.com/\" target=\"_blank\">TV Everywhere</a> on the rise, how do networks and creators tell stories that translate to second screens? We hope to explore the tools creators are using to reach viewers on the devices they use most, and how this impacts the creative process.</p>\n<p>As viewers, we don&#8217;t always realize the immense labor it takes to produce shows that entertain, inform and expand our imagination. The technology behind the scenes plays a huge role in executing a story that takes place in the future, in another world, or one that plays on the abstract. This is another aspect we hope to dig into a little more to find out how technology helps to make visually compelling narratives.</p>\n<p>And with the annual <a href=\"http://www.walterkaitz.org/dinner/dinner-home/\" target=\"_blank\">Walter Kaitz dinner</a> coming up in September, the cable industry&#8217;s most prestigious fundraising dinner held during Diversity Week, we can&#8217;t help but look for and appreciate the diverse storylines and talent that will be present at TCA. We hope to find out what networks are doing to use their influence to promote diversity in programming, and how the actors, producers, and writers are working to reflect our country&#8217;s changing demographics.</p>\n<p>Last but not least, we plan to talk with the stars of the event, the critics, and delve into the state of TV criticism in America. What challenges do they face in covering television in today&#8217;s media culture? We hope to get a variety of perspectives on the evolution of TV criticism, where it&#8217;s headed and how it affects our conversations around media and entertainment.</p>\n<p>So stay tuned for updates on our experience in Beverly Hills. It’ll be a fun ride!</p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/cable-programming/what-makes-tv-tick-were-going-behind-the-scenes-at-the-tca-press-tour/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/07/TCSHeader.png"
+        },
+        {
+          "title": "On Promoting Diversity, A+E Networks Walks the Walk",
+          "link": "https://www.ncta.com/platform/industry-news/on-promoting-diversity-ae-networks-walks-the-walk/",
+          "comments": "https://www.ncta.com/platform/industry-news/on-promoting-diversity-ae-networks-walks-the-walk/#respond",
+          "pubDate": "Tue, 26 Jul 2016 13:50:04 +0000",
+          "creator": "Joong Won Pyo",
+          "category": "Industry News",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11605",
+          "description": "The Walter Kaitz Foundation Fundraising Dinner is the annual gathering of media and entertainment leaders dedicated to recognizing women and multi-ethnic contributions to the cable industry. Now in its 33rd year, the dinner recognizes organizations that have achieved significant milestones in promoting diversity in their workforce and their programming. This year, A+E Networks and the National [&#8230;]",
+          "contentEncoded": "<p><a href=\"http://www.walterkaitz.org/dinner/dinner-home/\" target=\"_blank\">The Walter Kaitz Foundation Fundraising Dinner</a> is the annual gathering of media and entertainment leaders dedicated to recognizing women and multi-ethnic contributions to the cable industry. Now in its 33<sup>rd</sup> year, the dinner recognizes organizations that have achieved significant milestones in promoting diversity in their workforce and their programming. This year, <a href=\"http://www.aenetworks.com/\" target=\"_blank\">A+E Networks</a> and the <a href=\"http://www.nalip.org/\" target=\"_blank\">National Association of Independent Latino Producers (NALIP)</a> are the dinner honorees, with NALIP taking the diversity advocate award and A+ E receiving the diversity champion award. Earlier this month, we learned more about <a href=\"https://www.ncta.com/platform/industry-news/nalip-bringing-latino-content-creators-to-the-forefront/\">NALIP’s work</a> in bringing diverse voices to television and filmmaking. For this week, we delved a little deeper into A+E Networks to find out about the various ways the award winner is promoting diversity in house, in the media and to their millions of viewers.</p>\n<p>Today, A + E reaches 330 million TV watchers worldwide and 500 million digital users, and uses its large influence to touch on tough topics, such as racial diversity and sexuality, through its programming. HISTORY’s remake of <em>Roots</em> was a huge success this year, bringing the groundbreaking story of slavery and individuality to a whole new generation. The travel documentary <em>Gaycation</em> on Viceland explores not only sexual orientation, but also the cultural dynamics of foreign LGBTQ communities. And <em>Broke Bites: What the Fung</em>, follows Chinese American YouTube stars, The Fung Brothers on a culinary journey around America.</p>\n<p>The A+E channel <em>Lifetime</em> also created the Broad Focus initiative, which is designed to support creative women both in front of the camera and behind it. They are hiring more women as directors, producers, writers and leaders to not only provide more professional opportunities, but to represent women in the industry as well. When asked about the initiative, A+E CEO Nancy Dubuc said:</p>\n<p>“Our company invests heavily in finding fresh, unique voices and Broad Focus will inspire us to look deeper and in nontraditional places to discover women among those storytellers. I’m proud we are challenging ourselves and our friends in the industry to do more to support them.”</p>\n<p>To put A + E’s investment in developing the careers of women into perspective, let’s take a look at some of the stats on women in the industry. While only 7 percent of the film and television industry’s works were directed by women, on <em>Lifetime</em> women directed 20 percent of films and shows. And if you compare the industry average of female writers, which is only at 11 percent, <em>Lifetime</em>’s average is 43 percent. The same goes for female executive producers—19 percent of executive producers in the industry are female, while at <em>Lifetime</em> 35 percent are female. So while there is still work to be done all around, this data speaks volumes to how the network prioritizes, recognizes and encourages the growth and success of women in its network.</p>\n<p>A+E Networks doesn’t just talk about diversity, they put it into action. In their shows, in their staff, in their creative programming, and in their mission. Congratulations to A+E Networks for their outstanding work. We hope you can come celebrate their achievement at the Walter Kaitz Fundraising Dinner in New York City during Diversity Week on September 21<sup>st</sup>.</p>\n<p><em>This blog also appeared in CTAM Smartbrief. To sign up, click <a href=\"http://ncta.us4.list-manage.com/track/click?u=5c9cbb7072f1682388e57f94b&amp;id=a54db1bf62&amp;e=f7e4247800\" target=\"_blank\">here</a>.</em></p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/industry-news/on-promoting-diversity-ae-networks-walks-the-walk/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/07/AEHeader.png"
+        },
+        {
+          "title": "Moving Forward on “Ditching the Box” not “Unbundling the App”",
+          "link": "https://www.ncta.com/platform/public-policy/moving-forward-on-ditching-the-box-not-unbundling-the-app/",
+          "comments": "https://www.ncta.com/platform/public-policy/moving-forward-on-ditching-the-box-not-unbundling-the-app/#respond",
+          "pubDate": "Fri, 22 Jul 2016 13:42:43 +0000",
+          "creator": "NCTA",
+          "category": "Public Policy",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11593",
+          "description": "Yesterday, NCTA submitted a 30+ page filing (plus over one thousand pages of supporting technical specs) that provides additional information requested by the FCC about the open standard-based apps proposal presented several weeks ago by a group of independent programmers, NCTA and pay TV companies. This information supplements our prior efforts, both within the Downloadable [&#8230;]",
+          "contentEncoded": "<p>Yesterday, NCTA submitted a <a href=\"https://www.ncta.com/sites/prod/files/Response%20to%20Questions%20About%20Open%20Standards%20HTML5%20Apps-Based%20Approach%20%2807....pdf\" target=\"_blank\">30+ page filing</a> (plus over one thousand pages of supporting technical specs) that provides additional information requested by the FCC about the open standard-based apps proposal presented several weeks ago by a group of independent programmers, NCTA and pay TV companies. This information supplements our prior efforts, both within the <a href=\"https://www.fcc.gov/about-fcc/advisory-committees/general/downloadable-security-technology-advisory-committee\" target=\"_blank\">Downloadable Security Technical Advisory Committee (DSTAC) </a>and through briefings requested by the Commission, to explain how the HTML5 standard works and why reliance on an ”apps approach” offers a more productive path forward than the NPRM’s ”content unbundling approach” when it comes to competition, content diversity, copyright protection, and consumer welfare.</p>\n<p>Our filing yesterday provides additional detail about HTML5 and suggests how the FCC can operationalize an apps-based approach that will advance the cause of retail device competition while respecting the rights of content creators and distributors.</p>\n<p>The good news about this recent interest in the apps proposal is that the Commission appears to be responding to the torrent of criticism unleashed by the NPRM which proposed unbundling pay TV programming and other important elements of MVPD service. We are happy to continue engagement with the Commission on this important issue and remain optimistic that we can achieve an outcome that will protect content, privacy and licensing agreements – as Chairman Wheeler has promised Congress on many occasions. But to accomplish this aim, we also ought to be clear about what the apps proposal will do and what it will not do.</p>\n<p>So let’s be clear.  What the apps proposal will do is allow consumers to choose to watch their cable service without the need for a set-top box.  What it will not and should not do is to permit third parties to ignore copyright law and the decision of content creators as to how their content is packaged and presented to consumers.</p>\n<p>Regrettably, some advocates seem committed to the extreme position that “ditching the box” is insufficient and that the FCC must go further to “unbundle the app.” But that idea is simply wrong.  It is at odds with the statute, sound policy and the very virtues on which an apps proposal is premised – permitting device makers to build competitive devices that incorporate MVPD offerings while protecting consumer privacy and other public interest goals, as well as protecting the rights of content creators and distributors.</p>\n<p>As any casual observer of the retail marketplace can see, devices like Apple TV, Roku, Amazon Fire and others already compete based on their interfaces – the manner in which they present content to the consumer on their “home screen” and not based on the how programming is presented inside individual apps. After all, the FCC has no power to unbundle the offerings of Netflix, Hulu, HBO Go or hundreds of other apps. This argument that pay TV content needs to be treated differently is simply a red herring by advocates who have long argued for the complete unbundling of pay TV services.</p>\n<p>We welcome an honest conversation about how the apps approach can allow consumers to “Ditch the Box” if they choose. But in doing so we should be wary of those who will advance proposals under the guise of a “revised” apps proposal or who claim they are accepting the apps proposal but merely “bolting on” elements of the original proposal. Those advocates are merely trying to pour old wine in new bottles in an effort to subvert the virtues of the app proposal.</p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/public-policy/moving-forward-on-ditching-the-box-not-unbundling-the-app/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/07/apps.jpg"
+        },
+        {
+          "title": "Public Wi-Fi Hotspots Hit 500,000",
+          "link": "https://www.ncta.com/platform/broadband-internet/public-wi-fi-hotspots-hit-500000/",
+          "comments": "https://www.ncta.com/platform/broadband-internet/public-wi-fi-hotspots-hit-500000/#respond",
+          "pubDate": "Wed, 20 Jul 2016 14:33:17 +0000",
+          "creator": "Ian Fenger",
+          "category": "Broadband & Internet",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11567",
+          "description": "In addition to the Wi-Fi in our homes and offices, cable ISPs also offer secure Wi-Fi networks to customers outside of the home. These hotspots give you the ability to watch movies at the dog park, or get some work done at an outdoor café. And the best part? They’re offered at no extra charge. [&#8230;]",
+          "contentEncoded": "<p><a href=\"https://www.ncta.com/platform/wp-content/uploads/2016/07/500K-2.png\"><img class=\"alignleft wp-image-11568 size-full\" src=\"https://www.ncta.com/platform/wp-content/uploads/2016/07/500K-2.png\" alt=\"Out of home Wi-Fi hotspots reach 500,000 \" width=\"700\" height=\"600\" srcset=\"https://www.ncta.com/platform/wp-content/uploads/2016/07/500K-2.png 700w, https://www.ncta.com/platform/wp-content/uploads/2016/07/500K-2-300x257.png 300w\" sizes=\"(max-width: 700px) 100vw, 700px\" /></a>In addition to the Wi-Fi in our homes and offices, cable ISPs also offer secure Wi-Fi networks to customers outside of the home. These hotspots give you the ability to watch movies at the dog park, or get some work done at an outdoor café. And the best part? They’re offered at no extra charge. You may have never seen them, but they’re located in public places, often on electrical poles or street lamps out of sight. And according to <a href=\"http://www.cablewifi.com/\">The Cable WiFi Alliance</a>, the number of these hotspots has just reached an impressive 500,000.</p>\n<p>That means more customers can experience near-ubiquitous broadband connectivity, and communities benefit knowing there is secure, reliable internet access already built out.</p>\n<p>We’ve seen the number of these hotspots double in the past two years, and can’t wait to see how their growth continues to benefit communities across the country.</p>\n<p>Check out NCTA’s <a href=\"https://www.ncta.com/positions/unlicensed-spectrum\">Future of Wi-Fi page</a> for more stats and insight into how Wi-Fi has changed our lives.</p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/broadband-internet/public-wi-fi-hotspots-hit-500000/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/07/500Kheader.png"
+        },
+        {
+          "title": "Searching for the High Road on BDS Regulation",
+          "link": "https://www.ncta.com/platform/public-policy/searching-for-the-high-road-on-bds-regulation/",
+          "comments": "https://www.ncta.com/platform/public-policy/searching-for-the-high-road-on-bds-regulation/#respond",
+          "pubDate": "Mon, 18 Jul 2016 19:46:37 +0000",
+          "creator": "Steve Morris",
+          "category": "Public Policy",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11585",
+          "description": "At the risk of encouraging another “sticks and stones” retort, we’re going to let most of Harold Feld’s latest screed go attacking us for “faux outrage,” “self-righteous sanctimony,” “acting like a 6 year old,” conducting a “non-stop whinefest,” and “smelling like a g*#@!? ashtray.&#8221; Maybe Harold was just having a bad day. Despite its rhetorical [&#8230;]",
+          "contentEncoded": "<p>At the risk of encouraging another “sticks and stones” retort, we’re going to let most of Harold Feld’s <a href=\"http://www.wetmachine.com/tales-of-the-sausage-factory/ncta-shocked-shocked-to-discover-ex-parte-process-at-fcc/\">latest screed</a> go attacking us for “faux outrage,” “self-righteous sanctimony,” “acting like a 6 year old,” conducting a “non-stop whinefest,” and “smelling like a g*#@!? ashtray.&#8221; Maybe Harold was just having a bad day.</p>\n<p>Despite its rhetorical flourishes, what’s most notable from Harold’s post is that he offers no response whatsoever to the substantive concerns that were the core focus of <a href=\"https://www.ncta.com/platform/public-policy/let-some-fresh-air-inside-the-fccs-smoke-filled-tent/\">NCTA’s blog</a>. Specifically, we explained that regulating the BDS rates of cable operators and other competitive providers that do not have market power (as Verizon and INCOMPAS have proposed and Feld has endorsed), is not supported by any facts in the record, is at odds with four decades of successful FCC policy, and will have damaging consequences for future investment in fiber networks. We’ve been raising those concerns for months now, but we’ve yet to hear a serious response – not from Feld, not from any of the other parties advocating such regulation, and not from those at the Commission who seem to support such a policy.</p>\n<p>We’re eager to engage on these substantive issues with any one, at any time, within the <em>ex parte </em>rules and preferably without the name calling. And to be clear, there is nothing “faux” about the outrage that cable operators are feeling about this proceeding. Cable operators are investing billions of dollars in facilities to serve business customers and they are providing thousands of businesses across the country with new service options and lower prices. That is real world competition and the Commission should be taking steps to encourage more of it, not trying to constrain it with government price controls.</p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/public-policy/searching-for-the-high-road-on-bds-regulation/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/07/BDSReplyHeader.png"
+        },
+        {
+          "title": "NALIP: Bringing Latino Content Creators to the Forefront",
+          "link": "https://www.ncta.com/platform/industry-news/nalip-bringing-latino-content-creators-to-the-forefront/",
+          "comments": "https://www.ncta.com/platform/industry-news/nalip-bringing-latino-content-creators-to-the-forefront/#respond",
+          "pubDate": "Fri, 15 Jul 2016 16:44:46 +0000",
+          "creator": "Francesca Duffy",
+          "category": "Industry News",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11558",
+          "description": "It’s coming close to that time of year when key players across the media and entertainment world will gather for the 33rd annual Walter Kaitz Foundation dinner, the most prestigious fundraising event in the cable industry. Every year the foundation recognizes organizations that demonstrate an unwavering commitment to diversity. This year, the honors go to [&#8230;]",
+          "contentEncoded": "<p>It’s coming close to that time of year when key players across the media and entertainment world will gather for the 33<sup>rd</sup> annual <a href=\"http://www.walterkaitz.org/dinner/dinner-home/\" target=\"_blank\">Walter Kaitz Foundation dinner</a>, the most prestigious fundraising event in the cable industry. Every year the foundation recognizes organizations that demonstrate an unwavering commitment to diversity. This year, the honors go to the <a href=\"http://www.nalip.org/\" target=\"_blank\">National Association of Latino Independent Producers (NALIP)</a> and <a href=\"http://www.aenetworks.com/\" target=\"_blank\">A + E Networks</a>. In anticipation of the event, we caught up with Axel Caballero, the executive director of NALIP,  to find out how the diversity advocate honoree is helping minorities in the business better navigate today’s changing media landscape.</p>\n<p>Under Caballero’s leadership in the past three years, NALIP has come a long way in its mission to reach and advance the professional interests of Latino content creators.</p>\n<p>NALIP, which has been around for 17 years, started as a gathering of creators and producers who saw the need to expand opportunities for Latino content creators in media. But over the years, as the media landscape went through drastic changes, it transformed into a professional development organization on top of an advocacy organization. And when Caballero took the helm in 2013, NALIP went through a full transformation. “While in the past we focused on mainly film and documentaries and access to those opportunities, we adjusted our focus to include TV components, cable access, technology and digital training,” said Caballero. NALIP’s leadership then restructured operations and program offerings to serve a wider membership and to appeal to the new media age. Even the logo changed from a film reel to a play button.</p>\n<p>Caballero relayed that he drew a lot of inspiration in bringing NALIP to where it is now from a previous project that he founded, called Cuéntame. Cuéntame was an online Latino community coalition geared toward empowering Latinos in various social issues. Realizing that Cuéntame was opening up a lot of conversations at the national level, Caballero wanted to bring that same sense of empowerment to the voices at NALIP, and to focus on creating more pathways to funding and networking opportunities to help drive that empowerment among the membership.</p>\n<p>NALIP’s revamped mission is best seen through its “incubators,” a series of initiatives that allow Latino content creators to gather together, share their best work, network and receive training that take their careers to the next level. Today, the incubators, along with the array of mentorship programs, media summits and showcases hosted by NALIP and which bring together key players in the cable, media and entertainment worlds, have expanded the meaning of what being a producer means. “In this day and age, everyone is a content creator. You have writers, directors, YouTube folks,” said Caballero.</p>\n<p><a href=\"http://www.nalip.org/latinolens\">Latino Lens</a> is the media incubation program that contains specific tracks for Latino content creators, including film, digital, documentaries, TV, and technology arts. Caballero said that while the organization takes pride on promoting the diversity component in its mission, it’s also about showing its membership what is happening out there in the media landscape, and preparing them to compete and work within that framework. For example, the technology arts track is currently in development to include an emphasis on virtual reality, gaming and media mobile apps, and falls in line with where the media and entertainment industry is headed. In five years, Caballero hopes to see these new media projects fueling the careers and growth of NALIP’s membership. “As opposed to just NALIP being a springboard to opportunities, we want the organization in and of itself to be an opportunity,” he said.</p>\n<p>So far, NALIP’s offerings are paying off, as many members and participants go on to write for hit shows. And another testament to that success is Nickolas Duarte, a NALIP member, film writer and director, who signed a deal last year with Warner Bros. at one of NALIP’s events to develop original digital content.</p>\n<p>NALIP will be honored at the Kaitz dinner held in New York City during Diversity Week on September 21. To have that peer recognition, Caballero said, is incredibly important in moving forward: “It recognizes the hard work not only of the hundreds of individuals at NALIP, but also the hard work of our membership. Without them, there would be no NALIP.”</p>\n<p>&nbsp;</p>\n<p><em>This blog also appeared in CTAM Smartbrief. To sign up, click <a href=\"http://ncta.us4.list-manage.com/track/click?u=5c9cbb7072f1682388e57f94b&amp;id=a54db1bf62&amp;e=f7e4247800\" target=\"_blank\">here</a>.</em></p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/industry-news/nalip-bringing-latino-content-creators-to-the-forefront/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2015/10/Kaitz-Dinner-Blog.jpg"
+        },
+        {
+          "title": "Emmy Noms Day Another Big One for Cable Programs",
+          "link": "https://www.ncta.com/platform/cable-programming/emmy-noms-day-another-big-one-for-cable-programs/",
+          "comments": "https://www.ncta.com/platform/cable-programming/emmy-noms-day-another-big-one-for-cable-programs/#respond",
+          "pubDate": "Thu, 14 Jul 2016 16:13:50 +0000",
+          "creator": "John Solit",
+          "category": "Cable Programming",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11547",
+          "description": "The 68th Primetime Emmy nominations were just announced and cable programming is once again sitting pretty, taking over half (41 out of 72) of the nominations in the top 12 categories. The always competitive drama categories were again lead by cable hits, taking five of the seven noms for Best Drama. Cable also has a good number of nods in the [&#8230;]",
+          "contentEncoded": "<p><a href=\"http://www.emmys.com/awards/nominations\">The 68th Primetime Emmy nominations</a> were just announced and cable programming is once again sitting pretty, taking over half (41 out of 72) of the nominations in the top 12 categories.</p>\n<p>The always competitive drama categories were again lead by cable hits, taking five of the seven noms for Best Drama. Cable also has a good number of nods in the comedy categories, including Best Comedy Series nominations for HBO&#8217;s <em>Silicon Valley </em>and <em>Veep</em>.</p>\n<p>This year’s nominations reinforce the trend of the world’s top writers, directors and actors moving to cable and producing cinema-quality programing that dominates both the TV ratings and the awards circuit. Cable programmers invest billions annually to support these dreams. And this year’s Emmy nominees list proves that this hard work is paying off.</p>\n<p>For a list of all the nominees, including technical and animation nominations, visit the <a href=\"http://www.emmys.com/sites/default/files/Downloads/68th-nominations-list-v2.pdf\">Emmys website</a>. Find out who wins live Sunday, September 18th for the 68th Annual Emmys Awards.</p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/cable-programming/emmy-noms-day-another-big-one-for-cable-programs/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/07/EmmyHeader.png"
+        },
+        {
+          "title": "Let Some Fresh Air Inside the FCC’s Smoke-Filled Tent",
+          "link": "https://www.ncta.com/platform/public-policy/let-some-fresh-air-inside-the-fccs-smoke-filled-tent/",
+          "comments": "https://www.ncta.com/platform/public-policy/let-some-fresh-air-inside-the-fccs-smoke-filled-tent/#respond",
+          "pubDate": "Wed, 13 Jul 2016 13:57:23 +0000",
+          "creator": "Steve Morris",
+          "category": "Public Policy",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11527",
+          "description": "According to a recent blog post from Public Knowledge executive and telecom pundit Harold Feld, negotiations to reach final rules for the FCC’s Business Data Services (BDS) proceeding are underway and he is encouraging AT&#38;T to stop “throwing a hissy fit,” “read [] the writing on the wall,” and “come into the tent and negotiate.” [&#8230;]",
+          "contentEncoded": "<p>According to a <a href=\"http://www.wetmachine.com/tales-of-the-sausage-factory/atts-bds-hissy-fit-is-bad-strategy/\">recent blog post</a> from Public Knowledge executive and telecom pundit Harold Feld, negotiations to reach final rules for the FCC’s Business Data Services (BDS) proceeding are underway and he is encouraging AT&amp;T to stop “throwing a hissy fit,” “read [] the writing on the wall,” and “come into the tent and negotiate.”</p>\n<p>While we have previously raised <a href=\"https://www.ncta.com/platform/public-policy/is-the-fcc-about-to-put-5g-deployment-in-the-slow-lane/\">concerns</a> about some of the strange statements coming out of Public Knowledge in the BDS proceeding, Feld’s post deserves a particularly close look. Specifically, in explaining why he thinks AT&amp;T should join Verizon in negotiating a solution, Feld speculates that if the Commission addresses the “ILEC monopoly” but does not “limit the emerging cable operators,” cable will somehow take advantage of this asymmetric regulation and dominate the marketplace. This theory is wrong in so many different ways that it requires some unpacking.</p>\n<p>First, it’s jaw-droppingly hard to conceive that an advocate who has consistently complained about the “ILEC monopoly” in the BDS market for more than a decade would suggest that the biggest ILEC should join the second biggest ILEC in negotiating a regulatory regime that raises obstacles to emerging competitors. If you are concerned about market power and in favor of competition, why would you ever support regulation that constrains emerging competitors – particularly competitors investing in fiber networks that are tremendously expensive to build and that everyone agrees are vital to the future of the nation? Does Feld support FCC action to constrain the new small business services just announced by Google Fiber or is it just cable that should be limited? And how do you justify regulation of emerging competitors when the Commission has gathered “an insane boatload of data” over 15 years and absolutely none of that data even hints at those emerging competitors exercising market power in this space?</p>\n<blockquote><p>&#8220;If you are in favor of competition, why would you ever support regulation that constrains emerging competitors?&#8221;</p></blockquote>\n<p>Second, the theory that limiting the rates the ILEC can charge – but not limiting the rates new entrants like cable operators and others can charge – will somehow enable cable to dominate the BDS market is absurd. As NCTA explained in its recent <a href=\"https://ecfsapi.fcc.gov/file/106282512415387/NCTA%20Comments.pdf\">comments</a>, cable’s share of the BDS market today is somewhere in the range of 10 percent. To grow that share, cable operators have to offer <em>lower</em> prices than the incumbent, even if FCC rules allow them to charge <em>higher</em> rates. That’s why the Commission’s bipartisan, “asymmetric” policy for the last four decades has been to apply rate regulation only to dominant carriers, not to competitive providers. Note that there is broad range of parties that build networks – cable operators, competitive <a href=\"https://ecfsapi.fcc.gov/file/10628195656694/PUBLIC_Lightower%20Fiber%20et%20al%20Comments.pdf\">fiber</a> providers, even some INCOMPAS <a href=\"https://ecfsapi.fcc.gov/file/1062833938035/REDACTED%202016-06-28%20BDS%20Comments%20-%20FINAL.pdf\">members</a> – that support retaining this framework for competitive providers. Feld’s suggestion that the Commission should abandon this policy because “the modern communications market has evolved to where we should look less to history and more toward the current state of the market” is meaningless nonsense. Markets change, but basic economic principles don’t. There is nothing about the current state of the BDS market that changes decades of settled competition policy that regulating the rates of new entrants is a terrible idea for those who care about promoting competition.</p>\n<p>Not only does Feld miss the mark on the substantive issues, but his suggestion that AT&amp;T “come into the tent and negotiate” illustrates just how broken this process has become – encouraging a ‘wheel and deal’ mentality more apt for the selling of used cars than the settling of sound policy through fair, open, and considered analysis. Even as the role that cable operators play in the BDS marketplace has become a key issue in the proceeding, the “negotiation” Feld refers to seems to be taking place only among the FCC staff, INCOMPAS, and Verizon (and with this group at the <a href=\"https://ecfsapi.fcc.gov/file/10707119560458/July%205%20BDS%20Ex%20Parte%20Meeting.pdf\">table</a>, is it any wonder that the idea of regulating cable and other new competitors found its way into the proposal?)</p>\n<p>At the same time, the Commission seems to be going out of its way to limit the ability of parties to raise concerns with its proposed rules, whether by <a href=\"http://transition.fcc.gov/Daily_Releases/Daily_Business/2016/db0608/DA-16-641A1.pdf\">rejecting</a> requests for a reasonable amount of time to file comments or <a href=\"http://www.attpublicpolicy.com/government-policy/wireline-bureau-bds-document-dump/\">waiting</a> until the comment deadline to release peer reviews of its economic analysis, many of which raised significant concerns regarding the report submitted by the FCC’s economic consultant.</p>\n<p>If we care about getting this right, we ought to start by returning to first principles. By any objective measure, cable simply does not have market power in the market for BDS services. That’s an inconvenient fact for advocates like Feld who would rather reflexively attack cable rather than cheer for its success in bringing new high-quality, lower priced services to business customers, but we are where we are. If we hope to get this proceeding back on track, perhaps we should avoid skipping to the end, and go back to encouraging more honest and rigorous analysis that incorporates the views of all parties to the proceeding.</p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/public-policy/let-some-fresh-air-inside-the-fccs-smoke-filled-tent/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/07/BDSHeader1.png"
+        },
+        {
+          "title": "HTML5: Just Another Technology We Never Notice",
+          "link": "https://www.ncta.com/platform/technology-devices/html5-just-another-technology-we-never-notice/",
+          "comments": "https://www.ncta.com/platform/technology-devices/html5-just-another-technology-we-never-notice/#respond",
+          "pubDate": "Tue, 12 Jul 2016 19:24:49 +0000",
+          "creator": "John Solit",
+          "category": "Technology & Devices",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11536",
+          "description": "The best innovations are the ones we immediately take for granted. Things like Wi-Fi and HD are incredible the first time we experience them and once we realize they work really well, they fade into the background. A great streaming video app is like this, too; astounding one second, to-be-expected the next. But the reality [&#8230;]",
+          "contentEncoded": "<p>The best innovations are the ones we immediately take for granted. Things like Wi-Fi and HD are incredible the first time we experience them and once we realize they work really well, they fade into the background. A great streaming video app is like this, too; astounding one second, to-be-expected the next. But the reality is these technologies are amazing feats of engineering. And in the case of TV apps, are made possible by an even more hidden piece of incredible tech that is essentially unknown to the non-developer community, <a href=\"https://en.wikipedia.org/wiki/HTML5\">HTML5</a>.</p>\n<p>HTML, or Hyper Text Markup Language, is the standard computer language used to create web pages. It tells browsers how to format and display content. This language has gone through a number of iterations, and the latest version, HTML5, is extra special because it enables multimedia content to be displayed on web browsers without the need for additional plugins like Flash. It supports audio and video in a way that allows developers to create consistent, smooth streaming video experiences that support anti-piracy technology, geo-location, and simple authentication on almost any device. And like past versions of HTML, HTML5 is royalty free, so any developer or designer, big or small, can build with it using one of the freely available open-source code libraries.</p>\n<p>The possibilities of HTML5 are endless, but for those of us in the TV and internet business, its most important application is its ability to allow programmers to create portable app-based TV experiences. HTML5 enables TV Everywhere apps to be available across different brands of TVs, game boxes and other devices just like the Web runs on so many devices.</p>\n<p>Because HTML5-based apps are relatively easy to develop and flexible to use, the TV Everywhere universe will expand rapidly over the next few years. <a href=\"http://corporate.comcast.com/news-information/news-feed/comcast-launches-xfinity-tv-partner-program-samsung-first-tv-partner-to-join\">Comcast’s new partnership with Samsung</a>, for example, is possible in part because Comcast’s HTML5-based Xfinity app is portable to Samsung&#8217;s HTML5-based smart TVs. Plus, HTML5-based TV Everywhere apps can receive updates, improvements, and new features directly over the internet just like an iPhone. HTML5 means no need for a new hardware installation just to get a better experience.</p>\n<p>HTML5 is a key part of the future of TV via apps. It’s enabling new TV devices and apps to enter the marketplace quickly and to compete aggressively. HTML5 is working behind the scenes, making this possible and doing its job seamlessly without ever saying a peep. And just like any good tech, it’s wildly impressive one moment, ordinary the next. Good thing tech has no ego.</p>\n<p><em>This blog also appeared in CTAM Smartbrief. To sign up, click <a href=\"http://ncta.us4.list-manage.com/track/click?u=5c9cbb7072f1682388e57f94b&amp;id=a54db1bf62&amp;e=f7e4247800\" target=\"_blank\">here</a>.</em></p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/technology-devices/html5-just-another-technology-we-never-notice/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/07/HTML5Header.png"
+        },
+        {
+          "title": "Do We Need to Formally Re-Define News for the Digital Era?",
+          "link": "https://www.ncta.com/platform/industry-news/do-we-need-to-formally-re-define-news-for-the-digital-era/",
+          "comments": "https://www.ncta.com/platform/industry-news/do-we-need-to-formally-re-define-news-for-the-digital-era/#respond",
+          "pubDate": "Thu, 07 Jul 2016 18:41:46 +0000",
+          "creator": "Francesca Duffy",
+          "category": "Industry News",
+          "guidIsPermaLink": "false",
+          "guidText": "https://www.ncta.com/platform/?p=11513",
+          "description": "Like it has done in almost every aspect of our lives, technology has undoubtedly changed the way we get our news and how we engage with news. Pew&#8217;s most recent State of the Media report revealed that 65 percent of people receive their news about the presidential election from digital sources, and more people are [&#8230;]",
+          "contentEncoded": "<p>Like it has done in almost every aspect of our lives, technology has undoubtedly changed the way we get our news and how we engage with news. <a href=\"https://www.ncta.com/platform/industry-news/mobile-and-social-how-were-really-getting-our-news/\" target=\"_blank\">Pew&#8217;s most recent State of the Media report</a> revealed that 65 percent of people receive their news about the presidential election from digital sources, and more people are learning about it through social media than ever before. But the delivery of news isn’t the only thing that’s changed. The types of news content produced for those platforms has also evolved as online news aggregators, satirical and alternative news sites, memes, and viral videos took the spotlight and many print newspapers died. But with all of the digital sources out there now, what exactly is &#8220;news” today anyway? And how has the answer to that question changed over the last 20 years as mobile devices, social media sharing, and online news startups became the norm?</p>\n<p>In an attempt to answer this enormous question, we tapped Nikki Usher, a media professor at the George Washington University School of Media &amp; Public Affairs, and Gabrielle Jackson Bosché, a millennial engagement expert who started the <a href=\"http://millennialsolution.com/\" target=\"_blank\">Millennial Solution</a>, a consulting firm based in Washington, DC.</p>\n<p>“I think news has been defined historically as something that has a timeliness to it. It’s public information intended for public consumption, that is the core of it,” said Usher, who, in her research, has observed newsrooms from traditional print newspapers and television stations to the startups like Vox and Buzzfeed. But according to Bosché, the millennial generation is looking for news that is “countercultural.” Millennials want media content that will challenge them intellectually and present a counter-narrative to the status quo, she clarified.</p>\n<blockquote><p>&#8220;Millennials want media content that will challenge them intellectually and present a counter-narrative to the status quo.&#8221;</p></blockquote>\n<p>“Because we have so much information out there now, we are almost challenging the internet to come up with these alternative ways of thinking about something,” said Bosché, who has studied the millennial generation for the past 10 years and authored three books on millennials.</p>\n<p>But what about eyewitness journalism, or citizen journalism &#8211; the kind of information that gets shared through those digital and social devices we now all have? Is that “news?”</p>\n<p>Citizen journalism has always been a part of journalism, explained Usher. Just take a look at some of the Pulitzer Prize winning photos taken by ordinary citizens that date back to the pre-digital era. “Anybody anywhere can capture an event,” she said, “however, not anybody anywhere can contextualize that event.” So audiences everywhere are performing that first step of the news cycle, which is bringing people to an event by capturing it and sharing it through technology, but they aren’t necessarily able to explain the substance and meaning behind that event. That’s where journalists come in. “There’s a place for both of those things in journalism. I think you’ll see newsrooms incorporate both in sophisticated ways more and more in the future,” said Usher.</p>\n<p>On this type of citizen journalism, Bosché had a lot to say on behalf of millennials. Since this generation prides itself on questioning traditional institutions, said Bosché, millennials are looking for that additional layer of authenticity to the news that only normal everyday people can add. In other words, the stories that will register the most, the ones that hit the top of the news feed on those social media platforms, are the personal stories BEHIND the news &#8211; the ones where ordinary people post messages and stories on their own saying ‘I was there, this is what I saw.’</p>\n<p>As for where the news cycle is headed, Bosché thinks the eyewitness journalism trend will continue. There will be more stories under two minutes in length, and stories that are much more personalized. Bosché also added that on the other side of journalism, there will be more “underproduced” stories that we will continue to see from people who are using their phones to cover an event, providing that additional layer of accountability to journalism.</p>\n<p>But like Usher said, the core of the news, which is to convey and contextualize information to audiences as quickly as possible, hasn’t and probably won’t change. So perhaps no formal re-definition is needed. It’s just that the diverse forms of news are now much more accessible to people, allowing for more creative and innovative ways to engage audiences in what we have always called “news.” Wherever the news cycle is headed, it’s a pretty safe bet to say that we will continue to see news become more personalized in its delivery, and diverse in content, but also more participatory in nature, which, as Bosché said, adds that layer of accountability to journalism that audiences ultimately crave.</p>\n",
+          "wfwCommentRss": "https://www.ncta.com/platform/industry-news/do-we-need-to-formally-re-define-news-for-the-digital-era/feed/",
+          "slashComments": "0",
+          "thumbnail": "https://www.ncta.com/platform/wp-content/uploads/2016/07/1400-newstoday-1.jpg"
+        }
+      ]
+    }
+  ]
+}
