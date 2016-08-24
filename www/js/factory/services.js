@@ -16,11 +16,23 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
     },
     
     getApiDetails : function(){
+
+        var devMode = false;
+        if($localStorage["devMode"]) devMode = $localStorage["devMode"];
+
+        var prodBaseURL = "https://api.scte.org/mobileappui/";
+        var prodSsoUrl = "https://www.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html";
+
+        if(devMode == 1) {
+            prodBaseURL = "https://devapi.scte.org/mobileappui/api/";
+            prodSsoUrl = "https://dev.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html";
+        }
+        
         return {
             //"BaseURL":"http://vmdimisapp01:1322/api/",
             
-            "BaseURL":"https://devapi.scte.org/mobileappui/api/",
-            "ssourl":"https://dev.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html",
+            "BaseURL": prodBaseURL,
+            "ssourl": prodSsoUrl,
             
             "loginAPI" : {
                 "httpMethod": "post",
@@ -219,6 +231,8 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
   
     scteSSO : function () {
       // Step 1: get and set an scte.org session cookie
+
+      console.log("SSO URL ===" + Utils.getApiDetails().ssourl);
       $http({
         method: 'GET',
         url: Utils.getApiDetails().ssourl
@@ -241,6 +255,7 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
           $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
           $http.defaults.crossDomain = true;
           
+          console.log("SSO URL 2nd ===" + Utils.getApiDetails().ssourl);
           $http({
             method: 'POST',
             url: Utils.getApiDetails().ssourl,
@@ -286,6 +301,7 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         return (ssourl == '');
       });
 
+      console.log("WCW SSO URL ===" + ssourl);
   		$http({
   		  method: 'GET',
         url: ssourl

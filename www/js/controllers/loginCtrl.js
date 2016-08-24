@@ -42,6 +42,18 @@ console.log("in Login Controller..");
             $scope.displayAlert(AppConstants.loginMissingInputData);
         } else {
             if ($rootScope.online) {
+                console.log("$scope.username....before==" + $scope.username)
+                if($scope.username.startsWith(".")) {
+                    $localStorage["devMode"] = "1";
+                    $scope.username = $scope.username.substring(1);
+                } else {
+                    $localStorage["devMode"] = "0"
+                }
+
+                if($localStorage["rssFeeds"] == null)
+                    $scope.fetchCableLabData()
+
+                console.log("$scope.username....after==" + $scope.username);
                 $requestParamArr = [];
                 $requestParamArr.push({ "UID": $scope.username });
                 $requestParamArr.push({ "password": $scope.password });
