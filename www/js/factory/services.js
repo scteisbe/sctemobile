@@ -20,7 +20,7 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         var devMode = false;
         if($localStorage["devMode"]) devMode = $localStorage["devMode"];
 
-        var prodBaseURL = "https://api.scte.org/mobileappui/";
+        var prodBaseURL = "https://api.scte.org/mobileappui/api/";
         var prodSsoUrl = "https://www.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html";
 
         if(devMode == 1) {
