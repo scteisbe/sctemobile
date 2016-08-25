@@ -24,8 +24,8 @@ console.log("in Login Controller..");
     
 
     // Just for developmet, need to remove before production release    
-    $scope.username = 'tester@scte.org';
-    $scope.password = 'scte1234';
+    // $scope.username = 'tester@scte.org';
+    // $scope.password = 'scte1234';
 
     $scope.goLogin = 'no';
 
