@@ -36,7 +36,7 @@
                     <div class="item footer">
                         <a ng-click="techtipRouter(techTipsContent.title,techTipsContent.htmlbody)">Read more</a>
                         <div class="techtips-ratings">
-                            <ionic-ratings ratingsobj='techTipsContent.ratingsObject' ng-click="stopPropagation($event)"></ionic-ratings>
+                            <ionic-ratings ratingsobj='techTipsContent.ratingsObject' ratingtitle='techTipsContent.title' ng-click="stopPropagation($event)"></ionic-ratings>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 <div class="item footer-primers">
                     {{index.duration_in_minutes}} min
                     <div class="techtips-ratings">
-                        <ionic-ratings ratingsobj='index.ratingsObject' ng-click="stopPropagation($event)"></ionic-ratings>
+                        <ionic-ratings ratingsobj='index.ratingsObject' ratingtitle='index.title' ng-click="stopPropagation($event)"></ionic-ratings>
                     </div>
                 </div>
             </div>

@@ -44,7 +44,7 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
     };
 
     $scope.$watch('activeTab', function() {
-        var a = ['/tab/mylearning/inprogress', '/tab/mylearning/completed', '/tab/mylearning/all'];
+        var a = ['/tab/mylearning/all', '/tab/mylearning/inprogress', '/tab/mylearning/completed'];
         $window.ga('send', 'pageview', a[$scope.activeTab]);
         switch ($scope.activeTab) {
     case 0:

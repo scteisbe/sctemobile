@@ -22,7 +22,8 @@
         '<span class="icon {{iconOn}} ionic_rating_icon_on" ng-style="iconOnColor" ng-click="ratingsUnClicked(5)" ng-show="rating > 4" ng-class="{\'read_only\':(readOnly)}"></span>' +
         '</div>',
       scope: {
-        ratingsObj: '=ratingsobj'
+        ratingsObj: '=ratingsobj',
+        ratingTitle: '=ratingtitle'
       },
       link: function(scope, element, attrs) {
 
@@ -61,7 +62,7 @@
        //    }
        //    scope.prevRating = val;
        //   scope.ratingsObj.callback(scope.rating);
-        Utils.displayAlert("The rating given is :"+val);
+        Utils.displayAlert("Your rating: " + val);
         //alert("The rating given is :"+val);
         };
 
@@ -82,7 +83,8 @@
          //  }
          //  scope.prevRating = val;
          //  scope.ratingsObj.callback(scope.rating);
-          Utils.displayAlert("The rating given is :"+val);
+          ga('send', 'event', "Submitted a rating", scope.ratingTitle, val);
+          Utils.displayAlert("Your rating: " + val);
         //alert("The rating given is :"+val);
         };
       }

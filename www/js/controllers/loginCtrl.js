@@ -72,9 +72,11 @@ console.log("in Login Controller..");
                             $localStorage['username'] = $scope.username;
                             $localStorage['password'] = $scope.password;
                             $localStorage['authToken'] = $rootScope.authToken;
+                            ga('send', 'event', AppConstants.login, AppConstants.succeeded);
 
                             $state.go(AppConstants.introName);
                         } else {
+                            ga('send', 'event', AppConstants.login, AppConstants.failed);
                             $scope.displayAlert(AppConstants.wrongUserNamePassword);
                         }
                     } else {

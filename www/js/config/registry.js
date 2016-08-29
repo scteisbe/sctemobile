@@ -278,16 +278,22 @@
 
       /*** Google Analytics constants  ***/
       "send": "send",
+      "set": 'set',
       "event": "event",
       "openExternalLink": "Opened an external link",
+      "login": "Login",
       "searchButton": "Search button",
-      "tap": "tap",
+      "submitTechTipButton": "Submit TechTip button",
+      "submitTechTip": "Submitted TechTip",
+      "tap": "tapped",
+      "submitted": "submitted",
       "promoBanner": 'Promo banner',
       "userId": 'userId',
-      "set": 'set',
       "fromAppLibraryTab": "from app library tab",
       "fromDiscoverTab": 'from discover tab',
       "fromFeaturedResourcesTab": 'from featured resources',
+      "succeeded": "succeeded",
+      "failed": "failed",
 
      
       /*** SearchCtrl constants  ***/

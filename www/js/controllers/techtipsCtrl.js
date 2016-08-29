@@ -121,6 +121,7 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
     };
     
      $scope.techTipSubmitPage = function () {
+            ga('send', 'event', AppConstants.submitTechTipButton, AppConstants.tap, 'from TechTips tab');
             $state.go('tab.techtipsubmit');
         };
 
@@ -133,34 +134,11 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
         $scope.techtipURL = "";
 
         $scope.techtipSubmit = function (tip, url) {
-            
+            ga('send', 'event', AppConstants.submitTechTip, AppConstants.submitted);
             var subject = "SCTE Techtip";
-            //var to = "techtips@scte.org";
             var to = $scope.emailToAdd;
-            
             var body = "Message: "+tip + "%0D%0A %0D%0A" + "URL: "+url;
-            
-            var link = "mailto:" + to + "?subject=" + subject + 
-                            "&body="+ body;     
+            var link = "mailto:" + to + "?subject=" + subject + "&body="+ body;
             $window.location.href = link;
-            
-            // var q = $q.defer();
-            // cordova.plugins.email.isAvailable(function (isAvailable) {
-            //     console.log('the email is isAvailable');
-            // }, function (error) {
-            //     console.log('No email client available');
-            // });
-
-            // cordova.plugins.email.open({
-            //     to: 'techtips@scte.org', // email addresses for TO field
-            //     cc: "", // email addresses for CC field
-            //     bcc: "", // email addresses for BCC field
-            //     attachments: "", // file paths or base64 data streams
-            //     subject: "SCTE Techtip", // subject of the email
-            //     body: tip + "<br/><br/>" + url, // email body (for HTML, set isHtml to true)
-            //     isHtml: true, // indicats if the body is HTML or plain text
-            // }).then(null, function () {
-            //     console.log('User cancels the email.');
-            // });
         }
 }];
