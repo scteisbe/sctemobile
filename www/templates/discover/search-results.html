@@ -47,9 +47,12 @@
                             <br/>{{noAccessMsg}}</p>
                     </div>
                 </div>
-                <div class="item item-text-wrap footer">
+                <div class="item item-text-wrap footer" ng-hide="item.format == 'html'">
                     <div class="left">{{item.contentType}}</div>
-                    <div class="right" ng-hide="item.format == 'html'">{{item.format}}</div>
+                    <div class="right">{{item.format}}</div>
+                </div>
+                <div class="item item-text-wrap urlfooter" ng-show="item.format == 'html'">
+                    {{trimURL(item.url)}}
                 </div>
             </div>
         </div>
@@ -84,8 +87,8 @@
                     <div class="left">{{item.contentType}}</div>
                     <div class="right">{{item.format}}</div>
                 </div>
-                <div class="item item-text-wrap" ng-show="item.format == 'html'">
-                    {{item.url}}
+                <div class="item item-text-wrap urlfooter" ng-show="item.format == 'html'">
+                   {{trimURL(item.url)}}
                 </div>
             </div>
         </div>
