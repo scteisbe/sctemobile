@@ -5,7 +5,6 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
 
     $rootScope.initialFocus=false;
     $rootScope.ssoCompleted = false;
-    console.log("in appCtrl Controller..");
 
     /*-----------Ionic Loader----------------*/
     $scope.showLoader = function() {
@@ -101,8 +100,6 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
     // }
 
     $scope.fetchCableLabData = function() {
-        
-        console.log("in fetchCableLabData :: Login Controller..");
         Utils.doHttpRequest(Utils.getApiDetails().getCableLabAPI.httpMethod, Utils.getApiDetails().BaseURL + 
                             Utils.getApiDetails().getCableLabAPI.contexPath, Utils.getHttpHeader(), [])
                             .then(function(response) {
@@ -124,8 +121,6 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
     };
 
     $scope.fetchResources = function() {
-
-        console.log("in fetchResources :: Login Controller..");
         $headerParamArr.push({ "authToken": $localStorage['authToken'] });
         $headerParamArr.push({ "authType": "Bearer" });
         $headerParamArr.push({ "Content-Type": "application/json" });

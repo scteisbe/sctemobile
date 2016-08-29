@@ -2,10 +2,8 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
  '$ionicHistory', 'AppConstants', function($scope, $state, $rootScope, $localStorage, Utils, StaticService, $timeout, 
  $location, $ionicHistory, AppConstants) {
 
-console.log("in Login Controller..");
     /* Auto login code */
     $scope.init = function() {
-        console.log("in init :: Login Controller..");
         if ($localStorage["rssFeeds"] != null)
             $rootScope.rssFeeds = $localStorage["rssFeeds"];
         if ($localStorage["nctaDatas"] != null)
@@ -42,7 +40,6 @@ console.log("in Login Controller..");
             $scope.displayAlert(AppConstants.loginMissingInputData);
         } else {
             if ($rootScope.online) {
-                console.log("$scope.username....before==" + $scope.username)
                 if($scope.username.startsWith(".")) {
                     $localStorage["devMode"] = "1";
                     $scope.username = $scope.username.substring(1);
@@ -53,7 +50,6 @@ console.log("in Login Controller..");
                 if($localStorage["rssFeeds"] == null)
                     $scope.fetchCableLabData()
 
-                console.log("$scope.username....after==" + $scope.username);
                 $requestParamArr = [];
                 $requestParamArr.push({ "UID": $scope.username });
                 $requestParamArr.push({ "password": $scope.password });

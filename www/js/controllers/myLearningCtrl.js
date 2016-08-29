@@ -172,7 +172,6 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
     };
 
     $scope.openSCTEModule = function(url) {
-        console.log("url..." + url);
          if(url == null || url.length == 0) {
             $scope.displayAlert($scope.courseUnavailableMsg);
         } else {

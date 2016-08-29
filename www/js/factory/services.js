@@ -231,8 +231,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
   
     scteSSO : function () {
       // Step 1: get and set an scte.org session cookie
-
-      console.log("SSO URL ===" + Utils.getApiDetails().ssourl);
       $http({
         method: 'GET',
         url: Utils.getApiDetails().ssourl
@@ -255,7 +253,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
           $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
           $http.defaults.crossDomain = true;
           
-          console.log("SSO URL 2nd ===" + Utils.getApiDetails().ssourl);
           $http({
             method: 'POST',
             url: Utils.getApiDetails().ssourl,
@@ -271,12 +268,12 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
               Utils.doWcwSso();
             } else {
               // we got a 20x response status code, but it wasn't the "successful redirect" page
-              console.log("Failed to sign in on scte.org");
+              console.error("Failed to sign in on scte.org");
               console.log(response);
             }
           },
           function errorCallback(response) {
-            console.log("Something unexpected happened during scte.org sign in");
+            console.error("Something unexpected happened during scte.org sign in");
             console.log(response);
           });
         } else {
@@ -284,14 +281,13 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
           Utils.doWcwSso();
         }
       },function errorCallback(response){
-          console.log("Something unexpected happened before scte.org sign in");
+          console.error("Something unexpected happened before scte.org sign in");
           console.log(response);
       })
     },
 	
   	doWcwSso : function () {
   		// Step 3: tell WCW to do the SSO dance
-  		console.log("Starting WCW SSO");
       var ssourl = '';
       _.each($localStorage["myLearning"]["All Courses"], function(o){
         _.each(o.userCourseList, function(i) {
@@ -301,7 +297,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         return (ssourl == '');
       });
 
-      console.log("WCW SSO URL ===" + ssourl);
   		$http({
   		  method: 'GET',
         url: ssourl
@@ -310,13 +305,13 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         if (response.data.match(/Sign In/i) || response.data.match(/iMIS-WebPart/i) || response.data.match(/info@scte.org/i)) {
         // these phrases appear on the scte.org login page
         // if the login page changes, this will probably break
-          console.log("WCW SSO failed - scte.org is prompting for a password");
+          console.error("WCW SSO failed - scte.org is prompting for a password");
           console.log(response);
         } else {
     		  console.log("WCW SSO successful");
         }
   		},function errorCallback(response){
-        console.log("Something unexpected happened during WCW SSO");
+        console.error("Something unexpected happened during WCW SSO");
         console.log(response);
   		});
   	}

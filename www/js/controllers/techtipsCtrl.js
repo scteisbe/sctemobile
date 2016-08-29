@@ -29,14 +29,11 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
    
     
      $scope.stopPropagation = function ($event) {
-        console.log('event bubbling');
          $event.stopPropagation();
     };
 
     // $scope.ratingsCallback = function (rating) {
     //     Utils.displayAlert("Rating given : "+rating);
-    //     console.log('Selected rating is : ', rating);
-         
     // };
 
     $scope.primersContents.forEach(function (primer) {
@@ -75,7 +72,6 @@ var TechtipsCtrl = ['$scope', '$state', '$rootScope', '$ionicModal', 'Utils', '$
             var re = /^(https:\/\/www.youtube.com\/)(watch\?.*v=)(.*)$/;
             var subst = '$1embed/$3?enablejsapi=1';
             techTip['videourl'] = techTip['videourl'].replace(re, subst);
-            console.log("url1111.." + techTip['videourl']);
             techTip['videourl'] = techTip['videourl'].replace("watch?time_continue=3&v=", "v/");
 
         }

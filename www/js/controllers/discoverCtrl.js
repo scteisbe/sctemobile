@@ -1,6 +1,4 @@
 var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$ionicLoading', 'Utils', '$localStorage', '$sce', '$window', '$ionicHistory', 'AppConstants', function($scope, $state, $rootScope, $http, $ionicModal, $ionicLoading, Utils, $localStorage, $sce, $window, $ionicHistory, AppConstants) {
-
-    console.log("in Discover Controller..");
     $scope.staticContent = [];
     $scope.platform = ionic.Platform.platform();
     $scope.displayName = $localStorage['displayName'];
@@ -111,7 +109,6 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     };
 
     $scope.fetchProfile = function() {
-        console.log("in Discover Controller :: fetchProfile..");
         if ($rootScope.online) {
             Utils.doHttpRequest(Utils.getApiDetails().getIndividualAPI.httpMethod, 
                                 Utils.getApiDetails().BaseURL + Utils.getApiDetails().getIndividualAPI.contexPath, 

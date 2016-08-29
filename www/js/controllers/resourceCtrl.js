@@ -60,8 +60,6 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
     }];
 
     if ($localStorage["whitePapers"] == undefined || $localStorage["whitePapers"] == null || $localStorage["whitePapers"].length == 0) {
-        console.log("whitepaper data...1");
-        
         if ($rootScope.online) {
             $scope.showLoader();
             Utils.doHttpRequest(Utils.getApiDetails().whitepaperAPI.httpMethod, 
@@ -69,11 +67,9 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
             Utils.getHttpHeader(), []).then(function(response) {
                 if (response != null) {
                     //data available from live API
-                    console.log("whitepaper data...2");
                     $message = response['message'];
                     data = response['data'];
                     $scope.hideLoader();
-                    console.log("whitepaper data...3");
                     if ($message['statusCode'] == 200) {
                         if (data != null) {
                             $localStorage["whitePapers"] = data;
@@ -84,8 +80,6 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
                 } else {
                     //No API access
                     $scope.hideLoader();
-                    //display data from stub
-                    //$localStorage["whitePapers"] = $scope.whitePapersStub;
                 }
             });
         } else {

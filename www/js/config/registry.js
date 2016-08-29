@@ -96,8 +96,6 @@
   cortexConfig.run(['$ionicPlatform', 'StaticService', function($ionicPlatform, StaticService) {
 
       //Fetch the data
-      //     console.log("Gauri:in run");
-      //StaticService.initAPIContainer();
       StaticService.fetchStaticData();
       $ionicPlatform.ready(function() {
           // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -405,18 +403,4 @@
   });
 
   cortexConfig.run(function($ionicPopup) {
-
-      //     console.log("in wathcer..")
-      //     console.log(JSON.stringify(deploy));
-    //   deploy.watch().then(function() {}, function() {}, function(updateAvailable) {
-    //       console.log("updateAvailable.." + updateAvailable);
-    //       if (updateAvailable) {
-    //           deploy.download().then(function() {
-    //               deploy.extract().then(function() {
-    //                   deploy.unwatch();
-    //                   deploy.load();
-    //               });
-    //           });
-    //       }
-    //   });
   });
