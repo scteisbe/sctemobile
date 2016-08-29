@@ -76,13 +76,15 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     };
 
     $scope.openInformedURL = function() {
-        ga(AppConstants.send, AppConstants.event, AppConstants.fromFeaturedResourcesTab);
-        window.open(AppConstants.informedURL, AppConstants.system);
+        var url = AppConstants.informedURL;
+        ga('send', 'event', AppConstants.openExternalLink, AppConstants.fromDiscoverTab, url);
+        window.open(url, AppConstants.system);
     };
 
-    $scope.openNctadURL = function() {
-        ga(AppConstants.send, AppConstants.event, AppConstants.fromDiscoverTab);
-        window.open(AppConstants.nctaURL, AppConstants.system);
+    $scope.openNctaURL = function() {
+        var url = AppConstants.nctaURL;
+        ga('send', 'event', AppConstants.openExternalLink, AppConstants.fromDiscoverTab, url);
+        window.open(url, AppConstants.system);
     };
 
     $scope.withinDates = function(startDate, endDate) {

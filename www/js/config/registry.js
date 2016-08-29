@@ -48,6 +48,11 @@
 
           $window.ga('set', 'checkProtocolTask', null); // Disable file protocol checking because Ionic serves from file:// on actual devices
 
+          // Send other Google Analytics (GA) events using this structure:
+          //    ga('send', 'event', 'Search button', 'tap', 'from app library tab');
+          // or
+          //    ga('send', 'event', app.type, 'from app library', app.title);
+
           $rootScope.$on('$stateChangeSuccess', function(event) {
               setTimeout(function() {
                   $window.ga('send', 'pageview', $location.path());
@@ -144,13 +149,13 @@
   /***********************************************************************************/
 
   cortexConfig.constant("AppConstants", {
-      /*** InkLing Constatnts  ***/
+      /*** Inkling constants  ***/
       "inkLingDomainAddr": "inkling.com",
       "googlePlayStoreLink": "https://play.google.com/store/apps/details?id=com.inkling.android.axis&hl=en",
       "appleAppStoreLink": "https://itunes.apple.com/us/app/inkling-axis/id923550071?mt=8",
       "inkLingMessage": "This course material is available in the Inkling Axis app. Once you have it installed, you'll be able to read it there.",
       "inkLingtitle": " Inkling Axis :",
-      /*** General Constatnts  ***/
+      /*** General constants  ***/
       "true":"true",
       "false":"false",
       "done": "Get Started",
@@ -159,11 +164,11 @@
       "system": '_system',
       "searchServerErrorMsg": "Search request failed",
       "noData": "NO DATA AVAILABLE",
-      /*** StatusCode Constatnts  ***/
+      /*** StatusCode constants  ***/
       "status105": 105,
       "status200": 200,
       "status401": 401,
-      /*** Routing Constatnts  ***/
+      /*** Routing constants  ***/
 
 
       /***Names for pages ***/
@@ -271,23 +276,24 @@
       "resourcesTitle": "Resources",
       "nctaTitle": "NCTA",
 
-      /*** Google Analytics Constatnts  ***/
+      /*** Google Analytics constants  ***/
       "send": "send",
       "event": "event",
+      "openExternalLink": "Opened an external link",
       "searchButton": "Search button",
       "tap": "tap",
       "promoBanner": 'Promo banner',
       "userId": 'userId',
       "set": 'set',
       "fromAppLibraryTab": "from app library tab",
-      "fromDiscoverTab": 'Opened from discover tab',
-      "fromFeaturedResourcesTab": 'Opened from featured resources',
+      "fromDiscoverTab": 'from discover tab',
+      "fromFeaturedResourcesTab": 'from featured resources',
 
      
-      /*** SearchCtrl Constatnts  ***/
+      /*** SearchCtrl constants  ***/
       "searchErrorMsg": "No Results Found",
       "searchFilterMessage": "No results available for the selection",
-      /*** DiscoverCtrl Constatnts  ***/
+      /*** DiscoverCtrl constants  ***/
       "discoverNoInternet": "Internet not available. Please check network connectivity.",
       "discoverEventAddSuccess": "Event added Successfully",
       "discoverEventAddFail": "Event could not be added: ",
@@ -296,13 +302,13 @@
       "speakNow": "Please speak now",
       "enUS": "en-US",
       "informedURL": "http://www.cablelabs.com/news-events/blog",
-      "nctaURL": "https://www.ncta.com/platform/feed/",
+      "nctaURL": "https://www.ncta.com/platform/",
       "recentSearchesPage": 'templates/discover/recent-searches.html',
       "UUID": "UUID : ",
       "datePattern": "HH:mm:ss",
       "startTime": "00:00:00",
 
-      /*** DiscoverEventCtrl Constatnts  ***/
+      /*** DiscoverEventCtrl constants  ***/
       "relevantEvents": "relevantEvents",
       "liveLearnings": "liveLearnings",
       "nationalEvents": "nationalEvents",
@@ -313,17 +319,18 @@
       "eventwww":"www",
       "eventhttpwww":"http://www.",
       "replaceliveLearnings":"LiveLearning: ",
-      /*** IntroCtrl Constatnts  ***/
+      /*** IntroCtrl constants  ***/
       "introSkipIntro": "Get Started",
-      /*** LoginCtrl Constatnts  ***/
+      /*** LoginCtrl constants  ***/
       "loginMissingInputData": "Wrong username or password",
       "wrongUserNamePassword": "Wrong username or password",
+      "userNotMember": "Access to CORTEX Mobile is a benefit provided exclusively to SCTE/ISBE members. To use CORTEX Mobile, become a member at scte.org.",
       "joinScteLink":'http://www.scte.org/SCTE/Join/FastForms/CreateAccount.aspx',
       "forgotPasswordLink":'https://www.scte.org/SCTE/Sign_In.aspx',
-      /*** DictionaryCtrl Constatnts  ***/
+      /*** DictionaryCtrl constants  ***/
       "dictionarySearchAcronym": "Browse cable industry abbreviations and terms.",
       "all": 'all',
-      /*** StaticCtrl Constatnts  ***/
+      /*** StaticCtrl constants  ***/
       "staticNoentriesFound": "No entries found. Are there empty rows in the sheet?"
   });
 
