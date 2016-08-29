@@ -49,8 +49,11 @@
         margin: 0;
         min-height: 30%;
         background-color: $color-login-secondary;
+        padding-left: 20px;
+        padding-right: 20px;
         .scte-logo {
             padding: 8px 0;
+            padding-top: 5%;
             img {
                 width: 88px;
             }

@@ -98,7 +98,8 @@ console.log("in Login Controller..");
 
     $scope.forgotpassword = function() {
         var myURL = encodeURI(AppConstants.forgotPasswordLink);
-        window.open(myURL, AppConstants.system);
+        // window.open(myURL, AppConstants.system);
+        window.open(myURL, '_blank', 'location=yes');
     };
 
     $scope.redirect = function(pageName) {
