@@ -41,6 +41,19 @@
             }
             .footer {
                 padding-bottom: 35px;
+                font-size: 14px;
+                .left {
+                    float: left;
+                    text-transform: capitalize;
+                }
+                .right {
+                    float: right;
+                }
+            }
+
+            .urlfooter {
+                padding-bottom: 25px;
+                font-size: 14px;
                 .left {
                     float: left;
                     text-transform: capitalize;

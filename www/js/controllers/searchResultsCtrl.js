@@ -137,7 +137,19 @@ var SearchResultsCtrl = ['$scope', '$state', '$http', 'ionicDatePicker', '$ionic
             /**************************************************************************************************/
         };
 
-
+        $scope.trimURL = function(url) {
+            var parser = document.createElement('a');
+            parser.href = url;
+            if(url.length <= 30) return parser.hostname;
+            else {  
+                if(parser.pathname.length > 1) {       
+                    var pathArr =  parser.pathname.split("/");
+                    return parser.hostname + "/.../" + pathArr[pathArr.length-1];
+                }
+                else
+                    return parser.hostname; 
+            }
+        }
 
         $scope.processResult = function() {
 
