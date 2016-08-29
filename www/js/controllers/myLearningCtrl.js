@@ -48,16 +48,16 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
         $window.ga('send', 'pageview', a[$scope.activeTab]);
         switch ($scope.activeTab) {
     case 0:
+        $scope.mylearningCourseLength = $scope.allCoursesLength;
+        $scope.noCourseErrorMsg="You haven't enrolled in any courses. Check out all the learning opportunities available to you in the SCTE / ISBE Course Catalog!";
+        break;
+    case 1:
         $scope.mylearningCourseLength = $scope.inprogressCoursesLength;
         $scope.noCourseErrorMsg="You don't have any courses in progress. Check out all the learning opportunities available to you in the SCTE / ISBE Course Catalog!";
         break;
-    case 1:
+    case 2:
         $scope.mylearningCourseLength = $scope.completedCoursesLength;
         $scope.noCourseErrorMsg="You haven't completed any courses yet.";
-        break;
-    case 2:
-        $scope.mylearningCourseLength = $scope.allCoursesLength;
-        $scope.noCourseErrorMsg="You haven't enrolled in any courses. Check out all the learning opportunities available to you in the SCTE / ISBE Course Catalog!";
        
 }
     });
