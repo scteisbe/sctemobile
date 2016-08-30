@@ -62,7 +62,7 @@
             span {
                 font-weight: 300;
                 font-size: 15px;
-                color: #6dcff6;
+                color: lightgrey;
                 background: transparent;
             }
         }
@@ -99,6 +99,20 @@
             }
             .join-scte {
                 margin-bottom: 8%;
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .login-wrapper {
+        .loginbottom {
+            .signuptext {
+                span {
+                    font-size: 12px;
+                    line-height: 13px;
+                    color: lightgrey;
+                }
             }
         }
     }

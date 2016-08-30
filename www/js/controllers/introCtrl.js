@@ -4,22 +4,22 @@ var introCtrl = ['$scope', '$state', 'AppConstants', function($scope, $state, Ap
         "id": 1,
         "title": "Connect to technology with CORTEX Mobile.",
         "desc": "The SCTE/ISBE CORTEX Expert Development System enhances your learning by providing 24/7 access to technical information in the palm of your hand.",
-        "status": "Swipe to learn more"
+        "status": "swipe to learn more"
     }, {
         "id": 2,
         "img": "img/CORTEX_App_Icon_Group1.png",
         "desc": "CORTEX delivers tech resources, industry apps and the latest content from SCTE/ISBE’s extensive course catalog at the moment of need on the job site.",
-        "status": "Swipe to learn more"
+        "status": "swipe to learn more"
     }, {
         "id": 3,
         "img": "img/CORTEX_App_Icon_Group2.png",
         "desc": "Search for product docs and tech specs, access SCTE/ISBE’s resource library, and explore our on-the-job toolkit to improve your job performance.",
-        "status": "Swipe to learn more"
+        "status": "swipe to learn more"
     }, {
         "id": 4,
         "img": "img/CORTEX_App_Icon_Group3.png",
         "desc": "The SCTE/ISBE CORTEX Expert Development System follows your learning plans and tracks progress to guide you to become an expert and advance your career.",
-        "status": "Swipe to get started"
+        "status": "swipe to get started"
     }];
 
     $scope.addCard = function(i) {
