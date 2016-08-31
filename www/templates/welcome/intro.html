@@ -30,7 +30,8 @@
                 </div>
                 <div class="row show-again-next-time">
                   <div class="col col-80">
-                    <ion-checkbox ng-model="filter">show again next time</ion-checkbox>
+                    <ion-checkbox ng-model="introFilter" ng-change="toggleIntro(introFilter)">
+                        show again next time</ion-checkbox>
                   </div>
                   <div class="col col-20"></div>
                 </div>

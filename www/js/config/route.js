@@ -40,9 +40,9 @@ var appRoute = ['$stateProvider', '$urlRouterProvider', 'AppConstants', function
 
     var authTok = window.localStorage['ngStorage-authToken'];
     if (authTok != null) {
-        if(window.localStorage['ngStorage-noIntro'] == null){
+        if(localStorage['ngStorage-showIntro'] == "true"){
             $urlRouterProvider.otherwise(AppConstants.introName)
-        }else{
+        } else {
             $urlRouterProvider.otherwise(AppConstants.tabDiscoverURLSub)
         }
     } else {

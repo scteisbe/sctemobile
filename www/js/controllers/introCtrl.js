@@ -1,4 +1,4 @@
-var introCtrl = ['$scope', '$state', 'AppConstants', function($scope, $state, AppConstants) {
+var introCtrl = ['$scope', '$state', 'AppConstants','$localStorage', function($scope, $state, AppConstants,$localStorage) {
     $scope.buttonName = AppConstants.introSkipIntro;
     $scope.cards = [{
         "id": 1,
@@ -22,6 +22,18 @@ var introCtrl = ['$scope', '$state', 'AppConstants', function($scope, $state, Ap
         "status": "swipe to get started"
     }];
 
+    if($localStorage['showIntro']) {
+        $scope.introFilter = $localStorage['showIntro'];
+    } else {
+        $scope.introFilter = false;
+        $localStorage['showIntro'] =  $scope.introFilter;
+    }
+   
+    $scope.toggleIntro = function(isChecked) {
+        $scope.introFilter = isChecked;
+        $localStorage['showIntro'] =  $scope.introFilter;
+    }
+
     $scope.addCard = function(i) {
         var newCard = $scope.cards.push();
         $scope.cards.push(newCard);
@@ -30,7 +42,7 @@ var introCtrl = ['$scope', '$state', 'AppConstants', function($scope, $state, Ap
     $scope.cardSwipedLeft = function(index) {
         var arrCount = $scope.cards.length;
         if (arrCount <= 1) {
-            localStorage['ngStorage-noIntro'] = AppConstants.true;
+            //localStorage['ngStorage-noIntro'] = AppConstants.true;
             $state.go(AppConstants.tabdiscoverName);
         }
     };
@@ -38,7 +50,7 @@ var introCtrl = ['$scope', '$state', 'AppConstants', function($scope, $state, Ap
     $scope.cardSwipedRight = function(index) {
         var arrCount = $scope.cards.length;
         if (arrCount <= 1) {
-            localStorage['ngStorage-noIntro'] = AppConstants.true;
+            //localStorage['ngStorage-noIntro'] = AppConstants.true;
             $state.go(AppConstants.tabdiscoverName);
         }
     };
@@ -58,7 +70,7 @@ var introCtrl = ['$scope', '$state', 'AppConstants', function($scope, $state, Ap
 
     /* redirection to discover page */
     $scope.skipIntro = function() {
-        localStorage['ngStorage-noIntro'] = 'true';
+        //localStorage['ngStorage-noIntro'] = 'true';
         $state.go(AppConstants.tabdiscoverName);
     };
 
