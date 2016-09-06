@@ -59,6 +59,13 @@
               }, 300)
           });
 
+          // $ionicPlatform.ready(function() {
+          //     if (window.StatusBar) {
+          //         // org.apache.cordova.statusbar required
+          //         StatusBar.styleLightContent();
+          //     }
+          // });
+
           //Network event listener
 
           $rootScope.online = navigator.onLine;
@@ -107,7 +114,8 @@
           }
           if (window.StatusBar) {
               // org.apache.cordova.statusbar required
-              StatusBar.styleLightContent();
+              // StatusBar.styleLightContent();
+              StatusBar.styleDefault();
           }
 
       });
