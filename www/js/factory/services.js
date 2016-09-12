@@ -22,10 +22,12 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
 
         var prodBaseURL = "https://api.scte.org/mobileappui/api/";
         var prodSsoUrl = "https://www.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html";
+        var wcwSsoUrl = "http://learning.scte.org";
 
         if(devMode == 1) {
             prodBaseURL = "https://devapi.scte.org/mobileappui/api/";
             prodSsoUrl = "https://dev.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html";
+            wcwSsoUrl = "http://scte.staging.coursestage.com";
         }
         
         return {
@@ -33,6 +35,7 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
             
             "BaseURL": prodBaseURL,
             "ssourl": prodSsoUrl,
+            "wcwSsoUrl": wcwSsoUrl,
             
             "loginAPI" : {
                 "httpMethod": "post",
@@ -288,32 +291,36 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
 	
   	doWcwSso : function () {
   		// Step 3: tell WCW to do the SSO dance
-      var ssourl = '';
-      _.each($localStorage["myLearning"]["All Courses"], function(o){
-        _.each(o.userCourseList, function(i) {
-          ssourl = ssourl || i.URL;
-          return (ssourl == '');
-        });
-        return (ssourl == '');
-      });
+      var ssourl = Utils.getApiDetails().wcwSsoUrl;
+      // _.each($localStorage["myLearning"]["All Courses"], function(o){
+      //   _.each(o.userCourseList, function(i) {
+      //     ssourl = ssourl || i.URL;
+      //     return (ssourl == '');
+      //   });
+      //   return (ssourl == '');
+      // });
 
-  		$http({
-  		  method: 'GET',
-        url: ssourl
-  		}).then(function successCallback(response){
-        // $http is following redirects, so we get 200 on success _and_ when we end up at the scte.org login page
-        if (response.data.match(/Sign In/i) || response.data.match(/iMIS-WebPart/i) || response.data.match(/info@scte.org/i)) {
-        // these phrases appear on the scte.org login page
-        // if the login page changes, this will probably break
-          console.error("WCW SSO failed - scte.org is prompting for a password");
+      if (ssourl) {
+        $http({
+          method: 'GET',
+          url: ssourl
+        }).then(function successCallback(response){
+          // $http is following redirects, so we get 200 on success _and_ when we end up at the scte.org login page
+          if (response.data.match(/Sign In/i) || response.data.match(/iMIS-WebPart/i) || response.data.match(/info@scte.org/i)) {
+          // these phrases appear on the scte.org login page
+          // if the login page changes, this will probably break
+            console.error("WCW SSO failed - scte.org is prompting for a password");
+            console.log(response);
+          } else {
+            console.log("WCW SSO successful");
+          }
+        },function errorCallback(response){
+          console.error("Something unexpected happened during WCW SSO");
           console.log(response);
-        } else {
-    		  console.log("WCW SSO successful");
-        }
-  		},function errorCallback(response){
-        console.error("Something unexpected happened during WCW SSO");
-        console.log(response);
-  		});
+        });
+      } else {
+        console.log("No WCW SSO URL. Skipping WCW SSO.")
+      }
   	}
   };
   return Utils;

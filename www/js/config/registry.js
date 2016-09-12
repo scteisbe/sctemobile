@@ -394,7 +394,8 @@
           'self',
           // Allow loading from our assets domain.  Notice the difference between * and **.
           'https://www.youtube.com/**',
-          'https://devapi.scte.org/**'
+          'https://devapi.scte.org/**',
+          'https://api.scte.org/**'
       ]);
 
       // The blacklist overrides the whitelist so the open redirect here is blocked.
