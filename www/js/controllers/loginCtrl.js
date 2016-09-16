@@ -68,14 +68,15 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
                             $localStorage['username'] = $scope.username;
                             $localStorage['password'] = $scope.password;
                             $localStorage['authToken'] = $rootScope.authToken;
-                            ga('send', 'event', AppConstants.login, AppConstants.succeeded);
+                            ga('send', 'event', "GetToken", "success");
 
                             $state.go(AppConstants.introName);
                         } else {
-                            ga('send', 'event', AppConstants.login, AppConstants.failed);
+                            ga('send', 'event', "GetToken", "failure", AppConstants.wrongUserNamePassword);
                             $scope.displayAlert(AppConstants.wrongUserNamePassword);
                         }
                     } else {
+                        ga('send', 'event', "GetToken", "failure", AppConstants.cantReachServer);
                         $scope.displayAlert(AppConstants.cantReachServer);
                         $scope.applicationGo = Utils.verifyUser($scope.username, $scope.password, $scope.userCred);
                         if ($scope.applicationGo == "yes") {
@@ -84,6 +85,7 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
                     }
                 });
             } else {
+                ga('send', 'event', "Offline error", "login");
                 $scope.displayAlert(AppConstants.noInternet);
             }
         }

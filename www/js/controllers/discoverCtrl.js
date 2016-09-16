@@ -35,7 +35,10 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
 
     function onConfirm(buttonIndex) {
         if(buttonIndex == 1) {
+            ga('send', 'event', "new version deploy", "accepted");
             deploy.load();
+        } else {
+          ga('send', 'event', "new version deploy", "refused");
         }
     };
 
@@ -64,24 +67,25 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     }
 
     $scope.openPromo = function(url) {
-        ga(AppConstants.send, AppConstants.event, AppConstants.promoBanner, AppConstants.fromDiscoverTab, url);
+        ga('send', 'event', AppConstants.promoBanner, AppConstants.fromDiscoverTab, url);
         window.open(url, AppConstants.system);
     };
 
     $scope.openURL = function(item) {
-        ga(AppConstants.send, AppConstants.event, AppConstants.fromFeaturedResourcesTab, item.title);
+        ga('send', 'event', 'External ' + item.type + ' opened', item.os + ': ' + item.title, AppConstants.fromFeaturedResourcesTab);
+        ga('send', 'event', 'External ' + item.type, 'opened', item.title);
         window.open(item.url, AppConstants.system);
     };
 
     $scope.openInformedURL = function() {
         var url = AppConstants.informedURL;
-        ga('send', 'event', AppConstants.openExternalLink, AppConstants.fromDiscoverTab, url);
+        ga('send', 'event', 'Opened Informed blog site (CableLabs)', url);
         window.open(url, AppConstants.system);
     };
 
     $scope.openNctaURL = function() {
         var url = AppConstants.nctaURL;
-        ga('send', 'event', AppConstants.openExternalLink, AppConstants.fromDiscoverTab, url);
+        ga('send', 'event', 'Opened NCTA blog site', url);
         window.open(url, AppConstants.system);
     };
 
@@ -124,8 +128,11 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
                             if (response != null) {
                                 $message = response['message'];
                                 if ($message['statusCode'] == AppConstants.status200) {
+                                    ga('send', 'event', "autologin", AppConstants.succeeded);
                                     $rootScope.authToken = $localStorage['authToken'];
                                     $scope.fetchProfile();
+                                } else {
+                                  ga('send', 'event', "autologin", $message['statusDescription']);
                                 }
                             }
                         });
@@ -133,6 +140,16 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
                         $rootScope.profileData = $data[0];
                         $profileData = $data[0];
                         $localStorage['profiledata'] = $profileData;
+
+                        var miniProfile = {};
+                        miniProfile.id = $profileData['Id'];
+                        miniProfile.memberType = $profileData['MemberType'];
+                        miniProfile.status = $profileData['Status'];
+                        miniProfile.paidThru = $profileData['PaidThru'];
+                        miniProfile.memberStatus = $profileData['MemberStatus'];
+                        miniProfile.companyId = $profileData['CompanyId'];
+                        miniProfile.companyName = $profileData['CompanyName'];
+                        console.info(miniProfile);
 
                         $localStorage['SSOUrl'] = $profileData['SSOUrl'];
                         $localStorage["myLearning"] = $profileData.LearningPlan;
@@ -144,14 +161,20 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
 
                         $scope.cobrandingRecords = $localStorage['staticcontent.cobranding'];
                         $rootScope.logoURL = $scope.getCobrandingURL($profileData['CompanyId']);
-                        $window.ga(AppConstants.set, AppConstants.userId, $profileData['Id']);
+                        ga('send', 'event', "New session - GetIndividual", "success", JSON.stringify(miniProfile));
+                        ga('send', 'event', "Session info - company", JSON.stringify(miniProfile.companyName), JSON.stringify(miniProfile.companyId));
+
+                        ga(AppConstants.set, AppConstants.userId, $profileData['Id']);
                         $localStorage['games'] = $profileData.Games;
                         $localStorage['searchEntitlements'] = $profileData.SearchEntitlements;
                         $scope.prepareSearchRequestBody();
+                    } else {
+                        ga('send', 'event', "New session - GetIndividual", "failure", $message['statusDescription']);
                     }
                 }
             });
         } else {
+            ga('send', 'event', "Offline error", "fetchProfile");
             $scope.displayAlert(AppConstants.noInternet);
         }
 
@@ -293,8 +316,9 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
         $state.go(AppConstants.tabnctaName);
     };
 
-    $scope.openPage = function(url) {
-        window.open(url, AppConstants.system);
+    $scope.openPage = function(o, str, i) {
+        ga('send', 'event', 'External blog link (' + str + ')', 'opened', o.link, i);
+        window.open(o.link, AppConstants.system);
     };
 
     

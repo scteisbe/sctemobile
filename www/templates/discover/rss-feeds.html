@@ -14,7 +14,7 @@
                 <img src="img/CAB_logo_red.png" class="informed-logo">
             </div>
             <ion-list class="list">
-                <ion-item class="item-thumbnail-left item-icon-right" collection-repeat="rssFeed in rssFeeds | filter:searchString track by $index" ng-click="openPage(rssFeed.link)" type="item-text-wrap">
+                <ion-item class="item-thumbnail-left item-icon-right" collection-repeat="rssFeed in rssFeeds | filter:searchString track by $index" ng-click="openPage(rssFeed, 'CableLabs', $index)" type="item-text-wrap">
                     <img src="{{rssFeed.thumbnail}}" style="width:auto;height:auto" />
                     <h2>{{rssFeed.title}}</h2>
                     <p class="rss-description" ng-bind-html="rssFeed.description"></p>

@@ -233,6 +233,10 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
     },
   
     scteSSO : function () {
+      if (!window.device) {
+        // console.info("Skipping SSO for scte.org and WCW (because we're not on a real device)");
+        return;
+      }
       // Step 1: get and set an scte.org session cookie
       $http({
         method: 'GET',
@@ -277,7 +281,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
           },
           function errorCallback(response) {
             console.error("Something unexpected happened during scte.org sign in");
-            console.log(response);
           });
         } else {
           console.log("Already signed in on scte.org");
@@ -285,7 +288,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         }
       },function errorCallback(response){
           console.error("Something unexpected happened before scte.org sign in");
-          console.log(response);
       })
     },
 	
@@ -316,7 +318,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
           }
         },function errorCallback(response){
           console.error("Something unexpected happened during WCW SSO");
-          console.log(response);
         });
       } else {
         console.log("No WCW SSO URL. Skipping WCW SSO.")

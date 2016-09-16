@@ -28,6 +28,18 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
     $scope.apiGames = $localStorage['games'];
     $scope.aliases = $localStorage['staticcontent.aliases'];
 
+    function simplifyCourseListing(obj){
+      var result = _.map(obj, function(c){
+        var res = {};
+        res.title=c.ProfileName;
+        res.modules=_.map(c.userCourseList, function(m){
+          return(m.FullName);
+        });
+        return(res);
+      });
+      return (result);
+    }
+
     $scope.findGameName = function(gamTitle) {
         var i;
         for (i = 0; i < $scope.aliases.length; i++) {
@@ -46,20 +58,59 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
     $scope.$watch('activeTab', function() {
         var a = ['/tab/mylearning/all', '/tab/mylearning/inprogress', '/tab/mylearning/completed'];
         $window.ga('send', 'pageview', a[$scope.activeTab]);
+
         switch ($scope.activeTab) {
-    case 0:
-        $scope.mylearningCourseLength = $scope.allCoursesLength;
-        $scope.noCourseErrorMsg="You haven't enrolled in any courses. Check out all the learning opportunities available to you in the SCTE / ISBE Course Catalog!";
-        break;
-    case 1:
-        $scope.mylearningCourseLength = $scope.inprogressCoursesLength;
-        $scope.noCourseErrorMsg="You don't have any courses in progress. Check out all the learning opportunities available to you in the SCTE / ISBE Course Catalog!";
-        break;
-    case 2:
-        $scope.mylearningCourseLength = $scope.completedCoursesLength;
-        $scope.noCourseErrorMsg="You haven't completed any courses yet.";
-       
-}
+            case 0:
+                var temp;
+                $scope.mylearningCourseLength = $scope.allCoursesLength;
+                $scope.noCourseErrorMsg="You haven't enrolled in any courses. Check out all the learning opportunities available to you in the SCTE / ISBE Course Catalog!";
+                temp = simplifyCourseListing($scope.allCourses);
+                ga('send', 'event', "Course listing JSON - full", "All courses", JSON.stringify(temp).slice(0,6000), temp.length);
+                ga('send', 'event', "Course listing JSON - courses only", "All courses", JSON.stringify(_.map(temp, function(o){return(o.title)})).slice(0,6000), temp.length);
+
+                temp = _.filter($scope.allCourses, function(o){return(o.ProfileName == "Legacy Courses");});
+                ga('send', 'event', "Visible courses", "All courses", "Legacy", temp.length);
+
+                temp = _.filter($scope.allCourses, function(o){return(o.ProfileName == "Other Courses");});
+                ga('send', 'event', "Visible courses", "All courses", "Other", temp.length);
+
+                temp = _.filter($scope.allCourses, function(o){return(o.ProfileName != "Legacy Courses" && o.ProfileName != "Other Courses");});
+                ga('send', 'event', "Visible courses", "All courses", "Normal", temp.length);
+
+                break;
+            case 1:
+                $scope.mylearningCourseLength = $scope.inprogressCoursesLength;
+                $scope.noCourseErrorMsg="You don't have any courses in progress. Check out all the learning opportunities available to you in the SCTE / ISBE Course Catalog!";
+                temp = simplifyCourseListing($scope.inprogressCourses);
+                ga('send', 'event', "Course listing JSON - full", "In progress", JSON.stringify(temp).slice(0,6000), temp.length);
+                ga('send', 'event', "Course listing JSON - courses only", "In progress", JSON.stringify(_.map(temp, function(o){return(o.title)})).slice(0,6000), temp.length);
+
+                temp = _.filter($scope.inprogressCourses, function(o){return(o.ProfileName == "Legacy Courses");});
+                ga('send', 'event', "Visible courses", "In progress courses", "Legacy", temp.length);
+
+                temp = _.filter($scope.inprogressCourses, function(o){return(o.ProfileName == "Other Courses");});
+                ga('send', 'event', "Visible courses", "In progress courses", "Other", temp.length);
+
+                temp = _.filter($scope.inprogressCourses, function(o){return(o.ProfileName != "Legacy Courses" && o.ProfileName != "Other Courses");});
+                ga('send', 'event', "Visible courses", "In progress courses", "Normal", temp.length);
+
+                break;
+            case 2:
+                $scope.mylearningCourseLength = $scope.completedCoursesLength;
+                $scope.noCourseErrorMsg="You haven't completed any courses yet.";
+                temp = simplifyCourseListing($scope.completedCourses);
+                ga('send', 'event', "Course listing JSON - full", "Completed", JSON.stringify(temp).slice(0,6000), temp.length);
+                ga('send', 'event', "Course listing JSON - courses only", "Completed", JSON.stringify(_.map(temp, function(o){return(o.title)})).slice(0,6000), temp.length);
+
+                temp = _.filter($scope.completedCourses, function(o){return(o.ProfileName == "Legacy Courses");});
+                ga('send', 'event', "Visible courses", "Completed courses", "Legacy", temp.length);
+
+                temp = _.filter($scope.completedCourses, function(o){return(o.ProfileName == "Other Courses");});
+                ga('send', 'event', "Visible courses", "Completed courses", "Other", temp.length);
+
+                temp = _.filter($scope.completedCourses, function(o){return(o.ProfileName != "Legacy Courses" && o.ProfileName != "Other Courses");});
+                ga('send', 'event', "Visible courses", "Completed courses", "Normal", temp.length);
+        }
     });
 
     $scope.renderMyLearnings = function() {
@@ -171,10 +222,12 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
         window.open(url, '_system');
     };
 
-    $scope.openSCTEModule = function(url) {
+    $scope.openSCTEModule = function(url, title) {
          if(url == null || url.length == 0) {
+            ga('send', 'event', 'Module', 'unavailable in app', title);
             $scope.displayAlert($scope.courseUnavailableMsg);
         } else {
+            ga('send', 'event', 'Module', 'opened', title);
             window.open(url, '_blank', 'location=yes');
         }
     };

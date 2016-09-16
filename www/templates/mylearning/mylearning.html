@@ -38,12 +38,12 @@
                     <b>{{allCourse.ProfileName}}</b>
                     <i class="icon" ng-class="isAllCourseShown(allCourse) ? 'ion-minus' : 'ion-plus'"></i>
                 </ion-item>
-                <div class="item-accordion" ng-repeat="allCourseModule in allCourse.userCourseList" ng-show="isAllCourseShown(allCourse)" ng-click="openSCTEModule(allCourseModule.URL)">
+                <div class="item-accordion" ng-repeat="allCourseModule in allCourse.userCourseList" ng-show="isAllCourseShown(allCourse)" ng-click="openSCTEModule(allCourseModule.URL, allCourseModule.FullName)">
                     <div class="item item-icon-right">
                         <i class="icon ion-chevron-right"></i> <b>{{allCourseModule.FullName}}</b>
                     </div>
                     <div ng-show="displayWcwCourse && isAllCourseShown(allCourse)">
-                        Materials for this course is not yet available in the SCTE mobile app
+                        Materials for this course are not yet available in the CORTEX mobile app
                     </div>
                 </div>
             </ion-list>
@@ -60,7 +60,7 @@
                         <i class="icon ion-chevron-right"></i> <b>{{inprogressModule.FullName}}</b>
                     </div>
                     <div ng-show="displayWcwCourse && isInprogressCourseShown(inprogressCourse)">
-                        Materials for this course is not yet available in the SCTE mobile app
+                        Materials for this course are not yet available in the CORTEX mobile app
                     </div>
                 </div>
             </ion-list>
@@ -72,12 +72,12 @@
                     <b>{{completedCourse.ProfileName}}</b>
                     <i class="icon" ng-class="isCompletedCourseShown(completedCourse) ? 'ion-minus' : 'ion-plus'"></i>
                 </ion-item>
-                <div class="item-accordion" ng-repeat="completedCourseModule in completedCourse.userCourseList" ng-show="isCompletedCourseShown(completedCourse)" ng-click="openSCTEModule(completedCourseModule.URL)">
+                <div class="item-accordion" ng-repeat="completedCourseModule in completedCourse.userCourseList" ng-show="isCompletedCourseShown(completedCourse)" ng-click="openSCTEModule(completedCourseModule.URL, completedCourseModule.FullName)">
                     <div class="item item-icon-right">
                         <i class="icon ion-chevron-right"></i> <b>{{completedCourseModule.FullName}}</b>
                     </div>
                     <div ng-show="displayWcwCourse && isCompletedCourseShown(completedCourse)">
-                        Materials for this course is not yet available in the SCTE mobile app
+                        Materials for this course are not yet available in the CORTEX mobile app
                     </div>
                 </div>
             </ion-list>
@@ -99,7 +99,7 @@
             <h5 class="mylearning-games">Games</h5>
         </div>
         <div class="list games" ng-show="gamesErrorMsg==''" style="display: none">
-            <div class="item item-thumbnail-left" ng-repeat="mylearningGame in gameItems" ng-click="openSCTEModule(mylearningGame.url)" ng-hide="mylearningGame.template == 'hidden'">
+            <div class="item item-thumbnail-left" ng-repeat="mylearningGame in gameItems" ng-click="openSCTEModule(mylearningGame.url, mylearningGame.title)" ng-hide="mylearningGame.template == 'hidden'">
                 <img ng-src="{{mylearningGame.coverimageurl}}" style="width:100%;height:auto">
                 <h2>{{mylearningGame.title}}</h2>
                 <div ng-hide="showHide{{$index}}">
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div ng-repeat="apiGame in apiGames">
-                <div class="item item-thumbnail-left" ng-click="openSCTEModule(apiGame.Url)">
+                <div class="item item-thumbnail-left" ng-click="openSCTEModule(apiGame.Url, apiGame.Name)">
                     <img ng-src="img/SCTE-ISBE_LogoBugs_Black.png" style="width:100%;height:auto" />
                     <h2>{{findGameName(apiGame.Name)}}</h2>
                     <div class="para">{{gamDesc}}</div>

@@ -12,7 +12,7 @@
                 <div class="item item-divider" ng-show="item.type == 'separator'" ng-if="item.os == platform">
                     <h3 class="group-title">{{item.title}}</h3>
                 </div>
-                <div class="item item-thumbnail-left" ng-show="item.type != 'separator' && item.os==platform" ng-click="openPage(item.url)">
+                <div class="item item-thumbnail-left" ng-show="item.type != 'separator' && item.os==platform" ng-click="openPage(item)">
                     <img ng-src="{{item.coverimageurl}}">
                     <h3 class="app-title">{{item.title}}</h3>
                     <p class="app-desc">{{item.description}}</p>

@@ -12,8 +12,9 @@ var AppLibraryCtrl = ['$scope', '$state', '$rootScope', 'Utils', '$localStorage'
     };
 
     $scope.openPage = function(item) {
-        ga(AppConstants.send, AppConstants.event, item.type, AppConstants.fromAppLibraryTab, item.title);
-        window.open(item, AppConstants.system);
+        ga('send', 'event', 'External ' + item.type + ' opened', item.os + ': ' + item.title, AppConstants.fromAppLibraryTab);
+        ga('send', 'event', 'External ' + item.type, 'opened', item.title);
+        window.open(item.url, AppConstants.system);
     };
 
 }];

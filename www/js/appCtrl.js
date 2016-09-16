@@ -21,6 +21,7 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
         };
 
     $scope.$on('$ionicView.loaded', function() {
+        // console.info(JSON.stringify(ionic.Platform.device()));
         ionic.Platform.ready(function() {
             if (navigator && navigator.splashscreen) navigator.splashscreen.hide();
         });

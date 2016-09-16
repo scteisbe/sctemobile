@@ -37,6 +37,11 @@
               }
           });
 
+          if($window.device) {
+            // console.log("We're running on a device or emulator (window.device exists)");
+          } else {
+            // console.log("We're running inside a web browser e.g. on a computer (window.device does not exist)");
+          }
 
           var clientId = $localStorage['clientId'] || _.random(1, true).toString().replace("0.", "");
           $localStorage['clientId'] = clientId;
@@ -78,6 +83,7 @@
               e.preventDefault();
               // Is there a page to go back to?
               if ($ionicHistory.currentView().title === 'Discover') {
+                  ga('send', 'pageview', {'sessionControl': 'end'});
                   ionic.Platform.exitApp();
               } else {
                   $ionicHistory.goBack();

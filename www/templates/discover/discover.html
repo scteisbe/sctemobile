@@ -2,7 +2,7 @@
     <ion-nav-title class="discover-wrapper">
         <div class="top-header">
             <div  ng-if="logoURL" style="margin-top: 6px;">
-                <img ng-src="{logoURL}" class="scte-isbe-cortex-logo">
+                <img ng-src="{{logoURL}}" class="scte-isbe-cortex-logo">
             </div>
             <div ng-if="!logoURL"">
                 <img src="img/cortex_logo.png" class="header-cortex-logo">
@@ -99,7 +99,7 @@
                 <a class="see-all" ng-click="rssFeedDetailScreen()">See All &gt;</a>
             </div>
             <ion-list class="list">
-                <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="rssFeed in rssFeeds | limitTo:3" ng-click="openPage(rssFeed.link)">
+                <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="rssFeed in rssFeeds | limitTo:3" ng-click="openPage(rssFeed, 'CableLabs', $index)">
                     <img src="{{rssFeed.thumbnail}}" style="width:auto;height:auto" />
                     <h2>{{rssFeed.title}}</h2>
                     <p class="rss-description" ng-bind-html="rssFeed.description"></p>
@@ -113,7 +113,7 @@
                 <a class="see-all" ng-click="nctaDetailScreen()" style="top: 20px">See All &gt;</a>
             </div>
             <ion-list class="list">
-                <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="nctaData in nctaDatas | limitTo:3" ng-click="openPage(nctaData.link)">
+                <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="nctaData in nctaDatas | limitTo:3" ng-click="openPage(nctaData, 'NCTA', $index)">
                     <img src="{{nctaData.thumbnail}}" style="width:auto;height:auto" />
                     <h2>{{nctaData.title}}</h2>
                     <p class="rss-description" ng-bind-html="nctaData.description"></p>
