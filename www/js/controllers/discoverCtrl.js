@@ -9,7 +9,17 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
 
     $scope.ionicUpdate = function() {
         var deploy = new Ionic.Deploy();
+        // deploy.setChannel = 'dev';
+
+        deploy.getVersions().then(function(versions) {
+          deploy.info().then(function(deployInfo) {
+            console.log("Current: " + deployInfo.deploy_uuid);
+            console.log(versions);
+          }, function() {}, function() {});
+
+        });
         deploy.watch().then(function () { }, function () { }, function (updateAvailable) {
+          // deploy.check().then(function (updateAvailable) {
             console.log("updateAvailable.." + updateAvailable);
             if (updateAvailable) {
                 deploy.download().then(function () {
