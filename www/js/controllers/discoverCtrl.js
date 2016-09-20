@@ -138,7 +138,7 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
                             if (response != null) {
                                 $message = response['message'];
                                 if ($message['statusCode'] == AppConstants.status200) {
-                                    ga('send', 'event', "autologin", AppConstants.succeeded);
+                                    ga('send', 'event', "autologin", AppConstants.success);
                                     $rootScope.authToken = $localStorage['authToken'];
                                     $scope.fetchProfile();
                                 } else {

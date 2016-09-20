@@ -297,7 +297,7 @@
       "fromAppLibraryTab": "from app library tab",
       "fromDiscoverTab": 'from discover tab',
       "fromFeaturedResourcesTab": 'from featured resources',
-      "succeeded": "succeeded",
+      "success": "success",
       "failed": "failed",
 
      
