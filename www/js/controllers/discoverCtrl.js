@@ -44,11 +44,18 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
     };
 
     function onConfirm(buttonIndex) {
+        var deploy = new Ionic.Deploy();
         if(buttonIndex == 1) {
-            ga('send', 'event', "new version deploy", "accepted");
-            deploy.load();
+            deploy.info().then(function(deployInfo) {
+              ga('send', 'event', "new version deploy", "accepted", deployInfo.deploy_uuid);
+            }, function() {}, function() {});
+            setTimeout(function reloadApp () {
+              deploy.load();
+            }, 1000);
         } else {
-          ga('send', 'event', "new version deploy", "refused");
+          deploy.info().then(function(deployInfo) {
+            ga('send', 'event', "new version deploy", "rejected", deployInfo.deploy_uuid);
+          }, function() {}, function() {});
         }
     };
 
