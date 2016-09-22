@@ -91,6 +91,16 @@
               return false;
           }, 101);
 
+          // initialize data with empty arrays and objects
+          $localStorage['eventsdata'] = $localStorage['eventsdata'] || {"relevantEvents": [],"liveLearnings": [],"myChapter": [],"nationalEvents": []};
+          $localStorage['games'] = $localStorage['games'] || [];
+          $localStorage['myLearning'] = $localStorage['myLearning'] || [];
+          $localStorage['nctaDatas'] = $localStorage['nctaDatas'] || [];
+          $localStorage['profiledata'] = $localStorage['profiledata'] || {"Id":"0","MemberType":"initial value","Category":"uninitialized","Status":"uninitialized","CompanyId":"uninitialized","FullName":"there","Title":"uninitialized","CompanyName":"uninitialized","PrefixName":"uninitialized","FirstName":"uninitialized","MiddleName":"uninitialized","LastName":"uninitialized","SuffixName":"uninitialized","Designation":"uninitialized","WorkPhone":"uninitialized","HomePhone":"uninitialized","City":"uninitialized","StateProvince":"uninitialized","Postal":"uninitialized","Country":"uninitialized","Chapter":"uninitialized","MailAddressNumber":0,"PaidThru":null,"MemberStatus":"uninitialized","EMail":"uninitialized","Courses":[],"Meetings":[],"Certificates":[],"Orders":[],"RUs":[],"Committees":[],"Dues":[],"LearningPlan":[],"Games":[],"SearchEntitlements":{"Courses":[],"Modules":[]}};
+          $localStorage['rssFeeds'] = $localStorage['rssFeeds'] || [];
+          $localStorage['scraperData'] = $localStorage['scraperData'] || [];
+          $localStorage['searchEntitlements'] = $localStorage['searchEntitlements'] || {"Courses":[],"Modules":[]};
+
           $ionicPlatform.on('resume', function() {
             Utils.scteSSO();
           });

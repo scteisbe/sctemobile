@@ -11,18 +11,18 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
                     $scope.hideLoader();
 
                     if ($message['statusCode'] == AppConstants.status200) {
+                        var temp = $eventsData;
+                        // remove events with null dates - this should really be done by the API instead
+                        temp.relevantEvents = _.filter(temp.relevantEvents, function(o) { return (o.beginDate); });
+                        $localStorage['eventsdata'] = temp;
 
-                        $localStorage['eventsdata'] = $eventsData;
                         $scope.discoverEvents();
                         tempevents = $localStorage['eventsdata'];
 
                         if (tempevents == null || tempevents.length == 0) {
                             $scope.eventErrorMsg = AppConstants.noData;
                         }
-
                     }
-
-
                 }
             });
         } else {
@@ -50,7 +50,7 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
         $scope.events = $localStorage['eventsdata'];
         $rootScope.liveLearningsPromos = $localStorage['staticcontent.livelearningpromos'];
         
-        $rootScope.liveLearningEvents = $scope.events.liveLearnings[0];
+        $rootScope.liveLearningEvents = $scope.events.liveLearnings[0] || {title: '', beginDate: ''};
         $rootScope.liveLearningEvents.title = $rootScope.liveLearningEvents.title.replace(AppConstants.replaceliveLearnings, "");
         var dateFormat = $rootScope.liveLearningEvents.formattedBeginDate;
         var dateEvent = new Date(dateFormat);
@@ -108,7 +108,7 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
     
 
     if ($localStorage['eventsdata'] != null) {
-        $scope.discoverEvents();
+        // $scope.discoverEvents();
     } else {
         $scope.showLoader();
     }
