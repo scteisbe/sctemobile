@@ -8,32 +8,32 @@ var dictionaryCtrl = ['$scope', '$state', '$rootScope', '$ionicLoading', '$ionic
         
         if($scope.popover != null)
             $scope.popover.remove();
-         var template = '<style>.popover { height:160px; width: 180px; }</style>' +
-            '<ion-popover-view class="dictionary-wrapper">' +
-            '<ion-content>' +
-            '<div class="row">' +
-            '<div class="col col-center">' +
-            '<lable>' +
-            '<spam class="descriptivetext"><b>{{popupitem.Abbreviation}} : {{popupitem.Description}}</spam>' +
-            '</lable>' +
-            '</div>' +
-            '</div>';
-        
-        var template_category =  '<div class="row">' +
-            '<div class="col col-center">' +
-            '<lable>' +
-            '<spam class="descriptivetext"><b>Category:</b> {{popupitem.Category}}</spam>' +
-            '</lable>' +
-            '</div>' +
-            '</div>';
-       
+            var template = '<style>.popover { height:200px; width: 260px; }</style>' +
+              '<ion-popover-view class="dictionary-wrapper">' +
+              '<ion-content>' +
+              '<div class="row">' +
+              '<div class="col col-center">' +
+              '<label>' +
+              '<span class="descriptivetext"><b>{{popupitem.Abbreviation}}</b> : {{popupitem.Description}} {{popupitem.Description2}}</span>' +
+              '</label>' +
+              '</div>' +
+              '</div>';
+
+            var template_category =  '<div class="row">' +
+                '<div class="col col-center">' +
+                '<label>' +
+                '<span class="descriptivetext"><b>Category:</b> {{popupitem.Category}}</span>' +
+                '</label>' +
+                '</div>' +
+                '</div>';
+                
         var template_footer =    '</ion-content>' + '</ion-popover-view>';
         
         $scope.popupitem = $scope.filteredItems[index];
-            if($scope.popupitem.Category != null) {
+        if($scope.popupitem.Category != null) {
             template = template + template_category;
         }
-     
+        
         template = template + template_footer;
         $scope.popover = $ionicPopover.fromTemplate(template, {
             scope: $scope

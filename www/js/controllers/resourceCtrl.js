@@ -178,10 +178,6 @@ var ResourceCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$localS
         window.open(url, '_system');
     };
 
-    $http.get('json/scte-std-docx.json').success(function(data) {
-        $scope.scteStandards = data;
-    });
-
     $scope.redirectDisover = function() {
         Utils.redirectDiscover();
     };

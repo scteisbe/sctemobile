@@ -169,10 +169,6 @@ var MyLearningCtrl = ['$scope', '$state', '$rootScope', '$http', 'Utils', '$loca
 
     };
 
-    $http.get('json/mylearning-resources.json').success(function(data) {
-        $scope.items = data;
-    });
-
     $scope.toggleInprogressCourse = function(inprogressCourse) {
         if ($scope.isInprogressCourseShown(inprogressCourse)) {
             $scope.shownInprogressCourse = null;

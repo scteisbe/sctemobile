@@ -24,8 +24,9 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
         var prodSsoUrl = "https://www.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html";
         var wcwSsoUrl = "http://learning.scte.org";
 
-        if(devMode == 1) {
+        if(devMode) {
             prodBaseURL = "https://devapi.scte.org/mobileappui/api/";
+            // prodBaseURL = "http://win:65151/mobileappui/api/";
             prodSsoUrl = "https://dev.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html";
             wcwSsoUrl = "http://scte.staging.coursestage.com";
         }
