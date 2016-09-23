@@ -182,6 +182,15 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
                         ga('send', 'event', "Session info - company", JSON.stringify(miniProfile.companyName), JSON.stringify(miniProfile.companyId));
 
                         ga(AppConstants.set, AppConstants.userId, $profileData['Id']);
+                        Rollbar.configure({
+                          payload: {
+                            person: {
+                              id: $profileData['Id'],
+                              username: $profileData['FullName'],
+                              email: $profileData['EMail']
+                            }
+                          }
+                        });
                         $localStorage['games'] = $profileData.Games;
                         $localStorage['searchEntitlements'] = $profileData.SearchEntitlements;
                         $scope.prepareSearchRequestBody();

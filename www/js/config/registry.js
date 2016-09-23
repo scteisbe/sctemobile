@@ -139,6 +139,71 @@
       });
   }]);
 
+  cortexConfig.config(function($provide){
+    // catch exceptions in angular
+    var debug = false;
+
+    $provide.decorator('$exceptionHandler', ['$delegate', function($delegate){
+      return function(exception, cause){
+        $delegate(exception, cause);
+
+        var data = {
+          type: 'angular',
+          url: window.location.hash,
+          localtime: Date.now()
+        };
+        if(cause)               { data.cause    = cause;              }
+        if(exception){
+          if(exception.message) { data.message  = exception.message;  }
+          if(exception.name)    { data.name     = exception.name;     }
+          if(exception.stack)   { data.stack    = exception.stack;    }
+        }
+
+        if(debug){
+          console.log('exception', data);
+          window.alert('Error: '+data.message);
+        } else {
+          track(data);
+        }
+      };
+    }]);
+    
+    // catch exceptions out of angular
+    window.onerror = function(message, url, line, col, error){
+      var stopPropagation = debug ? false : true;
+      var data = {
+        type: 'javascript',
+        url: window.location.hash,
+        localtime: Date.now()
+      };
+      if(message)       { data.message      = message;      }
+      if(url)           { data.fileName     = url;          }
+      if(line)          { data.lineNumber   = line;         }
+      if(col)           { data.columnNumber = col;          }
+      if(error){
+        if(error.name)  { data.name         = error.name;   }
+        if(error.stack) { data.stack        = error.stack;  }
+      }
+
+      if(debug){
+        console.log('exception', data);
+        window.alert('Error: '+data.message);
+      } else {
+        track(data);
+      }
+      return stopPropagation;
+    };
+  });
+
+  function track(data) {
+    Rollbar.error(data.stack);
+    ga('send', 'exception', {
+      'exDescription': JSON.stringify(data),
+      'exFatal': false
+    });
+  }
+
+
   cortexConfig.config(function($ionicConfigProvider) {
       // force Android tabs to bottom
       $ionicConfigProvider.tabs.position('bottom');
