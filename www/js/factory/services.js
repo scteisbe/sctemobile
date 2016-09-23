@@ -18,6 +18,10 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
     getApiDetails : function(){
 
         var devMode = false;
+        if ($localStorage["devMode"] == "0") {
+          // older versions set localStorage incorrectly - this keeps them from getting screwed on new deploys
+          $localStorage["devMode"] = false;
+        }
         if($localStorage["devMode"]) devMode = $localStorage["devMode"];
 
         var prodBaseURL = "https://api.scte.org/mobileappui/api/";
