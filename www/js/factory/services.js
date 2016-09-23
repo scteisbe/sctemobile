@@ -26,14 +26,11 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
 
         if(devMode) {
             prodBaseURL = "https://devapi.scte.org/mobileappui/api/";
-            // prodBaseURL = "http://win:65151/mobileappui/api/";
             prodSsoUrl = "https://dev.scte.org/SCTE/Sign_In.aspx?LoginRedirect=true&returnurl=%2Fmobile%2Fsignin-successful.html";
             wcwSsoUrl = "http://scte.staging.coursestage.com";
         }
         
         return {
-            //"BaseURL":"http://vmdimisapp01:1322/api/",
-            
             "BaseURL": prodBaseURL,
             "ssourl": prodSsoUrl,
             "wcwSsoUrl": wcwSsoUrl,
@@ -86,7 +83,6 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
        return  $http({
 			method:$method,
 			url:$url,
-			//data: {Email:'MAGGIE', password: 'testrecord', grant_type:'password'},
 			data: dataObj,
 			headers: headerObj,
 		}).then( 

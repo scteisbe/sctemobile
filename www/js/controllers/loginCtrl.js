@@ -41,10 +41,10 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
         } else {
             if ($rootScope.online) {
                 if($scope.username.startsWith(".")) {
-                    $localStorage["devMode"] = "1";
+                    $localStorage["devMode"] = true;
                     $scope.username = $scope.username.substring(1);
                 } else {
-                    $localStorage["devMode"] = "0"
+                    $localStorage["devMode"] = false;
                 }
 
                 if($localStorage["rssFeeds"] == null)
