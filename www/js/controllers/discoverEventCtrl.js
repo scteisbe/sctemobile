@@ -12,8 +12,13 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
 
                     if ($message['statusCode'] == AppConstants.status200) {
                         var temp = $eventsData;
-                        // remove events with null dates - this should really be done by the API instead
-                        temp.relevantEvents = _.filter(temp.relevantEvents, function(o) { return (o.beginDate); });
+                        // remove events with null and old dates - this should really be done by the API instead
+                        temp.relevantEvents = _.filter(temp.relevantEvents, function(o) {
+                          var tempDate = o.formattedBeginDate || o.beginDate;
+                          tempDate = new Date(tempDate);
+                          var now = new Date();
+
+                          return (o.beginDate && (tempDate.getTime() > now.getTime())); });
                         $localStorage['eventsdata'] = temp;
 
                         $scope.discoverEvents();
