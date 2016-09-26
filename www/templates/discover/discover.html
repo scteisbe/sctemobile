@@ -94,11 +94,13 @@
             </div>
         </div>
         <div class="rss-feeds-box">
-            <div>
-                <img src="img/CAB_logo_red.png" class="informed-logo" ng-click="openInformedURL()">
-                <a class="see-all" ng-click="rssFeedDetailScreen()">See All &gt;</a>
-            </div>
             <ion-list class="list">
+                <ion-item>
+                  <div>
+                    <img src="img/CAB_logo_red.png" class="informed-logo" ng-click="openInformedURL()">
+                    <a class="see-all" ng-click="rssFeedDetailScreen()">See All &gt;</a>
+                  </div>
+                </ion-item>
                 <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="rssFeed in rssFeeds | limitTo:3" ng-click="openPage(rssFeed, 'CableLabs', $index)">
                     <img src="{{rssFeed.thumbnail}}" style="width:auto;height:auto" />
                     <h2>{{rssFeed.title}}</h2>
@@ -108,11 +110,13 @@
             </ion-list>
         </div>
         <div class="rss-feeds-box">
-            <div>
-                <img src="img/NCTA-Horizontal.png" class="informed-logo" ng-click="openNctaURL()">
-                <a class="see-all" ng-click="nctaDetailScreen()" style="top: 20px">See All &gt;</a>
-            </div>
             <ion-list class="list">
+                <ion-item class="ncta-header">
+                  <div>
+                      <img src="img/ncta-logo-2016-featured.png" class="informed-logo" ng-click="openNctaURL()">
+                      <a class="see-all" ng-click="nctaDetailScreen()" style="top: 20px">See All &gt;</a>
+                  </div>
+                </ion-item>
                 <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="nctaData in nctaDatas | limitTo:3" ng-click="openPage(nctaData, 'NCTA', $index)">
                     <img src="{{nctaData.thumbnail}}" style="width:auto;height:auto" />
                     <h2>{{nctaData.title}}</h2>

@@ -10,10 +10,12 @@
     </ion-header-bar>
     <ion-content class="padding">
         <div class="rss-feeds-box padding-zero">
-            <div>
-                <img src="img/NCTA-Horizontal.png" class="informed-logo">
-            </div>
             <ion-list class="list">
+                <ion-item class="ncta-header" ng-click="openNctaURL()">
+                  <div>
+                      <img src="img/ncta-logo-2016-featured.png" class="informed-logo">
+                  </div>
+                </ion-item>
                 <ion-item class="item-thumbnail-left item-icon-right" collection-repeat="nctaData in nctaDatas | filter:searchString track by $index" ng-click="openPage(nctaData, 'NCTA', $index)" type="item-text-wrap">
                     <img src="{{nctaData.thumbnail}}" style="width:auto;height:auto;" />
                     <h2>{{nctaData.title}}</h2>

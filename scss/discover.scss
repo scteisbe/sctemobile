@@ -153,6 +153,8 @@
         .see-all {
             @extend .common-see-all;
             right: 10px !important;
+            top: auto !important;
+            font-size: 14px !important;
         }
         .list {
             h2 {
@@ -174,6 +176,9 @@
                 @extend .common-ellipsis;
                 -webkit-line-clamp: 3;
             }
+        }
+        .ncta-header {
+            padding-bottom: 6px;
         }
     }
 }
