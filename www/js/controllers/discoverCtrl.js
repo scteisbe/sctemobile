@@ -166,6 +166,7 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
                         miniProfile.memberStatus = $profileData['MemberStatus'];
                         miniProfile.companyId = $profileData['CompanyId'];
                         miniProfile.companyName = $profileData['CompanyName'];
+                        miniProfile.chapter = $profileData['Chapter'];
                         console.info(miniProfile);
 
                         $localStorage['SSOUrl'] = $profileData['SSOUrl'];
