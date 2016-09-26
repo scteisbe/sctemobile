@@ -32,7 +32,7 @@ var DiscoverEventCtrl = ['$scope', '$rootScope', '$http', '$state', '$filter', '
 
     $scope.dateFormatType = function() {
         for (i = 0; i < $scope.eventType.length; i++) {
-            var dateFormat = $scope.eventType[i].formattedBeginDate;
+            var dateFormat = $scope.eventType[i].formattedBeginDate || $scope.eventType[0].beginDate;
             var dateEvent = new Date(dateFormat);
             $scope.eventType[i].formattedBeginDate = dateEvent;
         }
