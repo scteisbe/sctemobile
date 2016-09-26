@@ -68,11 +68,11 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
                             $localStorage['username'] = $scope.username;
                             $localStorage['password'] = $scope.password;
                             $localStorage['authToken'] = $rootScope.authToken;
-                            ga('send', 'event', "GetToken", "success");
+                            ga('send', 'event', "GetToken", "success", $scope.username);
 
                             $state.go(AppConstants.introName);
                         } else {
-                            ga('send', 'event', "GetToken", "failure", AppConstants.wrongUserNamePassword);
+                            ga('send', 'event', "GetToken", "failure", $scope.username || AppConstants.wrongUserNamePassword);
                             $scope.displayAlert(AppConstants.wrongUserNamePassword);
                         }
                     } else {

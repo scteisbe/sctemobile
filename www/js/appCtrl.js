@@ -18,7 +18,7 @@ var appCtrl = ['$state', '$rootScope', '$scope', '$compile', '$filter', '$ionicL
             template: '<p>Loading...</p><ion-spinner></ion-spinner><br><a class="button button-small button-positive" ui-sref="tab.discover">Cancel Search</a>'
 
         });
-        };
+    };
 
     $scope.$on('$ionicView.loaded', function() {
         // console.info(JSON.stringify(ionic.Platform.device()));
