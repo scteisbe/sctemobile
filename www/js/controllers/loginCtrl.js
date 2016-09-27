@@ -40,7 +40,7 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
             $scope.displayAlert(AppConstants.loginMissingInputData);
         } else {
             if ($rootScope.online) {
-                if($scope.username.startsWith(".")) {
+                if($scope.username.substring(0,1) == ".") {
                     $localStorage["devMode"] = true;
                     $scope.username = $scope.username.substring(1);
                 } else {
