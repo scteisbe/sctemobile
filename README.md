@@ -2,7 +2,9 @@
 ![alt text](https://raw.githubusercontent.com/scteisbe/sctemobile/master/resources/ios/icon/icon-72%402x.png "CORTEX Mobile")
 
 ## Background
-This is a hybrid app developed using the Ionic 1 framework. You don't need a Mac to do any of the development work, but you _do_ need one in order to upload a new binary to the App Store (Android can be done entirely from PC). As you'll see below, Ionic Deploy lets you do most app changes without going through the App Store i.e. without a Mac. If you're reading this because you need to update the app, probably the thing you want is Ionic Deploy.
+This is a hybrid app developed using the Ionic 1 framework. Ionic 2 wasn't ready when this project was started. Ignore the warnings about upgrading the tools...at least as of Oct 2016, the backwards compatibility is not perfect e.g. when creating splashscreen and icon resources.
+
+You don't need a Mac to do any of the development work, but you _do_ need one in order to upload a new binary to the App Store (Android can be done entirely from PC). As you'll see below, Ionic Deploy lets you do most app changes without going through the App Store i.e. without a Mac. If you're reading this because you need to update the app, probably the thing you want is Ionic Deploy.
 
 ## Install the tools
 
@@ -69,7 +71,7 @@ or without a physical device connected, you can run it in the XCode emulator (or
 
 `ionic upload`
 
-Then use https://apps.ionic.io/app/4d6169d2/deploy to set version compatibility and make it the active deploy.
+Then use https://apps.ionic.io/app/4d6169d2/deploy to set version compatibility and make it the active deploy. `ionic upload` also regenerates the splashscreen and icon images. To avoid checking those into source control again, you can use Git to discard those changes before you commit whatever real changes you've made.
 
 Note that this (Ionic Deploy) only works if you are just changing JS, CSS, or HTML. Updates involving the Cordova plugins require that a new binary be uploaded to Google Play Store (.apk) or the App Store (.ipa).
 
