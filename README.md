@@ -35,6 +35,7 @@ then
 
 `ionic config build`
 
+##Run, debug, modify in your browser
 
 ####Run it in your browser
 `ionic serve`  (use `-b` to disable launching a new browser window)
@@ -43,7 +44,7 @@ That's it! If you have problems loading APIs in your PC browser, you'll want to 
 
 If you're using Chrome, this will help you https://developers.google.com/web/tools/chrome-devtools/iterate/device-mode/?hl=en
 
-## Debugging and modifying
+## Running on actual devices
 
 ####Prepare to run on device or emulator
 `ionic add platform android`
@@ -51,7 +52,10 @@ If you're using Chrome, this will help you https://developers.google.com/web/too
 `ionic add platform ios` (only works if you're on a Mac with XCode installed)
 
 ####Run it on physical device connected via USB
-`ionic run android`
+
+Assuming you've set up things like ADB for Android, you can easy run on a real device.
+
+`ionic run android`  (debug by hitting `chrome://inspect/#devices` in your browser)
 
 `ionic run ios`
 
@@ -81,7 +85,7 @@ First, bump up `android-versionCode`, `ios-CFBundleVersion`, and `version` in th
 
 Check status and download .apk and .ipa from https://apps.ionic.io/app/4d6169d2/package. Running the `ionic package` command also creates a Deploy (see above) that should be made "active" once you set the equivalent version to the new Package version you just created.
 
-##Publish it
+##Publish to app stores
 
 From any computer, upload the `.apk` file via browser to Google Play developer console.
 
