@@ -83,7 +83,7 @@ First, bump up `android-versionCode`, `ios-CFBundleVersion`, and `version` in th
 
 `ionic package build android --release --profile scte_android_production`
 
-Check status and download .apk and .ipa from https://apps.ionic.io/app/4d6169d2/package. Running the `ionic package` command also creates a Deploy (see above) that should be made "active" once you set the equivalent version to the new Package version you just created.
+Check status and download .apk and .ipa from https://apps.ionic.io/app/4d6169d2/package. Running the `ionic package` command also creates a Deploy (see above) that should be made "active" once you set the equivalent version to the new Package version you just created. Also, see note in the Version Numbering section below.
 
 ##Publish to app stores
 
@@ -105,5 +105,4 @@ In `config.xml` you'll find a line like this:
 
 `version` is what users see in the app stores. You do not need to increment it with every build, but when you plan to make a new release, you should. It's not uncommon to upload several builds for one version e.g. in the process of getting Apple's approval. BTW, you also need to enter the `version` in the App Store during the process of creating a new version for approval.
 
-
-
+When you release a new binary to the world, be sure to set the Ionic Deploy "equivalent" version to be equal to the `version` in this file.
