@@ -53,8 +53,6 @@ If you're using Chrome, this will help you https://developers.google.com/web/too
 
 `ionic add platform ios` (only works if you're on a Mac with XCode installed)
 
-`ionic state reset`
-
 ####Run it on physical device connected via USB
 
 Assuming you've set up things like ADB for Android, you can easy run on a real device.
