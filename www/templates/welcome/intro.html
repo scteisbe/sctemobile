@@ -9,6 +9,8 @@
             <div class="contents">
                 <td-cards>
                     <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)">
+
+                    <!-- known issue with this style missing exception - fix could be see https://github.com/driftyco/ionic-ion-tinder-cards/issues/89 -->
                         <div class="box">
                             <div class="box-header text-center">
                                 <h4>{{card.title}}</h4>
