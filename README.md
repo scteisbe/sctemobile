@@ -1,6 +1,10 @@
 # CORTEX Mobile
 ![alt text](https://raw.githubusercontent.com/scteisbe/sctemobile/master/resources/ios/icon/icon-72%402x.png "CORTEX Mobile")
 
+iOS: https://itunes.apple.com/us/app/scte/id1122341948
+
+Android: https://play.google.com/store/apps/details?id=org.scte.mobile
+
 ## Background
 This is a hybrid app developed using the Ionic 1 framework. Ionic 2 wasn't ready when this project was started. Ignore the warnings about upgrading the tools...at least as of Oct 2016, the backwards compatibility is not perfect e.g. when creating splashscreen and icon resources.
 
@@ -108,3 +112,19 @@ In `config.xml` you'll find a line like this:
 `version` is what users see in the app stores. You do not need to increment it with every build, but when you plan to make a new release, you should. It's not uncommon to upload several builds for one version e.g. in the process of getting Apple's approval. BTW, you also need to enter the `version` in the App Store during the process of creating a new version for approval.
 
 When you release a new binary to the world, be sure to set the Ionic Deploy "equivalent" version to be equal to the `version` in this file.
+
+####Data sources
+
+The mobile app gets data from two sources:
+
+- SCTE Mobile App Configuration Tool (for fairly static data). Using Google Sheets for the configuration tool is enabled through an awesome library called Tabletop.js https://github.com/jsoma/tabletop.
+
+- Backend APIs (e.g. user auth, search, user-specific data, events, docs, etc). See services.js for details.
+
+
+####Analytics and error logging
+
+Analytics is mostly done in Google Analytics. GA uses the same account as scte.org and can be found at https://analytics.google.com/analytics/web/#report/defaultid/a1851425w119647521p125179324.
+
+Javascript / Angular errors are logged to https://rollbar.com/kevinjscott/sctemobile/items where https://rollbar.com/kevinjscott/sctemobile/settings/grouping/ can be a big help.
+
