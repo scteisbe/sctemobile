@@ -309,7 +309,9 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
         }
     };
     $scope.hideRecentSearches = function() {
-        $scope.modalRecentSearches.hide();
+        if ($scope.modalRecentSearches) {
+            $scope.modalRecentSearches.hide();
+        }
     };
     $scope.showRecentSearchesFromSearchPage = function() {
         $scope.modalRecentSearches.show();

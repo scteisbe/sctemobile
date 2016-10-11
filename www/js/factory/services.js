@@ -271,7 +271,7 @@ var Utils =['$ionicLoading', '$ionicPopup', '$http', '$state', '$q', 'Tabletop',
           })
           .then(function successCallback(response) {
             // if it worked, we should be redirected to /mobile/signin-successful.html
-            if (response.data.includes("successful signin")) {
+            if (response.data.indexOf("successful signin") !== -1) {
               console.log("Now signed in on scte.org");
               Utils.doWcwSso();
             } else {
