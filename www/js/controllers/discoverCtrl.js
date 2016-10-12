@@ -78,7 +78,7 @@ var DiscoverCtrl = ['$scope', '$state', '$rootScope', '$http', '$ionicModal', '$
             $scope.query = result[0];
             $scope.$apply();
             if ($scope.voiceFlag && $scope.query) {
-                $scope.searchResults();
+                $scope.searchResults($scope.query);
             }
         }, function(errorMessage) {}, maxMatches, promptString, language);
     }
