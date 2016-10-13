@@ -36,7 +36,7 @@ var loginCtrl = ['$scope', '$state', '$rootScope', '$localStorage', 'Utils', 'St
     $scope.login = function(username, password) {
         $scope.username = username;
         $scope.password = password;
-        if ($scope.username == '' || $scope.password == '') {
+        if (!$scope.username || !$scope.password) {
             $scope.displayAlert(AppConstants.loginMissingInputData);
         } else {
             if ($rootScope.online) {
