@@ -132,7 +132,7 @@ Javascript / Angular errors are logged to https://rollbar.com/kevinjscott/sctemo
 
 NPM `EACCES` error on Mac? https://docs.npmjs.com/getting-started/fixing-npm-permissions
 
-Access / permissions issues? Be sure you have access (755) to `~/.config` and `/usr/local/lib`
+Access / permissions issues? Be sure you have access (755) to `~/.config`, `~/.npm`, and `/usr/local/lib`
 
 Problems loading APIs in your PC browser (CORS, cross domain)? https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
 
