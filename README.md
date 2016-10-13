@@ -46,7 +46,7 @@ then
 ####Run it in your browser
 `ionic serve`  (use `-b` to disable launching a new browser window)
 
-That's it! If you have problems loading APIs in your PC browser, you'll want to use this: https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
+That's it! Troubleshooting tips below.
 
 If you're using Chrome, this will help you https://developers.google.com/web/tools/chrome-devtools/iterate/device-mode/?hl=en
 
@@ -127,4 +127,12 @@ The mobile app gets data from two sources:
 Analytics is mostly done in Google Analytics. GA uses the same account as scte.org and can be found at https://analytics.google.com/analytics/web/#report/defaultid/a1851425w119647521p125179324.
 
 Javascript / Angular errors are logged to https://rollbar.com/kevinjscott/sctemobile/items where https://rollbar.com/kevinjscott/sctemobile/settings/grouping/ can be a big help.
+
+####Troubleshooting
+
+NPM `EACCES` error on Mac? https://docs.npmjs.com/getting-started/fixing-npm-permissions
+
+Access / permissions issues? Be sure you have access (755) to `~/.config` and `/usr/local/lib`
+
+Problems loading APIs in your PC browser (CORS, cross domain)? https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
 
